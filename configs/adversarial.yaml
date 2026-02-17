@@ -1,0 +1,27 @@
+simulation:
+  drift_strength: 0.8
+  steps: 200
+  seed: 42
+
+manifolds:
+  data:
+    enabled: true
+    confidence_threshold_majority: 0.8
+    confidence_threshold_minority: 0.2
+    alpha: 0.3
+    beta: 1.5
+  parameter:
+    enabled: true
+    trust_radius: 0.03
+    asymmetry_lambda: 20.0
+    curvature_weight: 4.0
+    lr: 0.005
+  policy:
+    enabled: true
+    confidence_threshold: 0.5
+    reanchor_strength: 0.2
+
+monitoring:
+  log_interval: 10
+  save_metrics: true
+  output_dir: results/adversarial/
