@@ -1,0 +1,38 @@
+simulation:
+  drift_strength: 0.5
+  steps: 150
+  seed: 42
+
+manifolds:
+  data:
+    enabled: true
+    confidence_threshold_majority: 0.7
+    confidence_threshold_minority: 0.3
+    alpha: 0.5
+    beta: 1.0
+  parameter:
+    enabled: false   # replaced by ThermodynamicController
+  policy:
+    enabled: true
+    confidence_threshold: 0.4
+    reanchor_strength: 0.1
+
+thermodynamic:
+  lambda_safety: 1.0
+  lambda_policy: 0.3
+  mu_repair: 0.05
+  repair_budget: 50.0
+  epsilon_basin: 0.15
+  lr: 0.01
+
+geometry_shaping:
+  lambda_shape: 0.8
+  lambda_future_repair: 0.5
+  sigma_drift: 0.1
+  n_hutchinson_probes: 5
+  lr: 0.005
+
+monitoring:
+  log_interval: 10
+  save_metrics: true
+  output_dir: results/thermodynamic/
