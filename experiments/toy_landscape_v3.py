@@ -471,3 +471,250 @@ if __name__ == '__main__':
 
     plot(results, R, OUTPUT)
     falsification_report(results, R)
+
+
+
+patches:
+
+def run_no_repair(
+    n=10, r=1.5, kappa_t=2.0,
+    lambda_s=0.1,           # very weak: let drift dominate
+    drift_strength=0.6,
+    steps=300,
+    lr=0.05,
+    seed=42,
+    ramp_start=20,
+    ramp_len=80
+):
+    """
+    Repair disabled entirely.
+    Pure measurement of landscape dynamics under drift.
+
+    Observe:
+      - When does s cross 0 (saddle)?
+      - Does trajectory diverge after crossing? (unstable manifold)
+      - What does lambda_axial look like across the full crossing?
+
+    This is the clean geometric baseline before any controller effects.
+    """
+    torch.manual_seed(seed)
+    land  = DoubleWellLandscape(n=n, r=r, kappa_t=kappa_t)
+    theta = land.theta_safe.clone() + 0.05 * torch.randn(n)
+
+    records = []
+
+    for step in range(steps):
+        t = theta.detach().requires_grad_(True)
+        total = land.L_task(t) + lambda_s * land.L_safety(t)
+        total.backward()
+        grad_step = -lr * t.grad.detach()
+
+        eta       = axial_drift(theta, land, drift_strength, step, ramp_start, ramp_len)
+        theta_dot = grad_step + eta
+        theta     = theta.detach() + theta_dot
+
+        s         = land.axial_position(theta)
+        lam_ax    = land.lambda_axial(theta)   # 12s² - 4r²: sign is the signal
+        kappa     = land.kappa_eff(theta, theta_dot)
+
+        records.append({
+            'step':           step,
+            's':              s,
+            'lambda_axial':   lam_ax,
+            'kappa_eff':      kappa,
+            'lambda_max_H':   land.lambda_max(theta),
+            'L_safety':       land.L_safety(theta).item(),
+            'theta_dot_norm': theta_dot.norm().item(),
+            'in_unstable':    lam_ax < 0,        # past saddle, axially unstable
+        })
+
+        if step % 60 == 0:
+            print(f"  {step:4d} | s={s:+.4f} | lam_ax={lam_ax:+.3f} | "
+                  f"kappa={kappa:.3f} | unstable={lam_ax < 0}")
+
+    return pd.DataFrame(records)
+
+
+def run_repair_on_unstable_manifold(
+    n=10, r=1.5, kappa_t=2.0,
+    lambda_s=0.1,
+    drift_strength=0.6,
+    lr=0.05,
+    gamma_repair=0.05,
+    steps=300,
+    seed=42,
+    ramp_start=20,
+    ramp_len=80,
+    repair_start_s=0.5     # only trigger repair after crossing this far past saddle
+):
+    """
+    Repair triggers ONLY after state has wandered into unstable manifold.
+    Measures repair energy as function of lambda_axial at trigger time.
+
+    This directly tests: does repair cost scale with instability magnitude?
+
+    If E_repair vs lambda_axial_at_trigger is nonlinear: 
+        repair cost is instability-dominated. Hypothesis supported.
+    If linear:
+        repair cost is gradient-magnitude-dominated. Hypothesis weakened.
+
+    repair_start_s: how far past saddle before repair activates.
+    Larger value = deeper into unstable manifold = steeper curvature at trigger.
+    """
+    torch.manual_seed(seed)
+    land  = DoubleWellLandscape(n=n, r=r, kappa_t=kappa_t)
+    theta = land.theta_safe.clone() + 0.05 * torch.randn(n)
+
+    records = []
+
+    for step in range(steps):
+        t = theta.detach().requires_grad_(True)
+        total = land.L_task(t) + lambda_s * land.L_safety(t)
+        total.backward()
+        grad_step = -lr * t.grad.detach()
+
+        eta       = axial_drift(theta, land, drift_strength, step, ramp_start, ramp_len)
+        theta_dot = grad_step + eta
+        theta     = theta.detach() + theta_dot
+
+        s       = land.axial_position(theta)
+        lam_ax  = land.lambda_axial(theta)
+
+        # Repair only after crossing repair_start_s past saddle
+        repair_energy    = 0.0
+        repair_triggered = False
+        lam_ax_at_repair = None
+
+        if s > repair_start_s:
+            t2   = theta.detach().requires_grad_(True)
+            ls   = land.L_safety(t2)
+            grad = torch.autograd.grad(ls, t2)[0].detach()
+
+            # Scale repair by lambda_axial magnitude - this is the key measurement
+            # Standard repair: delta = -gamma * grad
+            delta         = -gamma_repair * grad
+            repair_energy = (delta**2).sum().item()
+            theta         = theta.detach() + delta
+            repair_triggered  = True
+            lam_ax_at_repair  = lam_ax   # curvature at moment of repair
+
+        records.append({
+            'step':               step,
+            's':                  s,
+            'lambda_axial':       lam_ax,
+            'lambda_axial_at_repair': lam_ax_at_repair,
+            'kappa_eff':          land.kappa_eff(theta, theta_dot),
+            'repair_energy':      repair_energy,
+            'repair_triggered':   repair_triggered,
+            'L_safety':           land.L_safety(theta).item(),
+        })
+
+    return pd.DataFrame(records)
+
+
+def falsification_report_v3b(df_no_repair: pd.DataFrame,
+                              df_unstable: pd.DataFrame,
+                              r: float):
+    """
+    Two-part report:
+
+    Part 1 (no repair):
+      Did the trajectory cross the saddle?
+      Did lambda_axial go negative?
+      Did the trajectory diverge after crossing? (unstable manifold confirmed)
+
+    Part 2 (repair on unstable manifold):
+      Is E_repair nonlinearly related to lambda_axial at trigger time?
+      That's the direct test of instability-vs-distance dominated repair cost.
+    """
+    print("\n" + "="*65)
+    print("FALSIFICATION REPORT v3b")
+    print("="*65)
+
+    print("\n--- Part 1: No-repair trajectory ---")
+    crossed   = df_no_repair[df_no_repair['s'] > 0]
+    unstable  = df_no_repair[df_no_repair['in_unstable']]
+    max_s     = df_no_repair['s'].max()
+    min_lam   = df_no_repair['lambda_axial'].min()
+
+    print(f"  Max axial position:        {max_s:.4f}  (r={r}, saddle=0)")
+    print(f"  Saddle crossed (s>0):      {len(crossed)} steps")
+    print(f"  Steps in unstable region:  {len(unstable)}")
+    print(f"  Min lambda_axial:          {min_lam:.4f}  (negative = saddle confirmed)")
+
+    if len(crossed) > 0:
+        # Check divergence: does theta_dot_norm increase after crossing?
+        pre_cross  = df_no_repair[df_no_repair['s'] <= 0]['theta_dot_norm'].mean()
+        post_cross = df_no_repair[df_no_repair['s'] >  0]['theta_dot_norm'].mean()
+        divergence_ratio = post_cross / (pre_cross + 1e-8)
+        print(f"  Mean speed pre/post saddle:{pre_cross:.4f} / {post_cross:.4f}")
+        print(f"  Divergence ratio:          {divergence_ratio:.2f}x")
+        print(f"  Unstable manifold confirmed: {'YES' if divergence_ratio > 1.2 else 'NO'}")
+    else:
+        print("  Saddle never crossed. Increase drift_strength.")
+
+    print("\n--- Part 2: Repair on unstable manifold ---")
+    repairs = df_unstable[df_unstable['repair_triggered']].dropna(
+        subset=['lambda_axial_at_repair']
+    )
+    print(f"  Repair events:             {len(repairs)}")
+
+    if len(repairs) < 5:
+        print("  Insufficient events. Reduce repair_start_s.")
+    else:
+        # Is E_repair nonlinear with lambda_axial at trigger?
+        lam_vals = repairs['lambda_axial_at_repair'].values
+        e_vals   = repairs['repair_energy'].values
+
+        r_p, _ = pearsonr( lam_vals, e_vals)
+        r_s, _ = spearmanr(lam_vals, e_vals)
+
+        # Quartile comparison
+        q1_mask = lam_vals <= np.percentile(lam_vals, 25)
+        q4_mask = lam_vals >= np.percentile(lam_vals, 75)
+        e_q1 = e_vals[q1_mask].mean()   # low curvature repairs
+        e_q4 = e_vals[q4_mask].mean()   # high curvature repairs
+        ratio = e_q4 / (e_q1 + 1e-10)
+
+        print(f"  Pearson(lambda_ax, E):     {r_p:.3f}")
+        print(f"  Spearman(lambda_ax, E):    {r_s:.3f}")
+        print(f"  E at high vs low curvature:{ratio:.2f}x  (>2 = instability-dominated)")
+        print(f"  Mean E Q1 (low curv):      {e_q1:.5f}")
+        print(f"  Mean E Q4 (high curv):     {e_q4:.5f}")
+
+        instability_dominated = ratio > 2.0
+        print(f"\n  [INSTABILITY-DOMINATED COST] "
+              f"{'SUPPORTED' if instability_dominated else 'NOT SUPPORTED'}")
+        if not instability_dominated:
+            print("  Repair cost scales with gradient magnitude, not Hessian structure.")
+            print("  Curvature-cost hypothesis weakened. Back to whiteboard on cost model.")
+        else:
+            print("  Repair cost scales with curvature at trigger point.")
+            print("  Thermodynamic framing gains credibility.")
+
+    print("="*65 + "\n")
+
+Add to __main__ block:
+
+    # v3b: no-repair baseline + repair on unstable manifold
+    print("\n=== NO REPAIR: pure landscape dynamics ===")
+    df_no_repair = run_no_repair(n=10, r=R, kappa_t=2.0,
+                                  lambda_s=0.1, drift_strength=0.6, steps=300)
+    df_no_repair.to_csv(f'{OUTPUT}/no_repair.csv', index=False)
+
+    print("\n=== REPAIR ON UNSTABLE MANIFOLD ===")
+    df_unstable = run_repair_on_unstable_manifold(
+        n=10, r=R, kappa_t=2.0,
+        lambda_s=0.1, drift_strength=0.6,
+        gamma_repair=0.05, steps=300,
+        repair_start_s=0.3
+    )
+    df_unstable.to_csv(f'{OUTPUT}/repair_unstable.csv', index=False)
+
+    falsification_report_v3b(df_no_repair, df_unstable, R)
+
+
+The divergence ratio in Part 1 is the diagnostic that confirms the unstable manifold is real - if speed increases after saddle crossing, the system is genuinely on the unstable side and perturbations are amplifying. If it doesn’t diverge, the transverse confinement is overwhelming the axial instability and kappa_t needs to come down.
+Part 2 measures E_repair against lambda_axial at the moment repair fires, not against distance. That’s GPT’s point made precise - if the ratio is above 2x, the system is paying for instability, not travel distance. That’s the distinction that separates the thermodynamic framing from a simple gradient-magnitude story.​​​​​​​​​​​​​​​​
+
+
