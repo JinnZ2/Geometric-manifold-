@@ -2,111 +2,162 @@
 
 ## Project Overview
 
-**Basin Repair Framework** — a geometric manifold approach to maintaining neural network parameter safety. The system treats model safety as a geometric problem, using three interconnected manifold layers (data, parameter, policy) to detect when a model drifts from a safe reference state and applies repair mechanisms.
+**Basin Repair Framework** — a geometric manifold approach to maintaining neural network parameter safety. Treats model safety as a geometric problem: safe model configurations occupy "basins" in parameter space, and the framework detects/repairs drift using three interconnected manifold layers.
 
-Total codebase: ~2,040 lines of Python + documentation. Research-stage project, not production-hardened.
+Research-stage Python project (~2,100 lines). No production deployment.
+
+## Quick Reference
+
+```bash
+# Install
+pip install -r requirements.txt
+
+# Run simulation
+python main.py --config configs/default.yaml
+
+# Run tests (15 smoke tests, ~2s)
+python -m pytest tests/ -v
+
+# Lint
+ruff check .
+
+# Format check
+ruff format --check .
+```
 
 ## Repository Structure
 
 ```
-├── main.py                          # Primary entry point
-├── Mode-flag.py                     # Experimental mode selector
-├── requirements.txt                 # Python dependencies (torch, numpy, scipy, etc.)
-├── configs/
-│   ├── default.yaml                 # Standard params (drift=0.3, steps=100)
-│   └── adversarial.yaml             # Stress test (drift=0.8, steps=200)
-├── simulation/
-│   ├── environment.py               # ToyLLM (2-layer MLP), synthetic data generation
-│   └── controller.py                # Main repair orchestration loop
-├── manifolds/
-│   ├── data_manifold.py             # GMR-style feature space cleaning
-│   ├── parameter_manifold.py        # Curvature-aware basin repair in weight space
-│   └── policy_manifold.py           # Trajectory-level alignment via JS divergence
-├── repair/
-│   ├── geometric_confidence.py      # Unified confidence (20% data, 50% param, 30% policy)
-│   └── monitors.py                  # Metrics tracking & spike detection
-├── addon_thermodynamic_control/     # Advanced energy/stability extensions
-│   ├── energy.py                    # Fisher Information metric, thermodynamic accounting
-│   ├── stability.py                 # Phase detection & stability analysis
-│   ├── geometry_shaping.py          # Landscape shaping objectives
-│   ├── addendum_formal_objectives.py # 4-term Lagrangian formalization
-│   ├── experiment_energy.py         # Energy sweep experiments
-│   ├── experiment_formal.py         # Formal objective experiments
-│   └── experiment_stability.py      # Stability experiments
-├── experiments/
-│   ├── full_pipeline.py             # Runs all three manifold layers
-│   ├── toy_landscape.py             # Single landscape experiments
-│   ├── toy_landscape_v2.py          # Improved landscape version
-│   ├── toy_landscape_v3.py          # Latest landscape version
-│   ├── ablations.py                 # Ablation studies
-│   ├── cost_analysis.py             # Repair cost analysis
-│   └── cost_analysis2.py            # Advanced cost analysis
-└── docs/theoretical_notes/
-    └── saddle_dynamics_and_repair_cost.md  # Theoretical analysis
+main.py                          # Primary entry point (--config flag)
+mode_flag.py                     # Mode selector (--mode simulate|energy_sweep)
+pyproject.toml                   # Ruff + pytest config
+requirements.txt                 # Python deps: torch, numpy, scipy, pyyaml, matplotlib, pandas, tqdm
+
+simulation/
+  environment.py                 # ToyLLM (2-layer MLP, ~8k params), synthetic data generation
+  controller.py                  # Orchestrates all 3 manifold layers per step
+
+manifolds/
+  data_manifold.py               # Layer 1: GMR-style k-NN feature space cleaning
+  parameter_manifold.py          # Layer 2: Curvature-aware basin repair in weight space
+  policy_manifold.py             # Layer 3: JS divergence trajectory alignment
+
+repair/
+  geometric_confidence.py        # Unified confidence: 20% data + 50% param + 30% policy
+  monitors.py                    # Per-step metric logging, CSV export, cost spike detection
+
+addon_thermodynamic_control/
+  energy.py                      # Fisher Information metric, thermodynamic energy accounting
+  stability.py                   # Phase detection & stability analysis (552 lines, largest file)
+  geometry_shaping.py            # Landscape shaping objectives
+  addendum_formal_objectives.py  # 4-term Lagrangian formalization
+  experiment_*.py                # Experiment scripts for each addon module
+
+configs/
+  default.yaml                   # Standard: drift=0.3, steps=100, seed=42
+  adversarial.yaml               # Stress: drift=0.8, steps=200, tighter trust region
+
+experiments/                     # Standalone experiment scripts
+tests/                           # Pytest smoke tests for all modules
+docs/theoretical_notes/          # Mathematical foundations
 ```
 
-## Architecture: Three-Layer Geometric Framework
+## Architecture
 
-1. **Data Manifold** (`manifolds/data_manifold.py`): Asymmetric k-NN cleaning — aggressively removes noisy majority samples, preserves rare minority samples.
-2. **Parameter Manifold** (`manifolds/parameter_manifold.py`): Curvature-aware basin repair with asymmetric loss (safety > task performance), trust region constraints.
-3. **Policy Manifold** (`manifolds/policy_manifold.py`): JS divergence monitoring with soft re-anchoring when policy diverges from reference.
+### Three-Layer Manifold Pipeline
 
-The controller (`simulation/controller.py`) orchestrates all three layers sequentially each step.
+The controller runs each step in sequence:
 
-## Running the Project
+1. **Data Manifold** (`DataManifold.rectify()`) — runs once before the loop. Asymmetric k-NN cleaning: aggressively drops low-confidence majority samples, conservatively keeps minority samples.
 
-```bash
-# Install dependencies
-pip install -r requirements.txt
+2. **Parameter Manifold** (`ParameterManifold.repair_step()`) — runs per step. Computes `task_loss - λ * curvature_weighted_safety_loss`, takes gradient step within trust region. Returns `(new_theta, metrics_dict)`.
 
-# Main simulation
-python main.py --config configs/default.yaml
+3. **Policy Manifold** (`PolicyManifold.trajectory_confidence()`) — runs per step. Measures JS divergence between current and reference action distributions. Triggers re-anchoring when confidence drops below threshold.
 
-# Mode-based execution
-python Mode-flag.py --mode simulate
-python Mode-flag.py --mode energy_sweep
+### Key Interfaces
 
-# Individual experiments
-python experiments/full_pipeline.py
-python experiments/ablations.py
+Every manifold layer follows this pattern:
+- Takes a config dict in `__init__`
+- Has a primary method returning results + metrics
+- Returns confidence as a float in [0, 1]
+
+```python
+# Parameter manifold example
+theta_new, metrics = param_layer.repair_step(theta, model_fn, safety_inputs, task_inputs, task_labels)
+# metrics = {'task_loss': ..., 'safety_loss': ..., 'curvature': ..., 'confidence': ..., 'dist_to_ref': ...}
 ```
 
-## Dependencies
+The functional model interface is: `model_fn(inputs: Tensor, theta_flat: Tensor) -> Tensor`
 
-- Python 3.x
-- torch >= 2.0.0
-- numpy >= 1.24.0
-- scipy >= 1.10.0
-- pyyaml >= 6.0
-- matplotlib >= 3.7.0
-- pandas >= 2.0.0
-- tqdm >= 4.65.0
+### Confidence Aggregation
+
+`GeometricConfidence.combined()` weights the three layers:
+- Data: 20% weight
+- Parameter: 50% weight (dominant signal)
+- Policy: 30% weight
 
 ## Code Conventions
 
-- **Configuration-driven**: All hyperparameters via YAML configs, no hardcoding.
-- **Manifold interface pattern**: Each layer class exposes `.rectify()`, `.repair_step()`, or `.confidence()` methods.
-- **Functional model interface**: Models called as `model_fn(inputs, theta)` for functional evaluation.
-- **Metric dictionaries**: Methods return `{'metric_name': value}` for standardized logging.
-- **Tensor-based**: PyTorch tensors throughout for GPU compatibility.
-- **Docstrings**: Present on key methods, explaining geometric intuition.
-- **No formal linting/formatting**: No flake8, black, or pylint configured.
-- **No test suite**: Research project without pytest/unittest infrastructure.
-- **No CI/CD**: No automated pipelines.
+### Style & Formatting
+- **Linter**: ruff (configured in `pyproject.toml`). Rules: E, F, W, I (pycodestyle, pyflakes, isort).
+- **Line length**: 100 chars (soft, E501 ignored).
+- **Import order**: stdlib, third-party, then first-party (`simulation`, `manifolds`, `repair`, `addon_thermodynamic_control`). Enforced by ruff isort.
+- **Python version**: 3.11+
+
+### Patterns to Follow
+- **Configuration-driven**: All hyperparameters via YAML configs. Never hardcode values that should be tunable.
+- **Metric dictionaries**: Methods return `{'metric_name': float_value}` for standardized logging.
+- **Functional model interface**: Use `model_fn(inputs, theta)` — never pass nn.Module objects between layers.
+- **Tensor-based**: PyTorch tensors throughout. Use `torch.no_grad()` for inference-only paths.
+- **Docstrings**: Include on public methods. Explain the geometric/mathematical intuition, not just what the code does.
+
+### Testing
+- Tests live in `tests/` and use pytest.
+- Run: `python -m pytest tests/ -v`
+- Test files mirror source structure: `test_environment.py`, `test_manifolds.py`, `test_repair.py`, `test_controller.py`.
+- Use `tmp_path` fixture for any file output (never write to real `results/` in tests).
+- New code should have corresponding smoke tests.
 
 ## Key Design Decisions
 
-- **Asymmetric penalties**: Safety violations are penalized more heavily than task performance loss (controlled by `asymmetry_lambda`).
-- **Trust regions**: Parameter updates are constrained to prevent catastrophic jumps (`trust_radius` in config).
-- **Confidence weighting**: Unified confidence = 20% data + 50% parameter + 30% policy (see `repair/geometric_confidence.py`).
-- **Thermodynamic extensions**: The `addon_thermodynamic_control/` module adds Fisher metric-based energy accounting and phase transition detection.
+- **Asymmetric penalties**: Safety violations penalized `λ` times more than task loss (`asymmetry_lambda`, default 10.0). This is intentional — safety > performance.
+- **Trust regions**: Parameter updates capped at `trust_radius` (default 0.05) to prevent catastrophic jumps.
+- **Curvature proxy**: Uses variance of softmax distribution as a cheap curvature estimate (not full Hessian).
+- **Thermodynamic extensions** (`addon_thermodynamic_control/`): Adds Fisher metric energy accounting and phase transition detection. This is the most mathematically dense module.
 
-## Common Modification Patterns
+## Common Tasks
 
-- **Adding a new manifold layer**: Create a class in `manifolds/`, implement a confidence/repair interface, wire it into `simulation/controller.py` and `repair/geometric_confidence.py`.
-- **Tuning repair behavior**: Edit YAML configs in `configs/`. Key knobs: `drift_magnitude`, `trust_radius`, `asymmetry_lambda`, confidence thresholds.
-- **Adding experiments**: Create a script in `experiments/` that imports from `simulation/` and `manifolds/`.
-- **Results output**: Monitor writes CSV to `results/` directory (configured in YAML).
+### Adding a new manifold layer
+1. Create class in `manifolds/` with `__init__(self, config: dict)` and a primary method returning metrics.
+2. Wire it into `simulation/controller.py` in the step loop.
+3. Add its confidence to `repair/geometric_confidence.py` (update weights tuple).
+4. Add config section in both `configs/default.yaml` and `configs/adversarial.yaml`.
+5. Add smoke tests in `tests/`.
+
+### Tuning repair behavior
+Edit YAML configs in `configs/`. The most impactful knobs:
+- `drift_strength`: How far the model starts from safe reference.
+- `trust_radius`: Max parameter step size (smaller = more conservative repair).
+- `asymmetry_lambda`: Safety penalty multiplier (higher = stronger safety bias).
+- `confidence_threshold`: Policy re-anchoring trigger point.
+
+### Adding an experiment
+Create a script in `experiments/` that:
+1. Imports `Environment` from `simulation.environment`
+2. Imports manifold layers or `Controller` as needed
+3. Runs the pipeline with specific configs
+4. Saves results to `results/` subdirectory
+
+### Modifying the ToyLLM
+The model is defined in `simulation/environment.py`. Both `ToyLLM` (nn.Module) and `model_fn` (functional) must stay in sync — the functional version is used throughout the framework. If you change the architecture, update both and verify with `test_model_fn_matches_module`.
+
+## Gotchas
+
+- `model_fn` uses a flattened parameter vector (`theta_flat`), not named parameters. The split indices are computed from layer dimensions.
+- `DataManifold.rectify()` runs once (pre-loop), while the other two layers run every step.
+- The monitor's `detect_cost_spike()` needs `2 * window` steps of history before it activates.
+- `addon_thermodynamic_control/stability.py` is 552 lines — the largest and most complex file. Read the companion `README_stability.md` before modifying.
+- Results are written to `results/` which is not gitignored. Don't commit generated CSV files.
 
 ## License
 
