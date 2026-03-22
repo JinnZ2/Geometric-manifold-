@@ -15,7 +15,7 @@ pip install -r requirements.txt
 # Run simulation
 python main.py --config configs/default.yaml
 
-# Run tests (15 smoke tests, ~2s)
+# Run tests (36 tests: 15 smoke + 21 invariants, ~4s)
 python -m pytest tests/ -v
 
 # Lint
@@ -118,8 +118,109 @@ The functional model interface is: `model_fn(inputs: Tensor, theta_flat: Tensor)
 - Use `tmp_path` fixture for any file output (never write to real `results/` in tests).
 - New code should have corresponding smoke tests.
 
+## Mathematical Invariants
+
+These properties are tested in `tests/test_invariants.py` (21 tests). They encode the mathematical contracts each layer must satisfy. **Do not break these.**
+
+### Parameter Manifold
+- **Trust region**: `||delta|| <= trust_radius` after every step. No exceptions.
+- **Confidence in [0, 1]**: `geometric_confidence()` returns a float in `[0, 1]` for any input.
+- **Confidence monotonic with distance**: Higher drift from reference produces lower confidence.
+- **Curvature non-negative**: The variance-based curvature proxy is always `>= 0`.
+- **Finite outputs**: Every repair step must produce finite (non-NaN, non-inf) parameters and metrics.
+- **Bounded drift**: Over N steps, distance from reference grows by at most `N * trust_radius`.
+
+### Policy Manifold
+- **JS(P, P) = 0**: Identical distributions must give confidence = 1.0.
+- **JS symmetry**: `JS(P, Q) == JS(Q, P)` (within numerical tolerance).
+- **Reanchor is convex combination**: `reanchor(P, Q) = (1-s)*P + s*Q` exactly.
+- **Boundary behavior**: `reanchor_strength=0` returns P, `reanchor_strength=1` returns Q.
+
+### Data Manifold
+- **Minority never fully dropped**: Every minority sample (label=1) gets weight > 0 (either `beta` or `beta_prime`).
+- **Majority pruning**: Some low-confidence majority samples are dropped (weight=0).
+- **Asymmetric effect**: After rectification, minority class fraction increases or stays the same.
+
+### Confidence Aggregation
+- **Bounded**: `combined()` output is always in `[0, 1]`.
+- **Weights sum to 1**: Default `(0.2, 0.5, 0.3)` must sum to 1.0.
+- **Parameter dominates**: Parameter confidence (50%) outweighs data (20%) and policy (30%) individually.
+
+## Do Not
+
+These constraints exist for mathematical or safety reasons. Violating them silently breaks the framework.
+
+- **Do not remove the trust region clamp** in `parameter_manifold.py`. It is the only hard guarantee against catastrophic parameter jumps. Without it, a single adversarial gradient can move theta arbitrarily far.
+- **Do not change the confidence weight ordering** (param > policy > data) without updating both `geometric_confidence.py` and all downstream thresholds. The controller's abort logic depends on parameter confidence being dominant.
+- **Do not make `beta_prime = 0`** in the data manifold config. This drops low-confidence minority samples entirely, violating the asymmetric cleaning contract (minority samples are never fully discarded).
+- **Do not swap KL divergence for Euclidean distance** in `BasinDivergenceMonitor` or `parameter_manifold.py`. KL gives distributional basin boundaries; Euclidean is arbitrary in parameter space and doesn't correspond to behavioral difference.
+- **Do not remove `torch.no_grad()`** from inference-only code paths (reference model evaluations, basin checks). Tracking gradients through the reference would corrupt the repair direction.
+- **Do not compute full Hessians**. The framework deliberately uses cheap curvature proxies (softmax variance, diagonal Fisher). Full Hessians are O(n^2) in parameter count and will OOM on anything larger than ToyLLM.
+- **Do not change the sign in `task_loss - λ * weighted_safety`** in `parameter_manifold.py`. This is an adversarial/saddle-point formulation, not a typo. The minus sign creates tension between task performance and safety alignment; the trust region resolves it.
+
+## Config Rationale
+
+Why these specific default values exist.
+
+### `default.yaml`
+| Parameter | Value | Why |
+|-----------|-------|-----|
+| `drift_strength` | 0.3 | Mild drift — enough to test repair without overwhelming the trust region in one step. |
+| `trust_radius` | 0.05 | Bounds single-step movement to ~0.1% of typical `theta_ref` norm (~57). Conservative. |
+| `asymmetry_lambda` | 10.0 | Safety loss dominates by 10x. Empirically, below 5x the repair trajectory wanders. |
+| `curvature_weight` | 2.0 | Amplifies safety penalty in curved regions. At 1.0, curvature barely registers. |
+| `lr` | 0.01 | Combined with trust_radius=0.05, most steps are trust-region-limited, not lr-limited. |
+| `confidence_threshold` | 0.4 | Policy re-anchoring fires when JS divergence exceeds 0.6. Below 0.3: too aggressive. |
+| `confidence_threshold_majority` | 0.7 | Drops ~30% of majority samples. At 0.5: too permissive (noise survives). |
+| `confidence_threshold_minority` | 0.3 | Very low bar — keeps almost all minority samples even in noisy regions. |
+| `reanchor_strength` | 0.1 | Gentle blend toward reference. At 0.5+: policy snaps back too hard, erasing adaptation. |
+
+### `adversarial.yaml` differences
+| Parameter | Default | Adversarial | Why |
+|-----------|---------|-------------|-----|
+| `drift_strength` | 0.3 | 0.8 | Stress test: model starts far from basin. |
+| `trust_radius` | 0.05 | 0.03 | Tighter constraint under adversarial pressure. |
+| `asymmetry_lambda` | 10.0 | 20.0 | Double safety bias needed when drift is 2.5x larger. |
+| `curvature_weight` | 2.0 | 4.0 | Curved regions are more dangerous with large drift. |
+| `lr` | 0.01 | 0.005 | Slower steps for stability under stress. |
+| `confidence_threshold` (policy) | 0.4 | 0.5 | Earlier re-anchoring trigger. |
+| `confidence_threshold_majority` | 0.7 | 0.8 | More aggressive majority pruning. |
+| `reanchor_strength` | 0.1 | 0.2 | Stronger pull toward reference under adversarial drift. |
+
+## Verification Workflow
+
+Before merging any change, run this sequence:
+
+```bash
+# 1. Lint and format (must pass clean)
+ruff check .
+ruff format --check .
+
+# 2. All tests including invariants (~4s)
+python -m pytest tests/ -v
+
+# 3. Smoke run with default config (should complete without error)
+python main.py --config configs/default.yaml
+```
+
+If you changed any manifold layer, also run:
+```bash
+# 4. Invariant tests specifically (catches broken math contracts)
+python -m pytest tests/test_invariants.py -v
+
+# 5. Adversarial config (catches stability regressions)
+python main.py --config configs/adversarial.yaml
+```
+
+If you changed `simulation/environment.py`:
+```bash
+# 6. Verify functional/module model parity
+python -m pytest tests/test_environment.py::test_model_fn_matches_module -v
+```
+
 ## Key Design Decisions
 
+- **Saddle-point objective**: The parameter manifold loss is `task_loss - λ * safety_loss`, not `task_loss + λ * safety_loss`. The minus sign is intentional — it creates adversarial tension between task and safety. The trust region prevents runaway; the saddle-point structure ensures the repair explores the loss landscape rather than collapsing to a local minimum.
 - **Asymmetric penalties**: Safety violations penalized `λ` times more than task loss (`asymmetry_lambda`, default 10.0). This is intentional — safety > performance.
 - **Trust regions**: Parameter updates capped at `trust_radius` (default 0.05) to prevent catastrophic jumps.
 - **Curvature proxy**: Uses variance of softmax distribution as a cheap curvature estimate (not full Hessian).
