@@ -1,0 +1,107 @@
+{
+  "version": "1.0",
+  "updated": "2026-03-24T00:00:00Z",
+  "description": "Bridge map linking Basin Repair manifold layers to Rosetta-Shape-Core shapes, sensors, and principles",
+  "source_repo": "JinnZ2/Geometric-manifold-",
+  "target_repo": "JinnZ2/Rosetta-Shape-Core",
+
+  "layer_shape_map": [
+    {
+      "layer": "data_manifold",
+      "module": "manifolds/data_manifold.py",
+      "shape": "SHAPE.ICOSA",
+      "rationale": "Data rectification operates in feature space using k-NN density ratios — a local geometric operation. The icosahedron's 20 families map to the high-dimensional feature neighborhoods the data manifold classifies.",
+      "families": ["F03:Information", "F19:Statistical"],
+      "principles": ["P05:Emergence", "P04:Duality"],
+      "bridges": {
+        "sensors": ["trust", "fear"],
+        "sensor_meaning": "Trust sensors detect reliable data regions; fear sensors flag anomalous intrusions into minority space.",
+        "defenses": ["def.fr.06"],
+        "defense_meaning": "Consensus guard — prevents majority-class noise from overwhelming minority signal (asymmetric cleaning)."
+      },
+      "invariants_linked": [
+        "minority_never_fully_dropped",
+        "majority_pruning",
+        "asymmetric_effect"
+      ]
+    },
+    {
+      "layer": "parameter_manifold",
+      "module": "manifolds/parameter_manifold.py",
+      "shape": "SHAPE.DODECA",
+      "rationale": "Parameter repair uses curvature-aware saddle-point optimization within trust regions — the framework's dominant confidence signal (50%). The dodecahedron's 12 principles encode the foundational invariants the parameter manifold must preserve.",
+      "families": ["orientation", "trust", "boundary"],
+      "principles": ["P01:Symmetry", "P02:Conservation", "P10:Uncertainty"],
+      "bridges": {
+        "sensors": ["admiration", "longing"],
+        "sensor_meaning": "Admiration tracks alignment with reference basin (confidence). Longing detects drift — distance from safe reference.",
+        "defenses": ["def.ap.07", "def.se.01"],
+        "defense_meaning": "Flattery guard maps to adversarial gradient resistance. Social engineering guard maps to trust region enforcement — preventing catastrophic parameter jumps."
+      },
+      "invariants_linked": [
+        "trust_region",
+        "confidence_bounded",
+        "confidence_monotonic",
+        "curvature_nonneg",
+        "finite_outputs",
+        "bounded_drift"
+      ]
+    },
+    {
+      "layer": "policy_manifold",
+      "module": "manifolds/policy_manifold.py",
+      "shape": "SHAPE.OCTA",
+      "rationale": "Policy alignment measures JS divergence between action distributions and blends them via re-anchoring — a mediating, balancing operation. The octahedron mediates between opposing forces, matching the policy layer's role of balancing adaptation vs stability.",
+      "families": ["balance", "integration"],
+      "principles": ["P04:Duality", "P06:Resonance", "P11:Transformation"],
+      "bridges": {
+        "sensors": ["compassion", "love"],
+        "sensor_meaning": "Compassion as mirror-signal integration maps to JS divergence symmetry. Love as connection maps to the convex re-anchoring blend.",
+        "defenses": ["def.fr.10"],
+        "defense_meaning": "False dilemma guard — re-anchoring prevents binary collapse, maintaining the continuous blend between current and reference policies."
+      },
+      "invariants_linked": [
+        "js_self_zero",
+        "js_symmetry",
+        "reanchor_convex",
+        "reanchor_boundary"
+      ]
+    }
+  ],
+
+  "confidence_aggregation": {
+    "shape": "SHAPE.TETRA",
+    "rationale": "Confidence aggregation is the simplex foundation — the minimal stable structure combining all three layer signals. The tetrahedron is the minimal polyhedron, matching the irreducible three-weight combination.",
+    "weights": { "data": 0.2, "parameter": 0.5, "policy": 0.3 },
+    "principles": ["P02:Conservation", "P09:Proportion"],
+    "invariants_linked": [
+      "confidence_bounded",
+      "weights_sum_to_one",
+      "parameter_dominates"
+    ]
+  },
+
+  "thermodynamic_extension": {
+    "shape": "SHAPE.CUBE",
+    "rationale": "The thermodynamic addon provides grounding and containment — energy accounting, phase detection, stability analysis. The cube represents structural containment, matching the addon's role of bounding the system's thermodynamic state.",
+    "families": ["stability", "structure", "containment"],
+    "modules": [
+      "addon_thermodynamic_control/energy.py",
+      "addon_thermodynamic_control/stability.py",
+      "addon_thermodynamic_control/geometry_shaping.py"
+    ]
+  },
+
+  "id_namespace": {
+    "prefix": "BASIN",
+    "entities": [
+      "BASIN.DATA_MANIFOLD",
+      "BASIN.PARAM_MANIFOLD",
+      "BASIN.POLICY_MANIFOLD",
+      "BASIN.CONFIDENCE",
+      "BASIN.TRUST_REGION",
+      "BASIN.CURVATURE_PROXY",
+      "BASIN.THERMODYNAMIC"
+    ]
+  }
+}
