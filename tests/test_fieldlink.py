@@ -1,4 +1,4 @@
-"""Smoke tests for fieldlink integration with Rosetta-Shape-Core."""
+"""Smoke tests for bidirectional fieldlink sync with Rosetta-Shape-Core."""
 
 import json
 import pathlib
@@ -20,7 +20,7 @@ def test_fieldlink_json_exists():
 def test_fieldlink_json_valid():
     data = json.loads((ROOT / ".fieldlink.json").read_text())
     fl = data["fieldlink"]
-    assert fl["version"] == "1.0"
+    assert fl["version"] == "2.0"
     assert "sources" in fl
     assert "exports" in fl
 
@@ -38,6 +38,78 @@ def test_fieldlink_exports_defined():
     export_names = [e["name"] for e in exports]
     assert "manifold_invariants" in export_names
     assert "basin_topology" in export_names
+    assert "sync_manifest" in export_names
+
+
+# ---------------------------------------------------------------------------
+# Identity & peers (v2 bidirectional)
+# ---------------------------------------------------------------------------
+
+
+def test_fieldlink_has_identity():
+    data = json.loads((ROOT / ".fieldlink.json").read_text())
+    identity = data["fieldlink"]["identity"]
+    assert identity["name"] == "geometric-manifold"
+    assert "repo" in identity
+    assert identity["namespace"] == "BASIN"
+
+
+def test_fieldlink_has_peers():
+    data = json.loads((ROOT / ".fieldlink.json").read_text())
+    peers = data["fieldlink"]["peers"]
+    assert len(peers) > 0
+    names = [p["name"] for p in peers]
+    assert "rosetta" in names
+
+
+def test_peer_is_bidirectional():
+    data = json.loads((ROOT / ".fieldlink.json").read_text())
+    rosetta = next(p for p in data["fieldlink"]["peers"] if p["name"] == "rosetta")
+    assert rosetta["direction"] == "bidirectional"
+
+
+def test_peer_has_inbound_and_outbound():
+    data = json.loads((ROOT / ".fieldlink.json").read_text())
+    rosetta = next(p for p in data["fieldlink"]["peers"] if p["name"] == "rosetta")
+    assert "inbound" in rosetta
+    assert "outbound" in rosetta
+    assert "paths" in rosetta["inbound"]
+    assert "paths" in rosetta["outbound"]
+    assert "mount_root" in rosetta["inbound"]
+    assert "mount_root" in rosetta["outbound"]
+
+
+def test_peer_has_conflict_resolution():
+    data = json.loads((ROOT / ".fieldlink.json").read_text())
+    rosetta = next(p for p in data["fieldlink"]["peers"] if p["name"] == "rosetta")
+    sync = rosetta["sync"]
+    assert "conflict_resolution" in sync
+    assert "conflict_rules" in sync
+    assert len(sync["conflict_rules"]) > 0
+
+
+def test_conflict_rules_have_authority():
+    """Every conflict rule specifies who owns the contested path."""
+    data = json.loads((ROOT / ".fieldlink.json").read_text())
+    rosetta = next(p for p in data["fieldlink"]["peers"] if p["name"] == "rosetta")
+    for rule in rosetta["sync"]["conflict_rules"]:
+        assert "pattern" in rule
+        assert "authority" in rule
+        assert rule["authority"] in ("rosetta", "geometric-manifold")
+
+
+def test_conflict_rules_cover_key_paths():
+    """Conflict rules must cover shapes (rosetta-owned) and exports (self-owned)."""
+    data = json.loads((ROOT / ".fieldlink.json").read_text())
+    rosetta = next(p for p in data["fieldlink"]["peers"] if p["name"] == "rosetta")
+    rules = rosetta["sync"]["conflict_rules"]
+    patterns = [r["pattern"] for r in rules]
+    authorities = {r["pattern"]: r["authority"] for r in rules}
+
+    assert "shapes/**" in patterns
+    assert authorities["shapes/**"] == "rosetta"
+    assert "atlas/exports/**" in patterns
+    assert authorities["atlas/exports/**"] == "geometric-manifold"
 
 
 # ---------------------------------------------------------------------------
@@ -86,7 +158,7 @@ def test_bridge_namespace():
 
 
 def test_export_script_runs(tmp_path):
-    """Export script generates both JSON files without error."""
+    """Export script generates all three JSON files without error."""
     result = subprocess.run(
         [
             sys.executable,
@@ -100,6 +172,7 @@ def test_export_script_runs(tmp_path):
     assert result.returncode == 0, f"Export failed: {result.stderr}"
     assert (tmp_path / "manifold_invariants.json").exists()
     assert (tmp_path / "basin_topology.json").exists()
+    assert (tmp_path / "sync_manifest.json").exists()
 
 
 def test_invariants_export_structure(tmp_path):
@@ -172,3 +245,102 @@ def test_topology_shape_assignments(tmp_path):
     assert "SHAPE.OCTA" in shapes_used
     assert "SHAPE.TETRA" in shapes_used
     assert "SHAPE.CUBE" in shapes_used
+
+
+# ---------------------------------------------------------------------------
+# Sync manifest (v2 bidirectional)
+# ---------------------------------------------------------------------------
+
+
+def test_sync_manifest_structure(tmp_path):
+    """Sync manifest has required fields for peer discovery."""
+    subprocess.run(
+        [
+            sys.executable,
+            str(ROOT / "scripts" / "fieldlink_export.py"),
+            "--output-dir",
+            str(tmp_path),
+        ],
+        capture_output=True,
+        text=True,
+    )
+    data = json.loads((tmp_path / "sync_manifest.json").read_text())
+    assert data["$schema"] == "urn:fieldlink:sync-manifest:v2"
+    assert "identity" in data
+    assert "exports" in data
+    assert "peers" in data
+    assert "capabilities" in data
+
+
+def test_sync_manifest_identity(tmp_path):
+    subprocess.run(
+        [
+            sys.executable,
+            str(ROOT / "scripts" / "fieldlink_export.py"),
+            "--output-dir",
+            str(tmp_path),
+        ],
+        capture_output=True,
+        text=True,
+    )
+    data = json.loads((tmp_path / "sync_manifest.json").read_text())
+    identity = data["identity"]
+    assert identity["name"] == "geometric-manifold"
+    assert identity["namespace"] == "BASIN"
+    assert identity["share_ok"] is True
+
+
+def test_sync_manifest_peers(tmp_path):
+    subprocess.run(
+        [
+            sys.executable,
+            str(ROOT / "scripts" / "fieldlink_export.py"),
+            "--output-dir",
+            str(tmp_path),
+        ],
+        capture_output=True,
+        text=True,
+    )
+    data = json.loads((tmp_path / "sync_manifest.json").read_text())
+    peers = data["peers"]
+    assert len(peers) > 0
+    rosetta = next(p for p in peers if p["name"] == "rosetta")
+    assert rosetta["direction"] == "bidirectional"
+    assert len(rosetta["conflict_rules"]) > 0
+
+
+def test_sync_manifest_capabilities(tmp_path):
+    subprocess.run(
+        [
+            sys.executable,
+            str(ROOT / "scripts" / "fieldlink_export.py"),
+            "--output-dir",
+            str(tmp_path),
+        ],
+        capture_output=True,
+        text=True,
+    )
+    data = json.loads((tmp_path / "sync_manifest.json").read_text())
+    caps = data["capabilities"]
+    assert caps["pull"] is True
+    assert caps["push"] is True
+    assert caps["conflict_resolution"] is True
+    assert caps["hash_algorithm"] == "sha256"
+
+
+def test_sync_manifest_lists_all_exports(tmp_path):
+    subprocess.run(
+        [
+            sys.executable,
+            str(ROOT / "scripts" / "fieldlink_export.py"),
+            "--output-dir",
+            str(tmp_path),
+        ],
+        capture_output=True,
+        text=True,
+    )
+    data = json.loads((tmp_path / "sync_manifest.json").read_text())
+    export_names = [e["name"] for e in data["exports"]]
+    assert "manifold_invariants" in export_names
+    assert "basin_topology" in export_names
+    assert "sync_manifest" in export_names

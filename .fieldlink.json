@@ -1,8 +1,15 @@
 {
   "fieldlink": {
-    "version": "1.0",
+    "version": "2.0",
     "updated": "2026-03-24T00:00:00Z",
     "role": ["manifold-repair", "basin-geometry"],
+
+    "identity": {
+      "name": "geometric-manifold",
+      "repo": "https://github.com/JinnZ2/Geometric-manifold-",
+      "ref": "main",
+      "namespace": "BASIN"
+    },
 
     "sources": [
       {
@@ -41,6 +48,69 @@
         "generator": "scripts/fieldlink_export.py",
         "output": "atlas/exports/basin_topology.json",
         "description": "Basin structure: trust regions, curvature proxies, confidence geometry"
+      },
+      {
+        "name": "sync_manifest",
+        "generator": "scripts/fieldlink_export.py",
+        "output": "atlas/exports/sync_manifest.json",
+        "description": "Bidirectional sync manifest advertising this repo's capabilities to peers"
+      }
+    ],
+
+    "peers": [
+      {
+        "name": "rosetta",
+        "repo": "https://github.com/JinnZ2/Rosetta-Shape-Core",
+        "ref": "main",
+        "direction": "bidirectional",
+        "inbound": {
+          "description": "What we pull from Rosetta",
+          "paths": [
+            "shapes/**/*.json",
+            "bridges/**/*.json",
+            "schema/shape.schema.json",
+            "ontology/_vocab.json"
+          ],
+          "mount_root": "atlas/remote/rosetta"
+        },
+        "outbound": {
+          "description": "What Rosetta pulls from us",
+          "paths": [
+            "atlas/exports/manifold_invariants.json",
+            "atlas/exports/basin_topology.json",
+            "atlas/exports/sync_manifest.json",
+            "bridges/rosetta-bridge.json"
+          ],
+          "mount_root": "atlas/remote/geometric-manifold"
+        },
+        "sync": {
+          "conflict_resolution": "peer-authoritative",
+          "conflict_rules": [
+            {
+              "pattern": "shapes/**",
+              "authority": "rosetta",
+              "reason": "Rosetta owns shape definitions"
+            },
+            {
+              "pattern": "schema/**",
+              "authority": "rosetta",
+              "reason": "Rosetta owns the shape schema"
+            },
+            {
+              "pattern": "atlas/exports/**",
+              "authority": "geometric-manifold",
+              "reason": "This repo owns its own exports"
+            },
+            {
+              "pattern": "bridges/rosetta-bridge.json",
+              "authority": "geometric-manifold",
+              "reason": "Bridge is authored here, consumed by Rosetta"
+            }
+          ],
+          "merge_strategy": "deep-merge",
+          "on_conflict": "warn"
+        },
+        "consent": { "license": "MIT", "share_ok": true }
       }
     ],
 
