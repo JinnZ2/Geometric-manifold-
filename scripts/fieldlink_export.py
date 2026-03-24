@@ -1,12 +1,13 @@
 """
-Fieldlink export generator for Rosetta-Shape-Core integration.
+Fieldlink export generator for bidirectional Rosetta-Shape-Core integration.
 
-Produces two JSON files that Rosetta-Shape-Core expects:
+Produces three JSON files for the fieldlink sync protocol:
   1. manifold_invariants.json — mathematical contracts from the three-layer pipeline
   2. basin_topology.json — basin structure, trust regions, confidence geometry
+  3. sync_manifest.json — bidirectional sync manifest advertising capabilities to peers
 
-These files let Rosetta validate that the geometric-manifold fieldlink source
-satisfies its bridge contracts without running Python or importing torch.
+These files let peers validate that the geometric-manifold fieldlink source
+satisfies bridge contracts without running Python or importing torch.
 
 Usage:
     python scripts/fieldlink_export.py
@@ -238,6 +239,78 @@ def generate_basin_topology() -> dict:
     }
 
 
+def generate_sync_manifest() -> dict:
+    """Export the bidirectional sync manifest.
+
+    Advertises this repo's identity, capabilities, exported artifacts, and
+    conflict resolution rules so that peers can discover and sync with us
+    without out-of-band coordination.
+    """
+    fieldlink_config = json.loads((ROOT / ".fieldlink.json").read_text())
+    fl = fieldlink_config["fieldlink"]
+    identity = fl.get("identity", {})
+    peers = fl.get("peers", [])
+
+    peer_summaries = []
+    for peer in peers:
+        peer_summaries.append(
+            {
+                "name": peer["name"],
+                "repo": peer["repo"],
+                "direction": peer.get("direction", "inbound"),
+                "conflict_resolution": peer.get("sync", {}).get(
+                    "conflict_resolution", "unspecified"
+                ),
+                "conflict_rules": [
+                    {"pattern": r["pattern"], "authority": r["authority"]}
+                    for r in peer.get("sync", {}).get("conflict_rules", [])
+                ],
+            }
+        )
+
+    exports_list = []
+    for export in fl.get("exports", []):
+        entry = {
+            "name": export["name"],
+            "output": export["output"],
+            "description": export.get("description", ""),
+        }
+        # Include hash if the file exists
+        output_path = ROOT / export["output"]
+        if output_path.exists():
+            import hashlib
+
+            content = output_path.read_bytes()
+            entry["sha256"] = hashlib.sha256(content).hexdigest()
+        exports_list.append(entry)
+
+    return {
+        "$schema": "urn:fieldlink:sync-manifest:v2",
+        "generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "protocol_version": fl.get("version", "1.0"),
+        "identity": {
+            "name": identity.get("name", "geometric-manifold"),
+            "repo": identity.get("repo", ""),
+            "ref": identity.get("ref", "main"),
+            "namespace": identity.get("namespace", "BASIN"),
+            "role": fl.get("role", []),
+            "license": fl.get("consent", {}).get("license", ""),
+            "share_ok": fl.get("consent", {}).get("share_ok", False),
+        },
+        "exports": exports_list,
+        "peers": peer_summaries,
+        "capabilities": {
+            "pull": True,
+            "push": True,
+            "conflict_resolution": True,
+            "integrity_hashing": fl.get("integrity", {}).get("enabled", False),
+            "hash_algorithm": fl.get("integrity", {}).get("hash", "sha256"),
+            "offline_mode": fl.get("offline", True),
+        },
+        "local_manifests": fl.get("local_manifests", []),
+    }
+
+
 def main():
     parser = argparse.ArgumentParser(description="Generate fieldlink exports for Rosetta")
     parser.add_argument(
@@ -258,6 +331,11 @@ def main():
     topology_path = args.output_dir / "basin_topology.json"
     topology_path.write_text(json.dumps(topology, indent=2) + "\n")
     print(f"Wrote {topology_path}")
+
+    sync = generate_sync_manifest()
+    sync_path = args.output_dir / "sync_manifest.json"
+    sync_path.write_text(json.dumps(sync, indent=2) + "\n")
+    print(f"Wrote {sync_path}")
 
 
 if __name__ == "__main__":
