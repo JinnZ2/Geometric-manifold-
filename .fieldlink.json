@@ -1,0 +1,64 @@
+{
+  "fieldlink": {
+    "version": "1.0",
+    "updated": "2026-03-24T00:00:00Z",
+    "role": ["manifold-repair", "basin-geometry"],
+
+    "sources": [
+      {
+        "name": "rosetta",
+        "repo": "https://github.com/JinnZ2/Rosetta-Shape-Core",
+        "ref": "main",
+        "paths": [
+          "shapes/**/*.json",
+          "bridges/**/*.json",
+          "schema/shape.schema.json",
+          "ontology/_vocab.json"
+        ],
+        "mounts": [
+          { "remote": "bridges/rosetta-bridges.json", "as": "atlas/remote/rosetta/bridges.json" },
+          { "remote": "schema/shape.schema.json", "as": "atlas/remote/rosetta/shape.schema.json" },
+          { "remote": "shapes/dodecahedron.json", "as": "atlas/remote/rosetta/shapes/dodecahedron.json" },
+          { "remote": "shapes/icosahedron.json", "as": "atlas/remote/rosetta/shapes/icosahedron.json" },
+          { "remote": "shapes/tetrahedron.json", "as": "atlas/remote/rosetta/shapes/tetrahedron.json" },
+          { "remote": "shapes/octahedron.json", "as": "atlas/remote/rosetta/shapes/octahedron.json" },
+          { "remote": "shapes/cube.json", "as": "atlas/remote/rosetta/shapes/cube.json" },
+          { "remote": "ontology/_vocab.json", "as": "atlas/remote/rosetta/vocab.json" }
+        ],
+        "consent": { "license": "MIT", "share_ok": true }
+      }
+    ],
+
+    "exports": [
+      {
+        "name": "manifold_invariants",
+        "generator": "scripts/fieldlink_export.py",
+        "output": "atlas/exports/manifold_invariants.json",
+        "description": "Mathematical invariants from the three-layer manifold pipeline"
+      },
+      {
+        "name": "basin_topology",
+        "generator": "scripts/fieldlink_export.py",
+        "output": "atlas/exports/basin_topology.json",
+        "description": "Basin structure: trust regions, curvature proxies, confidence geometry"
+      }
+    ],
+
+    "local_manifests": [
+      "manifolds/**/*.py",
+      "repair/**/*.py",
+      "configs/*.yaml",
+      "bridges/**/*.json"
+    ],
+
+    "merge": {
+      "order": ["local", "rosetta"],
+      "strategy": "deep-merge"
+    },
+
+    "offline": true,
+    "cache_dir": ".fieldlink",
+    "integrity": { "enabled": true, "hash": "sha256", "allow_missing": true },
+    "consent": { "license": "CC0-1.0", "share_ok": true }
+  }
+}
