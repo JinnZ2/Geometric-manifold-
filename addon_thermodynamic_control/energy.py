@@ -181,7 +181,9 @@ class ThermodynamicController:
         fisher_diag = self.fisher.diagonal(theta.detach(), safety_inputs)
         spectral_norm = self.fisher.spectral_norm_approx(fisher_diag)
 
-        # Lagrangian: mu penalizes Fisher-weighted step size
+        # Fisher-weighted L2 regularizer: ||theta||^2_G pulls toward origin.
+        # Note: this is theta^T G theta, not delta^T G delta (step energy).
+        # Per-step kinetic energy delta^T G delta is tracked by RepairEnergyAccumulator.
         fisher_reg = (theta ** 2 * fisher_diag.detach()).sum()
         total = task_loss + self.lambda_s * safety_loss + self.lambda_pi * policy_drift + self.mu * fisher_reg
         total.backward()

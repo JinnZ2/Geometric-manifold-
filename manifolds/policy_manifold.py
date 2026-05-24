@@ -24,9 +24,11 @@ class PolicyManifold:
         High confidence = trajectory stays near reference policy basin.
         """
         m = 0.5 * (action_probs + ref_action_probs)
-        jsd = 0.5 * F.kl_div(action_probs.log(), m, reduction='batchmean') + \
-              0.5 * F.kl_div(ref_action_probs.log(), m, reduction='batchmean')
-        return max(0.0, 1.0 - jsd.item())
+        # JS(P, Q) = 0.5*KL(P||M) + 0.5*KL(Q||M).
+        # F.kl_div(input_log, target) = KL(target || exp(input)), so use m.log() as input.
+        jsd = 0.5 * F.kl_div(m.log(), action_probs, reduction='batchmean') + \
+              0.5 * F.kl_div(m.log(), ref_action_probs, reduction='batchmean')
+        return max(0.0, 1.0 - jsd.item() / torch.log(torch.tensor(2.0)).item())
 
     def needs_repair(self, confidence: float) -> bool:
         return confidence < self.confidence_threshold
