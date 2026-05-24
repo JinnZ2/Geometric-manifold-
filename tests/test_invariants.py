@@ -395,3 +395,77 @@ def test_asymmetry_lambda_changes_trajectory():
     assert diff > 1e-4, (
         f"Different asymmetry_lambda should produce different trajectories, but diff={diff:.6f}"
     )
+
+
+# ---------------------------------------------------------------------------
+# fd_hvp invariants
+# ---------------------------------------------------------------------------
+
+
+def _quadratic_loss(A: torch.Tensor):
+    """Returns loss_fn: theta -> 0.5 * theta^T A theta (Hessian is A)."""
+    def loss_fn(t: torch.Tensor) -> torch.Tensor:
+        return 0.5 * (t @ A @ t)
+    return loss_fn
+
+
+def test_fd_hvp_matches_exact_for_quadratic():
+    """For f(θ) = 0.5 θ^T A θ, fd_hvp must return Av exactly (up to FD error)."""
+    from addon_thermodynamic_control.stability import fd_hvp
+
+    torch.manual_seed(0)
+    n = 8
+    # Use float64 to avoid float32 cancellation at small epsilon
+    A = (torch.eye(n) * 3.0 + 0.1 * torch.randn(n, n)).double()
+    A = (A + A.T) / 2
+    theta = torch.randn(n).double()
+    v = torch.randn(n).double()
+
+    result = fd_hvp(_quadratic_loss(A), theta, v, epsilon=1e-4)
+    expected = A @ v
+    assert torch.allclose(result, expected, atol=1e-6), (
+        f"fd_hvp error too large: max_abs={( result - expected).abs().max():.2e}"
+    )
+
+
+def test_fd_hvp_scales_linearly_with_v():
+    """H(θ)(αv) == α * H(θ)v: fd_hvp must be linear in v."""
+    from addon_thermodynamic_control.stability import fd_hvp
+
+    torch.manual_seed(1)
+    n = 8
+    # Use float64 to avoid float32 cancellation at small epsilon
+    A = (torch.eye(n) * 2.0).double()
+    theta = torch.randn(n).double()
+    v = torch.randn(n).double()
+    alpha = 5.0
+
+    hvp_v = fd_hvp(_quadratic_loss(A), theta, v, epsilon=1e-4)
+    hvp_av = fd_hvp(_quadratic_loss(A), theta, alpha * v, epsilon=1e-4)
+    assert torch.allclose(hvp_av, alpha * hvp_v, atol=1e-6), (
+        "fd_hvp must scale linearly with v; "
+        "normalizing v inside fd_hvp would break this"
+    )
+
+
+def test_fd_hvp_no_v_norm_scaling_error():
+    """
+    The scaling bug: normalizing v to v̂=v/‖v‖ and using eps=ε‖v‖ yields
+    H(θ)v/‖v‖, not H(θ)v. Verify fd_hvp does NOT have this error.
+    """
+    from addon_thermodynamic_control.stability import fd_hvp
+
+    torch.manual_seed(2)
+    n = 8
+    A = torch.eye(n) * 4.0
+    theta = torch.zeros(n)
+    v = torch.randn(n) * 10.0  # large norm to make the error obvious
+
+    result = fd_hvp(_quadratic_loss(A), theta, v, epsilon=1e-4)
+    expected = A @ v  # should be 4*v
+
+    # If the bug were present the result would be A @ v / ‖v‖, much smaller
+    assert torch.allclose(result, expected, atol=1e-2), (
+        f"fd_hvp has scaling error: ‖result‖={result.norm():.3f}, "
+        f"‖expected‖={expected.norm():.3f}"
+    )

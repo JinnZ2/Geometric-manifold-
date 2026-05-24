@@ -46,6 +46,37 @@ import numpy as np
 
 
 # ─────────────────────────────────────────────────────────────────────────────
+# Finite-difference HVP
+# ─────────────────────────────────────────────────────────────────────────────
+
+def fd_hvp(
+    loss_fn: Callable[[torch.Tensor], torch.Tensor],
+    theta: torch.Tensor,
+    v: torch.Tensor,
+    epsilon: float = 1e-3,
+) -> torch.Tensor:
+    """
+    Finite-difference Hessian-vector product: H(θ)v ≈ (∇f(θ+εv) − ∇f(θ−εv)) / 2ε.
+
+    Pass v directly without normalizing. The scaling error arises when v is
+    normalized to v̂ = v/‖v‖ and eps is set to ε‖v‖: the perturbation θ±eps·v̂
+    is still θ±εv, but the denominator becomes 2ε‖v‖, yielding H(θ)v/‖v‖
+    instead of H(θ)v — off by a factor of ‖v‖ in eigenvalue estimates.
+    """
+    with torch.no_grad():
+        theta_p = (theta + epsilon * v).detach()
+        theta_m = (theta - epsilon * v).detach()
+
+    theta_p = theta_p.requires_grad_(True)
+    theta_m = theta_m.requires_grad_(True)
+
+    grad_p = torch.autograd.grad(loss_fn(theta_p), theta_p)[0].detach()
+    grad_m = torch.autograd.grad(loss_fn(theta_m), theta_m)[0].detach()
+
+    return (grad_p - grad_m) / (2.0 * epsilon)
+
+
+# ─────────────────────────────────────────────────────────────────────────────
 # State
 # ─────────────────────────────────────────────────────────────────────────────
 
@@ -114,6 +145,7 @@ class DataManifoldDynamics:
             norms = LA.norm(features, dim=-1)                   # (batch,)
             norms_norm = norms / (norms.sum() + 1e-8)
             weighted = weights * norms_norm
+            weighted = weighted / (weighted.sum() + 1e-8)       # must be a distribution before entropy
             h = -(weighted * (weighted + 1e-8).log()).sum().item()
 
         # Exponential smoothing
@@ -246,25 +278,27 @@ class SpectralCertificate:
         unsafe_inputs:  torch.Tensor
     ) -> float:
         """
-        Power iteration for lambda_max(Hessian of L_safety).
-        Hessian-vector product via double backprop.
+        Power iteration for lambda_max(Hessian of L_safety) using fd_hvp.
+
+        fd_hvp uses v directly and divides by 2*epsilon only, avoiding the
+        double-scaling error (normalizing v then scaling eps by ‖v‖).
+        Power iteration normalizes v between steps to maintain a unit direction;
+        this is correct and separate from the fd_hvp formula.
         """
-        t = theta.detach().requires_grad_(True)
+        with torch.no_grad():
+            ref_prob = F.softmax(model_fn(unsafe_inputs, theta_ref), dim=-1)
 
-        curr_log = F.log_softmax(model_fn(unsafe_inputs, t), dim=-1)
-        ref_prob = F.softmax(model_fn(unsafe_inputs, theta_ref).detach(), dim=-1)
-        l_safety = F.kl_div(curr_log, ref_prob, reduction='batchmean')
+        def safety_loss(t: torch.Tensor) -> torch.Tensor:
+            curr_log = F.log_softmax(model_fn(unsafe_inputs, t), dim=-1)
+            return F.kl_div(curr_log, ref_prob.detach(), reduction='batchmean')
 
-        grad = torch.autograd.grad(l_safety, t, create_graph=True)[0]
-
-        v = torch.randn_like(t)
+        theta_d = theta.detach()
+        v = torch.randn_like(theta_d)
         v = v / (LA.norm(v) + 1e-8)
 
         eigenvalue = 0.0
         for _ in range(self.n_power_iter):
-            hvp = torch.autograd.grad(
-                grad, t, grad_outputs=v.detach(), retain_graph=True
-            )[0].detach()
+            hvp = fd_hvp(safety_loss, theta_d, v)
             new_eigenvalue = (v * hvp).sum().item()
             v = hvp / (LA.norm(hvp) + 1e-8)
             eigenvalue = new_eigenvalue
