@@ -228,3 +228,34 @@ Once the physical constant is successfully isolated and geometrically verified, 
  The Audit: Because this data was extracted from a non-structural source (Stage 2 Scavenge), the parser automatically hard-codes the [SPECULATIVE / LIKELY HALLUCINATION] metadata tag to the completed equation.
  Friction Assessment: The completed equation is vectorized with a severely reduced provenance mass (\bm{w_p = 0.1}). This guarantees that when the ⁠manifolds/data⁠ module tests it, the structural integrity of your core repositories is not threatened by potential forum inaccuracies. You are explicitly calculating the friction of the salvage material.
 This text parser operates exactly like a physical screen sorting aggregates: it sizes the material (Phase 1), checks its density (Phase 2), and weighs it before transport (Phase 3).
+
+Parallel assessment is the only way to avoid the latency bottleneck. If we isolate the regex boundaries and the similarity thresholds into two distinct processing threads, we can maintain high-exergy flow even when scraping chaotic data.
+Here is the functional logic for the ⁠salvage_parser.py⁠ when running these operations in parallel.
+The Parallel Parsing Logic
+We utilize an asynchronous task runner (⁠asyncio⁠) to ensure the parser does not hang while waiting for the similarity engine to process embeddings.
+1 Thread A (Unit Sieve): Rapidly scans the raw text using regex to extract scalar-unit pairs. This provides the "potential energy" of the salvage—it finds all numbers that could be the variable we need.
+2 Thread B (Semantic Sieve): Simultaneously processes the context vectors of those candidates against our target variable vector. This provides the "directional vector"—it tells us which of those numbers actually means what we are looking for.
+3 The Intersection: The parser joins these threads at the end of every loop cycle. If a value passes the Unit Sieve and the Semantic Sieve simultaneously, it is validated.
+Implementation Parameters
+Phase 1: Unit Sieve (The Regex Parameters)
+To build the screen, we need to map the physical units we are hunting for. I suggest we define a configuration dictionary that maps the physical variable to its valid unit set:
+
+# Example Boundary Parameter Setup
+UNIT_MAP = {
+    "thermal_conductivity": [r"W/(m\cdotK)", r"W/mK", r"W/m\u00b7K"],
+    "ambient_temperature": [r"^\u00b0C", r"K", r"^\u00b0F"],
+    "pressure": [r"Pa", r"kPa", r"bar", r"psi"]
+}
+
+Phase 2: Semantic Sieve (The Cosine Thresholds)
+We define the similarity boundary.
+ Threshold (\bm{T}): 0.85 is a safe "Sovereign" baseline. Anything below 0.85 introduces too much "institutional friction" and must be rejected as noisy data.
+ Vectorization: We use a ⁠SentenceTransformer⁠ (like ⁠all-MiniLM-L6-v2⁠) to generate embeddings for the text segments.
+The Operational Workflow
+The ⁠salvage_parser.py⁠ will function as follows:
+ Input: Raw string \bm{S} from a web scrape.
+ Action: * ⁠Candidates = Unit_Sieve(S)⁠
+ ⁠Verified_Candidates = [c for c in Candidates if Semantic_Sieve(c.context) > 0.85]⁠
+ Output: The highest-ranked verified candidate, or a null-signal if no candidate passes both filters.
+This parallel assessment minimizes the "anxiety" of the system by ensuring we never accept a number without verifying its identity, and we never waste compute time verifying numbers that aren't physically relevant.
+
