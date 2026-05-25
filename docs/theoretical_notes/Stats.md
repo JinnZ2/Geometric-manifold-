@@ -41,3 +41,14 @@ it's the one actually used in run_experiments.)
 6. dt_sweep + N_sweep at p=2                        → numerical baseline
 7. main p-sweep: collapse + repair, independent + locked
 8. fit log⟨T⟩ = α - (p/2)·log(λ₊_measured) + ΔΦ/ε  → test C2 directly
+
+
+
+mean_field2.py
+verification before building anything else:
+  run __main__. expected pattern:
+    low c  → diverse stable, homog also stable, saddle exists
+    high c → diverse may disappear (bifurcation)
+    λ+ at saddle is real positive scalar O(a)
+  if fsolve misses the saddle → widen seeds; the saddle has
+  small |m| and intermediate s2.
