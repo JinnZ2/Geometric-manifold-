@@ -1,0 +1,57 @@
+{
+  "schema": "fab.claim_table.v1",
+  "domain": "diversity_collapse_model",
+  "substrate": "stochastic_population_dynamics",
+  "claims": [
+    {
+      "id": "C1",
+      "statement": "At fixed mean-field barrier ΔΦ, mean collapse time ⟨T(p)⟩ is monotonically non-increasing in saddle index p.",
+      "test": "p-sweep with c(p) calibrated via find_c_for_target_barrier; ⟨T(p+1)⟩ < ⟨T(p)⟩ + 2·SEM for all p ∈ {1..4}.",
+      "falsifier": "Any p where ⟨T(p+1)⟩ > ⟨T(p)⟩ + 2·SEM."
+    },
+    {
+      "id": "C2",
+      "statement": "log⟨T(p)⟩ vs p has slope -(1/2)·log(λ₊_measured) within 25% at fixed ΔΦ/ε.",
+      "test": "Linear regression of log⟨T(p)⟩ on p; compare slope to -0.5·log(λ₊) from measure_lambda_plus_sim.",
+      "falsifier": "Slope deviates from prediction by >25% or sign is wrong."
+    },
+    {
+      "id": "C3",
+      "statement": "Locked-control ⟨T_lock(p)⟩ matches independent ⟨T_indep(p=1)⟩ within 2·SEM for all p.",
+      "test": "Run LockedHighDimDiversityModel for p ∈ {1..4}; compare to independent p=1.",
+      "falsifier": "⟨T_lock(p)⟩ deviates from ⟨T_indep(1)⟩ by >2·SEM for any p."
+    },
+    {
+      "id": "C4",
+      "statement": "Repair cost R(p) over fixed horizon grows super-linearly in p.",
+      "test": "Fit R(p) = α·p^β; require β > 1.2 with 95% CI excluding β=1.",
+      "falsifier": "β ≤ 1.0 within CI."
+    },
+    {
+      "id": "C5",
+      "statement": "Gaussian moment closure holds (|skew|<0.5, |excess kurt|<1.0) while D > 10·collapse_ε.",
+      "test": "closure_trajectory during pre-collapse phase.",
+      "falsifier": "Either threshold exceeded before D crosses 10·collapse_ε."
+    },
+    {
+      "id": "C6",
+      "statement": "Scaling exponent in C2 is N-independent for N ∈ {50, 200, 800} within SEM.",
+      "test": "Repeat C2 at three N values; compare slopes.",
+      "falsifier": "Slope changes by more than its SEM across N."
+    },
+    {
+      "id": "C7",
+      "statement": "λ₊ measured from agent sim agrees with λ₊ from mean_field.lambda_plus within 15%.",
+      "test": "measure_lambda_plus_sim vs lambda_plus_at_saddle, fixed (a,c,σ_n,D_mut).",
+      "falsifier": "Discrepancy >15% → moment closure broken or finite-N effect dominant."
+    },
+    {
+      "id": "C8",
+      "statement": "Numerical bias in ⟨T⟩ from finite dt is below SEM at dt = 0.005 for σ=0.15, a=1.0.",
+      "test": "dt_sweep, Richardson extrapolation to dt→0.",
+      "falsifier": "⟨T(dt=0.005)⟩ - ⟨T(dt→0)⟩ > SEM."
+    }
+  ],
+  "emit_targets": ["json", "markdown"],
+  "license": "CC0-1.0"
+}
