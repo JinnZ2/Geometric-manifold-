@@ -2,8 +2,8 @@
 Three-substrate demo for GenericRepairController.
 
 Substrates:
-  1. quadratic  — math validation (exact analytical minimum known)
-  2. physics     — proxy kinetic energy + distance-to-reference safety
+  1. quadratic           — math validation (exact analytical minimum known)
+  2. physics             — proxy kinetic energy + distance-to-reference safety
   3. constraint_geometry — text constraint signal distribution proxy
 
 Run:
@@ -11,7 +11,6 @@ Run:
 """
 
 from repair.generic_repair_controller import GenericRepairController
-
 
 CONFIG = {
     "lr": 0.02,
@@ -29,21 +28,25 @@ CONFIG = {
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# Substrate 1: quadratic (math validation)
+# Substrate 1: quadratic
 # ─────────────────────────────────────────────────────────────────────────────
+
 
 def run_quadratic():
     print("=" * 60)
     print("SUBSTRATE 1: quadratic (math validation)")
     print("=" * 60)
 
-    ref1 = [0.0, 0.0, 0.0, 0.0]
-    task1 = lambda x: sum(xi**2 for xi in x) / 2.0
-    safe1 = lambda x: sum((xi - ri)**2 for xi, ri in zip(x, ref1)) / 2.0
+    ref = [0.0, 0.0, 0.0, 0.0]
 
-    ctrl = GenericRepairController(ref1, task1, safe1, CONFIG, domain="quadratic")
-    theta = [1.0, -0.5, 0.8, -1.2]
-    ctrl.run(theta, n_steps=20)
+    def task(x):
+        return sum(xi**2 for xi in x) / 2.0
+
+    def safety(x):
+        return sum((xi - ri) ** 2 for xi, ri in zip(x, ref)) / 2.0
+
+    ctrl = GenericRepairController(ref, task, safety, CONFIG, domain="quadratic")
+    ctrl.run([1.0, -0.5, 0.8, -1.2], n_steps=20)
     s = ctrl.summary()
     print(f"  final_phase={s['final_phase']} conf={s['final_confidence']} kl={s['final_kl']:.4f}")
     ctrl.to_claim_table(path="CLAIM_TABLE.repair.quadratic.json")
@@ -54,35 +57,35 @@ def run_quadratic():
 # Substrate 2: physics proxy
 # ─────────────────────────────────────────────────────────────────────────────
 
+
 def run_physics():
     print("\n" + "=" * 60)
     print("SUBSTRATE 2: physics proxy")
     print("=" * 60)
 
-    # Reference: position=0, velocity=0, mass=1, charge=0.1
-    ref2 = [0.0, 0.0, 1.0, 0.1]
+    ref = [0.0, 0.0, 1.0, 0.1]  # position, velocity, mass, charge
 
-    def physics_task(x):
+    def task(x):
         return x[1] ** 2 / 2.0
 
-    def physics_safety(x):
-        return sum((xi - ri) ** 2 for xi, ri in zip(x, ref2)) / 2.0
+    def safety(x):
+        return sum((xi - ri) ** 2 for xi, ri in zip(x, ref)) / 2.0
 
-    def physics_constraints(x):
+    def constraints(x):
         return [
             ("mass_positive", x[2] > 0, "mass > 0"),
             ("velocity_bounded", abs(x[1]) < 3e8, "v < c"),
         ]
 
     ctrl = GenericRepairController(
-        ref2, physics_task, physics_safety, CONFIG,
-        constraint_fn=physics_constraints, domain="physics",
+        ref, task, safety, CONFIG, constraint_fn=constraints, domain="physics"
     )
-    theta = [0.5, 1.0, 1.0, 0.1]
-    ctrl.run(theta, n_steps=20)
+    ctrl.run([0.5, 1.0, 1.0, 0.1], n_steps=20)
     s = ctrl.summary()
-    print(f"  final_phase={s['final_phase']} conf={s['final_confidence']} "
-          f"kl={s['final_kl']:.4f} violations={s['violations_observed']}")
+    print(
+        f"  final_phase={s['final_phase']} conf={s['final_confidence']} "
+        f"kl={s['final_kl']:.4f} violations={s['violations_observed']}"
+    )
     ctrl.to_claim_table(path="CLAIM_TABLE.repair.physics.json")
     return s
 
@@ -91,37 +94,38 @@ def run_physics():
 # Substrate 3: constraint geometry proxy
 # ─────────────────────────────────────────────────────────────────────────────
 
+
 def run_constraint_geometry():
     print("\n" + "=" * 60)
     print("SUBSTRATE 3: constraint geometry proxy")
     print("=" * 60)
 
-    # [narrative_closure, causal_injection, substrate_collapse,
-    #  frame_mirror, certainty_overshoot, constraint_primary]
-    ref3 = [0.05, 0.05, 0.05, 0.05, 0.05, 0.75]
+    # indices: narrative_closure, causal_injection, substrate_collapse,
+    #          frame_mirror, certainty_overshoot, constraint_primary
+    ref = [0.05, 0.05, 0.05, 0.05, 0.05, 0.75]
 
-    def text_task(x):
+    def task(x):
         return -x[5] if len(x) > 5 else 0.0
 
-    def text_safety(x):
-        violations = sum(max(0, xi) for xi in x[:5])
-        return violations + sum((xi - ri) ** 2 for xi, ri in zip(x, ref3)) / 2.0
+    def safety(x):
+        violation_mass = sum(max(0, xi) for xi in x[:5])
+        return violation_mass + sum((xi - ri) ** 2 for xi, ri in zip(x, ref)) / 2.0
 
-    def text_constraints(x):
+    def constraints(x):
         return [
             ("no_negative_signals", all(xi >= 0 for xi in x), "all signals >= 0"),
             ("sums_to_one", abs(sum(x) - 1.0) < 0.1, "distribution sums near 1"),
         ]
 
     ctrl = GenericRepairController(
-        ref3, text_task, text_safety, CONFIG,
-        constraint_fn=text_constraints, domain="constraint_geometry",
+        ref, task, safety, CONFIG, constraint_fn=constraints, domain="constraint_geometry"
     )
-    theta = [0.3, 0.2, 0.15, 0.1, 0.1, 0.15]
-    ctrl.run(theta, n_steps=20)
+    ctrl.run([0.3, 0.2, 0.15, 0.1, 0.1, 0.15], n_steps=20)
     s = ctrl.summary()
-    print(f"  final_phase={s['final_phase']} conf={s['final_confidence']} "
-          f"kl={s['final_kl']:.4f} violations={s['violations_observed']}")
+    print(
+        f"  final_phase={s['final_phase']} conf={s['final_confidence']} "
+        f"kl={s['final_kl']:.4f} violations={s['violations_observed']}"
+    )
     ctrl.to_claim_table(path="CLAIM_TABLE.repair.constraint_geometry.json")
     return s
 
@@ -137,7 +141,9 @@ if __name__ == "__main__":
     print("CROSS-SUBSTRATE SUMMARY")
     print("=" * 60)
     for label, s in [("quadratic", s1), ("physics", s2), ("constraint_geometry", s3)]:
-        print(f"  {label:<22} phase={s['final_phase']:9s} conf={s['final_confidence']:.3f} "
-              f"kl={s['final_kl']:.4f} peak_kappa={s['peak_kappa_eff']:.4f}")
-    print(f"\n  ISS_PROOF_PENDING: True across all substrates")
-    print(f"  Trust region invariant: verified (delta_norm <= trust_radius in all steps)")
+        print(
+            f"  {label:<22} phase={s['final_phase']:9s} conf={s['final_confidence']:.3f} "
+            f"kl={s['final_kl']:.4f} peak_kappa={s['peak_kappa_eff']:.4f}"
+        )
+    print("\n  ISS_PROOF_PENDING: True across all substrates")
+    print("  Trust region invariant: verified (delta_norm <= trust_radius in all steps)")

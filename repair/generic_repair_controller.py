@@ -1,45 +1,20 @@
 """
-Generic basin repair controller that operates on any substrate:
-- Neural weight vectors
-- Physics constraint states
-- Constraint geometry configurations
-- Language token distributions
+Generic basin repair controller — stdlib only, no external dependencies.
 
-Derived from geometric-manifold repo (JinnZ2) design decisions:
-- Saddle-point objective: task_loss - lambda * safety_loss (minus sign intentional)
-- Trust region: hard guarantee, not soft preference
-- KL divergence for basin boundaries, not Euclidean distance
-- Diagonal Fisher only — no full Hessians
-- Asymmetric cost: safety violations penalized lambda times more than task loss
+Saddle-point objective: task_loss − λ·safety_loss (minus sign intentional).
+Trust region, KL basin boundary, diagonal Fisher — see CLAUDE.md for rationale.
 
-MATHEMATICAL INVARIANTS (must not be broken):
-1. ||delta|| <= trust_radius after every step — hard guarantee
-2. confidence in [0, 1] always
-3. KL basin boundary, not Euclidean
-4. Finite outputs — no NaN, no inf
-5. Saddle-point sign preserved: task_loss - lambda * safety_loss
-
-CALIBRATION NOTE:
-These invariants are tested on quadratic proxy losses.
-Validation against actual domain loss landscapes is pending.
-Phase labels are heuristic, not certified stability claims.
-
-ISS_PROOF_PENDING: True
-
-Stdlib only. No external dependencies.
+ISS_PROOF_PENDING: True. Phase labels are heuristic, not certified stability claims.
 """
 
 import json
 import math
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from typing import Callable, Optional
-
 
 StateVec = list[float]
 LossFn = Callable[[StateVec], float]
 
-
-# --- Math primitives ---
 
 def _fd_gradient(f: LossFn, x: StateVec, eps: float = 1e-4) -> StateVec:
     grad = []
@@ -52,7 +27,7 @@ def _fd_gradient(f: LossFn, x: StateVec, eps: float = 1e-4) -> StateVec:
 
 
 def _fd_hvp(f: LossFn, x: StateVec, v: StateVec, eps: float = 1e-4) -> StateVec:
-    """Hessian-vector product. v used directly — do NOT normalize."""
+    """v used directly — do NOT normalize before passing."""
     v_norm = math.sqrt(sum(vi**2 for vi in v))
     if v_norm < 1e-12:
         return [0.0] * len(x)
@@ -92,7 +67,7 @@ def _fisher_diag(f: LossFn, x: StateVec, eps: float = 1e-4) -> StateVec:
 
 
 def _kappa_eff(f: LossFn, x: StateVec, v: StateVec, eps: float = 1e-4) -> float:
-    """Rayleigh quotient of Hessian along v. Spike precedes phase transition."""
+    """Rayleigh quotient along v — spike precedes phase transition."""
     dnsq = _dot(v, v)
     if dnsq < 1e-12:
         return 0.0
@@ -100,15 +75,13 @@ def _kappa_eff(f: LossFn, x: StateVec, v: StateVec, eps: float = 1e-4) -> float:
     return abs(_dot(v, hvp) / dnsq)
 
 
-# --- Repair state ---
-
 @dataclass
 class RepairState:
     step: int
     theta: StateVec
     task_loss: float
     safety_loss: float
-    saddle_objective: float      # task_loss - lambda * safety_loss
+    saddle_objective: float  # task_loss − λ·safety_loss
     delta_norm: float
     trust_radius: float
     kl_from_reference: float
@@ -118,7 +91,7 @@ class RepairState:
     kappa_eff_value: float
     trend: float
     phase: str
-    confidence: float            # 0.0 (far from basin) to 1.0 (deep in basin)
+    confidence: float  # 0.0 (outside basin) to 1.0 (deep inside)
     constraint_violations: list
     ISS_proof_pending: bool = True
 
@@ -126,29 +99,8 @@ class RepairState:
         return {k: v for k, v in self.__dict__.items()}
 
 
-# --- Generic repair controller ---
-
 class GenericRepairController:
-    """
-    Applies basin repair logic to any state vector and loss pair.
-
-    Required inputs:
-    - theta_ref: reference state (safe basin center)
-    - task_loss_fn: primary objective (minimize)
-    - safety_loss_fn: safety constraint (minimize deviation from reference)
-    - config: hyperparameters
-
-    Saddle-point objective:
-        L = task_loss - lambda_safety * safety_loss
-
-    Minus sign is intentional (from geometric-manifold design):
-    Creates adversarial tension between task and safety.
-    Trust region resolves — prevents runaway.
-
-    Optional:
-    - constraint_fn: returns list of (name, bool, description) tuples
-    - domain: string label for CLAIM_TABLE entries
-    """
+    """Basin repair for any (theta_ref, task_fn, safety_fn) triple."""
 
     def __init__(
         self,
@@ -165,153 +117,89 @@ class GenericRepairController:
         self.constraint_fn = constraint_fn
         self.domain = domain
 
-        # Hyperparameters — with rationale from geometric-manifold CLAUDE.md
         self.lr = config.get("lr", 0.01)
         self.lambda_safety = config.get("lambda_safety", 10.0)  # safety dominates by 10x
-        self.trust_radius = config.get("trust_radius", 0.05)    # hard bound on step size
-        self.epsilon_basin = config.get("epsilon_basin", 0.1)   # KL basin boundary
+        self.trust_radius = config.get("trust_radius", 0.05)  # hard bound on step size
+        self.epsilon_basin = config.get("epsilon_basin", 0.1)  # KL basin boundary
         self.repair_budget = config.get("repair_budget", 100.0)
         self.spectral_C_bound = config.get("spectral_C_bound", 20.0)
         self.fd_epsilon = config.get("fd_epsilon", 1e-4)
         self.mu = config.get("mu_repair", 0.1)
         self.mu_max = config.get("mu_max", 10.0)
         self.curvature_weight = config.get("curvature_weight", 2.0)
-        # scale factor for Euclidean distance term in confidence; tune per domain
+        # tune per domain — higher values shrink confidence faster with distance
         self.confidence_dist_scale = config.get("confidence_dist_scale", 0.1)
 
-        # Accumulators
         self._cumulative_repair = 0.0
         self._per_step_energy: list[float] = []
         self._history: list[RepairState] = []
 
-    # --- Saddle-point objective ---
-
     def _saddle_objective(self, theta: StateVec) -> float:
-        """
-        task_loss - lambda * safety_loss
-
-        Minus sign is intentional. Creates adversarial tension.
-        Trust region resolves — do not remove trust region clamp.
-        """
-        task = self.task_loss_fn(theta)
-        safe = self.safety_loss_fn(theta)
-        return task - self.lambda_safety * safe
-
-    # --- Basin KL ---
+        # minus sign is intentional — adversarial tension resolved by trust region
+        return self.task_loss_fn(theta) - self.lambda_safety * self.safety_loss_fn(theta)
 
     def _kl_from_reference(self, theta: StateVec) -> float:
-        p = _softmax(theta)
-        q = _softmax(self.theta_ref)
-        return _kl(p, q)
+        return _kl(_softmax(theta), _softmax(self.theta_ref))
 
     def _in_basin(self, theta: StateVec) -> bool:
         return self._kl_from_reference(theta) < self.epsilon_basin
 
-    # --- Confidence ---
-
     def _confidence(self, theta: StateVec, kl: float) -> float:
-        """
-        Geometric confidence: how deep in safe basin.
-        High = deep in basin. Low = near or outside boundary.
-        Always in [0, 1].
-
-        INVARIANT: confidence in [0, 1] for all inputs.
-        """
         dist = _norm([t - r for t, r in zip(theta, self.theta_ref)])
-        curvature_penalty = self.curvature_weight * kl
-        raw = math.exp(-curvature_penalty - dist * self.confidence_dist_scale)
+        raw = math.exp(-self.curvature_weight * kl - dist * self.confidence_dist_scale)
         return max(0.0, min(1.0, raw))
 
-    # --- Repair energy ---
-
     def _repair_energy(self, delta: StateVec, fisher: StateVec) -> float:
-        """delta^T G delta — Fisher-weighted kinetic energy."""
+        """δᵀGδ — Fisher-weighted step energy."""
         return sum(d**2 * g for d, g in zip(delta, fisher))
 
     def _recent_trend(self, window: int = 10) -> float:
         if len(self._per_step_energy) < window * 2:
             return 1.0
         recent = sum(self._per_step_energy[-window:]) / window
-        prior = sum(self._per_step_energy[-window * 2:-window]) / window
+        prior = sum(self._per_step_energy[-window * 2 : -window]) / window
         return recent / (prior + 1e-12)
 
-    # --- Phase detection ---
-
     def _phase(self, kappa: float, kl: float, trend: float) -> str:
-        if (kappa > self.spectral_C_bound or
-                kl > self.epsilon_basin * 2 or
-                trend > 3.0):
+        if kappa > self.spectral_C_bound or kl > self.epsilon_basin * 2 or trend > 3.0:
             return "critical"
-        if (kappa > self.spectral_C_bound * 0.5 or
-                kl > self.epsilon_basin or
-                trend > 1.5):
+        if kappa > self.spectral_C_bound * 0.5 or kl > self.epsilon_basin or trend > 1.5:
             return "threshold"
         return "stable"
 
-    # --- Single repair step ---
-
     def step(self, theta: StateVec) -> tuple[StateVec, RepairState]:
-        """
-        Single repair step.
-
-        Flow:
-        1. Compute Fisher diagonal (curvature proxy)
-        2. Compute saddle-point gradient
-        3. Apply Riemannian update: G^{-1} * grad
-        4. Clamp to trust region — HARD INVARIANT
-        5. Compute repair energy, basin KL, kappa_eff
-        6. Adapt mu if budget exceeded or out of basin
-
-        Returns (new_theta, RepairState).
-
-        INVARIANT: ||delta|| <= trust_radius always.
-        INVARIANT: output theta is finite always.
-        """
+        """One Riemannian repair step; returns (new_theta, RepairState)."""
         eps = self.fd_epsilon
-
-        # Task and safety losses at current point
         task = self.task_loss_fn(theta)
         safe = self.safety_loss_fn(theta)
 
-        # Fisher diagonal (curvature proxy — no full Hessian)
+        # grad^2 proxy — avoids full O(n^2) Hessian
         fisher = _fisher_diag(self._saddle_objective, theta, eps)
         inv_fisher = [1.0 / (g + 1e-8) for g in fisher]
-
-        # Gradient of saddle objective
         grad = _fd_gradient(self._saddle_objective, theta, eps)
 
-        # Fisher regularization (Lagrange multiplier mu on repair cost)
+        # G^{-1} * (grad + 2μ·θ·G) — Lagrange multiplier on repair cost
         fisher_reg = [2.0 * self.mu * t * f for t, f in zip(theta, fisher)]
-
-        # Riemannian gradient: G^{-1} * (grad + fisher_reg)
         total_grad = [g + fr for g, fr in zip(grad, fisher_reg)]
         riem_grad = [tg * inv_f for tg, inv_f in zip(total_grad, inv_fisher)]
-
-        # Step
         delta = [-self.lr * rg for rg in riem_grad]
 
-        # Trust region clamp — HARD INVARIANT, do not remove
+        # trust region clamp — HARD INVARIANT, do not remove
         delta_n = _norm(delta)
         spectral_norm = max(fisher)
-        trust_r = min(
-            self.trust_radius,
-            self.lr / (1.0 + self.mu * spectral_norm),
-        )
+        trust_r = min(self.trust_radius, self.lr / (1.0 + self.mu * spectral_norm))
         if delta_n > trust_r:
-            scale = trust_r / delta_n
-            delta = [d * scale for d in delta]
+            delta = [d * (trust_r / delta_n) for d in delta]
             delta_n = trust_r
 
         theta_new = [t + d for t, d in zip(theta, delta)]
 
-        # Verify finite — INVARIANT
         if not all(math.isfinite(t) for t in theta_new):
-            # Safety fallback: return reference state
+            # safety fallback — step was numerically catastrophic
             theta_new = self.theta_ref[:]
             delta = [r - t for r, t in zip(self.theta_ref, theta)]
             delta_n = _norm(delta)
 
-        # Metrics
         energy = self._repair_energy(delta, fisher)
         self._cumulative_repair += energy
         self._per_step_energy.append(energy)
@@ -323,25 +211,22 @@ class GenericRepairController:
         phase = self._phase(kappa, kl, trend)
         conf = self._confidence(theta_new, kl)
 
-        # Adaptive mu — tighten when budget exceeded or drifting out
+        # adaptive μ — tighten Lagrange multiplier when drifting out or over budget
         if self._cumulative_repair > self.repair_budget or not in_basin:
             self.mu = min(self.mu * 1.05, self.mu_max)
 
-        # Constraint check (optional)
         violations = []
         if self.constraint_fn:
-            for name, satisfied, desc in self.constraint_fn(theta_new):
+            for name, satisfied, _desc in self.constraint_fn(theta_new):
                 if not satisfied:
                     violations.append(name)
-
-        saddle_obj = task - self.lambda_safety * safe
 
         state = RepairState(
             step=len(self._history),
             theta=[round(t, 6) for t in theta_new],
             task_loss=round(task, 6),
             safety_loss=round(safe, 6),
-            saddle_objective=round(saddle_obj, 6),
+            saddle_objective=round(task - self.lambda_safety * safe, 6),
             delta_norm=round(delta_n, 6),
             trust_radius=round(trust_r, 6),
             kl_from_reference=round(kl, 6),
@@ -357,9 +242,7 @@ class GenericRepairController:
         self._history.append(state)
         return theta_new, state
 
-    def run(self, theta: StateVec, n_steps: int = 20,
-            verbose: bool = True) -> list[RepairState]:
-        """Run n_steps repair iterations. Returns history."""
+    def run(self, theta: StateVec, n_steps: int = 20, verbose: bool = True) -> list[RepairState]:
         results = []
         for i in range(n_steps):
             theta, state = self.step(theta)
@@ -386,9 +269,7 @@ class GenericRepairController:
             "final_confidence": self._history[-1].confidence,
             "cumulative_repair": self._history[-1].cumulative_repair,
             "peak_kappa_eff": max(s.kappa_eff_value for s in self._history),
-            "violations_observed": sum(
-                1 for s in self._history if s.constraint_violations
-            ),
+            "violations_observed": sum(1 for s in self._history if s.constraint_violations),
             "phase_transition_threshold": next(
                 (s.step for s in self._history if s.phase == "threshold"), None
             ),
@@ -402,8 +283,7 @@ class GenericRepairController:
             ),
         }
 
-    def to_claim_table(self, source_id: str = None,
-                       path: str = None) -> dict:
+    def to_claim_table(self, source_id: str = None, path: str = None) -> dict:
         source_id = source_id or self.domain
         path = path or f"CLAIM_TABLE.repair.{self.domain}.json"
         claims = [
