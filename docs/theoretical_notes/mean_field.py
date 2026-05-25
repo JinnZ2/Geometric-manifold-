@@ -77,3 +77,10 @@ def lambda_plus_at_saddle(saddle_fp, a, c, sigma_n, D_mut, eps=1e-6):
     eigs, _ = classify_fixed_point(saddle_fp, a, c, sigma_n, D_mut, eps)
     pos = [e.real for e in eigs if e.real > 0]
     return max(pos) if pos else np.nan
+
+note: per-dim eigenvalue. full saddle index in p-dim system = p × 
+(per-dim unstable count) when dims are independent. locked control
+collapses this back to 1 by construction.
+
+
+
