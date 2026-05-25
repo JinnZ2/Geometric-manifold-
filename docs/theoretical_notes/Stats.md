@@ -52,3 +52,50 @@ verification before building anything else:
     λ+ at saddle is real positive scalar O(a)
   if fsolve misses the saddle → widen seeds; the saddle has
   small |m| and intermediate s2.
+
+
+
+if predictions hold:
+
+  - dense s_H is NOT a low-energy configuration. it's a
+    metastable high-cost state requiring continuous Φ_ext
+    input. confirms direction of E1 from prior message.
+    
+  - the "messy middle" of s_H is where systems are least
+    predictable. AI safety regimes operating in this range
+    are not "partial progress" — they're maximum-variance.
+    
+  - reciprocated violence and preemptive violence have a
+    specific dynamical signature distinguishable from
+    "moral failure" or "cultural transmission":
+      reactive violence    = phase B-early/mid response
+      preemptive violence  = phase C signature, with rate
+                             governed by dR/dt vs λ_+
+    
+  - the irreversibility (P10.4) predicts a measurable
+    fact: that restoring external pressure removal does
+    not restore the original regime. only network 
+    restoration does. this matches observation but is 
+    typically attributed to "trauma" or "cultural change."
+    the model attributes it to network topology with no 
+    psychological mechanism required.
+    
+  - rate sensitivity (P10.6) is the strongest practical
+    prediction: SLOW transitions cause less preemptive
+    behavior than FAST transitions at the same total
+    perturbation. applies to AI deployment, policy
+    rollouts, ecosystem management.
+
+if predictions fail:
+
+  - if harm tracks Φ_ext magnitude more than dR/dt: the
+    mechanism is external-pressure-driven, not network-
+    degradation-driven. the model needs revision.
+    
+  - if preemptive_rate appears immediately (no lag):
+    the saddle-crossing picture is wrong; something
+    discontinuous is happening.
+    
+  - if substrate-independence fails: the geometric model
+    is not capturing the right level of abstraction.
+    fall back to substrate-specific modeling.
