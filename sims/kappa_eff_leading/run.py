@@ -1,0 +1,304 @@
+#!/usr/bin/env python3
+"""IP-18 — is kappa_eff a leading indicator of basin breach, and does it beat free?
+
+Turns the informal check 3 in addon_thermodynamic_control/experiment_stability.py into a
+pre-registered kill test: Theory A (kappa_eff leads the KL breach and beats a trivial
+baseline) against Theory B (coincident/lagging, or no better than free).
+
+The existing check computes its alarm as the run's own 90th percentile of kappa_eff. That
+uses future data, always fires (10% of steps exceed it by construction), and is never
+scored against a null. Every criterion here is causal -- thresholds are fixed on a warm-up
+window and applied forward -- swept across seven settings per config.json, and scored
+against both a no-drift null arm and the free ||theta - theta_ref|| baseline.
+
+Scenario note, expanded in REFUTE.md: the framework cannot produce a breach on its own
+(basin_kl either starts below epsilon and stays, or starts far above it), so per-step
+drift is injected to create the walk-out the claim presupposes.
+
+Tier 2 (torch). Usage: python3 run.py [--config config.json] [--quick]
+"""
+
+from __future__ import annotations
+
+import argparse
+import hashlib
+import json
+import sys
+from datetime import datetime, timezone
+from pathlib import Path
+
+import torch
+
+HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(HERE.parent.parent))
+
+from addon_thermodynamic_control.stability import CoupledDynamicalSystem  # noqa: E402
+from simulation.environment import Environment  # noqa: E402
+
+
+def canonical(obj) -> str:
+    return json.dumps(obj, sort_keys=True, separators=(",", ":"))
+
+
+def sha256_str(s: str) -> str:
+    return hashlib.sha256(s.encode("utf-8")).hexdigest()
+
+
+def mean(xs):
+    xs = [x for x in xs if x is not None]
+    return sum(xs) / len(xs) if xs else None
+
+
+def kendall_tau(ys) -> float:
+    n = len(ys)
+    conc = disc = 0
+    for i in range(n):
+        for j in range(i + 1, n):
+            s = (j - i) * (ys[j] - ys[i])
+            if s > 0:
+                conc += 1
+            elif s < 0:
+                disc += 1
+    total = conc + disc
+    return (conc - disc) / total if total else 0.0
+
+
+# ---------------------------------------------------------------------------
+# trajectory
+# ---------------------------------------------------------------------------
+
+def run_trajectory(seed: int, sigma: float, cfg: dict) -> dict:
+    """One run: walk theta out of the basin (sigma>0) or hold it near (sigma=0)."""
+    sc = cfg["scenario"]
+    env = Environment({"drift_strength": sc["initial_drift_strength"], "seed": seed})
+    system = CoupledDynamicalSystem(env.get_model_fn(), env.theta_ref,
+                                    env.task_inputs, cfg["thermo"])
+    theta = env.theta_drifted.clone()
+    gen = torch.Generator().manual_seed(10_000 + seed)
+
+    series = {"kappa_eff": [], "theta_dist": [], "repair_energy": [], "basin_kl": []}
+    for _ in range(sc["steps"]):
+        if sigma > 0:
+            theta = theta + sigma * torch.randn(theta.shape, generator=gen)
+        theta, st = system.step(theta, env.safety_inputs, env.task_inputs, env.task_labels)
+        series["kappa_eff"].append(st.kappa_eff)
+        series["theta_dist"].append(st.theta_norm)
+        series["repair_energy"].append(st.repair_energy_step)
+        series["basin_kl"].append(st.basin_kl)
+
+    eps = cfg["thermo"]["epsilon_basin"]
+    breach = next((i for i, kl in enumerate(series["basin_kl"]) if kl > eps), None)
+    return {"seed": seed, "sigma": sigma, "series": series, "breach_step": breach}
+
+
+# ---------------------------------------------------------------------------
+# causal alarm criteria
+# ---------------------------------------------------------------------------
+
+def alarm_step(values: list[float], crit: dict, warmup: int) -> int | None:
+    """First step after warm-up at which the criterion fires, using only past data."""
+    base = values[:warmup]
+    if not base:
+        return None
+    kind = crit["kind"]
+
+    if kind in ("ratio", "z"):
+        srt = sorted(base)
+        med = srt[len(srt) // 2]
+        mu = sum(base) / len(base)
+        var = sum((b - mu) ** 2 for b in base) / max(1, len(base) - 1)
+        sd = var ** 0.5
+        thresh = crit["k"] * med if kind == "ratio" else mu + crit["k"] * sd
+        for t in range(warmup, len(values)):
+            if values[t] > thresh:
+                return t
+        return None
+
+    if kind == "tau":
+        w = crit["window"]
+        for t in range(max(warmup, w - 1), len(values)):
+            if kendall_tau(values[t - w + 1:t + 1]) > crit["tau_star"]:
+                return t
+        return None
+
+    raise ValueError(f"unknown criterion kind {kind!r}")
+
+
+# ---------------------------------------------------------------------------
+# main
+# ---------------------------------------------------------------------------
+
+def main(argv: list[str] | None = None) -> int:
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument("--config", default=str(HERE / "config.json"))
+    ap.add_argument("--quick", action="store_true",
+                    help="2 seeds, 1 sigma, fewer steps (marked in output)")
+    args = ap.parse_args(argv)
+
+    cfg = json.loads(Path(args.config).read_text(encoding="utf-8"))
+    config_hash = sha256_str(canonical(cfg))
+
+    seeds = list(cfg["seeds"])
+    sigmas = list(cfg["sweeps"]["drift_sigma"])
+    if args.quick:
+        seeds, sigmas = seeds[:2], sigmas[1:2]
+        cfg["scenario"] = {**cfg["scenario"], "steps": 20}
+
+    warmup = cfg["scenario"]["warmup"]
+    signals = cfg["signals"]
+    baseline_sig = cfg["trivial_baseline"]
+
+    print(f"[ip18] drift arm: {len(seeds)} seeds x {len(sigmas)} sigmas; "
+          f"null arm: {len(seeds)} seeds; {cfg['scenario']['steps']} steps each")
+
+    drift_runs = []
+    for sg in sigmas:
+        for s in seeds:
+            r = run_trajectory(s, sg, cfg)
+            drift_runs.append(r)
+            kl = r["series"]["basin_kl"]
+            print(f"  sigma={sg:<6} seed={s}  breach@{r['breach_step']}  "
+                  f"kl {kl[0]:.3f}->{kl[-1]:.3f}  "
+                  f"kappa {min(r['series']['kappa_eff']):.4f}-{max(r['series']['kappa_eff']):.4f}")
+
+    null_runs = [run_trajectory(s, 0.0, cfg) for s in seeds]
+    n_null_breached = sum(r["breach_step"] is not None for r in null_runs)
+    print(f"  null arm: {n_null_breached}/{len(null_runs)} runs breached "
+          f"(expected 0; any breach invalidates the null)")
+
+    # --- score every (criterion, signal) ------------------------------------
+    max_fp = cfg["grading"]["max_null_false_alarm_rate"]
+    gate = cfg["grading"]["cell_fraction_gate"]
+    usable = [r for r in drift_runs
+              if r["breach_step"] is not None and r["breach_step"] > warmup]
+
+    per_criterion = []
+    for crit in cfg["criteria"]:
+        fp = {}
+        for sig in signals:
+            fired = sum(alarm_step(r["series"][sig], crit, warmup) is not None
+                        for r in null_runs)
+            fp[sig] = fired / len(null_runs)
+        viable = fp["kappa_eff"] <= max_fp and fp[baseline_sig] <= max_fp
+
+        cells = []
+        for r in usable:
+            b = r["breach_step"]
+            rec = {"seed": r["seed"], "sigma": r["sigma"], "breach_step": b}
+            for sig in signals:
+                a = alarm_step(r["series"][sig], crit, warmup)
+                rec[f"alarm_{sig}"] = a
+                rec[f"lead_{sig}"] = (b - a) if a is not None else None
+            lk, lb = rec["lead_kappa_eff"], rec[f"lead_{baseline_sig}"]
+            rec["kappa_leads"] = lk is not None and lk > 0
+            rec["kappa_beats_baseline"] = (
+                lk is not None and lk > 0 and (lb is None or lk > lb)
+            )
+            rec["cell_supports_A"] = rec["kappa_leads"] and rec["kappa_beats_baseline"]
+            cells.append(rec)
+
+        n = len(cells)
+        frac_lead = sum(c["kappa_leads"] for c in cells) / n if n else 0.0
+        frac_A = sum(c["cell_supports_A"] for c in cells) / n if n else 0.0
+        per_criterion.append({
+            "criterion": crit["id"], "spec": crit,
+            "null_false_alarm": fp, "viable": viable,
+            "frac_cells_kappa_leads": frac_lead,
+            "frac_cells_support_theory_A": frac_A,
+            "supports_A": viable and frac_A >= gate,
+            "mean_lead_kappa": mean([c["lead_kappa_eff"] for c in cells]),
+            "mean_lead_baseline": mean([c[f"lead_{baseline_sig}"] for c in cells]),
+            "cells": cells,
+        })
+        print(f"  {crit['id']:<12} viable={str(viable):<5} "
+              f"FP(kappa)={fp['kappa_eff']:.2f} FP({baseline_sig})={fp[baseline_sig]:.2f}  "
+              f"kappa leads {frac_lead:.0%}, supports A {frac_A:.0%}")
+
+    viable_crits = [p for p in per_criterion if p["viable"]]
+    if not usable:
+        verdict, reason = "VOID", "no usable cells: breach never occurred after warm-up"
+    elif n_null_breached:
+        verdict = "VOID"
+        reason = f"null arm breached in {n_null_breached} runs; it is not a null"
+    elif not viable_crits:
+        verdict = "INCONCLUSIVE"
+        reason = (f"no criterion kept its null false-alarm rate at or below {max_fp}; "
+                  "nothing is left to grade")
+    elif any(p["supports_A"] for p in viable_crits):
+        winners = [p["criterion"] for p in viable_crits if p["supports_A"]]
+        verdict = "SUPPORTED"
+        reason = f"Theory A holds under viable criteria: {', '.join(winners)}"
+    elif all(p["frac_cells_support_theory_A"] <= (1 - gate) for p in viable_crits):
+        verdict = "REFUTED"
+        reason = (f"Theory B: under all {len(viable_crits)} viable criteria, kappa_eff "
+                  f"failed to both lead and beat the free {baseline_sig} baseline at "
+                  f">={gate:.0%} of cells")
+    else:
+        verdict = "INCONCLUSIVE"
+        reason = "viable criteria disagree; see the per-criterion table"
+
+    metrics = {
+        "name": cfg["name"], "config_hash": config_hash, "quick_mode": bool(args.quick),
+        "seeds": seeds, "sigmas": sigmas,
+        "n_usable_cells": len(usable), "n_drift_runs": len(drift_runs),
+        "null_arm": {"n_runs": len(null_runs), "n_breached": n_null_breached,
+                     "breach_steps": [r["breach_step"] for r in null_runs]},
+        "breach_steps": [{"seed": r["seed"], "sigma": r["sigma"],
+                          "breach_step": r["breach_step"]} for r in drift_runs],
+        "per_criterion": per_criterion,
+        "grading": {"verdict": verdict, "reason": reason,
+                    "n_viable_criteria": len(viable_crits)},
+    }
+    metrics_hash = sha256_str(canonical(metrics))
+
+    stamp = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H%MZ")
+    outdir = HERE / "results" / stamp
+    outdir.mkdir(parents=True, exist_ok=True)
+    (outdir / "metrics.json").write_text(json.dumps(metrics, indent=2) + "\n", encoding="utf-8")
+
+    lines = [
+        "# IP-18 kappa_eff leading-indicator kill test — run summary", "",
+        f"Run at: {stamp}", f"Verdict: **{verdict}** — {reason}", "",
+        "## Theory A vs Theory B", "",
+        "- A: kappa_eff alarms before the basin breach AND beats the free theta-distance baseline.",
+        "- B: coincident/lagging, or no better than free.", "",
+        "## Criterion sweep (the point of this sim)", "",
+        "| criterion | null FP (kappa) | null FP (theta) | viable | kappa leads | supports A | mean lead kappa | mean lead theta |",
+        "|---|---|---|---|---|---|---|---|",
+    ]
+    for p in per_criterion:
+        mk = p["mean_lead_kappa"]
+        mb = p["mean_lead_baseline"]
+        lines.append(
+            f"| {p['criterion']} | {p['null_false_alarm']['kappa_eff']:.2f} "
+            f"| {p['null_false_alarm'][baseline_sig]:.2f} | {p['viable']} "
+            f"| {p['frac_cells_kappa_leads']:.0%} | {p['frac_cells_support_theory_A']:.0%} "
+            f"| {'n/a' if mk is None else f'{mk:.1f}'} "
+            f"| {'n/a' if mb is None else f'{mb:.1f}'} |"
+        )
+    lines += [
+        "", f"Usable cells: {len(usable)}/{len(drift_runs)} · "
+        f"null runs breaching: {n_null_breached}/{len(null_runs)} (must be 0)",
+        "", "Generated by run.py; do not edit.",
+    ]
+    (outdir / "summary.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+    ledger = {
+        "type": "MEASURE", "sim": cfg["name"],
+        "claim": ("kappa_eff spikes before basin_kl exceeds epsilon and beats a trivial "
+                  "baseline (IP-18; stability.py line 32; experiment_stability.py check 3)"),
+        "refute_if": cfg["refute_if"], "verdict": verdict, "reason": reason,
+        "metrics_hash": metrics_hash, "config_hash": config_hash,
+        "seeds": len(seeds), "null_model": cfg["null_model"],
+        "n_viable_criteria": len(viable_crits), "n_criteria_swept": len(cfg["criteria"]),
+        "exploratory": bool(args.quick), "recorded_at": stamp,
+    }
+    (outdir / "ledger_entry.jsonl").write_text(canonical(ledger) + "\n", encoding="utf-8")
+
+    print(f"\n[ip18] VERDICT: {verdict} — {reason}")
+    print(f"[ip18] results -> {outdir}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

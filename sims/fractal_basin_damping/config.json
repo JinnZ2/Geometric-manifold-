@@ -1,0 +1,37 @@
+{
+  "name": "fractal_basin_damping",
+  "seeds": [0, 1, 2, 3, 4, 5, 6, 7],
+  "sweeps": {
+    "gamma": [0.05, 0.10, 0.25, 0.50, 1.00]
+  },
+  "null_model": "smooth_boundary_control_field",
+  "refute_if": "alpha does not increase with damping (Kendall tau of alpha vs gamma <= 0, or alpha span across the swept range < 0.10) at >=80% of seeds, OR the smooth-boundary null returns alpha < 0.90",
+  "tier": 1,
+  "runtime_estimate_s": 180,
+  "depends_on": [],
+
+  "grid": {
+    "N": 200,
+    "dt": 0.05,
+    "T": 120.0
+  },
+  "systems": {
+    "double": {"centers": [1.2, 1.8], "xr": [0.6, 2.4], "vr": [-1.2, 1.2]},
+    "triple": {"centers": [1.0, 2.0, 3.0], "xr": [0.4, 3.6], "vr": [-1.5, 1.5]}
+  },
+  "estimator": {
+    "n_probe": 4000,
+    "n_scales": 8
+  },
+  "wada": {
+    "enabled": true,
+    "radius": 2
+  },
+  "reproduction_check": {
+    "gamma": 0.25,
+    "expected_alpha_double": 0.688,
+    "expected_alpha_triple": 0.392,
+    "expected_wada_fraction": 0.080,
+    "tolerance": 0.03
+  }
+}

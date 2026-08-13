@@ -74,7 +74,26 @@ because under HARNESS the run record *is* the evidence.
 
 | Sim | Claim | Verdict |
 |---|---|---|
-| `sims/ep8_snap_latency/` | E-P8: snap latency decodes the initial condition via the fold law `t_snap ∝ ε₀^(−1/2)`. | **REFUTED** at 24/24 cells — and informatively. The decoder half *passes* everywhere (RMSE ≈ 0.005 against a 0.02 threshold, ~10× better than baseline); the fold half fails by **sign**, exponent +0.38 to +0.59 instead of −1/2. See `FINDING.md`. |
+| `sims/ep8_snap_latency/` | E-P8: snap latency decodes the initial condition via the fold law `t_snap ∝ ε₀^(−1/2)`. | **REFUTED** at 24/24 cells — and informatively. The decoder half *passes* everywhere (RMSE ≈ 0.005 against a 0.02 threshold, ~10× better than baseline); the fold half fails by **sign**, exponent +0.38 to +0.59 instead of −1/2. |
+| `sims/fractal_basin_damping/` | Retrofit of `fractal_basin_sim.py` (HARNESS queue #4): α rises with damping γ. | **SUPPORTED** at 100% of cells, and reproduces notes/17 at γ=0.25 to within 0.002. New: the Wada property runs 44% → 0% across the sweep, so it is a damping *regime*, not a fixed feature of the potential. |
+| `sims/kappa_eff_leading/` | IP-18: κ_eff spikes before the basin breach and beats a trivial baseline. | **INCONCLUSIVE**, with three concrete apparatus defects found. Only 1 of 7 criteria survived the null arm; under it κ_eff led in 3/12 cells. The criterion with the *best* lead (75%) fires on **every** quiet run. |
+
+Each sim's `FINDING.md` carries the full result. Three things from them are worth
+surfacing here, because they are about this repo rather than about the sims:
+
+- **`experiment_stability.py`'s check 3 cannot be measuring what it reports.** The
+  framework never produces a basin breach: `basin_kl` either starts below `epsilon_basin`
+  and stays (drift ≤ 0.1), or starts far above it (1.1 at drift 0.2, 20.5 at drift 0.6).
+  So `basin_fail_step` is 0 at every drift level the experiment runs, and the "κ_eff spike
+  lead" it prints can never be positive. `sigma_drift` reads as though it were meant to
+  supply ongoing perturbation, but it is only a sampling radius inside `_proactive`.
+- **That check's alarm cannot fail.** Its threshold is `df['kappa_eff'].quantile(0.9)` —
+  computed from the whole completed run, so it uses post-breach data and, by construction,
+  exactly 10% of steps exceed it. There is no null arm, so its false-alarm rate has never
+  been measured.
+- **The κ_eff branch of the phase classifier is dead at this scale.** Observed κ_eff spans
+  0.0002–0.052 across 20 runs; `_phase()` calls "critical" at `kappa > C_bound = 20.0`,
+  ~400× the largest value ever seen. Phase is decided entirely by `basin_kl` and `dV_dt`.
 
 The E-P8 result is worth reading before the physical build. The snap really does report its
 initial compression — but through ramp geometry, not fold physics, so the protocol as
