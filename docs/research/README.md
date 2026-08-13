@@ -22,14 +22,48 @@ machinery this repo is converging on.
 | `07_MCPM_collapse_research.md` | Mathematical-collapse-prevention-model | Calibration sources for the M(S) collapse metric — the closest external match to this repo's collapse work in `docs/theoretical_notes/`. |
 | `PLAN_FORWARD.md` | curly-octo-happiness | Phased roadmap (Phase 0–4) formalizing existing heuristics in validated theory. |
 | `HARDWARE_INTEGRATION_PLAN.md` | curly-octo-happiness × Geometric-to-Binary-Computational-Bridge | Physical-grounding plan: measurement schema, cheap instrument rack, safety runtime, power claims. |
+| `14_rosetta_shape_grounding.md` | Rosetta-Shape-Core | Shapes as deformable containers of equation-complexes: morphometrics, equivariant bifurcation, Kendall shape space; the sims behind the 6× vertex / 2.8× face / 85% low-mode localization figures. §4 grounds this repo's shape assignments. |
 | `15_physical_shape_instrument.md` | Cross-repo (physical build) | The $15 octahedral bistable instrument: build, protocols E-P1–E-P8, and the E-P2 pre-registration arc. |
 | `17_fractals_bio_cosmo_trig.md` | Cross-repo (theory) | Fold normal form across fractals/biology/cosmology/trigonometry; ten cross-domain tests, two of them aimed at this repo. |
 | `TERMINOLOGY_MAP.md` | All six repos | Ecosystem naming ↔ standard research vocabulary, with anchor citations and venue posture. §1 is this repo. |
 | `INTEGRATION_POINTS.md` | All six repos | The integration matrix (IP-1…IP-22) and build order. IP-13…IP-21 are this repo. |
+| `HARNESS.md` | All six repos | Sim Harness Standard v1: required directory layout, config manifest, execution contract, and verdict discipline for any sim whose result enters the ledger. |
 
 **Note on numbering:** the notes series is the sibling ecosystem's, and it arrived here
-in fragments. Notes 08–14, 16, and 18 are cited by the files above but are **not present
-in this repo** — cross-references to them will not resolve locally.
+in fragments. Notes 08–13, 16, and 18 are cited by the files above but are **not present
+in this repo** — cross-references to them will not resolve locally. (Note 14 arrived
+later and is now here; 12 and 18 are the most-cited absentees.)
+
+## Imported sims
+
+Two sims from the same research pass live in `experiments/`. Both are numpy, neither
+conforms to `HARNESS.md`, and both are named in its retrofit queue:
+
+| Script | Status | Verified here |
+|---|---|---|
+| `experiments/fractal_basin_sim.py` | Retrofit queue #4. Deficiency: alpha measured at a single damping — `gamma` is a parameter but only ever called at its 0.25 default, so the mandated sweep is missing. | **Reproduces notes/17 §1 exactly**: α=0.688 (double well), α=0.392 and 8.0% Wada (triple well). Deterministic under its fixed seed. |
+| `experiments/ep2_prereg_sim.py` | Retrofit queue #1, and **superseded**: this is v2, which notes/15 records as REFUTED. | Runs, and prints "PASS (predicted)" with detection in 200/200 trials — because it has **no null arm**. That is the point: the uncontrolled version cannot fire a false positive, which is exactly why v1/v2 were refuted and v3 (two-arm, one pre-committed checkpoint) exists. v3 was not provided. |
+
+Both were landed verbatim apart from two mechanical changes: `fractal_basin_sim.py` had
+its output directory hardcoded to a nonexistent agent workspace (`/mnt/agents/output/figures/`,
+now `results/fractal_basin`, overridable via `FRACTAL_BASIN_OUT`), and both were
+reformatted for ruff (semicolon statements, one lambda). Outputs are byte-identical
+before and after reformatting.
+
+## Shape assignments: verified against `bridges/rosetta-bridge.json`
+
+Notes 14 §4 summarizes this repo's bridge as `data→ICOSA, parameter→DODECA, policy→OCTA,
+confidence→TETRA, thermo→CUBE`. **All five are accurate** — the first three under
+`layer_shape_map`, the last two under the separate `confidence_aggregation` and
+`thermodynamic_extension` keys.
+
+One thing to pin down before treating the shapes as load-bearing. Notes 14 makes each
+assignment a falsifiable claim — "if confidence aggregation ever carries ≠4 components,
+the shape is wrong" — but the two documents count differently: notes 14 justifies TETRA
+by **four channels** (data/param/policy/combined, one per vertex), while the bridge file's
+own rationale justifies it by **three weights** ("the irreducible three-weight
+combination", a simplex on 3 signals). Both arrive at TETRA; they disagree on what would
+refute it. The refutation condition has to name one count to be a claim at all.
 
 ## Relevance to this repo
 
