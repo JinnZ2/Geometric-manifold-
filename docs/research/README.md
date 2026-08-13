@@ -49,7 +49,7 @@ before being documented:
 |---|---|---|
 | `experiments/fractal_basin_sim.py` | Retrofit queue #4. Deficiency: alpha measured at a single damping — `gamma` is a parameter but only ever called at its 0.25 default, so the mandated sweep is missing. | **Reproduces notes/17 §1 exactly**: α=0.688 (double well), α=0.392 and 8.0% Wada (triple well). Deterministic under its fixed seed. |
 | `experiments/ep2_prereg_sim.py` | Retrofit queue #1, and **superseded**: this is v2, which notes/15 records as REFUTED. | Runs, and prints "PASS (predicted)" with detection in 200/200 trials — because it has **no null arm**. That is the point: the uncontrolled version cannot fire a false positive, which is exactly why v1/v2 were refuted and v3 (two-arm, one pre-committed checkpoint) exists. v3 was not provided. |
-| `experiments/snap_information_sim.py` | Retrofit queue #5, and **broken as written**. This is the sim behind the E-P8 "the snap is an ADC" claim in notes/15. | **In Q1 and Q2 no snap ever occurs.** Q1 launches at the stable well minimum with v=0 — measured trajectory range 3.19e-10, identical at every load, so its "ringdown frequency" is the FFT argmax of numerical noise. Q2 launches both arms at x=1.500, the barrier peak, where the force is exactly -0.0 and the range is exactly 0.0; the two amplitudes are identical (0.300 = the static distance to either well), so the printed "1 bit of history" is 0 bits. Q3 moves only because of an initial velocity kick, is **unseeded** (0.08/0.10/0.22/0.13 bits on consecutive runs), and its "=> a snap event is an ADC" line prints unconditionally. The sim does not support the E-P8 claim — it does not test it. |
+| `experiments/snap_information_sim.py` | Retrofit queue #5, **broken as written**, and now **superseded by `sims/ep8_snap_latency/`**. This is the sim behind the E-P8 "the snap is an ADC" claim in notes/15. | **In Q1 and Q2 no snap ever occurs.** Q1 launches at the stable well minimum with v=0 — measured trajectory range 3.19e-10, identical at every load, so its "ringdown frequency" is the FFT argmax of numerical noise. Q2 launches both arms at x=1.500, the barrier peak, where the force is exactly -0.0 and the range is exactly 0.0; the two amplitudes are identical (0.300 = the static distance to either well), so the printed "1 bit of history" is 0 bits. Q3 moves only because of an initial velocity kick, is **unseeded** (0.08/0.10/0.22/0.13 bits on consecutive runs), and its "=> a snap event is an ADC" line prints unconditionally. The sim does not support the E-P8 claim — it does not test it. |
 
 All three were landed verbatim apart from mechanical changes: `fractal_basin_sim.py` had
 its output directory hardcoded to a nonexistent agent workspace (`/mnt/agents/output/figures/`,
@@ -64,6 +64,26 @@ three conclusions its own output does not support.** That is the case for `HARNE
 existing — a self-graded verdict conditioned on the data, with a named null and a seeded
 RNG, would have caught the second and third at the moment they were written.
 
+## Harness-conformant sims
+
+`sims/` holds sims rebuilt to the `HARNESS.md` contract: config-driven, ≥5 seeds, a swept
+parameter, a named null, a refutation condition committed before running, a verdict graded
+against the data, and a ledger entry. Their `results/` directories are committed (the
+repo's blanket `results/` gitignore carries an explicit exception for `sims/*/results/`),
+because under HARNESS the run record *is* the evidence.
+
+| Sim | Claim | Verdict |
+|---|---|---|
+| `sims/ep8_snap_latency/` | E-P8: snap latency decodes the initial condition via the fold law `t_snap ∝ ε₀^(−1/2)`. | **REFUTED** at 24/24 cells — and informatively. The decoder half *passes* everywhere (RMSE ≈ 0.005 against a 0.02 threshold, ~10× better than baseline); the fold half fails by **sign**, exponent +0.38 to +0.59 instead of −1/2. See `FINDING.md`. |
+
+The E-P8 result is worth reading before the physical build. The snap really does report its
+initial compression — but through ramp geometry, not fold physics, so the protocol as
+written would yield a convincing decoder and a meaningless exponent. The fitted exponent
+drifts monotonically with ramp rate (+0.585 → +0.482 → +0.377), which is the
+rate-dependence notes/15 flagged as a risk and which a single-rate run could not have
+detected. Both regressor readings of the ambiguous claim refute, so the verdict does not
+rest on that ambiguity.
+
 ## Where this repo sits in the tier discipline
 
 `INTEGRATION_POINTS.md` IP-12 states the ecosystem's dependency law, and notes 10 §2.2
@@ -77,7 +97,7 @@ is that the material landed here stays in its own lane, and currently does:
 
 | Tier | Deps | What lives here |
 |---|---|---|
-| 0 | stdlib only | `scripts/hypothesis_engine.py`, `repair/generic_repair_controller.py` |
+| 0 | stdlib only | `scripts/hypothesis_engine.py`, `repair/generic_repair_controller.py`, `sims/ep8_snap_latency/` |
 | 1 | numpy | `experiments/fractal_basin_sim.py`, `experiments/ep2_prereg_sim.py` |
 | 2 | torch | the manifold pipeline: `manifolds/`, `simulation/`, `repair/`, `addon_thermodynamic_control/` |
 

@@ -2,4 +2,10 @@ __pycache__/
 *.pyc
 *.egg-info/
 .pytest_cache/
+
+# Generated experiment output stays untracked...
 results/
+# ...except harness-conformant sim runs, whose results/ IS the ledger record
+# (docs/research/HARNESS.md sections 1 and 3: metrics.json + summary.md +
+# ledger_entry.jsonl are the committed evidence for a run's verdict).
+!sims/*/results/
