@@ -54,7 +54,15 @@ def mean(xs):
     return sum(xs) / len(xs) if xs else float("nan")
 
 
-def measure_rates(seed: int, sigma: float, cfg: dict) -> dict:
+def thermo_for(cfg: dict, mu_mode: str) -> dict:
+    """Frozen mode pins mu by setting mu_max = mu_repair, so trust_r cannot shrink."""
+    t = dict(cfg["thermo"])
+    if mu_mode == "frozen":
+        t["mu_max"] = t["mu_repair"]
+    return t
+
+
+def measure_rates(seed: int, sigma: float, cfg: dict, mu_mode: str = "adaptive") -> dict:
     """Per-step KL added by drift and removed by repair, measured separately.
 
     The two are measured on the same trajectory by evaluating KL three times per step:
@@ -65,7 +73,8 @@ def measure_rates(seed: int, sigma: float, cfg: dict) -> dict:
     env = Environment({"drift_strength": sc["initial_drift_strength"], "seed": seed})
     model_fn = env.get_model_fn()
     ref = env.theta_ref
-    system = CoupledDynamicalSystem(model_fn, ref, env.task_inputs, cfg["thermo"])
+    system = CoupledDynamicalSystem(model_fn, ref, env.task_inputs,
+                                    thermo_for(cfg, mu_mode))
     theta = env.theta_drifted.clone()
     gen = torch.Generator().manual_seed(20_000 + seed)
 
@@ -89,7 +98,7 @@ def measure_rates(seed: int, sigma: float, cfg: dict) -> dict:
         repair_steps.append((theta - pre).norm().item())
 
     return {
-        "seed": seed, "sigma": sigma,
+        "seed": seed, "sigma": sigma, "mu_mode": mu_mode,
         "dkl_drift": mean(d_drift),
         "dkl_repair": mean(d_repair),
         "dkl_net": mean(d_drift) + mean(d_repair),
@@ -108,6 +117,7 @@ def main(argv: list[str] | None = None) -> int:
     config_hash = sha256_str(canonical(cfg))
     seeds = list(cfg["seeds"])
     sigmas = list(cfg["sweeps"]["drift_sigma"])
+    mu_modes = list(cfg["sweeps"]["mu_mode"])
     if args.quick:
         seeds, sigmas = seeds[:2], sigmas[::3]
         cfg["scenario"] = {**cfg["scenario"], "steps": 10}
@@ -130,29 +140,41 @@ def main(argv: list[str] | None = None) -> int:
     print(f"  calibration @ sigma={cal_sigma}: k={k:.3f}  repair_cap={repair_cap:.6f}")
     print(f"  PREDICTED sigma_crit = sqrt(repair_cap/k) = {predicted:.5f}  (0 free parameters)")
 
-    # --- sweep ---------------------------------------------------------------
+    # --- sweep, per mu_mode --------------------------------------------------
+    def crossing(by_sigma: dict) -> float | None:
+        ordered = sorted(by_sigma.items())
+        for (s_lo, n_lo), (s_hi, n_hi) in zip(ordered, ordered[1:]):
+            if n_lo <= 0.0 < n_hi:
+                # interpolate in sigma^2, the variable the rate is quadratic in
+                f = (0.0 - n_lo) / (n_hi - n_lo)
+                return (s_lo ** 2 + f * (s_hi ** 2 - s_lo ** 2)) ** 0.5
+        return None
+
     rows = []
-    by_sigma = {}
-    for sg in sigmas:
-        rs = [measure_rates(s, sg, cfg) for s in seeds]
-        rows.extend(rs)
-        by_sigma[sg] = mean([r["dkl_net"] for r in rs])
-        print(f"  sigma={sg:<8} net dKL/step = {by_sigma[sg]:+.6f}  "
-              f"(drift {mean([r['dkl_drift'] for r in rs]):+.6f}, "
-              f"repair {mean([r['dkl_repair'] for r in rs]):+.6f})")
+    per_mu = {}
+    for mm in mu_modes:
+        by_sigma = {}
+        for sg in sigmas:
+            rs = [measure_rates(s, sg, cfg, mm) for s in seeds]
+            rows.extend(rs)
+            by_sigma[sg] = mean([r["dkl_net"] for r in rs])
+            print(f"  [{mm:<8}] sigma={sg:<8} net dKL/step = {by_sigma[sg]:+.6f}  "
+                  f"(drift {mean([r['dkl_drift'] for r in rs]):+.6f}, "
+                  f"repair {mean([r['dkl_repair'] for r in rs]):+.6f})")
+        nets = [by_sigma[s] for s in sorted(by_sigma)]
+        per_mu[mm] = {
+            "net_by_sigma": {str(k): v for k, v in by_sigma.items()},
+            "sigma_crit": crossing(by_sigma),
+            "monotone": all(b >= a for a, b in zip(nets, nets[1:])),
+            "mean_repair_cap": abs(mean([r["dkl_repair"] for r in rows
+                                         if r["mu_mode"] == mm])),
+        }
+        print(f"  [{mm:<8}] measured sigma_crit = {per_mu[mm]['sigma_crit']}")
 
-    # --- measured crossing: interpolate net dKL/step through zero ------------
-    ordered = sorted(by_sigma.items())
-    measured = None
-    for (s_lo, n_lo), (s_hi, n_hi) in zip(ordered, ordered[1:]):
-        if n_lo <= 0.0 < n_hi:
-            # linear interpolation in sigma^2, the variable the rate is quadratic in
-            f = (0.0 - n_lo) / (n_hi - n_lo)
-            measured = (s_lo ** 2 + f * (s_hi ** 2 - s_lo ** 2)) ** 0.5
-            break
-
-    nets = [n for _, n in ordered]
-    monotone = all(b >= a for a, b in zip(nets, nets[1:]))
+    primary = per_mu[mu_modes[0]]
+    by_sigma = {float(k): v for k, v in primary["net_by_sigma"].items()}
+    measured = primary["sigma_crit"]
+    monotone = primary["monotone"]
 
     tol = cfg["prediction"]["tolerance_factor"]
     if not null_ok:
@@ -181,6 +203,7 @@ def main(argv: list[str] | None = None) -> int:
                         "predicted_sigma_crit": predicted, "rows": cal_rows},
         "sweep_rows": rows,
         "net_by_sigma": {str(s): v for s, v in by_sigma.items()},
+        "per_mu_mode": per_mu,
         "measured_sigma_crit": measured,
         "monotone_in_sigma": monotone,
         "grading": {"verdict": verdict, "reason": reason},
@@ -226,6 +249,9 @@ def main(argv: list[str] | None = None) -> int:
     }
     (outdir / "ledger_entry.jsonl").write_text(canonical(ledger) + "\n", encoding="utf-8")
 
+    for mm in mu_modes:
+        print(f"[rate] Q2 mu_mode={mm}: sigma_crit = {per_mu[mm]['sigma_crit']}, "
+              f"repair cap = {per_mu[mm]['mean_repair_cap']:.6f}")
     print(f"\n[rate] measured sigma_crit = {measured}  predicted = {predicted:.5f}")
     print(f"[rate] VERDICT: {verdict} — {reason}")
     print(f"[rate] results -> {outdir}")

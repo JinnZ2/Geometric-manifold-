@@ -48,6 +48,25 @@ test *"κ_eff works near the critical point."* `REFUTE.md` said so before this r
 so a SUPPORTED verdict would be allowed to weaken the earlier conclusion. The honest status
 of κ_eff is now: **refuted in the committed regime, untested near σ_crit.**
 
+## Q2 answered: the μ-adaptation concern is inert at this timescale
+
+`docs/research/OPEN_QUESTIONS.md` Q2 asks whether `trust_r = lr/(1 + μ·max(fisher))`
+shrinking as μ grows is an inverted sign — corrective authority contracting exactly when
+the system is in trouble. The μ-mode arm answers it by measurement rather than by argument:
+
+| μ mode | measured σ_crit | mean repair cap |
+|---|---|---|
+| adaptive | 0.0008425 | 0.000026 |
+| frozen (μ pinned at μ_repair) | 0.0008441 | 0.000026 |
+
+**A 0.2% difference.** The inversion is real in the formula and inert in practice here,
+because over 25 steps μ only grows from 0.05 to about 0.10 and `μ·max(fisher)` stays small
+against 1, so `trust_r ≈ lr` either way.
+
+Bounded answer, not a general one: over hundreds of steps, where μ can approach `mu_max =
+10`, the mechanism could bite. This measures the short-horizon case only, and Q2 stays open
+for the long-horizon one.
+
 ## Cross-domain reading
 
 The full synthesis is in `docs/research/DOMAIN_PHYSICS.md`. In short: this is Ashby's

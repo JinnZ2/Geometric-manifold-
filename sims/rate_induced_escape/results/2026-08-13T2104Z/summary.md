@@ -1,6 +1,6 @@
 # Rate-induced escape — run summary
 
-Run at: 2026-08-13T2053Z
+Run at: 2026-08-13T2104Z
 Verdict: **SUPPORTED** — measured sigma_crit = 0.00084 against a parameter-free prediction of 0.00120 (ratio 0.70x)
 
 ## Rate balance by drift rate
@@ -10,7 +10,7 @@ Verdict: **SUPPORTED** — measured sigma_crit = 0.00084 against a parameter-fre
 | 0.0005 | +0.000012 | -0.000024 | -0.000012 |
 | 0.001 | +0.000031 | -0.000023 | +0.000008 |
 | 0.0015 | +0.000057 | -0.000023 | +0.000035 |
-| 0.002 | +0.000092 | -0.000023 | +0.000069 |
+| 0.002 | +0.000092 | -0.000023 | +0.000068 |
 | 0.003 | +0.000184 | -0.000025 | +0.000159 |
 | 0.004 | +0.000308 | -0.000028 | +0.000280 |
 | 0.006 | +0.000654 | -0.000028 | +0.000625 |

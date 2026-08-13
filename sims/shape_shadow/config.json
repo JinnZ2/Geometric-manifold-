@@ -1,0 +1,34 @@
+{
+  "name": "shape_shadow",
+  "seeds": [0, 1, 2, 3, 4, 5, 6, 7],
+  "sweeps": {
+    "residual_magnitude": [0.02, 0.05, 0.10, 0.20]
+  },
+  "null_model": "random_residual_ensemble",
+  "refute_if": "the full-displacement Jacobian is rank-deficient (< 12), OR the vertex-magnitude Jacobian has rank > 6, OR the least-visible residual direction produces a vertex-magnitude shadow more than 1/10 of a typical random residual of equal norm",
+  "tier": 1,
+  "runtime_estimate_s": 30,
+
+  "shape": {
+    "name": "octahedron",
+    "n_vertices": 6,
+    "n_edges": 12,
+    "maxwell_count": "3*6 - 6 = 12 = n_edges, so the framework is isostatic"
+  },
+  "relaxation": {
+    "steps": 4000,
+    "lr": 0.02,
+    "jacobian_epsilon": 1e-4
+  },
+  "observation_levels": {
+    "full": "Procrustes-aligned displacement field (18 numbers, 12 after rigid modes)",
+    "magnitudes": "per-vertex displacement magnitudes (6 numbers) -- what notes 14 drill-down uses",
+    "scalar": "Procrustes distance (1 number)"
+  },
+  "prediction": {
+    "rank_full": 12,
+    "rank_magnitudes_max": 6,
+    "blind_ratio_max": 0.1,
+    "rank_tolerance": 1e-6
+  }
+}
