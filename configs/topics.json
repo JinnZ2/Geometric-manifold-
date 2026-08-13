@@ -7,25 +7,50 @@
         "mode connectivity basins neural network parameter space",
         "trust region constrained fine-tuning safety"
       ],
-      "sources": ["arxiv", "semantic_scholar", "crossref"]
+      "sources": [
+        "arxiv",
+        "semantic_scholar",
+        "crossref"
+      ],
+      "categories": [
+        "cs.LG",
+        "stat.ML",
+        "cs.NE"
+      ]
     },
     {
       "name": "Fisher information and thermodynamics of learning",
       "queries": [
-        "Fisher information metric natural gradient neural networks",
-        "thermodynamic cost of learning free energy",
-        "information geometry phase transition training dynamics"
+        "Fisher information neural network training",
+        "natural gradient information geometry deep learning",
+        "thermodynamic cost of learning free energy"
       ],
-      "sources": ["arxiv", "semantic_scholar"]
+      "sources": [
+        "arxiv",
+        "semantic_scholar"
+      ],
+      "categories": [
+        "cs.LG",
+        "stat.ML",
+        "cs.IT"
+      ]
     },
     {
       "name": "safety drift, alignment repair and parameter-space monitoring",
       "queries": [
-        "alignment drift fine-tuning safety degradation",
-        "model editing repair safety weights",
-        "KL divergence constrained policy optimization safety"
+        "safety alignment degradation fine-tuning",
+        "catastrophic forgetting alignment language model",
+        "KL regularization RLHF policy drift"
       ],
-      "sources": ["arxiv", "semantic_scholar"]
+      "sources": [
+        "arxiv",
+        "semantic_scholar"
+      ],
+      "categories": [
+        "cs.LG",
+        "cs.AI",
+        "cs.CL"
+      ]
     },
     {
       "name": "model collapse, variance suppression and recursive training",
@@ -34,15 +59,33 @@
         "variance suppression distribution tails generative models",
         "early warning signals critical slowing down tipping"
       ],
-      "sources": ["arxiv", "semantic_scholar", "crossref"]
+      "sources": [
+        "arxiv",
+        "semantic_scholar",
+        "crossref"
+      ],
+      "categories": [
+        "cs.LG",
+        "stat.ML",
+        "cs.CL"
+      ]
     },
     {
       "name": "hidden variable detection / causal discovery from residuals",
       "queries": [
-        "hidden variable detection residual correlation",
-        "causal discovery latent variables time series"
+        "latent confounder detection residuals",
+        "causal discovery hidden variables time series",
+        "unobserved confounding structure learning"
       ],
-      "sources": ["arxiv", "semantic_scholar"]
+      "sources": [
+        "arxiv",
+        "semantic_scholar"
+      ],
+      "categories": [
+        "stat.ME",
+        "cs.LG",
+        "stat.ML"
+      ]
     }
   ]
 }
