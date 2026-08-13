@@ -32,6 +32,7 @@ machinery this repo is converging on.
 | `17_fractals_bio_cosmo_trig.md` | Cross-repo (theory) | Fold normal form across fractals/biology/cosmology/trigonometry; ten cross-domain tests, two of them aimed at this repo. |
 | `TERMINOLOGY_MAP.md` | All six repos | Ecosystem naming ↔ standard research vocabulary, with anchor citations and venue posture. §1 is this repo. |
 | `INTEGRATION_POINTS.md` | All six repos | The integration matrix (IP-1…IP-22) and build order. IP-13…IP-21 are this repo. |
+| `DOMAIN_PHYSICS.md` | This repo, cross-domain | Where the physics leads: the framework's failure mode is corrector saturation, not curvature. Ashby, MCPM's L/A, R-tipping, actuator saturation and Kramers escape as one object; why fold/CSD physics does not transfer to a KL sublevel set. |
 | `HARNESS.md` | All six repos | Sim Harness Standard v1: required directory layout, config manifest, execution contract, and verdict discipline for any sim whose result enters the ledger. |
 
 **Note on numbering:** the notes series is the sibling ecosystem's and arrived here in
@@ -76,7 +77,8 @@ because under HARNESS the run record *is* the evidence.
 |---|---|---|
 | `sims/ep8_snap_latency/` | E-P8: snap latency decodes the initial condition via the fold law `t_snap ∝ ε₀^(−1/2)`. | **REFUTED** at 24/24 cells — and informatively. The decoder half *passes* everywhere (RMSE ≈ 0.005 against a 0.02 threshold, ~10× better than baseline); the fold half fails by **sign**, exponent +0.38 to +0.59 instead of −1/2. |
 | `sims/fractal_basin_damping/` | Retrofit of `fractal_basin_sim.py` (HARNESS queue #4): α rises with damping γ. | **SUPPORTED** at 100% of cells, and reproduces notes/17 at γ=0.25 to within 0.002. New: the Wada property runs 44% → 0% across the sweep, so it is a damping *regime*, not a fixed feature of the potential. |
-| `sims/kappa_eff_leading/` | IP-18: κ_eff spikes before the basin breach and beats a trivial baseline. | **REFUTED** across three rounds — isotropic (INCONCLUSIVE), + adversarial (REFUTED), + smoothing (REFUTED). Smoothing *does* cut false alarms (median FP 0.60→0.40) but trades lead one-for-one, so no window rescues it. The adversarial case, which κ_eff exists to catch, is the **worst** one. "It's just noisy" is now a spent explanation; only model scale remains. |
+| `sims/rate_induced_escape/` | Basin escape is rate-induced (capped repair vs σ² forcing), with σ_crit = √(repair_cap/k). | **SUPPORTED** — predicted 0.00120, measured 0.00084 (0.70×), **zero free parameters**. The repair's ΔKL/step is flat across a 24× range of forcing: the corrector is saturated. See `docs/research/DOMAIN_PHYSICS.md`. |
+| `sims/kappa_eff_leading/` | IP-18: κ_eff spikes before the basin breach and beats a trivial baseline. | **REFUTED** across three rounds — isotropic (INCONCLUSIVE), + adversarial (REFUTED), + smoothing (REFUTED). Smoothing *does* cut false alarms (median FP 0.60→0.40) but trades lead one-for-one, so no window rescues it. The adversarial case, which κ_eff exists to catch, is the **worst** one. "It's just noisy" is spent. **Revised by `rate_induced_escape`:** these runs sat 10–24× above the critical drift rate, i.e. in the committed regime where no indicator can lead — so κ_eff is refuted *there* and remains untested near σ_crit. |
 
 Each sim's `FINDING.md` carries the full result. Three things from them are worth
 surfacing here, because they are about this repo rather than about the sims:
