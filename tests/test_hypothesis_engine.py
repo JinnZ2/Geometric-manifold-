@@ -85,19 +85,29 @@ def test_reformulation_escape_hatch(workspace):
     assert rows[-1]["flag"] == "escape-hatch"
 
 
-def test_hidden_variable_scan_triggers(workspace):
+def test_hidden_scan_does_not_fire_without_a_valid_exogenous_series(workspace):
+    """This test previously asserted the opposite, and was passing because of a bug.
+
+    The only candidate that ever fired was `confidence_trend`, which is the residual's
+    own source variable. With it excluded, none of the remaining candidates can fire on
+    this data: `claim_outcomes` is endogenous too, `source_diversity` is constant by
+    construction, and `findings_rate` is constant whenever findings are evenly spread.
+
+    Documenting the real behaviour rather than restoring a green light that meant
+    nothing. See docs/hypothesis_engine.md for what the stage would need to work.
+    """
     hidden = workspace / "data" / "hidden_variables.jsonl"
     tree = he.DependencyTree()
-    # synthetic claims whose residuals correlate with findings rate
     for i, (p, f) in enumerate([(5, 0), (0, 5), (5, 0), (0, 5), (5, 0), (0, 5)]):
         tree.add_claim(he.Claim(text=f"claim {i}", falsification="x",
                                 passed=p, failed=f, scope={"topic": "t"}))
     findings = [{"date": f"2024-0{(i % 6) + 1}-01", "topic": "t",
                  "source": "arxiv"} for i in range(12)]
     suggestions = he.stage_hidden(tree, findings, hidden)
-    assert suggestions, "expected hidden-variable suggestion on correlated series"
-    assert all(s["type"] == "hidden_variable_suggestion" for s in suggestions)
-    assert he.read_jsonl(hidden)
+    assert suggestions == [], (
+        "no genuinely exogenous candidate varies here, so any suggestion would be a "
+        "self-correlation"
+    )
 
 
 def test_hidden_variable_scan_no_trigger_on_flat(workspace):
@@ -173,3 +183,31 @@ def test_full_dry_run_main(topics, workspace, monkeypatch):
                   "--sample", str(SAMPLE)])
     assert rc == 0
     assert len(he.read_jsonl(workspace / "data" / "findings_log.jsonl")) == 5
+
+
+def test_endogenous_candidates_cannot_fire(workspace):
+    """The residual is |beta_confidence - 0.5|, so beta_confidence is not exogenous.
+
+    Regression for the engine's first live run, which reported pearson_r = 1.0 on two
+    topics because the 'confidence_trend' candidate was the residual's own source
+    variable and every claim sat on one side of 0.5.
+    """
+    hidden = workspace / "data" / "hidden_variables.jsonl"
+    tree = he.DependencyTree()
+    # every claim passes, so beta_confidence > 0.5 and |conf - 0.5| is affine in conf
+    for i in range(8):
+        tree.add_claim(he.Claim(text=f"c{i}", falsification="x",
+                                passed=i + 1, failed=0, scope={"topic": "t"}))
+    findings = [{"date": "2024-01-01", "topic": "t", "source": "arxiv"}]
+    suggestions = he.stage_hidden(tree, findings, hidden)
+    named = {s["suggested_variable"] for s in suggestions}
+    assert not any("confidence_trend" in n for n in named), (
+        "confidence_trend is derived from beta_confidence and must never be offered "
+        "as exogenous evidence"
+    )
+    assert not any("claim_outcomes" in n for n in named)
+
+
+def test_constant_candidate_series_is_skipped():
+    """A constant series has undefined Pearson r; it must not be treated as r = 0."""
+    assert he.pearson_r([1.0, 2.0, 3.0], [5.0, 5.0, 5.0]) == 0.0

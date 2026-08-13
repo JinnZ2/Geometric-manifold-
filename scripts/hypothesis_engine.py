@@ -554,6 +554,19 @@ def stage_modify(tree: DependencyTree, unknown_path: Path,
 # Stage 6: hidden variables (HND-style scan)
 # --------------------------------------------------------------------------
 
+# Candidates that are computed FROM the residual's own source and can never be evidence
+# of a hidden variable. The residual is |beta_confidence - 0.5|, so:
+#   - claim_outcomes  is (passed - failed), which determines beta_confidence
+#   - confidence_trend IS beta_confidence, so whenever every claim sits on one side of 0.5
+#     the residual is an exact affine function of it and Pearson r is 1.0 by construction
+# The second was found on the engine's first live run, which reported r = 1.0 on two topics
+# with min(beta_confidence) = 0.5 -- a self-correlation, not a discovery.
+ENDOGENOUS_CANDIDATES = frozenset({
+    "exogenous:claim_outcomes",
+    "exogenous:confidence_trend",
+})
+
+
 def stage_hidden(tree: DependencyTree, findings: list[dict[str, Any]],
                  out_path: Path) -> list[dict[str, Any]]:
     """Correlate per-topic residual series against exogenous candidate series.
@@ -587,8 +600,10 @@ def stage_hidden(tree: DependencyTree, findings: list[dict[str, Any]],
             "exogenous:source_diversity": [float(len(source_counts))] * n,
         }
         for name, series in candidates.items():
-            if name == "exogenous:claim_outcomes":
-                continue  # trivially related; keep for future numeric checks
+            if name in ENDOGENOUS_CANDIDATES:
+                continue
+            if len(set(series)) < 2:
+                continue  # constant series: Pearson r is undefined, not zero
             r = pearson_r(residuals, series)
             if abs(r) > 0.5:
                 suggestions.append({
