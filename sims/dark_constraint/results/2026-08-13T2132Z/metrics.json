@@ -1,0 +1,138 @@
+{
+  "name": "dark_constraint",
+  "config_hash": "8d588b9e333764d9302da5ae39061849f1f79ba197aafc3d751eb56638416185",
+  "quick_mode": false,
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "k_values": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "dark_strengths": [
+    0.0,
+    0.02,
+    0.05,
+    0.1
+  ],
+  "dark_edge": [
+    0,
+    1
+  ],
+  "rows": [
+    {
+      "k": 1,
+      "dark": 0.0,
+      "unexplained": 0.0,
+      "inferred_visible_norm": 0.0
+    },
+    {
+      "k": 1,
+      "dark": 0.02,
+      "unexplained": 3.218611355503468e-14,
+      "inferred_visible_norm": 0.0140224944996335
+    },
+    {
+      "k": 1,
+      "dark": 0.05,
+      "unexplained": 7.616450274234236e-14,
+      "inferred_visible_norm": 0.03434721163737908
+    },
+    {
+      "k": 1,
+      "dark": 0.1,
+      "unexplained": 1.4520812042336812e-13,
+      "inferred_visible_norm": 0.06742490314452285
+    },
+    {
+      "k": 2,
+      "dark": 0.0,
+      "unexplained": 0.0,
+      "inferred_visible_norm": 0.0
+    },
+    {
+      "k": 2,
+      "dark": 0.02,
+      "unexplained": 0.0028362166589278163,
+      "inferred_visible_norm": 0.013653017196382171
+    },
+    {
+      "k": 2,
+      "dark": 0.05,
+      "unexplained": 0.002805748172579882,
+      "inferred_visible_norm": 0.03397522679226195
+    },
+    {
+      "k": 2,
+      "dark": 0.1,
+      "unexplained": 0.0028802603901425367,
+      "inferred_visible_norm": 0.06704767222825185
+    },
+    {
+      "k": 3,
+      "dark": 0.0,
+      "unexplained": 0.0,
+      "inferred_visible_norm": 0.0
+    },
+    {
+      "k": 3,
+      "dark": 0.02,
+      "unexplained": 0.004376122334393422,
+      "inferred_visible_norm": 0.013733525250987623
+    },
+    {
+      "k": 3,
+      "dark": 0.05,
+      "unexplained": 0.004254293434299073,
+      "inferred_visible_norm": 0.0340672206951087
+    },
+    {
+      "k": 3,
+      "dark": 0.1,
+      "unexplained": 0.004155911740682806,
+      "inferred_visible_norm": 0.0671592824053171
+    },
+    {
+      "k": 4,
+      "dark": 0.0,
+      "unexplained": 0.0,
+      "inferred_visible_norm": 0.0
+    },
+    {
+      "k": 4,
+      "dark": 0.02,
+      "unexplained": 0.005693341567462523,
+      "inferred_visible_norm": 0.013741708264267039
+    },
+    {
+      "k": 4,
+      "dark": 0.05,
+      "unexplained": 0.005568543155008971,
+      "inferred_visible_norm": 0.034076188699051733
+    },
+    {
+      "k": 4,
+      "dark": 0.1,
+      "unexplained": 0.005458305156373371,
+      "inferred_visible_norm": 0.06716916690217752
+    }
+  ],
+  "hypotheses": {
+    "H1_absorbed_at_k1": true,
+    "H2_grows_with_dark": false,
+    "H3_separable_from_null": true
+  },
+  "grading": {
+    "verdict": "REFUTED",
+    "reason": "failed: H2 grows with dark"
+  }
+}

@@ -15,8 +15,11 @@ pip install -r requirements.txt
 # Run simulation
 python main.py --config configs/default.yaml
 
-# Run tests (36 tests: 15 smoke + 21 invariants, ~4s)
+# Run tests (183 tests: smoke + invariants + interface/engine suites, ~4s)
 python -m pytest tests/ -v
+
+# Run the hypothesis engine offline (stdlib only, no network)
+python scripts/hypothesis_engine.py --config configs/topics.json --dry-run
 
 # Lint
 ruff check .
@@ -56,11 +59,34 @@ addon_thermodynamic_control/
 configs/
   default.yaml                   # Standard: drift=0.3, steps=100, seed=42
   adversarial.yaml               # Stress: drift=0.8, steps=200, tighter trust region
+  topics.json                    # Hypothesis-engine search topics
+
+scripts/
+  hypothesis_engine.py           # Autonomous literature pipeline (stdlib only, no torch)
+  sample_findings.json           # Synthetic fixture data for --dry-run
+  fieldlink_export.py            # Fieldlink export helper
+
+.github/workflows/
+  hypothesis-engine.yml          # Scheduled engine run; commits digest, opens issue
 
 experiments/                     # Standalone experiment scripts
 tests/                           # Pytest smoke tests for all modules
 docs/theoretical_notes/          # Mathematical foundations
+docs/hypothesis_engine.md        # Hypothesis-engine design doc
+docs/research/                   # Literature notes + forward plans (see its README for provenance)
 ```
+
+### Hypothesis engine (`scripts/hypothesis_engine.py`)
+
+A deliberately isolated subsystem: stdlib-only, deterministic, no LLM and no repo
+imports. It queries free scholarly APIs, stakes each finding as a falsifiable claim,
+tests claims by cross-source corroboration, escape-hatches repeat failures into an
+unknown journal, and consolidates survivors into `hypotheses/*.md`.
+
+It does **not** write to `manifolds/`, `simulation/`, or `repair/` — output is
+literature grounding for humans to act on, never an automatic path into the safety
+machinery. Keep it dependency-free so it runs on a bare GitHub runner; if you need
+torch there, it belongs in a different script.
 
 ## Architecture
 

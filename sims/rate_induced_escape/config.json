@@ -1,0 +1,54 @@
+{
+  "name": "rate_induced_escape",
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "sweeps": {
+    "drift_sigma": [
+      0.0005,
+      0.001,
+      0.0015,
+      0.002,
+      0.003,
+      0.004,
+      0.006,
+      0.012
+    ],
+    "mu_mode": [
+      "adaptive",
+      "frozen"
+    ]
+  },
+  "null_model": "zero_drift_no_forcing",
+  "refute_if": "the measured critical drift rate (zero crossing of net dKL/step) is not within a factor of 2 of the parameter-free prediction sqrt(repair_cap / k), OR net dKL/step is not monotone increasing in sigma, OR the null arm shows positive net dKL/step; the mu_mode arm is diagnostic and reported per-arm rather than graded, since Q2 asks how large the effect is, not whether it exists",
+  "tier": 2,
+  "runtime_estimate_s": 400,
+  "scenario": {
+    "initial_drift_strength": 0.08,
+    "steps": 25,
+    "calibration_sigma": 0.004,
+    "comment": "Short runs suffice because the quantity measured is the per-step KL rate balance, not a breach event. Escape is decided by whether net dKL/step is positive, which is observable immediately; waiting for a threshold crossing only measures how long the arithmetic takes. The mu_mode arm tests Q2 in docs/research/OPEN_QUESTIONS.md: trust_r = lr/(1 + mu*max(fisher)) shrinks as mu grows, and mu grows when the system is in trouble, so corrective authority contracts exactly when more is wanted. Frozen mode pins mu at mu_repair by setting mu_max = mu_repair, holding trust_r constant. If sigma_crit is materially higher with mu frozen, the adaptation is costing basin stability."
+  },
+  "thermo": {
+    "lambda_safety": 1.0,
+    "lambda_proactive": 0.5,
+    "lambda_policy": 0.3,
+    "mu_repair": 0.05,
+    "mu_max": 10.0,
+    "repair_budget": 100.0,
+    "epsilon_basin": 0.15,
+    "spectral_C_bound": 20.0,
+    "alpha_kl": 1.0,
+    "lr": 0.01,
+    "sigma_drift": 0.05
+  },
+  "prediction": {
+    "form": "sigma_crit = sqrt(repair_cap_kl / k), k from dKL_drift = k * sigma^2",
+    "free_parameters": 0,
+    "tolerance_factor": 2.0
+  }
+}

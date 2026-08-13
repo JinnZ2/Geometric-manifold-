@@ -1,0 +1,25 @@
+{
+  "name": "dark_constraint",
+  "seeds": [0, 1, 2, 3, 4, 5, 6, 7],
+  "sweeps": {
+    "n_load_cases": [1, 2, 3, 4],
+    "dark_strength": [0.0, 0.02, 0.05, 0.10]
+  },
+  "null_model": "dark_strength_zero",
+  "refute_if": "the visible-only model fails to absorb the dark constraint at K=1 (residual not ~0), OR the unexplained residual at K>=2 does not grow with dark strength, OR it is not separable from the dark_strength=0 null",
+  "tier": 1,
+  "runtime_estimate_s": 60,
+
+  "shape": {
+    "name": "octahedron",
+    "visible_edges": 12,
+    "dark_constraint": "one antipodal brace (0,1) -- a real constraint the observer's model omits",
+    "note": "the 3 antipodal pairs are the only non-edges of the octahedron, so they are the only places a hidden constraint can live"
+  },
+  "relaxation": {"steps": 1500, "lr": 0.02, "jacobian_epsilon": 1e-4},
+  "load": {"magnitude": 0.05},
+  "prediction": {
+    "k1_absorbed_tol": 1e-6,
+    "separation_factor": 10.0
+  }
+}
