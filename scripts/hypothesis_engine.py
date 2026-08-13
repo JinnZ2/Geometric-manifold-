@@ -623,7 +623,8 @@ def stage_hidden(tree: DependencyTree, findings: list[dict[str, Any]],
 
 def stage_consolidate(tree: DependencyTree, topics: list[dict[str, Any]],
                       unknown_path: Path, hidden_path: Path,
-                      hypotheses_dir: Path) -> dict[str, Any]:
+                      hypotheses_dir: Path,
+                      announced_path: Path | None = None) -> dict[str, Any]:
     """Regenerate hypotheses/<topic-slug>.md from the claim tree."""
     hypotheses_dir.mkdir(parents=True, exist_ok=True)
     unknowns = read_jsonl(unknown_path)
@@ -632,6 +633,12 @@ def stage_consolidate(tree: DependencyTree, topics: list[dict[str, Any]],
     for c in tree.claims.values():
         by_topic.setdefault(c.scope.get("topic", ""), []).append(c)
     new_hypotheses: list[str] = []
+    announced: set[str] = set()
+    if announced_path and announced_path.exists():
+        try:
+            announced = set(json.loads(announced_path.read_text(encoding="utf-8")))
+        except (OSError, ValueError):
+            announced = set()
     for topic in {t["name"] for t in topics} | set(by_topic):
         claims = by_topic.get(topic, [])
         surviving = [c for c in claims if c.status == "survived" or c.beta_confidence >= 0.7]
@@ -650,9 +657,19 @@ def stage_consolidate(tree: DependencyTree, topics: list[dict[str, Any]],
             lines.append("")
             lines.append("> " + surviving[0].text)
             lines.append("")
-            marker = "NEW HYPOTHESIS" if len(surviving) >= 3 else "candidate"
-            if marker == "NEW HYPOTHESIS":
+            # "New" means crossing the threshold on THIS run. Without the announced-set
+            # check the condition stays true forever once met, so the workflow opens an
+            # identical issue on every scheduled run -- observed as issues #8 and #10,
+            # same title, same two topics, 11 minutes apart.
+            established = len(surviving) >= 3
+            first_time = established and topic not in announced
+            if established:
+                marker = "NEW HYPOTHESIS" if first_time else "established"
+            else:
+                marker = "candidate"
+            if first_time:
                 new_hypotheses.append(topic)
+                announced.add(topic)
             lines.append(f"Status: **{marker}** ({len(surviving)} surviving claims)")
             lines.append("")
         lines += ["## Supporting claims", ""]
@@ -676,6 +693,9 @@ def stage_consolidate(tree: DependencyTree, topics: list[dict[str, Any]],
             lines.append("- (none)")
         (hypotheses_dir / f"{slug}.md").write_text("\n".join(lines) + "\n",
                                                    encoding="utf-8")
+    if announced_path:
+        announced_path.write_text(json.dumps(sorted(announced), indent=2) + "\n",
+                                  encoding="utf-8")
     return {"hypothesis_files": len(list(hypotheses_dir.glob("*.md"))),
             "new_hypotheses": new_hypotheses}
 
@@ -782,7 +802,8 @@ def main(argv: list[str] | None = None) -> int:
 
     # 7. consolidate
     cons = stage_consolidate(tree, topics, unknown_path, hidden_path,
-                             Path(args.hypotheses_dir))
+                             Path(args.hypotheses_dir),
+                             data_dir / "announced_topics.json")
     log(f"[consolidate] {cons['hypothesis_files']} hypothesis files")
 
     stats: dict[str, Any] = {

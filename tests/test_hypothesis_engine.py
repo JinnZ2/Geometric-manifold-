@@ -211,3 +211,32 @@ def test_endogenous_candidates_cannot_fire(workspace):
 def test_constant_candidate_series_is_skipped():
     """A constant series has undefined Pearson r; it must not be treated as r = 0."""
     assert he.pearson_r([1.0, 2.0, 3.0], [5.0, 5.0, 5.0]) == 0.0
+
+
+def test_new_hypothesis_marker_fires_once_not_every_run(topics, workspace):
+    """'NEW HYPOTHESIS' must mean newly crossed, not merely above threshold.
+
+    Without this the condition stays true forever once met and the workflow opens an
+    identical issue every scheduled run -- observed live as issues #8 and #10, same
+    title, same two topics, 11 minutes apart.
+    """
+    unknown = workspace / "data" / "unknown_journal.jsonl"
+    hidden = workspace / "data" / "hidden_variables.jsonl"
+    announced = workspace / "data" / "announced_topics.json"
+    tree = he.DependencyTree()
+    for i in range(4):
+        tree.add_claim(he.Claim(text=f"survivor {i}", falsification="f",
+                                passed=5, failed=0, scope={"topic": topics[0]["name"]}))
+
+    first = he.stage_consolidate(tree, topics, unknown, hidden,
+                                 workspace / "hypotheses", announced)
+    assert topics[0]["name"] in first["new_hypotheses"]
+    assert announced.exists()
+
+    second = he.stage_consolidate(tree, topics, unknown, hidden,
+                                  workspace / "hypotheses", announced)
+    assert second["new_hypotheses"] == [], (
+        "the same topic must not be announced twice; it is established, not new"
+    )
+    body = (workspace / "hypotheses" / f"{he.slugify(topics[0]['name'])}.md").read_text()
+    assert "established" in body and "NEW HYPOTHESIS" not in body
