@@ -16,12 +16,17 @@
     "drift_mode": [
       "isotropic",
       "adversarial"
+    ],
+    "smoothing_window": [
+      1,
+      3,
+      5
     ]
   },
   "null_model": "no_injected_drift",
-  "refute_if": "kappa_eff fails to both lead the basin breach and beat the free theta-distance baseline, at >=80% of (seed, sigma) cells, under every criterion whose null false-alarm rate is <= 0.2",
+  "refute_if": "kappa_eff fails to both lead the basin breach and beat the free theta-distance baseline, at >=80% of (seed, sigma, mode) cells, under every (criterion, smoothing window) whose null false-alarm rate is <= 0.2; AND smoothing fails to reduce the median null false-alarm rate as the window widens",
   "tier": 2,
-  "runtime_estimate_s": 600,
+  "runtime_estimate_s": 700,
   "depends_on": [
     "simulation.environment",
     "addon_thermodynamic_control.stability"
@@ -94,5 +99,10 @@
   "grading": {
     "max_null_false_alarm_rate": 0.2,
     "cell_fraction_gate": 0.8
+  },
+  "smoothing": {
+    "kind": "causal_rolling_median",
+    "applied_to": "all signals, including the theta_dist baseline",
+    "comment": "Window 1 is no smoothing and reproduces the previous run exactly, so it serves as the in-run control. Smoothing is applied to EVERY signal, not just kappa_eff -- smoothing the candidate while leaving the baseline raw would hand kappa_eff an advantage that has nothing to do with the claim. Warm-up statistics are computed on the smoothed series too, so thresholds and alarms live in the same space."
   }
 }

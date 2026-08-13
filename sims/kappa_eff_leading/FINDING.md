@@ -1,19 +1,24 @@
-# FINDING — IP-18: κ_eff does not earn its cost, and the adversarial case is worse
+# FINDING — IP-18: κ_eff's problem is not noise, and smoothing proves it
 
-Run 2026-08-13T2033Z · 5 seeds × 3 drift rates × **2 drift modes** (30 drift runs, 27
-usable) + 5 null runs × 60 steps · 7 criteria × 3 signals · ~71 s · graded by `run.py`
-against `REFUTE.md`. Null arm: 0/5 breached, so the null is valid.
+Run 2026-08-13T2041Z · 5 seeds × 3 drift rates × 2 drift modes (30 drift runs, 27 usable)
++ 5 null runs × 60 steps · 7 criteria × **3 smoothing windows** = 21 combinations × 3
+signals · ~68 s · graded by `run.py` against `REFUTE.md`. Null arm: 0/5 breached, so the
+null is valid.
 
-## Verdict: REFUTED
+## Verdict: REFUTED, across three successive attempts to rescue it
 
-An earlier run with the isotropic arm alone returned INCONCLUSIVE — 25% of cells, sitting
-between the 20% and 80% gates. Adding the adversarial arm (drift along the top eigenvector
-of the safety Hessian, the case κ_eff exists to catch) moved it to REFUTED: under the only
-criterion that survived the null arm, κ_eff both led the breach and beat the free baseline
-in **19% of cells**, at or below the 20% refutation gate.
+| run | arms | verdict |
+|---|---|---|
+| 1 | isotropic drift only | INCONCLUSIVE — 25% of cells, between the gates |
+| 2 | + adversarial drift | **REFUTED** — 19%, at the gate; adversarial *worse* than isotropic |
+| 3 | + causal median smoothing (w ∈ {1,3,5}) | **REFUTED** — no window rescues it |
+
+Each round added the fairest remaining test rather than repeating the last one, and each
+was pre-registered before it ran. The escape hatches are now spent.
 
 **The adversarial case is the worse one for κ_eff, not the better one** — 13% of 15 cells
-under adversarial drift against 25% of 12 under isotropic, on that same criterion.
+under adversarial drift against 25% of 12 under isotropic, on the only criterion that
+survived the null arm at window 1.
 
 ## The criterion sweep is the result
 
@@ -36,6 +41,41 @@ Theory A. With the null arm, it is worthless.
 That is precisely the failure `HARNESS.md` retrofit queue item 3 records for the previous
 version of this test — "verdict flipped on criterion choice" — reproduced here in a single
 table instead of across two write-ups.
+
+## The smoothing arm: C1 passed, C2 failed, and that combination is the answer
+
+The previous round's defence was that κ_eff's peak varied by an order of magnitude across
+seeds at identical σ and mode, so the failure looked like noise rather than absence of
+signal. Smoothing is the cheapest fix for a noise problem. Both conditions were
+pre-committed in `REFUTE.md` before the run.
+
+**C1 — does smoothing reduce false alarms? Yes.** Median null FP for κ_eff falls
+**0.60 → 0.40 → 0.40** across windows 1, 3, 5. Smoothing does exactly what it is for.
+
+**C2 — does that rescue Theory A? No.** Four (criterion, window) combinations became
+viable, and none supported Theory A at anywhere near the 80% gate:
+
+| combination | null FP (κ_eff) | supports A | isotropic | adversarial |
+|---|---|---|---|---|
+| ratio_3.0 @ w=1 | 0.20 | 19% | 25% | 13% |
+| ratio_3.0 @ w=3 | 0.20 | **4%** | 8% | 0% |
+| ratio_2.0 @ w=5 | 0.20 | 11% | 17% | 7% |
+| ratio_3.0 @ w=5 | 0.20 | 7% | 17% | 0% |
+
+**The mechanism is a one-for-one trade.** Follow `ratio_2.0` down the windows: FP falls
+0.80 → 0.40 → 0.20 while supports_A falls 33% → 22% → 11%. Smoothing buys quiet by giving
+up exactly as much lead. And `ratio_3.0` is worse than that — its FP was already at the
+gate and never moved, while smoothing cut supports_A from 19% to 4%. There, smoothing was
+pure loss.
+
+The trend criteria show the same thing from the other side: under smoothing, `tau_w8_0.3`
+detects *more* (63% → 81% → 78%) and still fires on **every** quiet run at every window
+(FP = 1.00). Smoothing makes it fire more reliably on everything, including nothing.
+
+**What this settles.** If κ_eff carried a real leading signal buried in noise, smoothing
+would separate them — false alarms would fall faster than lead. They fall together.
+At this model scale, under both drift modes, there is no window at which κ_eff is a
+usable leading indicator, and "it's just noisy" is no longer an available explanation.
 
 ## What this says about κ_eff
 
@@ -112,15 +152,21 @@ the phase logic should stop advertising a κ threshold it never reaches.
 
 ## What would settle it
 
-The adversarial arm was the fairest remaining test of the drift direction, and it has now
-been run. What is left is about the signal's noise:
+Both cheap rescues have now been tried and both failed on their own pre-registered terms:
+adversarial drift (the direction κ_eff exists to catch) made it worse, and smoothing traded
+lead for quiet one-for-one. What remains is not a tweak to the measurement.
 
-1. **Smooth κ_eff before thresholding.** The order-of-magnitude seed-to-seed spread in
-   peak κ_eff, at identical σ and mode, is the direct cause of the refutation. A rolling
-   median over 3–5 steps, pre-committed, is the cheapest change that could bring κ_eff's
-   false-alarm rate down toward the baseline's. If it does not, the signal is noise at
-   this scale.
+1. **Larger models.** The Rayleigh quotient of an ~8k-parameter safety Hessian may simply
+   be dominated by sampling noise at this size. This is now the *only* live explanation
+   that preserves the claim, and it is a real one — but it is also the expensive one, and
+   nothing in this result transfers upward on its own. Anyone relying on κ_eff at scale
+   should treat that as an open question rather than an established property.
 2. **Scale-relative `C_bound`**, calibrated against observed κ_eff rather than a fixed
-   20.0 that nothing approaches.
-3. **Larger models.** The Rayleigh quotient of an ~8k-parameter safety Hessian may be
-   dominated by sampling noise. This result does not transfer upward on its own.
+   20.0 that nothing approaches. This is worth doing regardless of the leading-indicator
+   question, because the phase classifier currently advertises a threshold it never
+   reaches.
+3. **Retire or re-scope the claim in the code.** `stability.py` line 32 asserts "Spike in
+   kappa_eff precedes behavioral collapse" as documentation, and
+   `experiment_stability.py` check 3 reports a lead that its own construction cannot make
+   positive. Whatever happens at larger scale, those two statements are not supported by
+   anything measured here and should say so.

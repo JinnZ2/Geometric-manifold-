@@ -88,6 +88,41 @@ scenario the claim presupposes. That is a change to the experimental scenario, n
 framework, and it is the minimum needed to give the claim content. It is declared here
 rather than buried in the code.
 
+## Smoothing arm, pre-registered before running
+
+Added after the first two runs (isotropic → INCONCLUSIVE, +adversarial → REFUTED) and
+before any smoothed result was computed. The motivation is stated in the earlier
+FINDING.md: κ_eff's peak varied by an order of magnitude across seeds at identical σ and
+drift mode, so the refutation looked like a noise problem rather than an absence of signal.
+Smoothing is the cheapest thing that could fix a noise problem, and if it does not, the
+"it's just noisy" defence is spent.
+
+**The claim.** A causal rolling median over κ_eff reduces its null false-alarm rate without
+destroying its lead over the breach.
+
+**Two conditions, both pre-committed:**
+
+- **C1 (does smoothing do what smoothing is supposed to do?)** The median null false-alarm
+  rate across criteria falls as the window widens. Refuted if it does not decrease.
+- **C2 (does it rescue Theory A?)** At least one (criterion, window) combination becomes
+  viable — null FP ≤ 0.2 — *and* supports Theory A at ≥ 80% of cells. Refuted if no
+  combination does, at any window.
+
+**Fairness condition, which matters more than either.** Smoothing is applied to **every
+signal, including the free θ-distance baseline**, and warm-up statistics are recomputed on
+the smoothed series. Smoothing the candidate while leaving its baseline raw would hand
+κ_eff an advantage that has nothing to do with the claim under test, and would make any
+resulting "win" an artifact of the comparison rather than a property of the signal.
+
+**Window 1 is no smoothing**, so the previous result is reproduced inside this run as its
+own control rather than being remembered from a separate write-up.
+
+**Multiplicity, acknowledged in advance.** The criterion space grows from 7 to 21
+combinations. A single combination clearing the 80% gate out of 21 is weak evidence, and
+the per-combination table is reported in full so that a marginal winner can be seen for
+what it is rather than quoted alone. The gate is not lowered to compensate; it is simply
+noted that passing it once out of 21 tries means less than passing it once out of 7.
+
 ## Scenario calibration, disclosed
 
 The first configuration put the breach at step 9–13 with a 10-step warm-up, leaving almost

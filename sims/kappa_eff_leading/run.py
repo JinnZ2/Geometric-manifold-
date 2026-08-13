@@ -138,6 +138,21 @@ def run_trajectory(seed: int, sigma: float, mode: str, cfg: dict) -> dict:
 # causal alarm criteria
 # ---------------------------------------------------------------------------
 
+def smooth_causal_median(values: list[float], window: int) -> list[float]:
+    """Trailing rolling median. Uses only past and present, never future.
+
+    Window 1 returns the series unchanged, which makes "no smoothing" an ordinary
+    point in the sweep rather than a separate code path.
+    """
+    if window <= 1:
+        return list(values)
+    out = []
+    for t in range(len(values)):
+        seg = sorted(values[max(0, t - window + 1):t + 1])
+        out.append(seg[len(seg) // 2])
+    return out
+
+
 def alarm_step(values: list[float], crit: dict, warmup: int) -> int | None:
     """First step after warm-up at which the criterion fires, using only past data."""
     base = values[:warmup]
@@ -184,8 +199,9 @@ def main(argv: list[str] | None = None) -> int:
     seeds = list(cfg["seeds"])
     sigmas = list(cfg["sweeps"]["drift_sigma"])
     modes = list(cfg["sweeps"]["drift_mode"])
+    windows = list(cfg["sweeps"]["smoothing_window"])
     if args.quick:
-        seeds, sigmas = seeds[:2], sigmas[1:2]
+        seeds, sigmas, windows = seeds[:2], sigmas[1:2], windows[:2]
         cfg["scenario"] = {**cfg["scenario"], "steps": 20}
 
     warmup = cfg["scenario"]["warmup"]
@@ -221,10 +237,16 @@ def main(argv: list[str] | None = None) -> int:
               if r["breach_step"] is not None and r["breach_step"] > warmup]
 
     per_criterion = []
-    for crit in cfg["criteria"]:
+    for win in windows:
+      for crit in cfg["criteria"]:
+        # Smoothing is applied to every signal, baseline included; smoothing the
+        # candidate alone would be an unfair comparison rather than a measurement.
+        def sm(series):
+            return smooth_causal_median(series, win)
+
         fp = {}
         for sig in signals:
-            fired = sum(alarm_step(r["series"][sig], crit, warmup) is not None
+            fired = sum(alarm_step(sm(r["series"][sig]), crit, warmup) is not None
                         for r in null_runs)
             fp[sig] = fired / len(null_runs)
         viable = fp["kappa_eff"] <= max_fp and fp[baseline_sig] <= max_fp
@@ -235,7 +257,7 @@ def main(argv: list[str] | None = None) -> int:
             rec = {"seed": r["seed"], "sigma": r["sigma"], "mode": r["mode"],
                    "breach_step": b}
             for sig in signals:
-                a = alarm_step(r["series"][sig], crit, warmup)
+                a = alarm_step(sm(r["series"][sig]), crit, warmup)
                 rec[f"alarm_{sig}"] = a
                 rec[f"lead_{sig}"] = (b - a) if a is not None else None
             lk, lb = rec["lead_kappa_eff"], rec[f"lead_{baseline_sig}"]
@@ -258,7 +280,7 @@ def main(argv: list[str] | None = None) -> int:
                 "frac_supports_A": (sum(c["cell_supports_A"] for c in sub) / len(sub)) if sub else 0.0,
             }
         per_criterion.append({
-            "criterion": crit["id"], "spec": crit,
+            "criterion": crit["id"], "spec": crit, "smoothing_window": win,
             "null_false_alarm": fp, "viable": viable,
             "frac_cells_kappa_leads": frac_lead,
             "frac_cells_support_theory_A": frac_A,
@@ -271,9 +293,19 @@ def main(argv: list[str] | None = None) -> int:
         modes_txt = "  ".join(
             f"{md[:5]}: leads {by_mode[md]['frac_kappa_leads']:.0%}/A "
             f"{by_mode[md]['frac_supports_A']:.0%}" for md in modes)
-        print(f"  {crit['id']:<12} viable={str(viable):<5} "
+        print(f"  w={win} {crit['id']:<12} viable={str(viable):<5} "
               f"FP(k)={fp['kappa_eff']:.2f} FP(th)={fp[baseline_sig]:.2f}  "
               f"all: leads {frac_lead:.0%}/A {frac_A:.0%}   {modes_txt}")
+
+    # C1: does smoothing do what smoothing is for? Median null FP per window.
+    fp_by_window = {}
+    for win in windows:
+        sub = [p["null_false_alarm"]["kappa_eff"] for p in per_criterion
+               if p["smoothing_window"] == win]
+        srt = sorted(sub)
+        fp_by_window[str(win)] = srt[len(srt) // 2] if srt else None
+    ordered = [fp_by_window[str(w)] for w in windows]
+    c1_fp_falls = all(b <= a for a, b in zip(ordered, ordered[1:])) and ordered[-1] < ordered[0]
 
     viable_crits = [p for p in per_criterion if p["viable"]]
     if not usable:
@@ -286,9 +318,11 @@ def main(argv: list[str] | None = None) -> int:
         reason = (f"no criterion kept its null false-alarm rate at or below {max_fp}; "
                   "nothing is left to grade")
     elif any(p["supports_A"] for p in viable_crits):
-        winners = [p["criterion"] for p in viable_crits if p["supports_A"]]
+        winners = [f"{p['criterion']}@w{p['smoothing_window']}"
+                   for p in viable_crits if p["supports_A"]]
         verdict = "SUPPORTED"
-        reason = f"Theory A holds under viable criteria: {', '.join(winners)}"
+        reason = (f"Theory A holds under viable criteria: {', '.join(winners)} "
+                  f"({len(winners)} of {len(per_criterion)} combinations tried)")
     elif all(p["frac_cells_support_theory_A"] <= (1 - gate) for p in viable_crits):
         verdict = "REFUTED"
         reason = (f"Theory B: under all {len(viable_crits)} viable criteria, kappa_eff "
@@ -300,15 +334,18 @@ def main(argv: list[str] | None = None) -> int:
 
     metrics = {
         "name": cfg["name"], "config_hash": config_hash, "quick_mode": bool(args.quick),
-        "seeds": seeds, "sigmas": sigmas, "modes": modes,
+        "seeds": seeds, "sigmas": sigmas, "modes": modes, "windows": windows,
         "n_usable_cells": len(usable), "n_drift_runs": len(drift_runs),
         "null_arm": {"n_runs": len(null_runs), "n_breached": n_null_breached,
                      "breach_steps": [r["breach_step"] for r in null_runs]},
         "breach_steps": [{"seed": r["seed"], "sigma": r["sigma"], "mode": r["mode"],
                           "breach_step": r["breach_step"]} for r in drift_runs],
         "per_criterion": per_criterion,
+        "smoothing_c1": {"median_null_fp_kappa_by_window": fp_by_window,
+                         "falls_with_window": c1_fp_falls},
         "grading": {"verdict": verdict, "reason": reason,
-                    "n_viable_criteria": len(viable_crits)},
+                    "n_viable_criteria": len(viable_crits),
+                    "n_combinations": len(per_criterion)},
     }
     metrics_hash = sha256_str(canonical(metrics))
 
@@ -324,20 +361,24 @@ def main(argv: list[str] | None = None) -> int:
         "- A: kappa_eff alarms before the basin breach AND beats the free theta-distance baseline.",
         "- B: coincident/lagging, or no better than free.", "",
         "## Criterion sweep (the point of this sim)", "",
-        "| criterion | null FP (kappa) | null FP (theta) | viable | kappa leads | supports A | mean lead kappa | mean lead theta |",
-        "|---|---|---|---|---|---|---|---|",
+        "| w | criterion | null FP (kappa) | null FP (theta) | viable | kappa leads | supports A | mean lead kappa | mean lead theta |",
+        "|---|---|---|---|---|---|---|---|---|",
     ]
     for p in per_criterion:
         mk = p["mean_lead_kappa"]
         mb = p["mean_lead_baseline"]
         lines.append(
-            f"| {p['criterion']} | {p['null_false_alarm']['kappa_eff']:.2f} "
+            f"| {p['smoothing_window']} | {p['criterion']} "
+            f"| {p['null_false_alarm']['kappa_eff']:.2f} "
             f"| {p['null_false_alarm'][baseline_sig]:.2f} | {p['viable']} "
             f"| {p['frac_cells_kappa_leads']:.0%} | {p['frac_cells_support_theory_A']:.0%} "
             f"| {'n/a' if mk is None else f'{mk:.1f}'} "
             f"| {'n/a' if mb is None else f'{mb:.1f}'} |"
         )
     lines += [
+        "", "## C1: median null FP for kappa_eff by smoothing window", "",
+        "  " + " · ".join(f"w={w}: {fp_by_window[str(w)]:.2f}" for w in windows),
+        f"  falls with window: {c1_fp_falls}",
         "", f"Usable cells: {len(usable)}/{len(drift_runs)} · "
         f"null runs breaching: {n_null_breached}/{len(null_runs)} (must be 0)",
         "", "Generated by run.py; do not edit.",
@@ -351,12 +392,17 @@ def main(argv: list[str] | None = None) -> int:
         "refute_if": cfg["refute_if"], "verdict": verdict, "reason": reason,
         "metrics_hash": metrics_hash, "config_hash": config_hash,
         "seeds": len(seeds), "null_model": cfg["null_model"],
-        "n_viable_criteria": len(viable_crits), "n_criteria_swept": len(cfg["criteria"]),
+        "n_viable_criteria": len(viable_crits),
+        "n_combinations_swept": len(per_criterion),
+        "smoothing_reduces_false_alarms": c1_fp_falls,
         "exploratory": bool(args.quick), "recorded_at": stamp,
     }
     (outdir / "ledger_entry.jsonl").write_text(canonical(ledger) + "\n", encoding="utf-8")
 
-    print(f"\n[ip18] VERDICT: {verdict} — {reason}")
+    print("\n[ip18] C1 median null FP(kappa) by window: " +
+          ", ".join(f"w={w}:{fp_by_window[str(w)]:.2f}" for w in windows) +
+          f"  falls={c1_fp_falls}")
+    print(f"[ip18] VERDICT: {verdict} — {reason}")
     print(f"[ip18] results -> {outdir}")
     return 0
 
