@@ -160,3 +160,53 @@ That makes the constructive version concrete, and testable in the same harness:
 
 None of these is the current code, and any of them would be a fair test of what the sign
 was reaching for.
+
+---
+
+## Addendum 2: is this being read in too few dimensions?
+
+A fair challenge, and aimed at the method rather than the code: every verdict above was
+read off `KL(t)`, one scalar summarising a 3152-dimensional trajectory. `sims/dark_constraint/`
+established that a low-dimensional observable can absorb a cause entirely, so the same
+worry applies here — a scalar that rises monotonically could hide a return happening in
+some orthogonal subspace.
+
+**Measured.** Displacement snapshots along the trajectory, Gram matrix, participation ratio
+as effective rank. Three seeds per cell:
+
+| arm | drift | effective rank | variance in top direction |
+|---|---|---|---|
+| minus | 0.1 | 1.01 | 0.9936 |
+| minus | 0.3 | 1.01 | 0.9939 |
+| minus | 0.8 | 1.00 | 0.9978 |
+| plus | 0.1 | 1.04 | 0.9808 |
+| plus | 0.3 | 1.06 | 0.9700 |
+| plus | 0.8 | 1.08 | 0.9638 |
+
+**Effective rank ≈ 1 out of 3152.** Over 99% of the trajectory's variance lies in a single
+direction, for both signs at every drift level. There is no orthogonal subspace for a
+return to hide in, because there is essentially no orthogonal motion. The scalar was a
+faithful description, and the verdict stands.
+
+But the check was worth running, because it changes two things.
+
+**It makes one of the proposed fixes a near no-op.** Addendum 1 offered "ascend along one
+mode only, descend the rest — an actual saddle rather than an inverted bowl." The dynamics
+*already* select a single mode: repeated gradient steps align with the dominant
+eigendirection, exactly as power iteration does. Restricting the ascent to one mode would
+change little, because the realized path is already one-dimensional. **The intervention
+that matters is the return/acceptance step, not the mode restriction.**
+
+**It partially rehabilitates the imaginary-number reading.** Addendum 1 dismissed it partly
+on the grounds that "an instanton saddle has exactly one negative mode, and the code flips
+every direction — an inverted potential, not a saddle." That is true of the *objective* and
+false of the *trajectory*: the realized escape has precisely the single-unstable-direction
+character an instanton has. The analogy was closer than that refutation allowed. What it
+lacks is only the return — which is the same conclusion, reached with one fewer bad reason.
+
+**A by-product relevant to Q1.** `kappa_eff = θ̇ᵀHθ̇ / θ̇ᵀθ̇` is a Rayleigh quotient along the
+flow direction, and the flow direction is rank-1 aligned. So κ_eff is not measuring general
+curvature; it is approximating the top eigenvalue of the safety Hessian along whichever
+mode the optimizer has locked onto. That is a sharper characterisation than
+`DOMAIN_PHYSICS.md` §5 gave, and it holds for both signs, since both arms collapse to a
+dominant direction. It belongs in the Q1 write-up when that experiment runs.
