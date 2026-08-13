@@ -453,7 +453,7 @@ def derive_falsification(topic: str, abstract: str) -> str:
 
 
 def stage_claim(new_findings: list[Finding], tree: DependencyTree,
-                unknown_path: Path) -> tuple[list[Claim], int]:
+                unknown_path: Path, config_hash: str = "") -> tuple[list[Claim], int]:
     """Convert findings to claims; route unfalsifiable to the unknown journal."""
     made: list[Claim] = []
     unknowns: list[dict[str, Any]] = []
@@ -468,7 +468,8 @@ def stage_claim(new_findings: list[Finding], tree: DependencyTree,
             continue
         claim = Claim(text=text, falsification=falsification,
                       logical_form="abs_diff_lt" if "Numeric check" in falsification else "",
-                      scope={"topic": f.topic, "source": f.source},
+                      scope={"topic": f.topic, "source": f.source,
+                             "config_hash": config_hash},
                       reference_class=f"{f.topic} / {f.source} findings",
                       id=f.id, source_url=f.url)
         tree.add_claim(claim)
@@ -788,6 +789,8 @@ def main(argv: list[str] | None = None) -> int:
     hidden_path = data_dir / "hidden_variables.jsonl"
     reform_path = data_dir / "reformulations.jsonl"
 
+    cfg_text = Path(args.config).read_text(encoding="utf-8")
+    config_hash = hashlib.sha256(cfg_text.encode("utf-8")).hexdigest()[:16]
     topics = load_config(Path(args.config))
     log(f"config: {len(topics)} topics")
 
@@ -801,7 +804,7 @@ def main(argv: list[str] | None = None) -> int:
 
     # 3. claim
     tree = load_tree(tree_path)
-    made, unknown_count = stage_claim(new_findings, tree, unknown_path)
+    made, unknown_count = stage_claim(new_findings, tree, unknown_path, config_hash)
     log(f"[claim] {len(made)} staked, {unknown_count} -> unknown journal")
 
     # 4. test
@@ -820,6 +823,13 @@ def main(argv: list[str] | None = None) -> int:
     log(f"[hidden] {len(suggestions)} suggestions")
 
     # 7. consolidate
+    # Claims retrieved under an older config are still counted as "surviving" even when
+    # the query that found them has since been corrected. The tree has no retirement
+    # mechanism, so the count is reported rather than silently carried.
+    stale = sum(1 for c in tree.claims.values()
+                if c.scope.get("config_hash", "") not in ("", config_hash))
+    unstamped = sum(1 for c in tree.claims.values() if not c.scope.get("config_hash"))
+
     cons = stage_consolidate(tree, topics, unknown_path, hidden_path,
                              Path(args.hypotheses_dir),
                              data_dir / "announced_topics.json")
@@ -829,6 +839,8 @@ def main(argv: list[str] | None = None) -> int:
         "topics": len(topics), "raw_findings": len(findings),
         "new_findings": len(new_findings), "duplicates_skipped": skipped,
         "claims_staked": len(made), "routed_to_unknown": unknown_count,
+        "claims_from_superseded_config": stale,
+        "claims_predating_provenance": unstamped,
         **{f"test_{k}": v for k, v in test_stats.items()},
         **{f"modify_{k}": v for k, v in mod_stats.items()},
         "hidden_variable_suggestions": suggestions,
