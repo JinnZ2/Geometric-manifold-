@@ -1,0 +1,44 @@
+# Hypothesis draft: model collapse, variance suppression and recursive training
+
+_Regenerated 2026-08-13T21:55:10+00:00 by hypothesis_engine.py — do not hand-edit._
+
+## Hypothesis statement
+
+Across corroborated findings, the following claims survived staked testing (beta_confidence >= 0.7 or status=survived):
+
+> On topic model collapse, variance suppression and recursive training, CollapseTracker: An Empirical Dataset Documenting Progressive Model Collapse Across Recursive Generations of Synthetic Training Data reports: Model collapse-the progressive degradation of model quality when recursively trained on synthetic data-has emerged as a critical concern for the sustainability of AI development.
+
+Status: **NEW HYPOTHESIS** (16 surviving claims)
+
+## Supporting claims
+
+- (0.86) On topic model collapse, variance suppression and recursive training, Critical slowing down at the neuromuscular junction: an early-warning framework for amyotrophic lateral sclerosis reports: Abstract
+                
+                  Objective. — [source](https://doi.org/10.21203/rs.3.rs-10642034/v1)
+- (0.83) On topic model collapse, variance suppression and recursive training, When Tails Are Heavy: The Benefits of Variance-Targeted, Non-Gaussian, Quasi-Maximum Likelihood Estimation of GARCH Models reports: In heavy-tailed cases, variance targeting the Student's-t estimator proposed in Bollerslev (1987) for the linear GARCH model is shown to be robust to density misspecification, just like the popular Quasi-Maximum Likelihood Estimator (QMLE). — [source](https://doi.org/10.17016/feds.2025.075)
+- (0.83) On topic model collapse, variance suppression and recursive training, Wealth Thermalization Phase Transition Early-Warning Signals of Critical Slowing Down: Theory, Quantification, and an Actionable Dashboard-An Econophysics Perspective reports: The extreme inequality of wealth distribution has become a core manifestation of global systemic risk. — [source](https://doi.org/10.2139/ssrn.6652299)
+- (0.83) On topic model collapse, variance suppression and recursive training, Limits of using early warning signals for preventing tipping reports: Tipping (or sudden transition) from a desirable state to an undesirable one can result in catastrophic changes, affecting natural environments, human societies, and economies. — [source](https://doi.org/10.52843/cassyni.b93kgq)
+- (0.80) On topic model collapse, variance suppression and recursive training, CollapseTracker: An Empirical Dataset Documenting Progressive Model Collapse Across Recursive Generations of Synthetic Training Data reports: Model collapse-the progressive degradation of model quality when recursively trained on synthetic data-has emerged as a critical concern for the sustainability of AI development. — [source](https://doi.org/10.2139/ssrn.6560303)
+- (0.80) On topic model collapse, variance suppression and recursive training, Self-Verification Provably Prevents Model Collapse in Recursive Synthetic Training reports: (no abstract) — [source](https://doi.org/10.52202/085713-1213)
+- (0.80) On topic model collapse, variance suppression and recursive training, Preventing Model Collapse when Training LLMs with Synthetic Data reports: (no abstract) — [source](https://doi.org/10.1109/cdc57313.2025.11312306)
+- (0.80) On topic model collapse, variance suppression and recursive training, Epistemic Collapse and the Rise of Synthetic Data: Safeguarding AI Training Corpora in the Post-Reality Age reports: (no abstract) — [source](https://doi.org/10.2139/ssrn.5312051)
+- (0.75) On topic model collapse, variance suppression and recursive training, Osmotic Recursion and the Collapse Threshold: A Recursive Collapse Model of Mitosis and Cellular Division reports: This paper proposes that mitosis and cellular division reflect a recursive saturation threshold within symbolic-energetic systems. — [source](https://doi.org/10.31219/osf.io/et6hm_v1)
+- (0.75) On topic model collapse, variance suppression and recursive training, Finite-depth scaling and an exact Bernoulli-leaf identity for the min-plus process on the binary tree reports: The min-plus process is a stochastic coagulation-annihilation-type process on the binary tree, of interest in mathematics, physics, and computer science as a tractable instance of max-type recursive distributional equations. — [source](http://arxiv.org/abs/2608.12295v1)
+- (0.75) On topic model collapse, variance suppression and recursive training, Measurement of the $\bar ν_μ-$Hydrogen Charged-Current Quasi-Elastic Cross Section using the NOvA Near Detector reports: We report a measurement of the total cross section for muon antineutrino charged-current quasi-elastic scattering on hydrogen, $\bar ν_μ{\rm H} \to μ^+ n$, in the NOvA near detector using a $1.2\times10^{21}$ proton-on-target exposure in the NuMI beam. — [source](http://arxiv.org/abs/2608.12293v1)
+- (0.75) On topic model collapse, variance suppression and recursive training, Large Language Model-Driven Small-Capitalization Trading: Integrating Financial News Sentiment, Macroeconomic Indicators, and Technical Signals reports: Large language models can extract richer signals from financial news than fixed sentiment lexicons, and recent work has explored feeding such signals into portfolio construction. — [source](http://arxiv.org/abs/2608.12283v1)
+- (0.75) On topic model collapse, variance suppression and recursive training, Critical Slowing Down Theory Gives Precursor Signals for Early Warning of Landslides reports: (no abstract) — [source](https://doi.org/10.2139/ssrn.4127850)
+- (0.71) On topic model collapse, variance suppression and recursive training, Critical slowing down theory provides early warning signals for sandstone failure reports: The critical point of rock mass transition from stable to unstable states is significant for the prevention and control of rock engineering hazards. — [source](https://doi.org/10.3389/feart.2022.934498)
+- (0.67) On topic model collapse, variance suppression and recursive training, When Tails Are Heavy: The Benefits of Variance-Targeted, Non-Gaussian, Quasi-Maximum Likelihood Estimation of GARCH Models reports: (no abstract) — [source](https://doi.org/10.2139/ssrn.5445994)
+- (0.67) On topic model collapse, variance suppression and recursive training, The Spatial Distribution of High-Growth Entrepreneurship: Generative Mechanisms of Heavy Tails reports: (no abstract) — [source](https://doi.org/10.5465/amproc.2025.18964abstract)
+
+## Contradicted/refuted claims
+
+- (none)
+
+## Hidden-variable suspects
+
+- `hidden:model collapse, variance suppression and recursive training vs exogenous:confidence_trend` r=1.0 conf=0.95
+
+## Open unknowns
+
+- (none)
