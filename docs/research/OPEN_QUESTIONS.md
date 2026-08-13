@@ -108,3 +108,31 @@ combination"). Both land on TETRA; they disagree on what would refute it.
 **Experiment:** none possible until the claim names one count. This is the one entry here
 that is blocked on a definition rather than on a measurement, and it should be resolved by
 whoever wrote the assignment, not by a sim picking whichever reading is convenient.
+
+
+---
+
+## Q7 — Does adding independent probes actually recover an unmodelled constraint?
+
+**Status: HALF ANSWERED, HALF UNTESTED — `sims/dark_constraint/`.**
+
+Prompted by the observation that dark matter is a kind of shadow shape: not a fault hiding
+inside an observable, but an unmodelled component inferred from the residual between what
+the visible model predicts and what is observed. Weak lensing is exactly that.
+
+**Established:** at K=1 load case the degeneracy is *exact*. The visible-only model fits a
+deformation partly caused by an unmodelled constraint to machine precision (residual
+≤ 1.5e-13) and reports visible residuals of 0.014–0.067 that are entirely fictitious — the
+true visible residuals are zero. The instrument does not fail to see; it confidently
+reports a wrong answer, with no goodness-of-fit warning. Any drill-down conclusion from a
+single observation is unfalsifiable in exactly this way.
+
+**Untested:** whether K ≥ 2 recovers it. A residual does appear at K ≥ 2 but does not scale
+with dark strength, and the null arm was degenerate — with zero dark and zero visible
+residuals the observed truth equals the baseline identically, so the null residual is a
+structural zero rather than a measured floor.
+
+**Experiment:** re-run with a null carrying non-zero *visible* residuals, so both arms
+exercise the fit and the floor reflects linearization and convergence error. Also bracket
+the amplitude at which K=1 absorption breaks down, and vary the dark constraint's location
+and kind.
