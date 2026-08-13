@@ -3,8 +3,8 @@
     {
       "text": "On topic loss-landscape geometry and basin stability, Emergent heavy fermion and superconductivity near Mott transition in twisted bilayer graphene reports: Near a bandwidth-tuned Mott transition, the Fermi velocity $v_F$ and quasiparticle residue $Z$ of a metal often vanish.",
       "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
-      "confidence": 0.6666666666666666,
-      "passed": 1,
+      "confidence": 0.75,
+      "passed": 2,
       "failed": 0,
       "logical_form": "",
       "scope": {
@@ -16,14 +16,14 @@
       "id": "3d3aced075d7c778e2d87795",
       "source_url": "http://arxiv.org/abs/2608.12319v1",
       "status_override": "",
-      "beta_confidence": 0.6666666666666666,
+      "beta_confidence": 0.75,
       "status": "active"
     },
     {
       "text": "On topic loss-landscape geometry and basin stability, StateFlow: Building, Evolving, and Accessing 3D World States for Previsualization reports: Previsualization is an intermediate layer between ideas and production in film, games, architecture, and urban design.",
       "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
-      "confidence": 0.6666666666666666,
-      "passed": 1,
+      "confidence": 0.75,
+      "passed": 2,
       "failed": 0,
       "logical_form": "",
       "scope": {
@@ -35,14 +35,14 @@
       "id": "752e4e65eb3bf68194518c86",
       "source_url": "http://arxiv.org/abs/2608.12314v1",
       "status_override": "",
-      "beta_confidence": 0.6666666666666666,
+      "beta_confidence": 0.75,
       "status": "active"
     },
     {
       "text": "On topic loss-landscape geometry and basin stability, AVA-Encoder: Towards Agent-Native Video Representation Learning reports: Creative agents still lack an effective way to learn from high-quality human films, limiting their ability to produce cinematic-grade videos.",
       "falsification": "Numeric check: an independent replication or reanalysis fails to reproduce the reported quantitative effect within a factor of 2.",
-      "confidence": 0.6666666666666666,
-      "passed": 1,
+      "confidence": 0.75,
+      "passed": 2,
       "failed": 0,
       "logical_form": "abs_diff_lt",
       "scope": {
@@ -54,14 +54,14 @@
       "id": "d2fdf09e62addb11ea128fea",
       "source_url": "http://arxiv.org/abs/2608.12313v1",
       "status_override": "",
-      "beta_confidence": 0.6666666666666666,
+      "beta_confidence": 0.75,
       "status": "active"
     },
     {
       "text": "On topic loss-landscape geometry and basin stability, Interface phases and dynamics in two-dimensional quantum magnets: A \"holographic\" approach from universality to quantum simulation reports: We introduce a framework to classify quantum phases, phase transitions, and non-equilibrium dynamics of interfaces separating ordered bulk domains in 2D quantum magnets - equivalently, confining strings in dual lattice gauge theories - based on effective 1D Hamiltonians governing geometric fluctuati",
       "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
-      "confidence": 0.75,
-      "passed": 2,
+      "confidence": 0.8333333333333334,
+      "passed": 4,
       "failed": 0,
       "logical_form": "",
       "scope": {
@@ -73,22 +73,25 @@
       "id": "cb368e4dc4bcacabf7729360",
       "source_url": "http://arxiv.org/abs/2608.12312v1",
       "status_override": "",
-      "beta_confidence": 0.75,
-      "status": "active"
+      "beta_confidence": 0.8333333333333334,
+      "status": "survived"
     },
     {
-      "text": "On topic loss-landscape geometry and basin stability, The Role Specialization Model (RSM): Coordinating LLM-Based Tools in Agentic Software Development - An Exploratory Case Study reports: The integration of large language models (LLMs) into software development workflows has given rise to a paradigm known as Agentic Software Engineering (SE 3.0), in which autonomous agents manage full development life cycles under human supervision.",
+      "text": "On topic loss-landscape geometry and basin stability, The Role Specialization Model (RSM): Coordinating LLM-Based Tools in Agentic Software Development - An Exploratory Case Study reports: The integration of large language models (LLMs) into software development workflows has given rise to a paradigm known as Agentic Software Engineering (SE 3.0), in which autonomous agents manage full development life cycles under human supervision. [restricted: narrower scope within loss-landscape geometry and basin stability (run 2026-08-13)]",
       "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
       "confidence": 0.5,
-      "passed": 1,
-      "failed": 1,
+      "passed": 0,
+      "failed": 0,
       "logical_form": "",
       "scope": {
         "topic": "loss-landscape geometry and basin stability",
-        "source": "arxiv"
+        "source": "arxiv",
+        "restrictions": [
+          "narrower scope within loss-landscape geometry and basin stability (run 2026-08-13)"
+        ]
       },
       "reference_class": "loss-landscape geometry and basin stability / arxiv findings",
-      "reformulation_count": 0,
+      "reformulation_count": 1,
       "id": "f6873668f5ed15b8cc61804e",
       "source_url": "http://arxiv.org/abs/2608.12311v1",
       "status_override": "",
@@ -97,25 +100,6 @@
     },
     {
       "text": "On topic loss-landscape geometry and basin stability, A Tighter Generalization Bound for Wide Gcn Based on Loss Landscape reports: (no abstract)",
-      "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
-      "confidence": 0.6666666666666666,
-      "passed": 1,
-      "failed": 0,
-      "logical_form": "",
-      "scope": {
-        "topic": "loss-landscape geometry and basin stability",
-        "source": "crossref"
-      },
-      "reference_class": "loss-landscape geometry and basin stability / crossref findings",
-      "reformulation_count": 0,
-      "id": "8346def819510699d4c5621a",
-      "source_url": "https://doi.org/10.2139/ssrn.4959758",
-      "status_override": "",
-      "beta_confidence": 0.6666666666666666,
-      "status": "active"
-    },
-    {
-      "text": "On topic loss-landscape geometry and basin stability, Connecting phases of matter to the flatness of the loss landscape in analog variational quantum algorithms reports: (no abstract)",
       "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
       "confidence": 0.75,
       "passed": 2,
@@ -127,11 +111,30 @@
       },
       "reference_class": "loss-landscape geometry and basin stability / crossref findings",
       "reformulation_count": 0,
-      "id": "6a39b1b6d50f7ec064e3722c",
-      "source_url": "https://doi.org/10.1038/s42005-026-02528-4",
+      "id": "8346def819510699d4c5621a",
+      "source_url": "https://doi.org/10.2139/ssrn.4959758",
       "status_override": "",
       "beta_confidence": 0.75,
       "status": "active"
+    },
+    {
+      "text": "On topic loss-landscape geometry and basin stability, Connecting phases of matter to the flatness of the loss landscape in analog variational quantum algorithms reports: (no abstract)",
+      "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
+      "confidence": 0.8333333333333334,
+      "passed": 4,
+      "failed": 0,
+      "logical_form": "",
+      "scope": {
+        "topic": "loss-landscape geometry and basin stability",
+        "source": "crossref"
+      },
+      "reference_class": "loss-landscape geometry and basin stability / crossref findings",
+      "reformulation_count": 0,
+      "id": "6a39b1b6d50f7ec064e3722c",
+      "source_url": "https://doi.org/10.1038/s42005-026-02528-4",
+      "status_override": "",
+      "beta_confidence": 0.8333333333333334,
+      "status": "survived"
     },
     {
       "text": "On topic loss-landscape geometry and basin stability, Numerical and experimental study of pore-scale flow curvature effects on flatness, blow-off, and stability loss of a burner-stabilized methane-air flame reports: This study investigates the effect of burner geometry, mixture composition, and Lewis number on the structure, stability, and properties of combustion fronts stabilized on flat porous burners, using a methane-air flame as an example.",
@@ -193,8 +196,8 @@
     {
       "text": "On topic loss-landscape geometry and basin stability, Completeness properties of the space of quasicontinuous functions reports: Quasicontinuous functions have found applications in many areas of mathematics.",
       "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
-      "confidence": 0.75,
-      "passed": 2,
+      "confidence": 0.8333333333333334,
+      "passed": 4,
       "failed": 0,
       "logical_form": "",
       "scope": {
@@ -206,14 +209,14 @@
       "id": "ccb055e03d858085aa0ef782",
       "source_url": "http://arxiv.org/abs/2608.12318v1",
       "status_override": "",
-      "beta_confidence": 0.75,
-      "status": "active"
+      "beta_confidence": 0.8333333333333334,
+      "status": "survived"
     },
     {
       "text": "On topic loss-landscape geometry and basin stability, Probing Impurity Quantum Criticality with Entanglement Witnesses reports: Entanglement is a defining feature of quantum mechanics, and its relation to quantum criticality is of considerable current interest.",
       "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
-      "confidence": 0.75,
-      "passed": 2,
+      "confidence": 0.8333333333333334,
+      "passed": 4,
       "failed": 0,
       "logical_form": "",
       "scope": {
@@ -225,14 +228,14 @@
       "id": "3b809fcab915d9a1a25a8ee0",
       "source_url": "http://arxiv.org/abs/2608.12317v1",
       "status_override": "",
-      "beta_confidence": 0.75,
-      "status": "active"
+      "beta_confidence": 0.8333333333333334,
+      "status": "survived"
     },
     {
       "text": "On topic loss-landscape geometry and basin stability, A contiguity approach to replica symmetric marginals reports: We develop a probabilistic cavity-contiguity framework for proving replica-symmetric convergence of local marginals in mean-field Gibbs systems.",
       "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
-      "confidence": 0.6666666666666666,
-      "passed": 1,
+      "confidence": 0.75,
+      "passed": 2,
       "failed": 0,
       "logical_form": "",
       "scope": {
@@ -244,14 +247,14 @@
       "id": "0ae91fd246fb7f4567e04960",
       "source_url": "http://arxiv.org/abs/2608.12309v1",
       "status_override": "",
-      "beta_confidence": 0.6666666666666666,
+      "beta_confidence": 0.75,
       "status": "active"
     },
     {
       "text": "On topic loss-landscape geometry and basin stability, AI4AI at Test-Time: Strong-to-Weak Capability Transfer via Harnesses reports: Recent work on distillation transfers the capabilities of large models to smaller ones often by updating the latter's parameters, through teacher forcing, on-policy distillation, and related training-time methods.",
       "falsification": "Numeric check: an independent replication or reanalysis fails to reproduce the reported quantitative effect within a factor of 2.",
-      "confidence": 0.6666666666666666,
-      "passed": 1,
+      "confidence": 0.75,
+      "passed": 2,
       "failed": 0,
       "logical_form": "abs_diff_lt",
       "scope": {
@@ -263,22 +266,25 @@
       "id": "3550d10c2684894cfaec27b2",
       "source_url": "http://arxiv.org/abs/2608.12307v1",
       "status_override": "",
-      "beta_confidence": 0.6666666666666666,
+      "beta_confidence": 0.75,
       "status": "active"
     },
     {
-      "text": "On topic loss-landscape geometry and basin stability, A Novel Deep Neural Network Methodology for Fast Scattering-Parameter Extraction of Discretized Structures in Three-Dimensional Space reports: &lt;p&gt;Design and analysis for electromagnetic compatibility (EMC) often demands the use of full-wave electromagnetic (EM) field-solvers to extract scattering parameters (S-parameters) for systems that contain discontinuities throughout their printed circuit boards (PCBs) and substrate packages.",
+      "text": "On topic loss-landscape geometry and basin stability, A Novel Deep Neural Network Methodology for Fast Scattering-Parameter Extraction of Discretized Structures in Three-Dimensional Space reports: &lt;p&gt;Design and analysis for electromagnetic compatibility (EMC) often demands the use of full-wave electromagnetic (EM) field-solvers to extract scattering parameters (S-parameters) for systems that contain discontinuities throughout their printed circuit boards (PCBs) and substrate packages. [restricted: narrower scope within loss-landscape geometry and basin stability (run 2026-08-13)]",
       "falsification": "Numeric check: an independent replication or reanalysis fails to reproduce the reported quantitative effect within a factor of 2.",
       "confidence": 0.5,
-      "passed": 1,
-      "failed": 1,
+      "passed": 0,
+      "failed": 0,
       "logical_form": "abs_diff_lt",
       "scope": {
         "topic": "loss-landscape geometry and basin stability",
-        "source": "crossref"
+        "source": "crossref",
+        "restrictions": [
+          "narrower scope within loss-landscape geometry and basin stability (run 2026-08-13)"
+        ]
       },
       "reference_class": "loss-landscape geometry and basin stability / crossref findings",
-      "reformulation_count": 0,
+      "reformulation_count": 1,
       "id": "0bc2343c14790fc932e338b8",
       "source_url": "https://doi.org/10.36227/techrxiv.22814807",
       "status_override": "",
@@ -286,18 +292,21 @@
       "status": "active"
     },
     {
-      "text": "On topic loss-landscape geometry and basin stability, A Novel Deep Neural Network Methodology for Fast Scattering-Parameter Extraction of Discretized Structures in Three-Dimensional Space reports: Design and analysis for electromagnetic compatibility (EMC) often\ndemands the use of full-wave electromagnetic (EM) field-solvers to\nextract scattering parameters (S-parameters) for systems that contain\ndiscontinuities throughout their printed circuit boards (PCBs) and\nsubstrate packages.",
+      "text": "On topic loss-landscape geometry and basin stability, A Novel Deep Neural Network Methodology for Fast Scattering-Parameter Extraction of Discretized Structures in Three-Dimensional Space reports: Design and analysis for electromagnetic compatibility (EMC) often\ndemands the use of full-wave electromagnetic (EM) field-solvers to\nextract scattering parameters (S-parameters) for systems that contain\ndiscontinuities throughout their printed circuit boards (PCBs) and\nsubstrate packages. [restricted: narrower scope within loss-landscape geometry and basin stability (run 2026-08-13)]",
       "falsification": "Numeric check: an independent replication or reanalysis fails to reproduce the reported quantitative effect within a factor of 2.",
       "confidence": 0.5,
-      "passed": 1,
-      "failed": 1,
+      "passed": 0,
+      "failed": 0,
       "logical_form": "abs_diff_lt",
       "scope": {
         "topic": "loss-landscape geometry and basin stability",
-        "source": "crossref"
+        "source": "crossref",
+        "restrictions": [
+          "narrower scope within loss-landscape geometry and basin stability (run 2026-08-13)"
+        ]
       },
       "reference_class": "loss-landscape geometry and basin stability / crossref findings",
-      "reformulation_count": 0,
+      "reformulation_count": 1,
       "id": "2d4ed420ae39aa2663816542",
       "source_url": "https://doi.org/10.36227/techrxiv.22814807.v1",
       "status_override": "",
@@ -305,7 +314,7 @@
       "status": "active"
     },
     {
-      "text": "On topic loss-landscape geometry and basin stability, Effects of Parameter Change on Neural Network and Deep Neural Network reports: Parameters in neural network such as number of neurons and layers have a direct effect on efficiency and accuracy of the network. [restricted: narrower scope within loss-landscape geometry and basin stability (run 2026-08-13)]",
+      "text": "On topic loss-landscape geometry and basin stability, Effects of Parameter Change on Neural Network and Deep Neural Network reports: Parameters in neural network such as number of neurons and layers have a direct effect on efficiency and accuracy of the network. [restricted: narrower scope within loss-landscape geometry and basin stability (run 2026-08-13)] [restricted: narrower scope within loss-landscape geometry and basin stability (run 2026-08-13)]",
       "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
       "confidence": 0.5,
       "passed": 0,
@@ -315,11 +324,12 @@
         "topic": "loss-landscape geometry and basin stability",
         "source": "crossref",
         "restrictions": [
+          "narrower scope within loss-landscape geometry and basin stability (run 2026-08-13)",
           "narrower scope within loss-landscape geometry and basin stability (run 2026-08-13)"
         ]
       },
       "reference_class": "loss-landscape geometry and basin stability / crossref findings",
-      "reformulation_count": 1,
+      "reformulation_count": 2,
       "id": "f38dec6ef8b2a4c36fb7ebc4",
       "source_url": "https://doi.org/10.32920/ryerson.14650011",
       "status_override": "",
@@ -327,7 +337,7 @@
       "status": "active"
     },
     {
-      "text": "On topic loss-landscape geometry and basin stability, Effects of Parameter Change on Neural Network and Deep Neural Network reports: Parameters in neural network such as number of neurons and layers have a direct effect on efficiency and accuracy of the network. [restricted: narrower scope within loss-landscape geometry and basin stability (run 2026-08-13)]",
+      "text": "On topic loss-landscape geometry and basin stability, Effects of Parameter Change on Neural Network and Deep Neural Network reports: Parameters in neural network such as number of neurons and layers have a direct effect on efficiency and accuracy of the network. [restricted: narrower scope within loss-landscape geometry and basin stability (run 2026-08-13)] [restricted: narrower scope within loss-landscape geometry and basin stability (run 2026-08-13)]",
       "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
       "confidence": 0.5,
       "passed": 0,
@@ -337,11 +347,12 @@
         "topic": "loss-landscape geometry and basin stability",
         "source": "crossref",
         "restrictions": [
+          "narrower scope within loss-landscape geometry and basin stability (run 2026-08-13)",
           "narrower scope within loss-landscape geometry and basin stability (run 2026-08-13)"
         ]
       },
       "reference_class": "loss-landscape geometry and basin stability / crossref findings",
-      "reformulation_count": 1,
+      "reformulation_count": 2,
       "id": "a04c592caa9b2c651d84c9e9",
       "source_url": "https://doi.org/10.32920/ryerson.14650011.v1",
       "status_override": "",
@@ -351,8 +362,8 @@
     {
       "text": "On topic loss-landscape geometry and basin stability, Review for \"Default mode network connectivity and treatment response in geriatric depression\" reports: (no abstract)",
       "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
-      "confidence": 0.6666666666666666,
-      "passed": 1,
+      "confidence": 0.75,
+      "passed": 2,
       "failed": 0,
       "logical_form": "",
       "scope": {
@@ -364,14 +375,14 @@
       "id": "2f9b07a2d9d8052932e39677",
       "source_url": "https://doi.org/10.1002/brb3.2475/v1/review2",
       "status_override": "",
-      "beta_confidence": 0.6666666666666666,
+      "beta_confidence": 0.75,
       "status": "active"
     },
     {
       "text": "On topic loss-landscape geometry and basin stability, Redistribution-based Cost Inference Improves Sparse Safe Offline RL reports: Safe offline RL typically assumes access to dense per-step cost annotations, but in practice supervisors provide only trajectory-level stop-feedback: a binary signal at the first unsafe transition, with no per-step attribution.",
       "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
-      "confidence": 0.6666666666666666,
-      "passed": 1,
+      "confidence": 0.75,
+      "passed": 2,
       "failed": 0,
       "logical_form": "",
       "scope": {
@@ -383,14 +394,14 @@
       "id": "0ad8ec791cc6ab8d1eb2f50f",
       "source_url": "http://arxiv.org/abs/2608.12306v1",
       "status_override": "",
-      "beta_confidence": 0.6666666666666666,
+      "beta_confidence": 0.75,
       "status": "active"
     },
     {
       "text": "On topic loss-landscape geometry and basin stability, Constructing Dynamic Master Logic Models as Knowledge Graphs for Complex System Diagnostics Using Retrieval-Augmented Large Language Models reports: Dynamic Master Logic (DML) provides a hierarchical framework for representing system behavior by linking functional objectives to underlying structural elements.",
       "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
-      "confidence": 0.6666666666666666,
-      "passed": 1,
+      "confidence": 0.75,
+      "passed": 2,
       "failed": 0,
       "logical_form": "",
       "scope": {
@@ -402,14 +413,14 @@
       "id": "49d4885ea458bf97afb270a6",
       "source_url": "http://arxiv.org/abs/2608.12304v1",
       "status_override": "",
-      "beta_confidence": 0.6666666666666666,
+      "beta_confidence": 0.75,
       "status": "active"
     },
     {
       "text": "On topic loss-landscape geometry and basin stability, A Framework for Designing Reward Functions: From Objectives to Features to Human-Aligned Reward Functions reports: We present a formal process to enable non-experts to instantiate and iterate on human-aligned reward functions, i.e.",
       "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
-      "confidence": 0.6666666666666666,
-      "passed": 1,
+      "confidence": 0.75,
+      "passed": 2,
       "failed": 0,
       "logical_form": "",
       "scope": {
@@ -421,14 +432,14 @@
       "id": "b7badbb3129cd3dcdf85282e",
       "source_url": "http://arxiv.org/abs/2608.12302v1",
       "status_override": "",
-      "beta_confidence": 0.6666666666666666,
+      "beta_confidence": 0.75,
       "status": "active"
     },
     {
       "text": "On topic loss-landscape geometry and basin stability, From Cluster Cores to the Low-Density Field: Strong Environmental Quenching of Galaxy Star Formation at Low Redshift reports: We investigate how galaxy star formation activity depends on environment using a sample of 81,647 SDSS galaxies selected over $0.03\\leq z\\leq0.075$ and $9.7\\leq\\log_{10}(M_\\star/h^{-2}M_\\odot)\\leq11.0$, including 18,426 members from 572 clusters in the \\texttt{GalWCat19} catalog.",
       "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
-      "confidence": 0.6666666666666666,
-      "passed": 1,
+      "confidence": 0.75,
+      "passed": 2,
       "failed": 0,
       "logical_form": "",
       "scope": {
@@ -440,14 +451,14 @@
       "id": "9d7e5111dd4d25c638f44e72",
       "source_url": "http://arxiv.org/abs/2608.12301v1",
       "status_override": "",
-      "beta_confidence": 0.6666666666666666,
+      "beta_confidence": 0.75,
       "status": "active"
     },
     {
       "text": "On topic loss-landscape geometry and basin stability, Class Activation Mapping in Explainable Computer Vision: A Method-Centered Review of CNN, Transformer, and Foundation-Model-Era Visual Explanations reports: Class activation mapping (CAM) is one of the most widely used visual explanation families in explainable artificial intelligence.",
       "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
-      "confidence": 0.6666666666666666,
-      "passed": 1,
+      "confidence": 0.75,
+      "passed": 2,
       "failed": 0,
       "logical_form": "",
       "scope": {
@@ -459,7 +470,7 @@
       "id": "5ff0d2128e6b318f5186ef19",
       "source_url": "http://arxiv.org/abs/2608.12299v1",
       "status_override": "",
-      "beta_confidence": 0.6666666666666666,
+      "beta_confidence": 0.75,
       "status": "active"
     },
     {
@@ -482,22 +493,25 @@
       "status": "survived"
     },
     {
-      "text": "On topic loss-landscape geometry and basin stability, Fine-tuning Semantic Vector Models in Trust Region reports: (no abstract)",
+      "text": "On topic loss-landscape geometry and basin stability, Fine-tuning Semantic Vector Models in Trust Region reports: (no abstract) [restricted: narrower scope within loss-landscape geometry and basin stability (run 2026-08-13)]",
       "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
-      "confidence": 0.6,
-      "passed": 2,
-      "failed": 1,
+      "confidence": 0.5,
+      "passed": 0,
+      "failed": 0,
       "logical_form": "",
       "scope": {
         "topic": "loss-landscape geometry and basin stability",
-        "source": "crossref"
+        "source": "crossref",
+        "restrictions": [
+          "narrower scope within loss-landscape geometry and basin stability (run 2026-08-13)"
+        ]
       },
       "reference_class": "loss-landscape geometry and basin stability / crossref findings",
-      "reformulation_count": 0,
+      "reformulation_count": 1,
       "id": "9aaef9700fc47818f33badb2",
       "source_url": "https://doi.org/10.1109/aemcse65292.2025.11042704",
       "status_override": "",
-      "beta_confidence": 0.6,
+      "beta_confidence": 0.5,
       "status": "active"
     },
     {
@@ -520,7 +534,7 @@
       "status": "survived"
     },
     {
-      "text": "On topic loss-landscape geometry and basin stability, An Accessibility Failure Mode of Constrained Fine-Tuning under Distribution Shift in Safe Robotic Reinforcement Learning reports: We identifyanaccessibilityfailuremodeinourevaluatedSAC-Value→M4.1constrained fine-tuning pipeline for safe contact-rich manipulation: underdistribution shift, policies can maintain low violation yet lose the ability toreach task-relevant interaction—not mere success-rate repartition. [restricted: narrower scope within loss-landscape geometry and basin stability (run 2026-08-13)]",
+      "text": "On topic loss-landscape geometry and basin stability, An Accessibility Failure Mode of Constrained Fine-Tuning under Distribution Shift in Safe Robotic Reinforcement Learning reports: We identifyanaccessibilityfailuremodeinourevaluatedSAC-Value→M4.1constrained fine-tuning pipeline for safe contact-rich manipulation: underdistribution shift, policies can maintain low violation yet lose the ability toreach task-relevant interaction—not mere success-rate repartition. [restricted: narrower scope within loss-landscape geometry and basin stability (run 2026-08-13)] [restricted: narrower scope within loss-landscape geometry and basin stability (run 2026-08-13)]",
       "falsification": "Numeric check: an independent replication or reanalysis fails to reproduce the reported quantitative effect within a factor of 2.",
       "confidence": 0.5,
       "passed": 0,
@@ -530,11 +544,12 @@
         "topic": "loss-landscape geometry and basin stability",
         "source": "crossref",
         "restrictions": [
+          "narrower scope within loss-landscape geometry and basin stability (run 2026-08-13)",
           "narrower scope within loss-landscape geometry and basin stability (run 2026-08-13)"
         ]
       },
       "reference_class": "loss-landscape geometry and basin stability / crossref findings",
-      "reformulation_count": 1,
+      "reformulation_count": 2,
       "id": "dfde76ee5d2b67e98a7762b4",
       "source_url": "https://doi.org/10.2139/ssrn.7067361",
       "status_override": "",
@@ -751,22 +766,25 @@
       "status": "survived"
     },
     {
-      "text": "On topic model collapse, variance suppression and recursive training, Osmotic Recursion and the Collapse Threshold: A Recursive Collapse Model of Mitosis and Cellular Division reports: This paper proposes that mitosis and cellular division reflect a recursive saturation threshold within symbolic-energetic systems.",
+      "text": "On topic model collapse, variance suppression and recursive training, Osmotic Recursion and the Collapse Threshold: A Recursive Collapse Model of Mitosis and Cellular Division reports: This paper proposes that mitosis and cellular division reflect a recursive saturation threshold within symbolic-energetic systems. [restricted: narrower scope within model collapse, variance suppression and recursive training (run 2026-08-13)]",
       "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
-      "confidence": 0.75,
-      "passed": 2,
+      "confidence": 0.5,
+      "passed": 0,
       "failed": 0,
       "logical_form": "",
       "scope": {
         "topic": "model collapse, variance suppression and recursive training",
-        "source": "crossref"
+        "source": "crossref",
+        "restrictions": [
+          "narrower scope within model collapse, variance suppression and recursive training (run 2026-08-13)"
+        ]
       },
       "reference_class": "model collapse, variance suppression and recursive training / crossref findings",
-      "reformulation_count": 0,
+      "reformulation_count": 1,
       "id": "a8c2f1384c72de705e3d6a63",
       "source_url": "https://doi.org/10.31219/osf.io/et6hm_v1",
       "status_override": "",
-      "beta_confidence": 0.75,
+      "beta_confidence": 0.5,
       "status": "active"
     },
     {
@@ -789,7 +807,7 @@
       "status": "survived"
     },
     {
-      "text": "On topic model collapse, variance suppression and recursive training, Heavy tails in GARCH residuals are not unmodelled slow variance reports: A fitted GARCH model leaves a standardized residual whose distribution must be assumed. [restricted: narrower scope within model collapse, variance suppression and recursive training (run 2026-08-13)]",
+      "text": "On topic model collapse, variance suppression and recursive training, Heavy tails in GARCH residuals are not unmodelled slow variance reports: A fitted GARCH model leaves a standardized residual whose distribution must be assumed. [restricted: narrower scope within model collapse, variance suppression and recursive training (run 2026-08-13)] [restricted: narrower scope within model collapse, variance suppression and recursive training (run 2026-08-13)]",
       "falsification": "Numeric check: an independent replication or reanalysis fails to reproduce the reported quantitative effect within a factor of 2.",
       "confidence": 0.5,
       "passed": 0,
@@ -799,11 +817,12 @@
         "topic": "model collapse, variance suppression and recursive training",
         "source": "crossref",
         "restrictions": [
+          "narrower scope within model collapse, variance suppression and recursive training (run 2026-08-13)",
           "narrower scope within model collapse, variance suppression and recursive training (run 2026-08-13)"
         ]
       },
       "reference_class": "model collapse, variance suppression and recursive training / crossref findings",
-      "reformulation_count": 1,
+      "reformulation_count": 2,
       "id": "9eea02a2df7e4f1a4870d182",
       "source_url": "https://doi.org/10.2139/ssrn.6962775",
       "status_override": "",
@@ -832,9 +851,9 @@
     {
       "text": "On topic model collapse, variance suppression and recursive training, Distribution tails of a history-dependent random linear recursion reports: (no abstract) [restricted: narrower scope within model collapse, variance suppression and recursive training (run 2026-08-13)]",
       "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
-      "confidence": 0.5,
-      "passed": 0,
-      "failed": 0,
+      "confidence": 0.6666666666666666,
+      "passed": 3,
+      "failed": 1,
       "logical_form": "",
       "scope": {
         "topic": "model collapse, variance suppression and recursive training",
@@ -848,8 +867,8 @@
       "id": "148b93cc077b50627f67fa12",
       "source_url": "https://doi.org/10.1080/15326349.2021.2003712",
       "status_override": "",
-      "beta_confidence": 0.5,
-      "status": "active"
+      "beta_confidence": 0.6666666666666666,
+      "status": "survived"
     },
     {
       "text": "On topic model collapse, variance suppression and recursive training, When Tails Are Heavy: The Benefits of Variance-Targeted, Non-Gaussian, Quasi-Maximum Likelihood Estimation of GARCH Models reports: In heavy-tailed cases, variance targeting the Student's-t estimator proposed in Bollerslev (1987) for the linear GARCH model is shown to be robust to density misspecification, just like the popular Quasi-Maximum Likelihood Estimator (QMLE).",
@@ -873,8 +892,8 @@
     {
       "text": "On topic model collapse, variance suppression and recursive training, Finite-depth scaling and an exact Bernoulli-leaf identity for the min-plus process on the binary tree reports: The min-plus process is a stochastic coagulation-annihilation-type process on the binary tree, of interest in mathematics, physics, and computer science as a tractable instance of max-type recursive distributional equations.",
       "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
-      "confidence": 0.75,
-      "passed": 2,
+      "confidence": 0.8333333333333334,
+      "passed": 4,
       "failed": 0,
       "logical_form": "",
       "scope": {
@@ -886,14 +905,14 @@
       "id": "874d38cd7e0d1ab9af2f2453",
       "source_url": "http://arxiv.org/abs/2608.12295v1",
       "status_override": "",
-      "beta_confidence": 0.75,
-      "status": "active"
+      "beta_confidence": 0.8333333333333334,
+      "status": "survived"
     },
     {
       "text": "On topic model collapse, variance suppression and recursive training, Measurement of the $\\bar ν_μ-$Hydrogen Charged-Current Quasi-Elastic Cross Section using the NOvA Near Detector reports: We report a measurement of the total cross section for muon antineutrino charged-current quasi-elastic scattering on hydrogen, $\\bar ν_μ{\\rm H} \\to μ^+ n$, in the NOvA near detector using a $1.2\\times10^{21}$ proton-on-target exposure in the NuMI beam.",
       "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
-      "confidence": 0.75,
-      "passed": 2,
+      "confidence": 0.8333333333333334,
+      "passed": 4,
       "failed": 0,
       "logical_form": "",
       "scope": {
@@ -905,26 +924,29 @@
       "id": "33df019b83f02a7171107d36",
       "source_url": "http://arxiv.org/abs/2608.12293v1",
       "status_override": "",
-      "beta_confidence": 0.75,
-      "status": "active"
+      "beta_confidence": 0.8333333333333334,
+      "status": "survived"
     },
     {
-      "text": "On topic model collapse, variance suppression and recursive training, Large Language Model-Driven Small-Capitalization Trading: Integrating Financial News Sentiment, Macroeconomic Indicators, and Technical Signals reports: Large language models can extract richer signals from financial news than fixed sentiment lexicons, and recent work has explored feeding such signals into portfolio construction.",
+      "text": "On topic model collapse, variance suppression and recursive training, Large Language Model-Driven Small-Capitalization Trading: Integrating Financial News Sentiment, Macroeconomic Indicators, and Technical Signals reports: Large language models can extract richer signals from financial news than fixed sentiment lexicons, and recent work has explored feeding such signals into portfolio construction. [restricted: narrower scope within model collapse, variance suppression and recursive training (run 2026-08-13)]",
       "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
-      "confidence": 0.75,
-      "passed": 2,
+      "confidence": 0.5,
+      "passed": 0,
       "failed": 0,
       "logical_form": "",
       "scope": {
         "topic": "model collapse, variance suppression and recursive training",
-        "source": "arxiv"
+        "source": "arxiv",
+        "restrictions": [
+          "narrower scope within model collapse, variance suppression and recursive training (run 2026-08-13)"
+        ]
       },
       "reference_class": "model collapse, variance suppression and recursive training / arxiv findings",
-      "reformulation_count": 0,
+      "reformulation_count": 1,
       "id": "789c0447680924883792dc9a",
       "source_url": "http://arxiv.org/abs/2608.12283v1",
       "status_override": "",
-      "beta_confidence": 0.75,
+      "beta_confidence": 0.5,
       "status": "active"
     },
     {
@@ -1056,6 +1078,211 @@
       "reformulation_count": 0,
       "id": "826c585b799ed9b12fbd8275",
       "source_url": "http://arxiv.org/abs/2608.12290v1",
+      "status_override": "",
+      "beta_confidence": 0.5,
+      "status": "active"
+    },
+    {
+      "text": "On topic safety drift, alignment repair and parameter-space monitoring, Concept-ROT: Poisoning Concepts in Large Language Models with Model Editing reports: Model editing methods modify specific behaviors of Large Language Models by altering a small, targeted set of network weights and require very little data and compute.",
+      "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
+      "confidence": 0.5,
+      "passed": 0,
+      "failed": 0,
+      "logical_form": "",
+      "scope": {
+        "topic": "safety drift, alignment repair and parameter-space monitoring",
+        "source": "semantic_scholar"
+      },
+      "reference_class": "safety drift, alignment repair and parameter-space monitoring / semantic_scholar findings",
+      "reformulation_count": 0,
+      "id": "f9429d387cdc46141d281aca",
+      "source_url": "https://doi.org/10.48550/arXiv.2412.13341",
+      "status_override": "",
+      "beta_confidence": 0.5,
+      "status": "active"
+    },
+    {
+      "text": "On topic safety drift, alignment repair and parameter-space monitoring, Mitigating Backdoor Attacks using Activation-Guided Model Editing reports: Backdoor attacks compromise the integrity and reliability of machine learning models by embedding a hidden trigger during the training process, which can later be activated to cause unintended misbehavior.",
+      "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
+      "confidence": 0.6666666666666666,
+      "passed": 1,
+      "failed": 0,
+      "logical_form": "",
+      "scope": {
+        "topic": "safety drift, alignment repair and parameter-space monitoring",
+        "source": "semantic_scholar"
+      },
+      "reference_class": "safety drift, alignment repair and parameter-space monitoring / semantic_scholar findings",
+      "reformulation_count": 0,
+      "id": "0c7bea1fc323ed2baa11be21",
+      "source_url": "https://doi.org/10.48550/arXiv.2407.07662",
+      "status_override": "",
+      "beta_confidence": 0.6666666666666666,
+      "status": "active"
+    },
+    {
+      "text": "On topic safety drift, alignment repair and parameter-space monitoring, Evaluation and Proposal Repair Safety Culture Maturity Use Safety Model Canvas in Manufacturing Companies reports: PT.",
+      "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
+      "confidence": 0.5,
+      "passed": 0,
+      "failed": 0,
+      "logical_form": "",
+      "scope": {
+        "topic": "safety drift, alignment repair and parameter-space monitoring",
+        "source": "semantic_scholar"
+      },
+      "reference_class": "safety drift, alignment repair and parameter-space monitoring / semantic_scholar findings",
+      "reformulation_count": 0,
+      "id": "2b4e770a97af0585db0a2222",
+      "source_url": "https://doi.org/10.37899/journallamedihealtico.v5i5.1596",
+      "status_override": "",
+      "beta_confidence": 0.5,
+      "status": "active"
+    },
+    {
+      "text": "On topic safety drift, alignment repair and parameter-space monitoring, Base and Prime Editing for Inherited Retinal Diseases: Delivery Platforms, Safety, Efficacy, and Translational Perspectives reports: Inherited retinal diseases (IRDs) are a clinically and genetically heterogeneous spectrum of disorders that lead to progressive and irreversible vision loss.",
+      "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
+      "confidence": 0.5,
+      "passed": 0,
+      "failed": 0,
+      "logical_form": "",
+      "scope": {
+        "topic": "safety drift, alignment repair and parameter-space monitoring",
+        "source": "semantic_scholar"
+      },
+      "reference_class": "safety drift, alignment repair and parameter-space monitoring / semantic_scholar findings",
+      "reformulation_count": 0,
+      "id": "d87748c5868b3b6d2f44c75d",
+      "source_url": "https://doi.org/10.3390/pharmaceutics17111405",
+      "status_override": "",
+      "beta_confidence": 0.5,
+      "status": "active"
+    },
+    {
+      "text": "On topic safety drift, alignment repair and parameter-space monitoring, Filter-based Repair of Semantic Segmentation in Safety-Critical Systems reports: Deep Neural Networks (DNNs) have become a core component in several safety-critical tasks like Autonomous Driving.",
+      "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
+      "confidence": 0.5,
+      "passed": 0,
+      "failed": 0,
+      "logical_form": "",
+      "scope": {
+        "topic": "safety drift, alignment repair and parameter-space monitoring",
+        "source": "semantic_scholar"
+      },
+      "reference_class": "safety drift, alignment repair and parameter-space monitoring / semantic_scholar findings",
+      "reformulation_count": 0,
+      "id": "3668ff240e1ba3fe54762570",
+      "source_url": "https://doi.org/10.1109/SANER64311.2025.00040",
+      "status_override": "",
+      "beta_confidence": 0.5,
+      "status": "active"
+    },
+    {
+      "text": "On topic model collapse, variance suppression and recursive training, How Bad is Training on Synthetic Data? A Statistical Analysis of Language Model Collapse reports: The phenomenon of model collapse, introduced in (Shumailov et al., 2023), refers to the deterioration in performance that occurs when new models are trained on synthetic data generated from previously trained models. [restricted: narrower scope within model collapse, variance suppression and recursive training (run 2026-08-13)]",
+      "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
+      "confidence": 0.5,
+      "passed": 0,
+      "failed": 0,
+      "logical_form": "",
+      "scope": {
+        "topic": "model collapse, variance suppression and recursive training",
+        "source": "semantic_scholar",
+        "restrictions": [
+          "narrower scope within model collapse, variance suppression and recursive training (run 2026-08-13)"
+        ]
+      },
+      "reference_class": "model collapse, variance suppression and recursive training / semantic_scholar findings",
+      "reformulation_count": 1,
+      "id": "98afae435ddd98b079fe814a",
+      "source_url": "https://doi.org/10.48550/arXiv.2404.05090",
+      "status_override": "",
+      "beta_confidence": 0.5,
+      "status": "active"
+    },
+    {
+      "text": "On topic model collapse, variance suppression and recursive training, Multi-modal Synthetic Data Training and Model Collapse: Insights from VLMs and Diffusion Models reports: Recent research has highlighted the risk of generative model collapse, where performance progressively degrades when continually trained on self-generated data. [restricted: narrower scope within model collapse, variance suppression and recursive training (run 2026-08-13)]",
+      "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
+      "confidence": 0.5,
+      "passed": 0,
+      "failed": 0,
+      "logical_form": "",
+      "scope": {
+        "topic": "model collapse, variance suppression and recursive training",
+        "source": "semantic_scholar",
+        "restrictions": [
+          "narrower scope within model collapse, variance suppression and recursive training (run 2026-08-13)"
+        ]
+      },
+      "reference_class": "model collapse, variance suppression and recursive training / semantic_scholar findings",
+      "reformulation_count": 1,
+      "id": "93a0b36446fce42535a24266",
+      "source_url": "https://doi.org/10.48550/arXiv.2505.08803",
+      "status_override": "",
+      "beta_confidence": 0.5,
+      "status": "active"
+    },
+    {
+      "text": "On topic model collapse, variance suppression and recursive training, ForTIFAI: fending off recursive training induced failure for AI model collapse reports: The increasing reliance on generative AI models is rapidly increasing the volume of synthetic data, with projections suggesting that most available new data for training could be machine-generated by 2030\n 1\n . [restricted: narrower scope within model collapse, variance suppression and recursive training (run 2026-08-13)]",
+      "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
+      "confidence": 0.5,
+      "passed": 0,
+      "failed": 0,
+      "logical_form": "",
+      "scope": {
+        "topic": "model collapse, variance suppression and recursive training",
+        "source": "semantic_scholar",
+        "restrictions": [
+          "narrower scope within model collapse, variance suppression and recursive training (run 2026-08-13)"
+        ]
+      },
+      "reference_class": "model collapse, variance suppression and recursive training / semantic_scholar findings",
+      "reformulation_count": 1,
+      "id": "20637567ebab17edd17d8e70",
+      "source_url": "https://doi.org/10.1038/s44387-026-00127-w",
+      "status_override": "",
+      "beta_confidence": 0.5,
+      "status": "active"
+    },
+    {
+      "text": "On topic model collapse, variance suppression and recursive training, Multimodal Synthetic Data Finetuning and Model Collapse: Insights from VLMs and Diffusion Models reports: Recent research has highlighted the risk of generative model collapse, where performance progressively degrades when continually trained on self-generated data. [restricted: narrower scope within model collapse, variance suppression and recursive training (run 2026-08-13)]",
+      "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
+      "confidence": 0.5,
+      "passed": 0,
+      "failed": 0,
+      "logical_form": "",
+      "scope": {
+        "topic": "model collapse, variance suppression and recursive training",
+        "source": "semantic_scholar",
+        "restrictions": [
+          "narrower scope within model collapse, variance suppression and recursive training (run 2026-08-13)"
+        ]
+      },
+      "reference_class": "model collapse, variance suppression and recursive training / semantic_scholar findings",
+      "reformulation_count": 1,
+      "id": "a55812f5840e3b9d20ef763d",
+      "source_url": "https://doi.org/10.1145/3716553.3750806",
+      "status_override": "",
+      "beta_confidence": 0.5,
+      "status": "active"
+    },
+    {
+      "text": "On topic model collapse, variance suppression and recursive training, Rate of Model Collapse in Recursive Training reports: Given the ease of creating synthetic data from machine learning models, new models can be potentially trained on synthetic data generated by previous models. [restricted: narrower scope within model collapse, variance suppression and recursive training (run 2026-08-13)]",
+      "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
+      "confidence": 0.5,
+      "passed": 0,
+      "failed": 0,
+      "logical_form": "",
+      "scope": {
+        "topic": "model collapse, variance suppression and recursive training",
+        "source": "semantic_scholar",
+        "restrictions": [
+          "narrower scope within model collapse, variance suppression and recursive training (run 2026-08-13)"
+        ]
+      },
+      "reference_class": "model collapse, variance suppression and recursive training / semantic_scholar findings",
+      "reformulation_count": 1,
+      "id": "d90b80304b625e607fd556bd",
+      "source_url": "https://doi.org/10.48550/arXiv.2412.17646",
       "status_override": "",
       "beta_confidence": 0.5,
       "status": "active"
