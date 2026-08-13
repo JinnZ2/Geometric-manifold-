@@ -1,0 +1,99 @@
+name: hypothesis-engine
+
+on:
+  schedule:
+    - cron: "0 6 * * 1,4"   # Mon/Thu 06:00 UTC
+  workflow_dispatch:
+    inputs:
+      topic:
+        description: "Topic name override (optional; runs only this topic)"
+        required: false
+        type: string
+      max_per_topic:
+        description: "Max results per query"
+        required: false
+        default: "5"
+        type: string
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: hypothesis-engine
+  cancel-in-progress: false
+
+jobs:
+  run-engine:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Resolve config (topic override)
+        run: |
+          python - <<'EOF'
+          import json, os, shutil
+          override = os.environ.get("TOPIC_OVERRIDE", "").strip()
+          if override:
+              cfg = json.load(open("configs/topics.json"))
+              match = [t for t in cfg["topics"] if t["name"] == override]
+              if match:
+                  json.dump({"topics": match}, open("configs/topics.effective.json", "w"), indent=2)
+                  print("Using topic override:", override)
+              else:
+                  print("Override topic not found; running full config")
+                  shutil.copy("configs/topics.json", "configs/topics.effective.json")
+          else:
+              shutil.copy("configs/topics.json", "configs/topics.effective.json")
+          EOF
+        env:
+          TOPIC_OVERRIDE: ${{ github.event.inputs.topic }}
+
+      - name: Run hypothesis engine
+        run: |
+          python scripts/hypothesis_engine.py \
+            --config configs/topics.effective.json \
+            --max-per-topic "${{ github.event.inputs.max_per_topic || '5' }}"
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: hypothesis-engine-output
+          path: |
+            data/
+            hypotheses/
+          if-no-files-found: ignore
+          retention-days: 30
+
+      - name: Commit results
+        run: |
+          git config user.name "hypothesis-engine[bot]"
+          git config user.email "hypothesis-engine[bot]@users.noreply.github.com"
+          git add data/ hypotheses/ docs/hypothesis_engine.md
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore(engine): weekly research digest $(date -u +%Y-%m-%d)"
+            git push
+          fi
+
+      - name: Open issue on new hypotheses
+        if: success()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ -f data/engine_report.md ] && grep -q "NEW HYPOTHESIS" data/engine_report.md; then
+            gh issue create \
+              --title "Hypothesis engine: new hypotheses $(date -u +%Y-%m-%d)" \
+              --body-file data/engine_report.md \
+              --label "hypothesis-engine" || gh issue create \
+              --title "Hypothesis engine: new hypotheses $(date -u +%Y-%m-%d)" \
+              --body-file data/engine_report.md
+          else
+            echo "No NEW HYPOTHESIS marker; skipping issue"
+          fi

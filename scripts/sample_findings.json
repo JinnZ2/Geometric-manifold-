@@ -1,0 +1,42 @@
+[
+  {
+    "source": "arxiv",
+    "title": "Calibrated Confidence Elicitation Improves Falsifiability of LLM Agent Claims",
+    "url": "http://arxiv.org/abs/2401.00001",
+    "date": "2024-06-03",
+    "topic": "calibration and falsifiability of LLM agents",
+    "abstract": "We demonstrate that structured confidence elicitation improves calibration error by 18% across three agent benchmarks. Our results show that staked-claim protocols make agent assertions falsifiable and reproducible."
+  },
+  {
+    "source": "semantic_scholar",
+    "title": "On the Reliability of Self-Reported Confidence in Language Model Agents",
+    "url": "https://doi.org/10.0000/example.001",
+    "date": "2024-05-12",
+    "topic": "calibration and falsifiability of LLM agents",
+    "abstract": "Self-reported confidence in LLM agents fails to correlate with task accuracy and cannot be reproduced under distribution shift. We show agents underperform calibrated baselines by 12% on held-out tasks."
+  },
+  {
+    "source": "crossref",
+    "title": "A Replication Study of Staked-Claim Calibration in Autonomous Agents",
+    "url": "https://doi.org/10.0000/example.002",
+    "date": "2024-07-21",
+    "topic": "calibration and falsifiability of LLM agents",
+    "abstract": "We replicate and confirm prior reports that staked-claim protocols improve calibration: our reanalysis demonstrates a consistent 15% reduction in expected calibration error, validating the original finding."
+  },
+  {
+    "source": "arxiv",
+    "title": "Hidden Node Detection via Residual Correlation in Partially Observed Dynamical Systems",
+    "url": "http://arxiv.org/abs/2402.00002",
+    "date": "2024-04-15",
+    "topic": "hidden variable detection / causal discovery from residuals",
+    "abstract": "We show that correlating model residuals with exogenous time series detects hidden variables with 91% precision when |r| > 0.5 and mean residual magnitude exceeds 0.1."
+  },
+  {
+    "source": "semantic_scholar",
+    "title": "Residual-Based Causal Discovery Might Sometimes Hint at Latent Structure",
+    "url": "https://doi.org/10.0000/example.003",
+    "date": "2024-03-08",
+    "topic": "hidden variable detection / causal discovery from residuals",
+    "abstract": "Residual analysis could perhaps, in some sense, hint at latent causal structure, though we believe the connection may remain elusive and we do not commit to a measurable criterion."
+  }
+]

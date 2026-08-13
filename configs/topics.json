@@ -1,0 +1,48 @@
+{
+  "topics": [
+    {
+      "name": "loss-landscape geometry and basin stability",
+      "queries": [
+        "loss landscape curvature basin flatness generalization",
+        "mode connectivity basins neural network parameter space",
+        "trust region constrained fine-tuning safety"
+      ],
+      "sources": ["arxiv", "semantic_scholar", "crossref"]
+    },
+    {
+      "name": "Fisher information and thermodynamics of learning",
+      "queries": [
+        "Fisher information metric natural gradient neural networks",
+        "thermodynamic cost of learning free energy",
+        "information geometry phase transition training dynamics"
+      ],
+      "sources": ["arxiv", "semantic_scholar"]
+    },
+    {
+      "name": "safety drift, alignment repair and parameter-space monitoring",
+      "queries": [
+        "alignment drift fine-tuning safety degradation",
+        "model editing repair safety weights",
+        "KL divergence constrained policy optimization safety"
+      ],
+      "sources": ["arxiv", "semantic_scholar"]
+    },
+    {
+      "name": "model collapse, variance suppression and recursive training",
+      "queries": [
+        "model collapse recursive training synthetic data",
+        "variance suppression distribution tails generative models",
+        "early warning signals critical slowing down tipping"
+      ],
+      "sources": ["arxiv", "semantic_scholar", "crossref"]
+    },
+    {
+      "name": "hidden variable detection / causal discovery from residuals",
+      "queries": [
+        "hidden variable detection residual correlation",
+        "causal discovery latent variables time series"
+      ],
+      "sources": ["arxiv", "semantic_scholar"]
+    }
+  ]
+}
