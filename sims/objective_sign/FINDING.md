@@ -92,3 +92,71 @@ arm here is not a novel proposal; it is what half of this repo already does.
 controller and do not transfer to the `main.py` → `Controller` → `ParameterManifold`
 pipeline, which is the minus path. I should have caught that the two disagreed before
 generalising.
+
+---
+
+## Addendum: is the minus sign "like imaginary numbers"?
+
+A good question, and it names something real. Physics does use wrong-sign quantities as
+essential machinery rather than errors:
+
+- **An imaginary frequency is how you label an unstable mode.** `ω² < 0` means the mode
+  grows instead of oscillating; below a spinodal the curvature is negative and `√(k/m)` is
+  imaginary. Physicists write instability that way on purpose.
+- **Escape rates are computed by leaving the real axis.** Kramers escape and false-vacuum
+  decay go through the **bounce** — a solution existing only in imaginary time — and the
+  decay rate is `Γ = −2 Im F`, literally the imaginary part of the free energy. `notes/17`
+  §3 already cites Coleman thin-wall nucleation, so this connection is native to the
+  ecosystem rather than imported.
+- **Cardano's formula** needs complex intermediates to return three real roots.
+
+So the intuition is not loose. It also supplies a sharp criterion, because every one of
+those cases shares one property: **the excursion returns.** Analytic continuation comes
+back to the real axis; the bounce starts and ends at the false vacuum; the cubic's complex
+intermediates cancel. Machinery that leaves must come back, or it is not machinery.
+
+**Measured, 1200 steps on the minus arm from a drifted start:**
+
+| step | KL | dist | task |
+|---|---|---|---|
+| 0 | 3.79 | 17.08 | 7.56 |
+| 200 | 104.53 | 21.19 | 79.61 |
+| 500 | 489.85 | 32.42 | 299.84 |
+| 1199 | **2571.02** | 64.32 | 1405.08 |
+
+- **Minimum KL over the entire run occurs at step 0.** It is never closer to the basin than
+  where it began.
+- **Strictly monotone increasing at every one of 1200 steps.** No turning point exists.
+- Both objectives diverge together — KL by 678×, task loss by 186×.
+
+There is no bounce. The excursion does not return, at any timescale tested.
+
+A second disanalogy is worth naming precisely: an instanton saddle has **exactly one**
+negative mode — the single direction along which the barrier is crossed — and that lone
+mode is what makes `Im F` non-zero. The code applies the minus sign to the *entire* safety
+gradient, flipping every direction at once. That is not a saddle with one unstable
+direction; it is an inverted potential.
+
+## But the intuition recovers the intent, and names what is missing
+
+`CLAUDE.md` says the sign "ensures the repair explores the loss landscape rather than
+collapsing to a local minimum." That is a recognisable algorithm: **basin hopping** —
+deliberately go uphill, then re-minimise, keep the result if it is better. Simulated
+annealing has the same shape.
+
+The minus sign implements the *first half* of basin hopping and omits the second. There is
+no re-minimisation, no acceptance test, no return. Uphill moves are not the error; uphill
+moves with no downhill phase and no accept/reject criterion are.
+
+That makes the constructive version concrete, and testable in the same harness:
+
+1. **Ascend, then descend.** Alternate a bounded uphill excursion with a re-minimisation,
+   accepting only if final KL improves. This is the documented intent, implemented.
+2. **Ascend along one mode only.** Flip the sign for the lowest-curvature direction and
+   descend the remainder — an actual saddle rather than an inverted bowl.
+3. **Use it as a rate, not a trajectory.** `Im F` is a number to read off, not a path to
+   walk. An escape-rate estimator built from the unstable mode would be a diagnostic, and
+   diagnostics do not have to be followed.
+
+None of these is the current code, and any of them would be a fair test of what the sign
+was reaching for.
