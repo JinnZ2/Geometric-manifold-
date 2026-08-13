@@ -185,10 +185,24 @@ def _fetch(url: str) -> bytes | None:
         return None
 
 
-def query_arxiv(query: str, max_results: int) -> list[dict[str, str]]:
-    """Query the arXiv Atom API; return raw finding dicts."""
+def query_arxiv(query: str, max_results: int,
+                categories: list[str] | None = None) -> list[dict[str, str]]:
+    """Query the arXiv Atom API; return raw finding dicts.
+
+    `categories` restricts the search to arXiv subject classes. Without it, queries
+    built from field-agnostic words match across unrelated disciplines: the first live
+    run's "loss landscape curvature basin flatness" query returned twisted-bilayer
+    graphene, asymptotic flatness in general relativity, pore-scale flow, a flatness
+    interferometer and geriatric depression -- 86% of its surviving claims were
+    off-topic. Category filtering removes those at the source rather than hoping the
+    downstream heuristics catch them.
+    """
+    search = f"all:{query}"
+    if categories:
+        cats = " OR ".join(f"cat:{c}" for c in categories)
+        search = f"({cats}) AND {search}"
     params = urllib.parse.urlencode({
-        "search_query": f"all:{query}", "start": 0,
+        "search_query": search, "start": 0,
         "max_results": max_results, "sortBy": "submittedDate",
     })
     raw = _fetch(f"https://export.arxiv.org/api/query?{params}")
@@ -370,7 +384,12 @@ def stage_explore(topics: list[dict[str, Any]], max_per_topic: int,
                 if not fn:
                     log(f"  [explore] unknown source {source!r}, skipping")
                     continue
-                for raw in fn(query, max_per_topic):
+                kwargs = {}
+                if source == "arxiv" and topic.get("categories"):
+                    # arXiv is the only source here with a subject taxonomy; the others
+                    # are filtered only by their own relevance ranking.
+                    kwargs["categories"] = topic["categories"]
+                for raw in fn(query, max_per_topic, **kwargs):
                     findings.append(Finding(
                         id="", source=raw["source"], title=raw["title"], url=raw["url"],
                         date=raw.get("date", ""), topic=name,
