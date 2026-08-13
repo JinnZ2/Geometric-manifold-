@@ -41,19 +41,28 @@ snap-latency protocol in notes 15, so it is the one most worth chasing.
 
 ## Imported sims
 
-Two sims from the same research pass live in `experiments/`. Both are numpy, neither
-conforms to `HARNESS.md`, and both are named in its retrofit queue:
+Three sims from the same research pass live in `experiments/`. All are numpy, none
+conforms to `HARNESS.md`, and all are named in its retrofit queue. Each was run here
+before being documented:
 
 | Script | Status | Verified here |
 |---|---|---|
 | `experiments/fractal_basin_sim.py` | Retrofit queue #4. Deficiency: alpha measured at a single damping — `gamma` is a parameter but only ever called at its 0.25 default, so the mandated sweep is missing. | **Reproduces notes/17 §1 exactly**: α=0.688 (double well), α=0.392 and 8.0% Wada (triple well). Deterministic under its fixed seed. |
 | `experiments/ep2_prereg_sim.py` | Retrofit queue #1, and **superseded**: this is v2, which notes/15 records as REFUTED. | Runs, and prints "PASS (predicted)" with detection in 200/200 trials — because it has **no null arm**. That is the point: the uncontrolled version cannot fire a false positive, which is exactly why v1/v2 were refuted and v3 (two-arm, one pre-committed checkpoint) exists. v3 was not provided. |
+| `experiments/snap_information_sim.py` | Retrofit queue #5, and **broken as written**. This is the sim behind the E-P8 "the snap is an ADC" claim in notes/15. | **In Q1 and Q2 no snap ever occurs.** Q1 launches at the stable well minimum with v=0 — measured trajectory range 3.19e-10, identical at every load, so its "ringdown frequency" is the FFT argmax of numerical noise. Q2 launches both arms at x=1.500, the barrier peak, where the force is exactly -0.0 and the range is exactly 0.0; the two amplitudes are identical (0.300 = the static distance to either well), so the printed "1 bit of history" is 0 bits. Q3 moves only because of an initial velocity kick, is **unseeded** (0.08/0.10/0.22/0.13 bits on consecutive runs), and its "=> a snap event is an ADC" line prints unconditionally. The sim does not support the E-P8 claim — it does not test it. |
 
-Both were landed verbatim apart from two mechanical changes: `fractal_basin_sim.py` had
+All three were landed verbatim apart from mechanical changes: `fractal_basin_sim.py` had
 its output directory hardcoded to a nonexistent agent workspace (`/mnt/agents/output/figures/`,
-now `results/fractal_basin`, overridable via `FRACTAL_BASIN_OUT`), and both were
-reformatted for ruff (semicolon statements, one lambda). Outputs are byte-identical
-before and after reformatting.
+now `results/fractal_basin`, overridable via `FRACTAL_BASIN_OUT`), and all three were
+reformatted for ruff (semicolon statements, two lambdas). Outputs are unchanged before and
+after reformatting. Each carries a header recording its status, so no one has to re-derive
+these findings by reading the output and trusting it.
+
+The pattern across all three is worth stating plainly: **one reproduces its published
+numbers exactly, one is a superseded design whose successor is missing, and one prints
+three conclusions its own output does not support.** That is the case for `HARNESS.md`
+existing — a self-graded verdict conditioned on the data, with a named null and a seeded
+RNG, would have caught the second and third at the moment they were written.
 
 ## Where this repo sits in the tier discipline
 
