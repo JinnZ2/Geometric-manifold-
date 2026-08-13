@@ -76,6 +76,30 @@ that K ≥ 2 recovers what K = 1 cannot — is **untested**, not refuted.
   single probe sufficed and rotation curves, lensing, the CMB and the Bullet Cluster
   together did. This run does not yet show it working here.
 
+## Unplanned replication at 2x relaxation
+
+A first run at `steps = 3000` was left running in the background while the sim was being
+optimised (the Jacobians are independent of dark strength and were being recomputed for
+each one). It finished after the graded run at `steps = 1500`, which makes it a free
+convergence check on a different config hash. Both result directories are kept.
+
+| quantity | 1500 steps | 3000 steps |
+|---|---|---|
+| K=1 absorption, dark=0.10 | 1.45e-13 | 1.21e-13 |
+| K=1 fictitious ‖r̂‖ | 0.0140 / 0.0343 / 0.0674 | 0.0142 / 0.0345 / 0.0676 |
+| K=2 unexplained | 2.84 / 2.81 / 2.88 e-3 | 2.85 / 2.78 / 2.81 e-3 |
+| K=4 unexplained | 5.69 / 5.57 / 5.46 e-3 | 6.14 / 5.95 / 5.75 e-3 |
+
+Same verdict, same structure. **H1 is robust** — absorption stays at machine precision and
+the fictitious residuals agree to about 1%.
+
+The K ≥ 2 residual also reproduces, agreeing to 2% at K=2 and 8% at K=4, and it is **flat
+in dark strength at both step counts**. That matters for the diagnosis above: the flatness
+is not an under-relaxation artifact, it is a real and reproducible feature. Note also that
+the K=4 residual *rose* slightly with more relaxation rather than falling, which is the
+wrong direction for simple under-convergence and is one more reason the degenerate null —
+not the integrator — is the thing blocking H2 and H3.
+
 ## Limits
 
 - One dark location (the antipodal pair 0–1), one dark *kind* (a brace). A soft coupling,
