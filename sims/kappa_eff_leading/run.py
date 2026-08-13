@@ -28,6 +28,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 import torch
+import torch.nn.functional as F
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parent.parent))
@@ -67,11 +68,46 @@ def kendall_tau(ys) -> float:
 # trajectory
 # ---------------------------------------------------------------------------
 
-def run_trajectory(seed: int, sigma: float, cfg: dict) -> dict:
+def _safety_kl(model_fn, theta, theta_ref, unsafe_inputs):
+    curr = F.log_softmax(model_fn(unsafe_inputs, theta), dim=-1)
+    ref = F.softmax(model_fn(unsafe_inputs, theta_ref).detach(), dim=-1)
+    return F.kl_div(curr, ref, reduction="batchmean")
+
+
+def adversarial_direction(model_fn, theta, theta_ref, unsafe_inputs, iters: int):
+    """Unit top eigenvector of the safety Hessian, oriented to INCREASE safety KL.
+
+    Orientation is not cosmetic. Power iteration returns an arbitrary sign, so an
+    unoriented direction alternates and the drift random-walks instead of
+    accumulating -- the model then never leaves the basin, which reads as "the
+    repair loop handles adversarial drift well" when it is purely an artifact.
+    """
+    t = theta.detach().requires_grad_(True)
+    grad0 = torch.autograd.grad(
+        _safety_kl(model_fn, t, theta_ref, unsafe_inputs), t)[0].detach()
+
+    v = torch.randn_like(theta)
+    v = v / (v.norm() + 1e-12)
+    for _ in range(iters):
+        t = theta.detach().requires_grad_(True)
+        g = torch.autograd.grad(
+            _safety_kl(model_fn, t, theta_ref, unsafe_inputs), t, create_graph=True)[0]
+        hv = torch.autograd.grad(g, t, grad_outputs=v)[0].detach()
+        n = hv.norm()
+        if n < 1e-12:
+            break
+        v = hv / n
+    if torch.dot(v.flatten(), grad0.flatten()) < 0:
+        v = -v
+    return v
+
+
+def run_trajectory(seed: int, sigma: float, mode: str, cfg: dict) -> dict:
     """One run: walk theta out of the basin (sigma>0) or hold it near (sigma=0)."""
     sc = cfg["scenario"]
     env = Environment({"drift_strength": sc["initial_drift_strength"], "seed": seed})
-    system = CoupledDynamicalSystem(env.get_model_fn(), env.theta_ref,
+    model_fn = env.get_model_fn()
+    system = CoupledDynamicalSystem(model_fn, env.theta_ref,
                                     env.task_inputs, cfg["thermo"])
     theta = env.theta_drifted.clone()
     gen = torch.Generator().manual_seed(10_000 + seed)
@@ -79,7 +115,13 @@ def run_trajectory(seed: int, sigma: float, cfg: dict) -> dict:
     series = {"kappa_eff": [], "theta_dist": [], "repair_energy": [], "basin_kl": []}
     for _ in range(sc["steps"]):
         if sigma > 0:
-            theta = theta + sigma * torch.randn(theta.shape, generator=gen)
+            if mode == "adversarial":
+                step_dir = adversarial_direction(
+                    model_fn, theta, env.theta_ref, env.safety_inputs,
+                    sc["adversarial_power_iters"])
+            else:
+                step_dir = torch.randn(theta.shape, generator=gen)
+            theta = theta + sigma * step_dir
         theta, st = system.step(theta, env.safety_inputs, env.task_inputs, env.task_labels)
         series["kappa_eff"].append(st.kappa_eff)
         series["theta_dist"].append(st.theta_norm)
@@ -88,7 +130,8 @@ def run_trajectory(seed: int, sigma: float, cfg: dict) -> dict:
 
     eps = cfg["thermo"]["epsilon_basin"]
     breach = next((i for i, kl in enumerate(series["basin_kl"]) if kl > eps), None)
-    return {"seed": seed, "sigma": sigma, "series": series, "breach_step": breach}
+    return {"seed": seed, "sigma": sigma, "mode": mode,
+            "series": series, "breach_step": breach}
 
 
 # ---------------------------------------------------------------------------
@@ -140,6 +183,7 @@ def main(argv: list[str] | None = None) -> int:
 
     seeds = list(cfg["seeds"])
     sigmas = list(cfg["sweeps"]["drift_sigma"])
+    modes = list(cfg["sweeps"]["drift_mode"])
     if args.quick:
         seeds, sigmas = seeds[:2], sigmas[1:2]
         cfg["scenario"] = {**cfg["scenario"], "steps": 20}
@@ -148,20 +192,24 @@ def main(argv: list[str] | None = None) -> int:
     signals = cfg["signals"]
     baseline_sig = cfg["trivial_baseline"]
 
-    print(f"[ip18] drift arm: {len(seeds)} seeds x {len(sigmas)} sigmas; "
-          f"null arm: {len(seeds)} seeds; {cfg['scenario']['steps']} steps each")
+    print(f"[ip18] drift arm: {len(seeds)} seeds x {len(sigmas)} sigmas x "
+          f"{len(modes)} modes; null arm: {len(seeds)} seeds; "
+          f"{cfg['scenario']['steps']} steps each")
 
     drift_runs = []
-    for sg in sigmas:
-        for s in seeds:
-            r = run_trajectory(s, sg, cfg)
-            drift_runs.append(r)
-            kl = r["series"]["basin_kl"]
-            print(f"  sigma={sg:<6} seed={s}  breach@{r['breach_step']}  "
-                  f"kl {kl[0]:.3f}->{kl[-1]:.3f}  "
-                  f"kappa {min(r['series']['kappa_eff']):.4f}-{max(r['series']['kappa_eff']):.4f}")
+    for md in modes:
+        for sg in sigmas:
+            for s in seeds:
+                r = run_trajectory(s, sg, md, cfg)
+                drift_runs.append(r)
+                kl = r["series"]["basin_kl"]
+                ke = r["series"]["kappa_eff"]
+                print(f"  {md:<11} sigma={sg:<6} seed={s}  breach@{r['breach_step']}  "
+                      f"kl {kl[0]:.3f}->{kl[-1]:.3f}  "
+                      f"kappa {min(ke):.4f}-{max(ke):.4f}")
 
-    null_runs = [run_trajectory(s, 0.0, cfg) for s in seeds]
+    # sigma=0 makes the mode irrelevant, so one null arm serves both.
+    null_runs = [run_trajectory(s, 0.0, "isotropic", cfg) for s in seeds]
     n_null_breached = sum(r["breach_step"] is not None for r in null_runs)
     print(f"  null arm: {n_null_breached}/{len(null_runs)} runs breached "
           f"(expected 0; any breach invalidates the null)")
@@ -184,7 +232,8 @@ def main(argv: list[str] | None = None) -> int:
         cells = []
         for r in usable:
             b = r["breach_step"]
-            rec = {"seed": r["seed"], "sigma": r["sigma"], "breach_step": b}
+            rec = {"seed": r["seed"], "sigma": r["sigma"], "mode": r["mode"],
+                   "breach_step": b}
             for sig in signals:
                 a = alarm_step(r["series"][sig], crit, warmup)
                 rec[f"alarm_{sig}"] = a
@@ -200,19 +249,31 @@ def main(argv: list[str] | None = None) -> int:
         n = len(cells)
         frac_lead = sum(c["kappa_leads"] for c in cells) / n if n else 0.0
         frac_A = sum(c["cell_supports_A"] for c in cells) / n if n else 0.0
+        by_mode = {}
+        for md in modes:
+            sub = [c for c in cells if c["mode"] == md]
+            by_mode[md] = {
+                "n_cells": len(sub),
+                "frac_kappa_leads": (sum(c["kappa_leads"] for c in sub) / len(sub)) if sub else 0.0,
+                "frac_supports_A": (sum(c["cell_supports_A"] for c in sub) / len(sub)) if sub else 0.0,
+            }
         per_criterion.append({
             "criterion": crit["id"], "spec": crit,
             "null_false_alarm": fp, "viable": viable,
             "frac_cells_kappa_leads": frac_lead,
             "frac_cells_support_theory_A": frac_A,
+            "by_mode": by_mode,
             "supports_A": viable and frac_A >= gate,
             "mean_lead_kappa": mean([c["lead_kappa_eff"] for c in cells]),
             "mean_lead_baseline": mean([c[f"lead_{baseline_sig}"] for c in cells]),
             "cells": cells,
         })
+        modes_txt = "  ".join(
+            f"{md[:5]}: leads {by_mode[md]['frac_kappa_leads']:.0%}/A "
+            f"{by_mode[md]['frac_supports_A']:.0%}" for md in modes)
         print(f"  {crit['id']:<12} viable={str(viable):<5} "
-              f"FP(kappa)={fp['kappa_eff']:.2f} FP({baseline_sig})={fp[baseline_sig]:.2f}  "
-              f"kappa leads {frac_lead:.0%}, supports A {frac_A:.0%}")
+              f"FP(k)={fp['kappa_eff']:.2f} FP(th)={fp[baseline_sig]:.2f}  "
+              f"all: leads {frac_lead:.0%}/A {frac_A:.0%}   {modes_txt}")
 
     viable_crits = [p for p in per_criterion if p["viable"]]
     if not usable:
@@ -239,11 +300,11 @@ def main(argv: list[str] | None = None) -> int:
 
     metrics = {
         "name": cfg["name"], "config_hash": config_hash, "quick_mode": bool(args.quick),
-        "seeds": seeds, "sigmas": sigmas,
+        "seeds": seeds, "sigmas": sigmas, "modes": modes,
         "n_usable_cells": len(usable), "n_drift_runs": len(drift_runs),
         "null_arm": {"n_runs": len(null_runs), "n_breached": n_null_breached,
                      "breach_steps": [r["breach_step"] for r in null_runs]},
-        "breach_steps": [{"seed": r["seed"], "sigma": r["sigma"],
+        "breach_steps": [{"seed": r["seed"], "sigma": r["sigma"], "mode": r["mode"],
                           "breach_step": r["breach_step"]} for r in drift_runs],
         "per_criterion": per_criterion,
         "grading": {"verdict": verdict, "reason": reason,

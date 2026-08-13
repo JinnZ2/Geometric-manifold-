@@ -76,7 +76,7 @@ because under HARNESS the run record *is* the evidence.
 |---|---|---|
 | `sims/ep8_snap_latency/` | E-P8: snap latency decodes the initial condition via the fold law `t_snap ∝ ε₀^(−1/2)`. | **REFUTED** at 24/24 cells — and informatively. The decoder half *passes* everywhere (RMSE ≈ 0.005 against a 0.02 threshold, ~10× better than baseline); the fold half fails by **sign**, exponent +0.38 to +0.59 instead of −1/2. |
 | `sims/fractal_basin_damping/` | Retrofit of `fractal_basin_sim.py` (HARNESS queue #4): α rises with damping γ. | **SUPPORTED** at 100% of cells, and reproduces notes/17 at γ=0.25 to within 0.002. New: the Wada property runs 44% → 0% across the sweep, so it is a damping *regime*, not a fixed feature of the potential. |
-| `sims/kappa_eff_leading/` | IP-18: κ_eff spikes before the basin breach and beats a trivial baseline. | **INCONCLUSIVE**, with three concrete apparatus defects found. Only 1 of 7 criteria survived the null arm; under it κ_eff led in 3/12 cells. The criterion with the *best* lead (75%) fires on **every** quiet run. |
+| `sims/kappa_eff_leading/` | IP-18: κ_eff spikes before the basin breach and beats a trivial baseline. | **REFUTED** across isotropic *and* adversarial drift. Only 1 of 7 criteria survived the null arm; under it κ_eff led and beat the free baseline in 19% of cells — and the adversarial case, which κ_eff exists to catch, was **worse** (13%) than isotropic (25%). The criterion with the best raw lead (63%) fires on **every** quiet run. |
 
 Each sim's `FINDING.md` carries the full result. Three things from them are worth
 surfacing here, because they are about this repo rather than about the sims:
@@ -92,8 +92,9 @@ surfacing here, because they are about this repo rather than about the sims:
   exactly 10% of steps exceed it. There is no null arm, so its false-alarm rate has never
   been measured.
 - **The κ_eff branch of the phase classifier is dead at this scale.** Observed κ_eff spans
-  0.0002–0.052 across 20 runs; `_phase()` calls "critical" at `kappa > C_bound = 20.0`,
-  ~400× the largest value ever seen. Phase is decided entirely by `basin_kl` and `dV_dt`.
+  0.0001–0.37 across 35 runs and stays under 0.05 in every isotropic run; `_phase()` calls
+  "critical" at `kappa > C_bound = 20.0`, ~50× the largest value ever seen. Phase is
+  decided entirely by `basin_kl` and `dV_dt`.
 
 The E-P8 result is worth reading before the physical build. The snap really does report its
 initial compression — but through ramp geometry, not fold physics, so the protocol as

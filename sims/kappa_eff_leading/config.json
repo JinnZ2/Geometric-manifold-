@@ -12,12 +12,16 @@
       0.012,
       0.016,
       0.02
+    ],
+    "drift_mode": [
+      "isotropic",
+      "adversarial"
     ]
   },
   "null_model": "no_injected_drift",
   "refute_if": "kappa_eff fails to both lead the basin breach and beat the free theta-distance baseline, at >=80% of (seed, sigma) cells, under every criterion whose null false-alarm rate is <= 0.2",
   "tier": 2,
-  "runtime_estimate_s": 200,
+  "runtime_estimate_s": 600,
   "depends_on": [
     "simulation.environment",
     "addon_thermodynamic_control.stability"
@@ -26,7 +30,8 @@
     "initial_drift_strength": 0.08,
     "steps": 60,
     "warmup": 10,
-    "comment": "Initial drift is small enough that basin_kl starts BELOW epsilon_basin; per-step injected drift then walks the model out of the basin, so a genuine breach event occurs mid-run. Without injected drift the framework never crosses the boundary during a run -- see FINDING.md. sigma and steps were calibrated so the breach lands well after the warm-up window (measured: sigma<=0.008 never breaches in 60 steps; 0.012 breaches at step 34-46). That calibration sets the observation window only; the graded criteria and refute_if were fixed beforehand and are untouched by it."
+    "comment": "Initial drift is small enough that basin_kl starts BELOW epsilon_basin; per-step injected drift then walks the model out of the basin, so a genuine breach event occurs mid-run. Without injected drift the framework never crosses the boundary during a run -- see FINDING.md. sigma and steps were calibrated so the breach lands well after the warm-up window (measured: sigma<=0.008 never breaches in 60 steps; 0.012 breaches at step 34-46). That calibration sets the observation window only; the graded criteria and refute_if were fixed beforehand and are untouched by it. The adversarial mode drifts along the top eigenvector of the safety Hessian, sign-oriented to increase the safety KL. Orienting matters: power iteration returns an arbitrary sign, and an unoriented eigenvector random-walks and never breaches -- which looks like 'the repair handles adversarial drift well' and is an artifact.",
+    "adversarial_power_iters": 6
   },
   "thermo": {
     "lambda_safety": 1.0,
