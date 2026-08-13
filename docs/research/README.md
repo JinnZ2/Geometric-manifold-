@@ -20,6 +20,11 @@ machinery this repo is converging on.
 | `05_learning_simulation_design.md` | curly-octo-happiness | World models, curiosity, dreams, skill libraries, falsification-driven environments. |
 | `06_complexity_cybernetics_robotics.md` | curly-octo-happiness | Complexity engineering, cybernetics (VSM/Ashby), advanced robotics — the basis for `PLAN_FORWARD.md`. |
 | `07_MCPM_collapse_research.md` | Mathematical-collapse-prevention-model | Calibration sources for the M(S) collapse metric — the closest external match to this repo's collapse work in `docs/theoretical_notes/`. |
+| `08_cross_domain_toolkit.md` | Cross-Domain-Toolkit | Code-verified read of the toolkit (spinodal 2/√27, six EWS signals, calibration gate, falsification ledger), a 30-domain equation atlas, and a logic/knowledge-systems layer. |
+| `09_nn_compression_manifolds.md` | Cross-repo (theory) | Compression science verified to paper IDs, representation-geometry battery, and four falsifiable hypotheses. Includes corrections to its own seed memo. |
+| `10_integration_theories_languages.md` | Cross-repo (theory) | Perceptron/fusion theory (Novikoff, Cover/VC, Conant–Ashby, Covariance Intersection) and the measured stdlib-Python performance envelope behind the tier discipline. |
+| `11_meta_structures_consciousness_bio_intelligence.md` | Cross-repo (theory) | Meta-structure formalisms, parallel-processing paradigms, geometric overlays, consciousness-studies status, biological compute paradigms. Claims carry [E]/[C]/[S] flags. |
+| `12_seven_questions_shape.md` | Cross-repo (sims) | **The empirical basis for IP-15…IP-20.** Seven stdlib sims (S1–S7), each with a measured dose-response curve and a confirmed literature gap. |
 | `PLAN_FORWARD.md` | curly-octo-happiness | Phased roadmap (Phase 0–4) formalizing existing heuristics in validated theory. |
 | `HARDWARE_INTEGRATION_PLAN.md` | curly-octo-happiness × Geometric-to-Binary-Computational-Bridge | Physical-grounding plan: measurement schema, cheap instrument rack, safety runtime, power claims. |
 | `14_rosetta_shape_grounding.md` | Rosetta-Shape-Core | Shapes as deformable containers of equation-complexes: morphometrics, equivariant bifurcation, Kendall shape space; the sims behind the 6× vertex / 2.8× face / 85% low-mode localization figures. §4 grounds this repo's shape assignments. |
@@ -29,10 +34,10 @@ machinery this repo is converging on.
 | `INTEGRATION_POINTS.md` | All six repos | The integration matrix (IP-1…IP-22) and build order. IP-13…IP-21 are this repo. |
 | `HARNESS.md` | All six repos | Sim Harness Standard v1: required directory layout, config manifest, execution contract, and verdict discipline for any sim whose result enters the ledger. |
 
-**Note on numbering:** the notes series is the sibling ecosystem's, and it arrived here
-in fragments. Notes 08–13, 16, and 18 are cited by the files above but are **not present
-in this repo** — cross-references to them will not resolve locally. (Note 14 arrived
-later and is now here; 12 and 18 are the most-cited absentees.)
+**Note on numbering:** the notes series is the sibling ecosystem's and arrived here in
+fragments. Still absent and cited by the files above: **notes 13, 16, and 18** — those
+cross-references will not resolve locally. Note 18 §3 is the origin of the E-P8
+snap-latency protocol in notes 15, so it is the one most worth chasing.
 
 ## Imported sims
 
@@ -49,6 +54,28 @@ its output directory hardcoded to a nonexistent agent workspace (`/mnt/agents/ou
 now `results/fractal_basin`, overridable via `FRACTAL_BASIN_OUT`), and both were
 reformatted for ruff (semicolon statements, one lambda). Outputs are byte-identical
 before and after reformatting.
+
+## Where this repo sits in the tier discipline
+
+`INTEGRATION_POINTS.md` IP-12 states the ecosystem's dependency law, and notes 10 §2.2
+gives the measured justification: pure-Python runs ~9M MAC/s and one MNIST epoch on a
+784→64→10 MLP takes 20–25 minutes, so stdlib "covers algorithm prototyping + pedagogy +
+auditability, not evidence on realistic models."
+
+This repo is a **Tier 2** project — `requirements.txt` puts torch at the core, which is
+exactly what the tiering prescribes for real compression/training evidence. What matters
+is that the material landed here stays in its own lane, and currently does:
+
+| Tier | Deps | What lives here |
+|---|---|---|
+| 0 | stdlib only | `scripts/hypothesis_engine.py`, `repair/generic_repair_controller.py` |
+| 1 | numpy | `experiments/fractal_basin_sim.py`, `experiments/ep2_prereg_sim.py` |
+| 2 | torch | the manifold pipeline: `manifolds/`, `simulation/`, `repair/`, `addon_thermodynamic_control/` |
+
+The rule worth keeping: the hypothesis engine must not acquire a numpy dependency, and
+the Tier-1 sims must not acquire a torch one. Notes 12's seven sims are all Tier 0 — if
+IP-15/16/17/20 get built here from those blueprints, they can stay stdlib even though the
+repo around them is torch.
 
 ## Shape assignments: verified against `bridges/rosetta-bridge.json`
 
@@ -84,15 +111,16 @@ Three threads carry over directly:
 `INTEGRATION_POINTS.md` and `17_fractals_bio_cosmo_trig.md` name specific, testable work
 here. Ordered by cost:
 
-| ID | Item | Why it's cheap |
+| ID | Item | Empirical basis now in-repo |
 |---|---|---|
-| IP-18 | Pre-registered test of the κ_eff leading-indicator claim: Theory A (κ_eff leads the KL breach) vs Theory B (coincident/lagging, vs a trivial baseline). | Runs on the existing `energy_sweep` apparatus. Called "the cheapest high-value experiment in the ecosystem." |
-| X4 | Is repair *navigation* or *teleportation*? Check linear/mode connectivity between the drifted checkpoint and the repaired weights. | A connectivity check over saved θ. If successful repairs are **not** path-connected, the navigation metaphor fails and the stability claims need the ISS proof outright. |
-| X7 | Do independent repair runs (different seeds/subsets) converge on the same weight sites? Jaccard overlap across N runs. | Reuses the existing pipeline. Both outcomes are informative — funnelled repair space, or idiosyncratic repair. |
-| IP-15 | Treat the three manifold layers as sheaf stalks; inter-layer disagreement (λ₁ lift) with leave-one-layer-out localizing the deceptive layer. | ~100 LOC stdlib. Directly addresses the "echo chamber of its own geometry" admission in `Claude-to-do.md`. |
-| IP-16 | Name and analyze the existing μ-adaptation as the discrete integrator it already is; reframe the open ISS problem via the internal-model principle. | Analysis, not new subsystems. |
-| IP-13 | Adapter from `docs/theoretical_notes/CLAIM_TABLE.fab.json` to a hash-chained, refute-gated ledger. | ~60 LOC. `ISS_proof_pending` becomes an OPEN claim with a refutation set. |
-| IP-17 | Multiple reference basins + gating partition of unity = atlas repair, making `atlas/` literally true. | Quarter-scale; the trust region is already a chart. |
+| IP-18 | Pre-registered test of the κ_eff leading-indicator claim: Theory A (κ_eff leads the KL breach) vs Theory B (coincident/lagging, vs a trivial baseline). | **Notes 12 S6** ran exactly this protocol on a fold series: variance-τ fires on 60% of trials, AC1-τ on 47%, **0% false alarms on the null**, OR-battery ~76%. The lesson is that neither marker is reliable alone and the battery's value is additive coverage. Runs on the existing `energy_sweep` apparatus. |
+| X4 | Is repair *navigation* or *teleportation*? Check linear/mode connectivity between the drifted checkpoint and the repaired weights. | Notes 11 §2.2 supplies the standard: model soups work only within a basin (linear mode connectivity; permutation alignment, Entezari 2022). If successful repairs are **not** path-connected, the navigation metaphor fails and the stability claims need the ISS proof outright. |
+| X7 | Do independent repair runs (different seeds/subsets) converge on the same weight sites? Jaccard overlap across N runs. | Reuses the existing pipeline. Both outcomes informative — funnelled repair space, or idiosyncratic repair. |
+| IP-15 | Treat the three manifold layers as sheaf stalks; inter-layer disagreement (λ₁ lift) with leave-one-layer-out localizing the deceptive layer. | **Notes 12 S1**, measured: λ₁ ≈ 0.176·φ² (quadratic in fault magnitude) and **exact** fault localization — compensating the true edge collapses λ₁ to 0.000 vs 0.024–0.038 for wrong edges. Note the consequence: quadratic sensitivity means faults below noise·√(1/0.176) are invisible. ~100 LOC stdlib; addresses the "echo chamber of its own geometry" admission in `Claude-to-do.md`. |
+| IP-16 | Name and analyze the existing μ-adaptation as the discrete integrator it already is; reframe the open ISS problem via the internal-model principle. | **Notes 12 S2**: the integral loop holds RMSE 0.067–0.076 under drift and is robust across a ×10 gain perturbation, where the fitted-offset baseline degrades. The no-drift noise penalty is a few percent, not orders of magnitude. Theory: Yi et al. PNAS 2000 (integral feedback is *necessary* for robust perfect adaptation). Analysis, not new subsystems. |
+| IP-13 | Adapter from `docs/theoretical_notes/CLAIM_TABLE.fab.json` to a hash-chained, refute-gated ledger. | **Notes 08 §A.3** specifies the target format precisely: SHA-256 over canonical JSON, gated `refute()`, refutation_set guards, escape-hatch detection. ~60 LOC. `ISS_proof_pending` becomes an OPEN claim with a refutation set. |
+| IP-20 | Third repair mode: *expand* the basin (LGG-style anti-unification) when drift is beneficial, instead of always pulling back. | **Notes 12 S7**: LGG refinement achieved 0% error with 100% true-alarm retention, while every deletion repair lost 15–20%. Refinement dominated deletion on both axes. |
+| IP-17 | Multiple reference basins + gating partition of unity = atlas repair, making `atlas/` literally true. | **Notes 12 S4**, matched-budget: the 2-chart advantage is unbounded at zero curvature (global PCA cannot represent bimodality at all), 15.4× at c=0.5, 4.8× at c=1.0, 2.2× at c=2.0 — **monotone decreasing in curvature**. Charts pay most when the data is clustered, least when curvature dominates. |
 
 Two caveats on the above, from reading the code rather than the notes:
 
