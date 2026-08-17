@@ -16,7 +16,8 @@
         "cs.LG",
         "stat.ML",
         "cs.NE"
-      ]
+      ],
+      "cross_domain": true
     },
     {
       "name": "Fisher information and thermodynamics of learning",
@@ -33,7 +34,8 @@
         "cs.LG",
         "stat.ML",
         "cs.IT"
-      ]
+      ],
+      "cross_domain": true
     },
     {
       "name": "safety drift, alignment repair and parameter-space monitoring",
@@ -50,7 +52,8 @@
         "cs.LG",
         "cs.AI",
         "cs.CL"
-      ]
+      ],
+      "cross_domain": true
     },
     {
       "name": "model collapse, variance suppression and recursive training",
@@ -68,7 +71,8 @@
         "cs.LG",
         "stat.ML",
         "cs.CL"
-      ]
+      ],
+      "cross_domain": true
     },
     {
       "name": "hidden variable detection / causal discovery from residuals",
@@ -85,7 +89,8 @@
         "stat.ME",
         "cs.LG",
         "stat.ML"
-      ]
+      ],
+      "cross_domain": true
     }
   ]
 }

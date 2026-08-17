@@ -1,0 +1,15 @@
+{
+  "name": "objective_sign",
+  "seeds": [0, 1, 2, 3, 4, 5, 6, 7],
+  "sweeps": {
+    "sign": ["minus", "plus"],
+    "drift_strength": [0.1, 0.3, 0.8],
+    "asymmetry_lambda": [10.0, 20.0]
+  },
+  "null_model": "start_at_reference",
+  "refute_if": "the documented exploration claim is refuted if the minus arm fails to reach lower final safety KL at matched-or-better task loss in >=80% of cells; the physics prior is refuted if that claim holds, or if the plus arm increases KL from a start at theta_ref",
+  "tier": 2,
+  "runtime_estimate_s": 240,
+  "steps": 60,
+  "parameter": {"trust_radius": 0.05, "curvature_weight": 2.0, "lr": 0.01}
+}

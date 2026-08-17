@@ -156,6 +156,7 @@ class Finding:
     abstract: str
     retrieved_at: str
     hash: str
+    lane: str = "primary"
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)
@@ -384,17 +385,36 @@ def stage_explore(topics: list[dict[str, Any]], max_per_topic: int,
                 if not fn:
                     log(f"  [explore] unknown source {source!r}, skipping")
                     continue
-                kwargs = {}
-                if source == "arxiv" and topic.get("categories"):
-                    # arXiv is the only source here with a subject taxonomy; the others
-                    # are filtered only by their own relevance ranking.
-                    kwargs["categories"] = topic["categories"]
+                cats = topic.get("categories") if source == "arxiv" else None
+                kwargs = {"categories": cats} if cats else {}
+                primary_urls = set()
                 for raw in fn(query, max_per_topic, **kwargs):
+                    primary_urls.add(raw["url"])
                     findings.append(Finding(
                         id="", source=raw["source"], title=raw["title"], url=raw["url"],
                         date=raw.get("date", ""), topic=name,
                         abstract=raw.get("abstract", ""), retrieved_at=retrieved, hash=""))
                 time.sleep(1.0)  # be polite to free APIs
+
+                # Cross-domain lane. The same query without the category restriction
+                # returns matches from other disciplines. Those are not noise to be
+                # thrown away: the first live run's "off-topic" results were papers on
+                # an order parameter vanishing at a transition, interfaces between
+                # ordered domains, front stability, modified dynamics versus unseen
+                # mass, an observable certifying proximity to criticality, and
+                # mean-field Gibbs systems -- i.e. the same mathematics this repo works
+                # on, in other substrates. They are routed to their own file instead of
+                # into the claim tree, so they neither inflate the counts nor get lost.
+                if cats and topic.get("cross_domain", True):
+                    for raw in fn(query, max_per_topic):
+                        if raw["url"] in primary_urls:
+                            continue
+                        findings.append(Finding(
+                            id="", source=raw["source"], title=raw["title"],
+                            url=raw["url"], date=raw.get("date", ""), topic=name,
+                            abstract=raw.get("abstract", ""), retrieved_at=retrieved,
+                            hash="", lane="cross_domain"))
+                    time.sleep(1.0)
     return findings
 
 
@@ -453,7 +473,7 @@ def derive_falsification(topic: str, abstract: str) -> str:
 
 
 def stage_claim(new_findings: list[Finding], tree: DependencyTree,
-                unknown_path: Path) -> tuple[list[Claim], int]:
+                unknown_path: Path, config_hash: str = "") -> tuple[list[Claim], int]:
     """Convert findings to claims; route unfalsifiable to the unknown journal."""
     made: list[Claim] = []
     unknowns: list[dict[str, Any]] = []
@@ -468,7 +488,8 @@ def stage_claim(new_findings: list[Finding], tree: DependencyTree,
             continue
         claim = Claim(text=text, falsification=falsification,
                       logical_form="abs_diff_lt" if "Numeric check" in falsification else "",
-                      scope={"topic": f.topic, "source": f.source},
+                      scope={"topic": f.topic, "source": f.source,
+                             "config_hash": config_hash},
                       reference_class=f"{f.topic} / {f.source} findings",
                       id=f.id, source_url=f.url)
         tree.add_claim(claim)
@@ -788,6 +809,8 @@ def main(argv: list[str] | None = None) -> int:
     hidden_path = data_dir / "hidden_variables.jsonl"
     reform_path = data_dir / "reformulations.jsonl"
 
+    cfg_text = Path(args.config).read_text(encoding="utf-8")
+    config_hash = hashlib.sha256(cfg_text.encode("utf-8")).hexdigest()[:16]
     topics = load_config(Path(args.config))
     log(f"config: {len(topics)} topics")
 
@@ -801,7 +824,15 @@ def main(argv: list[str] | None = None) -> int:
 
     # 3. claim
     tree = load_tree(tree_path)
-    made, unknown_count = stage_claim(new_findings, tree, unknown_path)
+    # Cross-domain findings are preserved as transfer candidates, not staked as claims:
+    # a paper about combustion-front stability is not evidence about loss landscapes,
+    # but the mechanism it describes may be the same one.
+    cross = [f for f in new_findings if f.lane == "cross_domain"]
+    primary = [f for f in new_findings if f.lane != "cross_domain"]
+    if cross:
+        append_jsonl(data_dir / "cross_domain.jsonl", (f.to_dict() for f in cross))
+
+    made, unknown_count = stage_claim(primary, tree, unknown_path, config_hash)
     log(f"[claim] {len(made)} staked, {unknown_count} -> unknown journal")
 
     # 4. test
@@ -820,6 +851,13 @@ def main(argv: list[str] | None = None) -> int:
     log(f"[hidden] {len(suggestions)} suggestions")
 
     # 7. consolidate
+    # Claims retrieved under an older config are still counted as "surviving" even when
+    # the query that found them has since been corrected. The tree has no retirement
+    # mechanism, so the count is reported rather than silently carried.
+    stale = sum(1 for c in tree.claims.values()
+                if c.scope.get("config_hash", "") not in ("", config_hash))
+    unstamped = sum(1 for c in tree.claims.values() if not c.scope.get("config_hash"))
+
     cons = stage_consolidate(tree, topics, unknown_path, hidden_path,
                              Path(args.hypotheses_dir),
                              data_dir / "announced_topics.json")
@@ -829,6 +867,9 @@ def main(argv: list[str] | None = None) -> int:
         "topics": len(topics), "raw_findings": len(findings),
         "new_findings": len(new_findings), "duplicates_skipped": skipped,
         "claims_staked": len(made), "routed_to_unknown": unknown_count,
+        "cross_domain_candidates": len(cross),
+        "claims_from_superseded_config": stale,
+        "claims_predating_provenance": unstamped,
         **{f"test_{k}": v for k, v in test_stats.items()},
         **{f"modify_{k}": v for k, v in mod_stats.items()},
         "hidden_variable_suggestions": suggestions,
