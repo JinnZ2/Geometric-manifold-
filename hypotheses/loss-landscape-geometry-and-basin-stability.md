@@ -1,6 +1,6 @@
 # Hypothesis draft: loss-landscape geometry and basin stability
 
-_Regenerated 2026-08-13T22:23:16+00:00 by hypothesis_engine.py — do not hand-edit._
+_Regenerated 2026-08-17T06:27:00+00:00 by hypothesis_engine.py — do not hand-edit._
 
 ## Hypothesis statement
 
@@ -8,7 +8,7 @@ Across corroborated findings, the following claims survived staked testing (beta
 
 > On topic loss-landscape geometry and basin stability, Emergent heavy fermion and superconductivity near Mott transition in twisted bilayer graphene reports: Near a bandwidth-tuned Mott transition, the Fermi velocity $v_F$ and quasiparticle residue $Z$ of a metal often vanish.
 
-Status: **NEW HYPOTHESIS** (25 surviving claims)
+Status: **established** (32 surviving claims)
 
 ## Supporting claims
 
@@ -16,6 +16,9 @@ Status: **NEW HYPOTHESIS** (25 surviving claims)
 - (0.83) On topic loss-landscape geometry and basin stability, Connecting phases of matter to the flatness of the loss landscape in analog variational quantum algorithms reports: (no abstract) — [source](https://doi.org/10.1038/s42005-026-02528-4)
 - (0.83) On topic loss-landscape geometry and basin stability, Completeness properties of the space of quasicontinuous functions reports: Quasicontinuous functions have found applications in many areas of mathematics. — [source](http://arxiv.org/abs/2608.12318v1)
 - (0.83) On topic loss-landscape geometry and basin stability, Probing Impurity Quantum Criticality with Entanglement Witnesses reports: Entanglement is a defining feature of quantum mechanics, and its relation to quantum criticality is of considerable current interest. — [source](http://arxiv.org/abs/2608.12317v1)
+- (0.83) On topic loss-landscape geometry and basin stability, Fine-tuning Semantic Vector Models in Trust Region reports: (no abstract) [restricted: narrower scope within loss-landscape geometry and basin stability (run 2026-08-13)] — [source](https://doi.org/10.1109/aemcse65292.2025.11042704)
+- (0.83) On topic loss-landscape geometry and basin stability, Calibration Bets on the Past: Post-Training Quantization for Financial Time-Series Forecasting reports: Financial forecasting models are typically developed in full precision, yet production deployment often requires low-precision inference to reduce memory and computational cost. — [source](http://arxiv.org/abs/2608.12259v1)
+- (0.83) On topic loss-landscape geometry and basin stability, Regime-Gated Residual Mixture-of-Experts for Cross-Sectional Volatility Forecasting reports: Financial volatility is regime dependent, yet incorporating regime information into neural networks can also destabilize training. — [source](http://arxiv.org/abs/2608.12251v1)
 - (0.80) On topic loss-landscape geometry and basin stability, Emergent heavy fermion and superconductivity near Mott transition in twisted bilayer graphene reports: Near a bandwidth-tuned Mott transition, the Fermi velocity $v_F$ and quasiparticle residue $Z$ of a metal often vanish. — [source](http://arxiv.org/abs/2608.12319v1)
 - (0.80) On topic loss-landscape geometry and basin stability, StateFlow: Building, Evolving, and Accessing 3D World States for Previsualization reports: Previsualization is an intermediate layer between ideas and production in film, games, architecture, and urban design. — [source](http://arxiv.org/abs/2608.12314v1)
 - (0.80) On topic loss-landscape geometry and basin stability, AVA-Encoder: Towards Agent-Native Video Representation Learning reports: Creative agents still lack an effective way to learn from high-quality human films, limiting their ability to produce cinematic-grade videos. — [source](http://arxiv.org/abs/2608.12313v1)
@@ -36,9 +39,13 @@ Status: **NEW HYPOTHESIS** (25 surviving claims)
 - (0.80) On topic loss-landscape geometry and basin stability, System-Level Efficiency of LLM Fine-Tuning Strategies in Resource-Constrained Environments: A Comparative Study of LoRA, Full Tuning, and Training from Scratch reports: This study examines an often-overlooked dimension of fine-tuning large language models (LLMs): the impact of different strategies on system-level resource consumption in hardware-constrained environments, particularly for deployment in settings such as academic labs, low-cost virtual machines, or ed — [source](https://doi.org/10.36227/techrxiv.175752113.35009280/v1)
 - (0.80) On topic loss-landscape geometry and basin stability, A LoRA-Based Approach to Fine-Tuning LLMs for Educational Guidance in Resource-Constrained Settings reports: Abstract
                 The current study describes a cost-effective method for adapting large language models(LLMs) for academic advising in study-abroad contexts. — [source](https://doi.org/10.21203/rs.3.rs-8431533/v1)
-- (0.75) On topic loss-landscape geometry and basin stability, Fine-tuning Semantic Vector Models in Trust Region reports: (no abstract) [restricted: narrower scope within loss-landscape geometry and basin stability (run 2026-08-13)] — [source](https://doi.org/10.1109/aemcse65292.2025.11042704)
-- (0.75) On topic loss-landscape geometry and basin stability, Calibration Bets on the Past: Post-Training Quantization for Financial Time-Series Forecasting reports: Financial forecasting models are typically developed in full precision, yet production deployment often requires low-precision inference to reduce memory and computational cost. — [source](http://arxiv.org/abs/2608.12259v1)
-- (0.75) On topic loss-landscape geometry and basin stability, Regime-Gated Residual Mixture-of-Experts for Cross-Sectional Volatility Forecasting reports: Financial volatility is regime dependent, yet incorporating regime information into neural networks can also destabilize training. — [source](http://arxiv.org/abs/2608.12251v1)
+- (0.75) On topic loss-landscape geometry and basin stability, An Efficient Near-Optimal Algorithm for Adversarial $m$-Set Bandits reports: We study adversarial combinatorial bandits with $m$-set actions, where at each round the learner selects $m$ out of $d$ items and observes only the aggregate loss of the selected items. — [source](http://arxiv.org/abs/2608.12231v1)
+- (0.75) On topic loss-landscape geometry and basin stability, How to Spend Your Oracle Budget: Practical Guidance for Protein Structure Prediction Models reports: Foundation models for protein structure prediction remain unreliable on certain targets. — [source](http://arxiv.org/abs/2608.12192v1)
+- (0.75) On topic loss-landscape geometry and basin stability, FQTree: Fine-grained Quantization and Hardware Generation of Boosted Decision Trees reports: Boosted decision trees (BDTs) are widely used in latency-critical applications, but efficient hardware deployment remains challenging. — [source](http://arxiv.org/abs/2608.12140v1)
+- (0.75) On topic loss-landscape geometry and basin stability, Earth observation embeddings are effective sub-grid descriptors for probabilistic weather downscaling reports: Global weather reanalyses and forecasts resolve the evolving atmospheric state on coarse grids, but site-specific applications require predictions at arbitrary locations where near-surface conditions also depend on unresolved terrain and land-surface properties. — [source](http://arxiv.org/abs/2608.12271v1)
+- (0.75) On topic loss-landscape geometry and basin stability, ScreenShot: A Foundation Model for Few-Shot Combination Drug Screening reports: Treating patients with combinations of drugs reduces the risk of resistance to any individual drug. — [source](http://arxiv.org/abs/2608.12219v1)
+- (0.75) On topic loss-landscape geometry and basin stability, Learning-Based Behavior Planning for Automated Driving: Real-World Integration and Deployment reports: Recent research in machine and deep learning has shown the potential of learningbased motion planning approaches to improve the driving behavior of automated vehicles, especially in complex environments. — [source](http://arxiv.org/abs/2608.12198v1)
+- (0.75) On topic loss-landscape geometry and basin stability, CytoBERT: A Foundation Model for Cytometry Data reports: Cytometry measures the complex characteristics of single cells (e.g., counts and protein expression of immune cells) and is widely used across immunological research and clinical settings. — [source](http://arxiv.org/abs/2608.14414v1)
 
 ## Contradicted/refuted claims
 

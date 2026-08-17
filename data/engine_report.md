@@ -1,30 +1,31 @@
 # Hypothesis engine run report
 
-Run at: 2026-08-13T22:23:16+00:00
+Run at: 2026-08-17T06:27:00+00:00
 
 ## Stage counts
 
 - **topics**: 5
-- **raw_findings**: 105
-- **new_findings**: 17
-- **duplicates_skipped**: 88
-- **claims_staked**: 17
+- **raw_findings**: 118
+- **new_findings**: 32
+- **duplicates_skipped**: 86
+- **claims_staked**: 16
 - **routed_to_unknown**: 0
-- **test_pass**: 65
-- **test_fail**: 35
-- **test_untested**: 17
-- **modify_reformulated**: 12
-- **modify_escape_hatched**: 4
+- **cross_domain_candidates**: 16
+- **claims_from_superseded_config**: 0
+- **claims_predating_provenance**: 72
+- **test_pass**: 67
+- **test_fail**: 31
+- **test_untested**: 20
+- **modify_reformulated**: 14
+- **modify_escape_hatched**: 6
 - **hidden_variable_suggestions**: []
 - **hypothesis_files**: 5
-- **new_hypotheses**: ['model collapse, variance suppression and recursive training', 'loss-landscape geometry and basin stability']
-- **total_claims_in_tree**: 78
+- **new_hypotheses**: []
+- **total_claims_in_tree**: 88
 
 ## New hypotheses
-NEW HYPOTHESIS
 
-- model collapse, variance suppression and recursive training
-- loss-landscape geometry and basin stability
+- (none this run)
 
 ## Top hidden-variable suspects
 
