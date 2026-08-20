@@ -1,6 +1,6 @@
 # Hypothesis draft: model collapse, variance suppression and recursive training
 
-_Regenerated 2026-08-17T06:27:00+00:00 by hypothesis_engine.py — do not hand-edit._
+_Regenerated 2026-08-20T06:22:43+00:00 by hypothesis_engine.py — do not hand-edit._
 
 ## Hypothesis statement
 
@@ -8,7 +8,7 @@ Across corroborated findings, the following claims survived staked testing (beta
 
 > On topic model collapse, variance suppression and recursive training, CollapseTracker: An Empirical Dataset Documenting Progressive Model Collapse Across Recursive Generations of Synthetic Training Data reports: Model collapse-the progressive degradation of model quality when recursively trained on synthetic data-has emerged as a critical concern for the sustainability of AI development.
 
-Status: **established** (17 surviving claims)
+Status: **established** (18 surviving claims)
 
 ## Supporting claims
 
@@ -26,6 +26,7 @@ Status: **established** (17 surviving claims)
 - (0.80) On topic model collapse, variance suppression and recursive training, Self-Verification Provably Prevents Model Collapse in Recursive Synthetic Training reports: (no abstract) — [source](https://doi.org/10.52202/085713-1213)
 - (0.80) On topic model collapse, variance suppression and recursive training, Preventing Model Collapse when Training LLMs with Synthetic Data reports: (no abstract) — [source](https://doi.org/10.1109/cdc57313.2025.11312306)
 - (0.80) On topic model collapse, variance suppression and recursive training, Epistemic Collapse and the Rise of Synthetic Data: Safeguarding AI Training Corpora in the Post-Reality Age reports: (no abstract) — [source](https://doi.org/10.2139/ssrn.5312051)
+- (0.80) On topic model collapse, variance suppression and recursive training, RecipeNet: A Hierarchical Transformer for Recipe Data reports: Recipe data arises in domains such as materials synthesis, pharmaceutical formulation, and industrial manufacturing, where procedures are represented as ordered sequences of steps containing heterogeneous structured fields. [restricted: narrower scope within model collapse, variance suppression and recursive training (run 2026-08-17)] — [source](http://arxiv.org/abs/2608.14505v1)
 - (0.75) On topic model collapse, variance suppression and recursive training, Critical Slowing Down Theory Gives Precursor Signals for Early Warning of Landslides reports: (no abstract) — [source](https://doi.org/10.2139/ssrn.4127850)
 - (0.71) On topic model collapse, variance suppression and recursive training, Critical slowing down theory provides early warning signals for sandstone failure reports: The critical point of rock mass transition from stable to unstable states is significant for the prevention and control of rock engineering hazards. — [source](https://doi.org/10.3389/feart.2022.934498)
 - (0.67) On topic model collapse, variance suppression and recursive training, When Tails Are Heavy: The Benefits of Variance-Targeted, Non-Gaussian, Quasi-Maximum Likelihood Estimation of GARCH Models reports: (no abstract) — [source](https://doi.org/10.2139/ssrn.5445994)
@@ -49,3 +50,4 @@ Status: **established** (17 surviving claims)
 - [escape-hatch] On topic model collapse, variance suppression and recursive training, ForTIFAI: fending off recursive training induced failure for AI model collapse reports: Th
 - [escape-hatch] On topic model collapse, variance suppression and recursive training, Multimodal Synthetic Data Finetuning and Model Collapse: Insights from VLMs and Diffusion 
 - [escape-hatch] On topic model collapse, variance suppression and recursive training, Rate of Model Collapse in Recursive Training reports: Given the ease of creating synthetic
+- [escape-hatch] On topic model collapse, variance suppression and recursive training, Structural Silence: When AI Infrastructure Fails Speakers of Underrepresented Languages re
