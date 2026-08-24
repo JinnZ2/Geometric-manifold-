@@ -1,6 +1,6 @@
 # Hypothesis draft: Fisher information and thermodynamics of learning
 
-_Regenerated 2026-08-20T06:22:43+00:00 by hypothesis_engine.py — do not hand-edit._
+_Regenerated 2026-08-24T06:31:56+00:00 by hypothesis_engine.py — do not hand-edit._
 
 ## Hypothesis statement
 
@@ -12,7 +12,7 @@ Status: **candidate** (1 surviving claims)
 
 ## Supporting claims
 
-- (0.75) On topic Fisher information and thermodynamics of learning, Satellite Infrastructure Sharing: Orbit-Structured Stochastic Geometry Modeling and Connectivity Analysis in Heterogeneous Satellite Networks reports: This paper develops an analytical framework to evaluate the feasibility and performance of satellite infrastructure sharing among multiple low Earth orbit (LEO) satellite operators. — [source](http://arxiv.org/abs/2608.12265v1)
+- (0.80) On topic Fisher information and thermodynamics of learning, Satellite Infrastructure Sharing: Orbit-Structured Stochastic Geometry Modeling and Connectivity Analysis in Heterogeneous Satellite Networks reports: This paper develops an analytical framework to evaluate the feasibility and performance of satellite infrastructure sharing among multiple low Earth orbit (LEO) satellite operators. — [source](http://arxiv.org/abs/2608.12265v1)
 
 ## Contradicted/refuted claims
 
