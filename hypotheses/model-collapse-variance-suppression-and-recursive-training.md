@@ -1,6 +1,6 @@
 # Hypothesis draft: model collapse, variance suppression and recursive training
 
-_Regenerated 2026-08-24T06:31:56+00:00 by hypothesis_engine.py — do not hand-edit._
+_Regenerated 2026-08-27T16:56:12+00:00 by hypothesis_engine.py — do not hand-edit._
 
 ## Hypothesis statement
 
@@ -45,7 +45,6 @@ Status: **established** (20 surviving claims)
 
 ## Open unknowns
 
-- [escape-hatch] On topic model collapse, variance suppression and recursive training, Heavy tails in GARCH residuals are not unmodelled slow variance reports: A fitted GARCH mo
 - [escape-hatch] On topic model collapse, variance suppression and recursive training, Large Language Model-Driven Small-Capitalization Trading: Integrating Financial News Senti
 - [escape-hatch] On topic model collapse, variance suppression and recursive training, How Bad is Training on Synthetic Data? A Statistical Analysis of Language Model Collapse r
 - [escape-hatch] On topic model collapse, variance suppression and recursive training, Multi-modal Synthetic Data Training and Model Collapse: Insights from VLMs and Diffusion M
@@ -53,3 +52,6 @@ Status: **established** (20 surviving claims)
 - [escape-hatch] On topic model collapse, variance suppression and recursive training, Multimodal Synthetic Data Finetuning and Model Collapse: Insights from VLMs and Diffusion 
 - [escape-hatch] On topic model collapse, variance suppression and recursive training, Rate of Model Collapse in Recursive Training reports: Given the ease of creating synthetic
 - [escape-hatch] On topic model collapse, variance suppression and recursive training, Structural Silence: When AI Infrastructure Fails Speakers of Underrepresented Languages re
+- [escape-hatch] On topic model collapse, variance suppression and recursive training, Noise suppression in photon-counting computed tomography using unsupervised Poisson flow g
+- [escape-hatch] On topic model collapse, variance suppression and recursive training, On the Statistical Capacity of Deep Generative Models reports: Deep generative models are 
+- [escape-hatch] On topic model collapse, variance suppression and recursive training, Optimizing Noise Schedules of Generative Models in High Dimensionss reports: Recent works 

@@ -66,3 +66,11 @@
 {"id": "e82bb23bf7177b7ca868853c", "count": 2, "condition": "narrower scope within model collapse, variance suppression and recursive training (run 2026-08-24)", "at": "2026-08-24T06:31:56+00:00"}
 {"id": "524487587da68a370b7ed454", "count": 2, "condition": "narrower scope within model collapse, variance suppression and recursive training (run 2026-08-24)", "at": "2026-08-24T06:31:56+00:00"}
 {"id": "cc4d0389a20d97d3572622f7", "count": 2, "condition": "narrower scope within model collapse, variance suppression and recursive training (run 2026-08-24)", "at": "2026-08-24T06:31:56+00:00"}
+{"id": "6d11b93b7972e441f1f0e88c", "count": 3, "condition": "narrower scope within loss-landscape geometry and basin stability (run 2026-08-27)", "at": "2026-08-27T16:56:12+00:00"}
+{"id": "64bd6851fb7ad86fda43ff38", "count": 2, "condition": "narrower scope within loss-landscape geometry and basin stability (run 2026-08-27)", "at": "2026-08-27T16:56:12+00:00"}
+{"id": "e82bb23bf7177b7ca868853c", "count": 3, "condition": "narrower scope within model collapse, variance suppression and recursive training (run 2026-08-27)", "at": "2026-08-27T16:56:12+00:00"}
+{"id": "524487587da68a370b7ed454", "count": 3, "condition": "narrower scope within model collapse, variance suppression and recursive training (run 2026-08-27)", "at": "2026-08-27T16:56:12+00:00"}
+{"id": "cc4d0389a20d97d3572622f7", "count": 3, "condition": "narrower scope within model collapse, variance suppression and recursive training (run 2026-08-27)", "at": "2026-08-27T16:56:12+00:00"}
+{"id": "eb479f8b42285363d8113644", "count": 1, "condition": "narrower scope within loss-landscape geometry and basin stability (run 2026-08-27)", "at": "2026-08-27T16:56:12+00:00"}
+{"id": "8c450e23863697200eab6738", "count": 1, "condition": "narrower scope within loss-landscape geometry and basin stability (run 2026-08-27)", "at": "2026-08-27T16:56:12+00:00"}
+{"id": "d51e48dcec10673d4d0c27d0", "count": 1, "condition": "narrower scope within loss-landscape geometry and basin stability (run 2026-08-27)", "at": "2026-08-27T16:56:12+00:00"}
