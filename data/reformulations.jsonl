@@ -74,3 +74,10 @@
 {"id": "eb479f8b42285363d8113644", "count": 1, "condition": "narrower scope within loss-landscape geometry and basin stability (run 2026-08-27)", "at": "2026-08-27T16:56:12+00:00"}
 {"id": "8c450e23863697200eab6738", "count": 1, "condition": "narrower scope within loss-landscape geometry and basin stability (run 2026-08-27)", "at": "2026-08-27T16:56:12+00:00"}
 {"id": "d51e48dcec10673d4d0c27d0", "count": 1, "condition": "narrower scope within loss-landscape geometry and basin stability (run 2026-08-27)", "at": "2026-08-27T16:56:12+00:00"}
+{"id": "0d7edcf44cd4ec7d891ec548", "count": 3, "condition": "narrower scope within loss-landscape geometry and basin stability (run 2026-08-31)", "at": "2026-08-31T11:57:49+00:00"}
+{"id": "e02320212f97e26ca9fec2b4", "count": 2, "condition": "narrower scope within loss-landscape geometry and basin stability (run 2026-08-31)", "at": "2026-08-31T11:57:49+00:00"}
+{"id": "b85e1c3fdffda01f389fab8a", "count": 2, "condition": "narrower scope within loss-landscape geometry and basin stability (run 2026-08-31)", "at": "2026-08-31T11:57:49+00:00"}
+{"id": "8314aacc4df3b5b88d7107c0", "count": 1, "condition": "narrower scope within loss-landscape geometry and basin stability (run 2026-08-31)", "at": "2026-08-31T11:57:49+00:00"}
+{"id": "d51e48dcec10673d4d0c27d0", "count": 2, "condition": "narrower scope within loss-landscape geometry and basin stability (run 2026-08-31)", "at": "2026-08-31T11:57:49+00:00"}
+{"id": "e32744da0dfa71deea40a5f8", "count": 1, "condition": "narrower scope within loss-landscape geometry and basin stability (run 2026-08-31)", "at": "2026-08-31T11:57:49+00:00"}
+{"id": "fe631ac6ff82746e88156ab4", "count": 1, "condition": "narrower scope within model collapse, variance suppression and recursive training (run 2026-08-31)", "at": "2026-08-31T11:57:49+00:00"}

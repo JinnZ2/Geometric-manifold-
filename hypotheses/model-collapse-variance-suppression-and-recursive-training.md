@@ -1,6 +1,6 @@
 # Hypothesis draft: model collapse, variance suppression and recursive training
 
-_Regenerated 2026-08-27T16:56:12+00:00 by hypothesis_engine.py — do not hand-edit._
+_Regenerated 2026-08-31T11:57:49+00:00 by hypothesis_engine.py — do not hand-edit._
 
 ## Hypothesis statement
 
@@ -8,7 +8,7 @@ Across corroborated findings, the following claims survived staked testing (beta
 
 > On topic model collapse, variance suppression and recursive training, CollapseTracker: An Empirical Dataset Documenting Progressive Model Collapse Across Recursive Generations of Synthetic Training Data reports: Model collapse-the progressive degradation of model quality when recursively trained on synthetic data-has emerged as a critical concern for the sustainability of AI development.
 
-Status: **established** (20 surviving claims)
+Status: **established** (22 surviving claims)
 
 ## Supporting claims
 
@@ -30,6 +30,8 @@ Status: **established** (20 surviving claims)
 - (0.80) On topic model collapse, variance suppression and recursive training, RecipeNet: A Hierarchical Transformer for Recipe Data reports: Recipe data arises in domains such as materials synthesis, pharmaceutical formulation, and industrial manufacturing, where procedures are represented as ordered sequences of steps containing heterogeneous structured fields. [restricted: narrower scope within model collapse, variance suppression and recursive training (run 2026-08-17)] — [source](http://arxiv.org/abs/2608.14505v1)
 - (0.80) On topic model collapse, variance suppression and recursive training, Diachronic Sample Integration: Robust Tail-Risk Estimation with Generative Models reports: Deep generative models are increasingly used as simulators for downstream decision-making under data scarcity, but in risk-sensitive applications their usefulness depends on rare adverse scenarios rather than typical samples. [restricted: narrower scope within model collapse, variance suppression and recursive training (run 2026-08-20)] — [source](https://www.semanticscholar.org/paper/13cfe7f9db0735f88688a3d8e2c039b7e458ff99)
 - (0.75) On topic model collapse, variance suppression and recursive training, Critical Slowing Down Theory Gives Precursor Signals for Early Warning of Landslides reports: (no abstract) — [source](https://doi.org/10.2139/ssrn.4127850)
+- (0.75) On topic model collapse, variance suppression and recursive training, ContextPilot: Teaching Agents for Proactive Context Management via Fine-grained RL reports: Long-horizon agentic tasks require large language models (LLMs) to iteratively retrieve, integrate, and maintain dispersed information across multi-turn interactions, but preserving all interaction histories leads to a continuously growing working context. — [source](http://arxiv.org/abs/2608.28476v1)
+- (0.75) On topic model collapse, variance suppression and recursive training, Curvature-Conditioned Multiscale Momentum with Sphere Constraints for LLM Pretraining reports: Pretraining accounts for a large fraction of the total computational cost in LLM training. — [source](http://arxiv.org/abs/2608.28442v1)
 - (0.71) On topic model collapse, variance suppression and recursive training, Critical slowing down theory provides early warning signals for sandstone failure reports: The critical point of rock mass transition from stable to unstable states is significant for the prevention and control of rock engineering hazards. — [source](https://doi.org/10.3389/feart.2022.934498)
 - (0.67) On topic model collapse, variance suppression and recursive training, When Tails Are Heavy: The Benefits of Variance-Targeted, Non-Gaussian, Quasi-Maximum Likelihood Estimation of GARCH Models reports: (no abstract) — [source](https://doi.org/10.2139/ssrn.5445994)
 - (0.67) On topic model collapse, variance suppression and recursive training, The Spatial Distribution of High-Growth Entrepreneurship: Generative Mechanisms of Heavy Tails reports: (no abstract) — [source](https://doi.org/10.5465/amproc.2025.18964abstract)
