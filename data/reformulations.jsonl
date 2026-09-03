@@ -81,3 +81,15 @@
 {"id": "d51e48dcec10673d4d0c27d0", "count": 2, "condition": "narrower scope within loss-landscape geometry and basin stability (run 2026-08-31)", "at": "2026-08-31T11:57:49+00:00"}
 {"id": "e32744da0dfa71deea40a5f8", "count": 1, "condition": "narrower scope within loss-landscape geometry and basin stability (run 2026-08-31)", "at": "2026-08-31T11:57:49+00:00"}
 {"id": "fe631ac6ff82746e88156ab4", "count": 1, "condition": "narrower scope within model collapse, variance suppression and recursive training (run 2026-08-31)", "at": "2026-08-31T11:57:49+00:00"}
+{"id": "64bd6851fb7ad86fda43ff38", "count": 3, "condition": "narrower scope within loss-landscape geometry and basin stability (run 2026-09-03)", "at": "2026-09-03T10:13:19+00:00"}
+{"id": "eb479f8b42285363d8113644", "count": 2, "condition": "narrower scope within loss-landscape geometry and basin stability (run 2026-09-03)", "at": "2026-09-03T10:13:19+00:00"}
+{"id": "d51e48dcec10673d4d0c27d0", "count": 3, "condition": "narrower scope within loss-landscape geometry and basin stability (run 2026-09-03)", "at": "2026-09-03T10:13:19+00:00"}
+{"id": "e32744da0dfa71deea40a5f8", "count": 2, "condition": "narrower scope within loss-landscape geometry and basin stability (run 2026-09-03)", "at": "2026-09-03T10:13:19+00:00"}
+{"id": "0607b00cd57443ea16b8c390", "count": 1, "condition": "narrower scope within loss-landscape geometry and basin stability (run 2026-09-03)", "at": "2026-09-03T10:13:19+00:00"}
+{"id": "76daea19f8b5af3cf01ad10a", "count": 1, "condition": "narrower scope within loss-landscape geometry and basin stability (run 2026-09-03)", "at": "2026-09-03T10:13:19+00:00"}
+{"id": "745e82274bcec3d48bd9e341", "count": 1, "condition": "narrower scope within model collapse, variance suppression and recursive training (run 2026-09-03)", "at": "2026-09-03T10:13:19+00:00"}
+{"id": "5a26433945bfb9fc0f4f655d", "count": 1, "condition": "narrower scope within model collapse, variance suppression and recursive training (run 2026-09-03)", "at": "2026-09-03T10:13:19+00:00"}
+{"id": "df78c9777338370a847a1dac", "count": 1, "condition": "narrower scope within model collapse, variance suppression and recursive training (run 2026-09-03)", "at": "2026-09-03T10:13:19+00:00"}
+{"id": "7ccf0feb21eabb461ed53a49", "count": 1, "condition": "narrower scope within model collapse, variance suppression and recursive training (run 2026-09-03)", "at": "2026-09-03T10:13:19+00:00"}
+{"id": "2b356b918b2446476fc3cf1a", "count": 1, "condition": "narrower scope within model collapse, variance suppression and recursive training (run 2026-09-03)", "at": "2026-09-03T10:13:19+00:00"}
+{"id": "de9d016de8852cfa0009ec35", "count": 1, "condition": "narrower scope within model collapse, variance suppression and recursive training (run 2026-09-03)", "at": "2026-09-03T10:13:19+00:00"}
