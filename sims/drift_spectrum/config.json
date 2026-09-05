@@ -1,0 +1,35 @@
+{
+  "name": "drift_spectrum",
+  "tier": 1,
+  "order": "WORK ORDER — parameter-drift spectral signature (2026-09-04)",
+  "reference_instrument": "Li et al., arXiv 2509.23024 — RankMe, alpha-ReQ (definitions only)",
+  "model": {"n_in": 16, "d": 6, "n_classes": 24, "init_scale": 0.01,
+            "comment": "bottleneck d < n_classes as the order requires; d small enough that A3 alignment can brute-force d! permutations"},
+  "data": {"skew": 1.5, "control_skew": 0.0, "noise": 0.3, "batch": 32,
+           "probe_per_class": 3, "probe_distribution": "uniform",
+           "comment": "class k drawn with probability proportional to (k+1)^-skew; control is uniform"},
+  "train": {"steps": 1200, "lr": 0.3, "weight_decay": 0.003},
+  "measure": {"dense_until": 60, "every": 10,
+              "comment": "every step until dense_until, then every `every` steps; identical schedule on every seed so A3 has matched steps"},
+  "seeds": [0, 1, 2, 3, 4],
+  "axes": {"A1_window": 10,
+           "A1_window_source": "the only defined window in the repo: Monitor.detect_cost_spike / recent_trend, all 10 steps (INVENTORY.md §1)",
+           "A2": "hidden-unit rows (L1) and output-unit rows (L2) of one per-step delta",
+           "A3": "theta_t - theta_0 across seeds at matched step; raw and hidden-unit-permutation-aligned"},
+  "repair_flags": {"lambda_curv": 2.0, "param_threshold": 0.5, "policy_threshold": 0.4,
+                   "reference": "theta_0",
+                   "comment": "the repo's two flag rules re-implemented; theta_0 stands in for theta_ref, which is NOT the repo's scenario (INVENTORY.md §6)"},
+  "phase_detector": {"smooth_halfwidth": 3, "margin_frac": 0.10,
+                     "comment": "[CHOICE] three-phase = trough below start, peak above trough, end below peak, each by margin_frac of the smoothed range"},
+  "alignment": {"corr_threshold": 0.5, "lag_tol_frac": 0.10,
+                "comment": "[CHOICE] LOCKED corr >= +t at |lag| <= tol; ANTI-PHASE corr <= -t; else DECOUPLED. Only computed when S4 licenses it."},
+  "calibration_record": {
+    "what_was_swept_before_freezing": [
+      "init_scale in {0.01, 0.1, 0.3, 1.0, 3.0}; lr in {0.3, 1.0}; weight_decay in {0, 1e-3, 3e-3, 1e-2, 3e-2}; skew in {1.2, 1.5, 2.0}; steps up to 4000",
+      "probe distribution: uniform over classes AND drawn from the training distribution (the reference instrument's own choice)",
+      "learning-rate schedule: constant AND linear decay to 0.05*lr"
+    ],
+    "what_the_sweep_found": "collapse then expansion appears under skew in every small-init setting and is weak or absent in the control; a compression phase (RankMe falling after its peak) appeared in NO setting. The frozen values are the setting where the two reproduced phases are clearest, not a setting where the third appeared, because none did.",
+    "rule": "generator settings were chosen to reproduce the REFERENCE channel's published shape (S4), which is the licensing condition. Nothing about the drift axes was looked at while choosing them."
+  }
+}
