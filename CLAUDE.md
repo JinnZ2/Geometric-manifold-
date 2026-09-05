@@ -74,6 +74,7 @@ tests/                           # Pytest smoke tests for all modules
 docs/theoretical_notes/          # Mathematical foundations
 docs/hypothesis_engine.md        # Hypothesis-engine design doc
 docs/research/                   # Literature notes + forward plans (see its README for provenance)
+falsifier-survey/                # Delivered Run 2 falsifier survey, this repo's share; filed, instructions pending
 ```
 
 ### Hypothesis engine (`scripts/hypothesis_engine.py`)

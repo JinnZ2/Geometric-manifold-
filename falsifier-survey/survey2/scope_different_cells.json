@@ -1,0 +1,18 @@
+[
+ {
+  "folder": "docs",
+  "claim_id": "F-TETRA-SCOPE",
+  "source_file": "docs/research/OPEN_QUESTIONS.md",
+  "falsifier_text": "\"if confidence aggregation ever carries ≠4 components, the shape is wrong\" — but bridges/rosetta-bridge.json justifies TETRA by three weights (\"the irreducible three-weight combination\"). Both land on TETRA; they disagree on what would refute it.",
+  "status": "SCOPE-DIFFERENT",
+  "measured_as": null,
+  "scope_transform": {
+   "reference": "notes 14 four-channel frame: confidence aggregation carries data/param/policy/combined components, one per tetrahedron vertex; refute at component count ≠4",
+   "maps_to": "bridges/rosetta-bridge.json three-weight simplex frame: weights (data 0.2, parameter 0.5, policy 0.3); refute at weight count ≠3",
+   "breaks_at": "the component-count refutation test: both frames yield SHAPE.TETRA, so a ≠4 reading refutes in one frame while a =3 reading is the defining invariant in the other"
+  },
+  "downgrade_reason": null,
+  "notes": "Status: OPEN, AND CURRENTLY UNFALSIFIABLE AS WRITTEN (per OPEN_QUESTIONS).",
+  "repo": "gm"
+ }
+]
