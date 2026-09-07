@@ -93,3 +93,14 @@
 {"id": "7ccf0feb21eabb461ed53a49", "count": 1, "condition": "narrower scope within model collapse, variance suppression and recursive training (run 2026-09-03)", "at": "2026-09-03T10:13:19+00:00"}
 {"id": "2b356b918b2446476fc3cf1a", "count": 1, "condition": "narrower scope within model collapse, variance suppression and recursive training (run 2026-09-03)", "at": "2026-09-03T10:13:19+00:00"}
 {"id": "de9d016de8852cfa0009ec35", "count": 1, "condition": "narrower scope within model collapse, variance suppression and recursive training (run 2026-09-03)", "at": "2026-09-03T10:13:19+00:00"}
+{"id": "e02320212f97e26ca9fec2b4", "count": 3, "condition": "narrower scope within loss-landscape geometry and basin stability (run 2026-09-07)", "at": "2026-09-07T10:51:39+00:00"}
+{"id": "b85e1c3fdffda01f389fab8a", "count": 3, "condition": "narrower scope within loss-landscape geometry and basin stability (run 2026-09-07)", "at": "2026-09-07T10:51:39+00:00"}
+{"id": "e32744da0dfa71deea40a5f8", "count": 3, "condition": "narrower scope within loss-landscape geometry and basin stability (run 2026-09-07)", "at": "2026-09-07T10:51:39+00:00"}
+{"id": "d44b2894cb4897b1fa9c4787", "count": 1, "condition": "narrower scope within loss-landscape geometry and basin stability (run 2026-09-07)", "at": "2026-09-07T10:51:39+00:00"}
+{"id": "320f2c087b8510577c76166d", "count": 1, "condition": "narrower scope within loss-landscape geometry and basin stability (run 2026-09-07)", "at": "2026-09-07T10:51:39+00:00"}
+{"id": "52a41c8a82c4541326b9dbd4", "count": 1, "condition": "narrower scope within Fisher information and thermodynamics of learning (run 2026-09-07)", "at": "2026-09-07T10:51:39+00:00"}
+{"id": "770c61c461c80e08fe96db53", "count": 1, "condition": "narrower scope within safety drift, alignment repair and parameter-space monitoring (run 2026-09-07)", "at": "2026-09-07T10:51:39+00:00"}
+{"id": "745e82274bcec3d48bd9e341", "count": 2, "condition": "narrower scope within model collapse, variance suppression and recursive training (run 2026-09-07)", "at": "2026-09-07T10:51:39+00:00"}
+{"id": "df78c9777338370a847a1dac", "count": 2, "condition": "narrower scope within model collapse, variance suppression and recursive training (run 2026-09-07)", "at": "2026-09-07T10:51:39+00:00"}
+{"id": "2b356b918b2446476fc3cf1a", "count": 2, "condition": "narrower scope within model collapse, variance suppression and recursive training (run 2026-09-07)", "at": "2026-09-07T10:51:39+00:00"}
+{"id": "f5d1ba14426fd1490b3f6e3d", "count": 1, "condition": "narrower scope within loss-landscape geometry and basin stability (run 2026-09-07)", "at": "2026-09-07T10:51:39+00:00"}
