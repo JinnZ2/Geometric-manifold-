@@ -1,6 +1,6 @@
 # Hypothesis draft: model collapse, variance suppression and recursive training
 
-_Regenerated 2026-09-10T10:08:11+00:00 by hypothesis_engine.py — do not hand-edit._
+_Regenerated 2026-09-14T11:07:13+00:00 by hypothesis_engine.py — do not hand-edit._
 
 ## Hypothesis statement
 
