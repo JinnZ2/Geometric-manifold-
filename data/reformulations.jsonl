@@ -118,3 +118,9 @@
 {"id": "f8b06f72a432ba050a387210", "count": 1, "condition": "narrower scope within model collapse, variance suppression and recursive training (run 2026-09-14)", "at": "2026-09-14T11:07:13+00:00"}
 {"id": "932cfacc0071407ebb5ef769", "count": 1, "condition": "narrower scope within model collapse, variance suppression and recursive training (run 2026-09-14)", "at": "2026-09-14T11:07:13+00:00"}
 {"id": "c7118308af00b4b9349ee882", "count": 1, "condition": "narrower scope within model collapse, variance suppression and recursive training (run 2026-09-14)", "at": "2026-09-14T11:07:13+00:00"}
+{"id": "0607b00cd57443ea16b8c390", "count": 3, "condition": "narrower scope within loss-landscape geometry and basin stability (run 2026-09-17)", "at": "2026-09-17T10:32:00+00:00"}
+{"id": "0f7ec4e3bc20475915854abe", "count": 2, "condition": "narrower scope within loss-landscape geometry and basin stability (run 2026-09-17)", "at": "2026-09-17T10:32:00+00:00"}
+{"id": "f8b06f72a432ba050a387210", "count": 2, "condition": "narrower scope within model collapse, variance suppression and recursive training (run 2026-09-17)", "at": "2026-09-17T10:32:00+00:00"}
+{"id": "c7118308af00b4b9349ee882", "count": 2, "condition": "narrower scope within model collapse, variance suppression and recursive training (run 2026-09-17)", "at": "2026-09-17T10:32:00+00:00"}
+{"id": "f653667bebbdbac9ce88968f", "count": 1, "condition": "narrower scope within hidden variable detection / causal discovery from residuals (run 2026-09-17)", "at": "2026-09-17T10:32:00+00:00"}
+{"id": "4c3c995a5ba4d34cd5b107fb", "count": 1, "condition": "narrower scope within hidden variable detection / causal discovery from residuals (run 2026-09-17)", "at": "2026-09-17T10:32:00+00:00"}

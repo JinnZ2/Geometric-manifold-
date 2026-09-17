@@ -1,6 +1,6 @@
 # Hypothesis draft: safety drift, alignment repair and parameter-space monitoring
 
-_Regenerated 2026-09-14T11:07:13+00:00 by hypothesis_engine.py — do not hand-edit._
+_Regenerated 2026-09-17T10:32:00+00:00 by hypothesis_engine.py — do not hand-edit._
 
 ## Hypothesis statement
 
@@ -8,7 +8,7 @@ Across corroborated findings, the following claims survived staked testing (beta
 
 > On topic safety drift, alignment repair and parameter-space monitoring, Mitigating Backdoor Attacks using Activation-Guided Model Editing reports: Backdoor attacks compromise the integrity and reliability of machine learning models by embedding a hidden trigger during the training process, which can later be activated to cause unintended misbehavior.
 
-Status: **established** (13 surviving claims)
+Status: **established** (14 surviving claims)
 
 ## Supporting claims
 
@@ -23,8 +23,9 @@ Status: **established** (13 surviving claims)
 - (0.80) On topic safety drift, alignment repair and parameter-space monitoring, Multi-Step Tool-Calling over Korean Open Public APIs: A Benchmark and a Data-Synthesis Recipe reports: Data-sovereignty regulations increasingly require public institutions to deploy open-source, on-premise LLM agents that chain multiple tool-calls across live government APIs. — [source](http://arxiv.org/abs/2609.05395v1)
 - (0.80) On topic safety drift, alignment repair and parameter-space monitoring, Diffusion TV: Experiencing Diffusion Models through Tangible, Embodied Interaction reports: Diffusion TV is an interactive AI art installation that offers a tangible and embodied experience of diffusion models through a modified CRT TV. — [source](http://arxiv.org/abs/2609.05404v1)
 - (0.80) On topic safety drift, alignment repair and parameter-space monitoring, Testing Interchangeability in LLM Agent Teams reports: Production multi-agent systems replace agents constantly, on the assumption that an agent filling a role is interchangeable with any other agent that can do the job. — [source](http://arxiv.org/abs/2609.05279v1)
+- (0.80) On topic safety drift, alignment repair and parameter-space monitoring, Semigroup-JEPA: Latent Dynamics Consistency for Zero-Shot Physics Generalization reports: Joint-Embedding Predictive Architecture (JEPA) world models learn a compact latent representation of the world that supports prediction and planning, but their capability to learn physics and generate physically realistic dynamics remains hitherto untested. — [source](http://arxiv.org/abs/2609.10464v1)
 - (0.80) On topic safety drift, alignment repair and parameter-space monitoring, Multi-Agent Reinforcement Learning for Autonomous UAV Exploration in Wildfire Response reports: This study develops a deep reinforcement learning framework for training Unmanned Aerial Vehicle (UAV) agents to navigate and monitor simulated wildfire environments. — [source](http://arxiv.org/abs/2609.10433v1)
-- (0.75) On topic safety drift, alignment repair and parameter-space monitoring, Semigroup-JEPA: Latent Dynamics Consistency for Zero-Shot Physics Generalization reports: Joint-Embedding Predictive Architecture (JEPA) world models learn a compact latent representation of the world that supports prediction and planning, but their capability to learn physics and generate physically realistic dynamics remains hitherto untested. — [source](http://arxiv.org/abs/2609.10464v1)
+- (0.75) On topic safety drift, alignment repair and parameter-space monitoring, RISE: Recursive Improvement via Self-Extrapolating Policy Distillation reports: On-policy distillation (OPD) provides dense, per-token supervision for language model post-training, but its effectiveness is bottlenecked by teacher quality: external teachers suffer from distribution mismatch, while self-distillation with privileged conditioning is limited by in-context learning c [restricted: narrower scope within safety drift, alignment repair and parameter-space monitoring (run 2026-09-10)] — [source](http://arxiv.org/abs/2609.05295v1)
 
 ## Contradicted/refuted claims
 

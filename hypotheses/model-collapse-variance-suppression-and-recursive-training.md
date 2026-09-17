@@ -1,6 +1,6 @@
 # Hypothesis draft: model collapse, variance suppression and recursive training
 
-_Regenerated 2026-09-14T11:07:13+00:00 by hypothesis_engine.py — do not hand-edit._
+_Regenerated 2026-09-17T10:32:00+00:00 by hypothesis_engine.py — do not hand-edit._
 
 ## Hypothesis statement
 
@@ -8,7 +8,7 @@ Across corroborated findings, the following claims survived staked testing (beta
 
 > On topic model collapse, variance suppression and recursive training, CollapseTracker: An Empirical Dataset Documenting Progressive Model Collapse Across Recursive Generations of Synthetic Training Data reports: Model collapse-the progressive degradation of model quality when recursively trained on synthetic data-has emerged as a critical concern for the sustainability of AI development.
 
-Status: **established** (28 surviving claims)
+Status: **established** (29 surviving claims)
 
 ## Supporting claims
 
@@ -39,6 +39,7 @@ Status: **established** (28 surviving claims)
 - (0.71) On topic model collapse, variance suppression and recursive training, Critical slowing down theory provides early warning signals for sandstone failure reports: The critical point of rock mass transition from stable to unstable states is significant for the prevention and control of rock engineering hazards. — [source](https://doi.org/10.3389/feart.2022.934498)
 - (0.71) On topic model collapse, variance suppression and recursive training, Early Warning Signals of the Tipping Point in Strongly Interacting Rydberg Atoms. reports: The identification of tipping points is essential for the prediction of collapses or other sudden changes in complex systems. [restricted: narrower scope within model collapse, variance suppression and recursive training (run 2026-09-03)] — [source](https://doi.org/10.1103/physrevlett.133.243601)
 - (0.71) On topic model collapse, variance suppression and recursive training, Choosing observables that capture critical slowing down before tipping points: A Fokker-Planck operator approach. reports: Tipping points (TP) are abrupt transitions between metastable states in complex systems, most often described by a bifurcation or crisis of a multistable system induced by a slowly changing control parameter. [restricted: narrower scope within model collapse, variance suppression and recursive training (run 2026-09-03)] — [source](https://doi.org/10.1103/l2v2-xndy)
+- (0.71) On topic model collapse, variance suppression and recursive training, Diachronic Sample Integration: Robust Tail-Risk Estimation with Generative Models reports: Deep generative models are increasingly used as simulators for downstream decision-making under data scarcity, but in risk-sensitive applications their usefulness depends on rare adverse scenarios rather than typical samples. [restricted: narrower scope within model collapse, variance suppression and recursive training (run 2026-09-14)] — [source](https://doi.org/10.48550/arXiv.2607.10810)
 - (0.67) On topic model collapse, variance suppression and recursive training, When Tails Are Heavy: The Benefits of Variance-Targeted, Non-Gaussian, Quasi-Maximum Likelihood Estimation of GARCH Models reports: (no abstract) — [source](https://doi.org/10.2139/ssrn.5445994)
 - (0.67) On topic model collapse, variance suppression and recursive training, The Spatial Distribution of High-Growth Entrepreneurship: Generative Mechanisms of Heavy Tails reports: (no abstract) — [source](https://doi.org/10.5465/amproc.2025.18964abstract)
 - (0.67) On topic model collapse, variance suppression and recursive training, Distribution tails of a history-dependent random linear recursion reports: (no abstract) [restricted: narrower scope within model collapse, variance suppression and recursive training (run 2026-08-13)] — [source](https://doi.org/10.1080/15326349.2021.2003712)
