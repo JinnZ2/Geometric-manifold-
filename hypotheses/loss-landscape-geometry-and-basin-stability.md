@@ -1,6 +1,6 @@
 # Hypothesis draft: loss-landscape geometry and basin stability
 
-_Regenerated 2026-09-17T10:32:00+00:00 by hypothesis_engine.py — do not hand-edit._
+_Regenerated 2026-09-21T11:13:26+00:00 by hypothesis_engine.py — do not hand-edit._
 
 ## Hypothesis statement
 

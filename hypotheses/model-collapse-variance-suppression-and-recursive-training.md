@@ -1,6 +1,6 @@
 # Hypothesis draft: model collapse, variance suppression and recursive training
 
-_Regenerated 2026-09-17T10:32:00+00:00 by hypothesis_engine.py — do not hand-edit._
+_Regenerated 2026-09-21T11:13:26+00:00 by hypothesis_engine.py — do not hand-edit._
 
 ## Hypothesis statement
 
@@ -54,8 +54,6 @@ Status: **established** (29 surviving claims)
 
 ## Open unknowns
 
-- [escape-hatch] On topic model collapse, variance suppression and recursive training, ForTIFAI: fending off recursive training induced failure for AI model collapse reports: Th
-- [escape-hatch] On topic model collapse, variance suppression and recursive training, Multimodal Synthetic Data Finetuning and Model Collapse: Insights from VLMs and Diffusion 
 - [escape-hatch] On topic model collapse, variance suppression and recursive training, Rate of Model Collapse in Recursive Training reports: Given the ease of creating synthetic
 - [escape-hatch] On topic model collapse, variance suppression and recursive training, Structural Silence: When AI Infrastructure Fails Speakers of Underrepresented Languages re
 - [escape-hatch] On topic model collapse, variance suppression and recursive training, Noise suppression in photon-counting computed tomography using unsupervised Poisson flow g
@@ -64,3 +62,5 @@ Status: **established** (29 surviving claims)
 - [escape-hatch] On topic model collapse, variance suppression and recursive training, User Feedback Provides a Unique Signal that LLMs Can not Detect reports: Harnessing natura
 - [escape-hatch] On topic model collapse, variance suppression and recursive training, Early warning signals of critical transitions in ecosystems: entropy reduction in vegetati
 - [escape-hatch] On topic model collapse, variance suppression and recursive training, Koopman early warning signals for bifurcation and rate-induced tipping reports: Abrupt tra
+- [escape-hatch] On topic model collapse, variance suppression and recursive training, Model Collapse in Recursive Synthetic Data Training: Mechanisms, Evaluation, and Mitigatio
+- [escape-hatch] On topic model collapse, variance suppression and recursive training, Noiseless Diffusion-GAN: Scaling-based data augmentation for generative models reports: Th

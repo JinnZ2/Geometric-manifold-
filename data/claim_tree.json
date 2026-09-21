@@ -3669,8 +3669,8 @@
     {
       "text": "On topic hidden variable detection / causal discovery from residuals, Non-Invariance in Nested Prediction Models under Selective Predictor Availability reports: Selective measurement of predictors is common in routinely collected health data.",
       "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
-      "confidence": 0.75,
-      "passed": 2,
+      "confidence": 0.8333333333333334,
+      "passed": 4,
       "failed": 0,
       "logical_form": "",
       "scope": {
@@ -3683,23 +3683,26 @@
       "id": "0d200c366c7805f6430c22ff",
       "source_url": "http://arxiv.org/abs/2609.02836v1",
       "status_override": "",
-      "beta_confidence": 0.75,
-      "status": "active"
+      "beta_confidence": 0.8333333333333334,
+      "status": "survived"
     },
     {
-      "text": "On topic hidden variable detection / causal discovery from residuals, Quantum mutual information statistics for detecting dependence-structure change points in time series reports: Detecting when the dependence between two components of a multivariate time series changes, while the marginals drift freely, requires a dependence-specific statistic.",
+      "text": "On topic hidden variable detection / causal discovery from residuals, Quantum mutual information statistics for detecting dependence-structure change points in time series reports: Detecting when the dependence between two components of a multivariate time series changes, while the marginals drift freely, requires a dependence-specific statistic. [restricted: narrower scope within hidden variable detection / causal discovery from residuals (run 2026-09-21)]",
       "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
       "confidence": 0.5,
-      "passed": 1,
-      "failed": 1,
+      "passed": 0,
+      "failed": 0,
       "logical_form": "",
       "scope": {
         "topic": "hidden variable detection / causal discovery from residuals",
         "source": "arxiv",
-        "config_hash": "e0aafb43c5315474"
+        "config_hash": "e0aafb43c5315474",
+        "restrictions": [
+          "narrower scope within hidden variable detection / causal discovery from residuals (run 2026-09-21)"
+        ]
       },
       "reference_class": "hidden variable detection / causal discovery from residuals / arxiv findings",
-      "reformulation_count": 0,
+      "reformulation_count": 1,
       "id": "c830081a8a74c46c629dcfcf",
       "source_url": "http://arxiv.org/abs/2609.02787v1",
       "status_override": "",
@@ -4149,8 +4152,8 @@
     {
       "text": "On topic safety drift, alignment repair and parameter-space monitoring, RISE: Recursive Improvement via Self-Extrapolating Policy Distillation reports: On-policy distillation (OPD) provides dense, per-token supervision for language model post-training, but its effectiveness is bottlenecked by teacher quality: external teachers suffer from distribution mismatch, while self-distillation with privileged conditioning is limited by in-context learning c [restricted: narrower scope within safety drift, alignment repair and parameter-space monitoring (run 2026-09-10)]",
       "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
-      "confidence": 0.75,
-      "passed": 2,
+      "confidence": 0.8,
+      "passed": 3,
       "failed": 0,
       "logical_form": "",
       "scope": {
@@ -4166,8 +4169,8 @@
       "id": "f5b36c1a001ef777cf867616",
       "source_url": "http://arxiv.org/abs/2609.05295v1",
       "status_override": "",
-      "beta_confidence": 0.75,
-      "status": "active"
+      "beta_confidence": 0.8,
+      "status": "survived"
     },
     {
       "text": "On topic safety drift, alignment repair and parameter-space monitoring, Testing Interchangeability in LLM Agent Teams reports: Production multi-agent systems replace agents constantly, on the assumption that an agent filling a role is interchangeable with any other agent that can do the job.",
@@ -4292,9 +4295,9 @@
     {
       "text": "On topic loss-landscape geometry and basin stability, IBIB: A Protocol for Measuring Enterprise AI Systems by Serving Route, Not Model Identifier reports: Enterprises deploy systems, not checkpoints. [restricted: narrower scope within loss-landscape geometry and basin stability (run 2026-09-10)] [restricted: narrower scope within loss-landscape geometry and basin stability (run 2026-09-17)]",
       "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
-      "confidence": 0.5,
+      "confidence": 0.3333333333333333,
       "passed": 0,
-      "failed": 0,
+      "failed": 1,
       "logical_form": "",
       "scope": {
         "topic": "loss-landscape geometry and basin stability",
@@ -4310,26 +4313,27 @@
       "id": "0f7ec4e3bc20475915854abe",
       "source_url": "http://arxiv.org/abs/2609.10494v1",
       "status_override": "",
-      "beta_confidence": 0.5,
+      "beta_confidence": 0.3333333333333333,
       "status": "active"
     },
     {
-      "text": "On topic loss-landscape geometry and basin stability, Nonmaximal sums of maximally monotone operators under Rockafellar's constraint qualification reports: We construct counterexamples to Rockafellar's sum conjecture in which two maximally monotone operators satisfy the interior-domain condition but their sum is not maximally monotone. [restricted: narrower scope within loss-landscape geometry and basin stability (run 2026-09-14)]",
+      "text": "On topic loss-landscape geometry and basin stability, Nonmaximal sums of maximally monotone operators under Rockafellar's constraint qualification reports: We construct counterexamples to Rockafellar's sum conjecture in which two maximally monotone operators satisfy the interior-domain condition but their sum is not maximally monotone. [restricted: narrower scope within loss-landscape geometry and basin stability (run 2026-09-14)] [restricted: narrower scope within loss-landscape geometry and basin stability (run 2026-09-21)]",
       "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
       "confidence": 0.5,
-      "passed": 1,
-      "failed": 1,
+      "passed": 0,
+      "failed": 0,
       "logical_form": "",
       "scope": {
         "topic": "loss-landscape geometry and basin stability",
         "source": "arxiv",
         "config_hash": "e0aafb43c5315474",
         "restrictions": [
-          "narrower scope within loss-landscape geometry and basin stability (run 2026-09-14)"
+          "narrower scope within loss-landscape geometry and basin stability (run 2026-09-14)",
+          "narrower scope within loss-landscape geometry and basin stability (run 2026-09-21)"
         ]
       },
       "reference_class": "loss-landscape geometry and basin stability / arxiv findings",
-      "reformulation_count": 1,
+      "reformulation_count": 2,
       "id": "76c3358cbf534d6de6a47093",
       "source_url": "http://arxiv.org/abs/2609.10487v1",
       "status_override": "",
@@ -4477,26 +4481,27 @@
       "status": "survived"
     },
     {
-      "text": "On topic Fisher information and thermodynamics of learning, Optimal Low-Rank Quantum State Tomography with Bounded-Sample Joint Measurements reports: We determine the optimal sample complexity of low-rank quantum state tomography when each measurement may act jointly on at most $t$ samples. [restricted: narrower scope within Fisher information and thermodynamics of learning (run 2026-09-14)]",
+      "text": "On topic Fisher information and thermodynamics of learning, Optimal Low-Rank Quantum State Tomography with Bounded-Sample Joint Measurements reports: We determine the optimal sample complexity of low-rank quantum state tomography when each measurement may act jointly on at most $t$ samples. [restricted: narrower scope within Fisher information and thermodynamics of learning (run 2026-09-14)] [restricted: narrower scope within Fisher information and thermodynamics of learning (run 2026-09-21)]",
       "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
-      "confidence": 0.3333333333333333,
+      "confidence": 0.5,
       "passed": 0,
-      "failed": 1,
+      "failed": 0,
       "logical_form": "",
       "scope": {
         "topic": "Fisher information and thermodynamics of learning",
         "source": "arxiv",
         "config_hash": "e0aafb43c5315474",
         "restrictions": [
-          "narrower scope within Fisher information and thermodynamics of learning (run 2026-09-14)"
+          "narrower scope within Fisher information and thermodynamics of learning (run 2026-09-14)",
+          "narrower scope within Fisher information and thermodynamics of learning (run 2026-09-21)"
         ]
       },
       "reference_class": "Fisher information and thermodynamics of learning / arxiv findings",
-      "reformulation_count": 1,
+      "reformulation_count": 2,
       "id": "9c58e7e4aa6968ba51282143",
       "source_url": "http://arxiv.org/abs/2609.10514v1",
       "status_override": "",
-      "beta_confidence": 0.3333333333333333,
+      "beta_confidence": 0.5,
       "status": "active"
     },
     {
@@ -4660,30 +4665,6 @@
       "status": "active"
     },
     {
-      "text": "On topic model collapse, variance suppression and recursive training, Model Collapse in Recursive Synthetic Data Training: Mechanisms, Evaluation, and Mitigation Strategies reports: Generative models increasingly produce content that can enter later training corpora, creating recursive synthetic-data feedback loops. [restricted: narrower scope within model collapse, variance suppression and recursive training (run 2026-09-14)] [restricted: narrower scope within model collapse, variance suppression and recursive training (run 2026-09-17)]",
-      "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
-      "confidence": 0.5,
-      "passed": 0,
-      "failed": 0,
-      "logical_form": "",
-      "scope": {
-        "topic": "model collapse, variance suppression and recursive training",
-        "source": "crossref",
-        "config_hash": "e0aafb43c5315474",
-        "restrictions": [
-          "narrower scope within model collapse, variance suppression and recursive training (run 2026-09-14)",
-          "narrower scope within model collapse, variance suppression and recursive training (run 2026-09-17)"
-        ]
-      },
-      "reference_class": "model collapse, variance suppression and recursive training / crossref findings",
-      "reformulation_count": 2,
-      "id": "f8b06f72a432ba050a387210",
-      "source_url": "https://doi.org/10.70267/aitia.2026473481",
-      "status_override": "",
-      "beta_confidence": 0.5,
-      "status": "active"
-    },
-    {
       "text": "On topic model collapse, variance suppression and recursive training, Diachronic Sample Integration: Robust Tail-Risk Estimation with Generative Models reports: Deep generative models are increasingly used as simulators for downstream decision-making under data scarcity, but in risk-sensitive applications their usefulness depends on rare adverse scenarios rather than typical samples. [restricted: narrower scope within model collapse, variance suppression and recursive training (run 2026-09-14)]",
       "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
       "confidence": 0.7142857142857143,
@@ -4707,35 +4688,11 @@
       "status": "survived"
     },
     {
-      "text": "On topic model collapse, variance suppression and recursive training, Noiseless Diffusion-GAN: Scaling-based data augmentation for generative models reports: This paper explores stable learning methods for generative models designed to facilitate high-quality data generation. [restricted: narrower scope within model collapse, variance suppression and recursive training (run 2026-09-14)] [restricted: narrower scope within model collapse, variance suppression and recursive training (run 2026-09-17)]",
-      "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
-      "confidence": 0.5,
-      "passed": 0,
-      "failed": 0,
-      "logical_form": "",
-      "scope": {
-        "topic": "model collapse, variance suppression and recursive training",
-        "source": "semantic_scholar",
-        "config_hash": "e0aafb43c5315474",
-        "restrictions": [
-          "narrower scope within model collapse, variance suppression and recursive training (run 2026-09-14)",
-          "narrower scope within model collapse, variance suppression and recursive training (run 2026-09-17)"
-        ]
-      },
-      "reference_class": "model collapse, variance suppression and recursive training / semantic_scholar findings",
-      "reformulation_count": 2,
-      "id": "c7118308af00b4b9349ee882",
-      "source_url": "https://doi.org/10.1016/j.neunet.2025.108458",
-      "status_override": "",
-      "beta_confidence": 0.5,
-      "status": "active"
-    },
-    {
       "text": "On topic hidden variable detection / causal discovery from residuals, Maximizing Anomaly Detection Performance Using Latent Variable Models in Industrial Systems reports: In conventional process monitoring, a latent variable model (LVM) is first learned in offline training and the statistics related to extracted latent features and residuals are then used for online monitoring. [restricted: narrower scope within hidden variable detection / causal discovery from residuals (run 2026-09-17)]",
       "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
       "confidence": 0.5,
-      "passed": 0,
-      "failed": 0,
+      "passed": 1,
+      "failed": 1,
       "logical_form": "",
       "scope": {
         "topic": "hidden variable detection / causal discovery from residuals",
@@ -4754,23 +4711,26 @@
       "status": "active"
     },
     {
-      "text": "On topic hidden variable detection / causal discovery from residuals, Vibration-Based Anomaly Detection in Industrial Machines: A Comparison of Autoencoders and Latent Spaces reports: In industrial settings, machinery components inevitably wear and degrade due to friction between moving parts.",
+      "text": "On topic hidden variable detection / causal discovery from residuals, Vibration-Based Anomaly Detection in Industrial Machines: A Comparison of Autoencoders and Latent Spaces reports: In industrial settings, machinery components inevitably wear and degrade due to friction between moving parts. [restricted: narrower scope within hidden variable detection / causal discovery from residuals (run 2026-09-21)]",
       "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
-      "confidence": 0.3333333333333333,
+      "confidence": 0.5,
       "passed": 0,
-      "failed": 1,
+      "failed": 0,
       "logical_form": "",
       "scope": {
         "topic": "hidden variable detection / causal discovery from residuals",
         "source": "semantic_scholar",
-        "config_hash": "e0aafb43c5315474"
+        "config_hash": "e0aafb43c5315474",
+        "restrictions": [
+          "narrower scope within hidden variable detection / causal discovery from residuals (run 2026-09-21)"
+        ]
       },
       "reference_class": "hidden variable detection / causal discovery from residuals / semantic_scholar findings",
-      "reformulation_count": 0,
+      "reformulation_count": 1,
       "id": "865e34c7653118dd17367059",
       "source_url": "https://doi.org/10.3390/machines13020139",
       "status_override": "",
-      "beta_confidence": 0.3333333333333333,
+      "beta_confidence": 0.5,
       "status": "active"
     },
     {
@@ -4799,8 +4759,8 @@
     {
       "text": "On topic hidden variable detection / causal discovery from residuals, Early Fault Detection Method for Doubly Fed Induction Generator in Wind Power Systems Based on Multiscale Latent Variable Regression reports: The state of doubly fed induction generator (DFIG), as the core component of a wind turbine (WT), is crucial for the stable operation of WT.",
       "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
-      "confidence": 0.6666666666666666,
-      "passed": 1,
+      "confidence": 0.75,
+      "passed": 2,
       "failed": 0,
       "logical_form": "",
       "scope": {
@@ -4813,23 +4773,26 @@
       "id": "42328c5047e6cc186227565e",
       "source_url": "https://doi.org/10.1109/TIM.2025.3542110",
       "status_override": "",
-      "beta_confidence": 0.6666666666666666,
+      "beta_confidence": 0.75,
       "status": "active"
     },
     {
-      "text": "On topic hidden variable detection / causal discovery from residuals, Quality-Oriented Dynamic Sparse Latent Variable Detection Approach for Industrial IoT Based on Joint Spatial and Temporal Decomposition reports: Quality-oriented fault detection facilitates intelligent inspection, operation optimization, and product quality improvement in the industrial Internet of Things.",
+      "text": "On topic hidden variable detection / causal discovery from residuals, Quality-Oriented Dynamic Sparse Latent Variable Detection Approach for Industrial IoT Based on Joint Spatial and Temporal Decomposition reports: Quality-oriented fault detection facilitates intelligent inspection, operation optimization, and product quality improvement in the industrial Internet of Things. [restricted: narrower scope within hidden variable detection / causal discovery from residuals (run 2026-09-21)]",
       "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
       "confidence": 0.5,
-      "passed": 1,
-      "failed": 1,
+      "passed": 0,
+      "failed": 0,
       "logical_form": "",
       "scope": {
         "topic": "hidden variable detection / causal discovery from residuals",
         "source": "semantic_scholar",
-        "config_hash": "e0aafb43c5315474"
+        "config_hash": "e0aafb43c5315474",
+        "restrictions": [
+          "narrower scope within hidden variable detection / causal discovery from residuals (run 2026-09-21)"
+        ]
       },
       "reference_class": "hidden variable detection / causal discovery from residuals / semantic_scholar findings",
-      "reformulation_count": 0,
+      "reformulation_count": 1,
       "id": "52f23d08b2f07715d3b29120",
       "source_url": "https://doi.org/10.1109/JIOT.2025.3538627",
       "status_override": "",
