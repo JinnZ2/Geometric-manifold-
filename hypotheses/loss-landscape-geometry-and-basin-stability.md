@@ -1,6 +1,6 @@
 # Hypothesis draft: loss-landscape geometry and basin stability
 
-_Regenerated 2026-09-21T11:13:26+00:00 by hypothesis_engine.py — do not hand-edit._
+_Regenerated 2026-09-24T10:36:24+00:00 by hypothesis_engine.py — do not hand-edit._
 
 ## Hypothesis statement
 
@@ -140,7 +140,6 @@ Status: **established** (115 surviving claims)
 
 ## Open unknowns
 
-- [escape-hatch] On topic loss-landscape geometry and basin stability, One Frozen Simulator Is Not Enough: Simulator Collapse in Multi-Agent RL reports: Multi-agent reinforcemen
 - [escape-hatch] On topic loss-landscape geometry and basin stability, Autonomous Telerehabilitation via Skeletal Motion Prediction and Joint-Level Performance Assessment report
 - [escape-hatch] On topic loss-landscape geometry and basin stability, Training Chemical Plausibility-Aware Large Language Models for Single-Step Retrosynthesis reports: Single-
 - [escape-hatch] On topic loss-landscape geometry and basin stability, How Robust Are Automated Fact-Checking Systems? A Cross-Benchmark Evaluation reports: Automated fact-check
@@ -150,3 +149,4 @@ Status: **established** (115 surviving claims)
 - [escape-hatch] On topic loss-landscape geometry and basin stability, Beyond Imitation: Self-Improving Robot Policies via Off-Policy Q-Planning reports: Behaviour Cloning (BC) 
 - [escape-hatch] On topic loss-landscape geometry and basin stability, What Makes a Redundant Representation Remember? Lineage Isolation, Not Masking reports: Memory-based evolu
 - [escape-hatch] On topic loss-landscape geometry and basin stability, An Enclosed Mode Is a Gauge Choice: Topology Relative to Reach in Certified Code World Models reports: A c
+- [escape-hatch] On topic loss-landscape geometry and basin stability, IBIB: A Protocol for Measuring Enterprise AI Systems by Serving Route, Not Model Identifier reports: Enter

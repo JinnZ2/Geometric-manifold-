@@ -131,3 +131,5 @@
 {"id": "c7118308af00b4b9349ee882", "count": 3, "condition": "narrower scope within model collapse, variance suppression and recursive training (run 2026-09-21)", "at": "2026-09-21T11:13:26+00:00"}
 {"id": "865e34c7653118dd17367059", "count": 1, "condition": "narrower scope within hidden variable detection / causal discovery from residuals (run 2026-09-21)", "at": "2026-09-21T11:13:26+00:00"}
 {"id": "52f23d08b2f07715d3b29120", "count": 1, "condition": "narrower scope within hidden variable detection / causal discovery from residuals (run 2026-09-21)", "at": "2026-09-21T11:13:26+00:00"}
+{"id": "0f7ec4e3bc20475915854abe", "count": 3, "condition": "narrower scope within loss-landscape geometry and basin stability (run 2026-09-24)", "at": "2026-09-24T10:36:24+00:00"}
+{"id": "f653667bebbdbac9ce88968f", "count": 2, "condition": "narrower scope within hidden variable detection / causal discovery from residuals (run 2026-09-24)", "at": "2026-09-24T10:36:24+00:00"}

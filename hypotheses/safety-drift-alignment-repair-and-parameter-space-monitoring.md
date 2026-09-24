@@ -1,6 +1,6 @@
 # Hypothesis draft: safety drift, alignment repair and parameter-space monitoring
 
-_Regenerated 2026-09-21T11:13:26+00:00 by hypothesis_engine.py — do not hand-edit._
+_Regenerated 2026-09-24T10:36:24+00:00 by hypothesis_engine.py — do not hand-edit._
 
 ## Hypothesis statement
 
