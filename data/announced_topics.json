@@ -1,5 +1,6 @@
 [
   "Fisher information and thermodynamics of learning",
+  "hidden variable detection / causal discovery from residuals",
   "loss-landscape geometry and basin stability",
   "model collapse, variance suppression and recursive training",
   "safety drift, alignment repair and parameter-space monitoring"

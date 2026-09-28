@@ -1,6 +1,6 @@
 # Hypothesis draft: Fisher information and thermodynamics of learning
 
-_Regenerated 2026-09-24T10:36:24+00:00 by hypothesis_engine.py — do not hand-edit._
+_Regenerated 2026-09-28T12:07:31+00:00 by hypothesis_engine.py — do not hand-edit._
 
 ## Hypothesis statement
 
@@ -26,4 +26,4 @@ Status: **established** (3 surviving claims)
 
 ## Open unknowns
 
-- (none)
+- [escape-hatch] On topic Fisher information and thermodynamics of learning, Optimal Low-Rank Quantum State Tomography with Bounded-Sample Joint Measurements reports: We determi

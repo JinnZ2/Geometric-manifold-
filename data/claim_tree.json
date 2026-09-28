@@ -4293,30 +4293,6 @@
       "status": "survived"
     },
     {
-      "text": "On topic loss-landscape geometry and basin stability, Nonmaximal sums of maximally monotone operators under Rockafellar's constraint qualification reports: We construct counterexamples to Rockafellar's sum conjecture in which two maximally monotone operators satisfy the interior-domain condition but their sum is not maximally monotone. [restricted: narrower scope within loss-landscape geometry and basin stability (run 2026-09-14)] [restricted: narrower scope within loss-landscape geometry and basin stability (run 2026-09-21)]",
-      "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
-      "confidence": 0.5,
-      "passed": 1,
-      "failed": 1,
-      "logical_form": "",
-      "scope": {
-        "topic": "loss-landscape geometry and basin stability",
-        "source": "arxiv",
-        "config_hash": "e0aafb43c5315474",
-        "restrictions": [
-          "narrower scope within loss-landscape geometry and basin stability (run 2026-09-14)",
-          "narrower scope within loss-landscape geometry and basin stability (run 2026-09-21)"
-        ]
-      },
-      "reference_class": "loss-landscape geometry and basin stability / arxiv findings",
-      "reformulation_count": 2,
-      "id": "76c3358cbf534d6de6a47093",
-      "source_url": "http://arxiv.org/abs/2609.10487v1",
-      "status_override": "",
-      "beta_confidence": 0.5,
-      "status": "active"
-    },
-    {
       "text": "On topic loss-landscape geometry and basin stability, Learning with Covariance Matrices: Principal Component Analysis Meets Learning with Graphs reports: This feature article provides an overview of the theoretical foundations for coVariance neural networks (VNNs), i.e., graph neural networks (GNNs) operating on covariance matrices as graphs.",
       "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
       "confidence": 0.8333333333333334,
@@ -4455,30 +4431,6 @@
       "status_override": "",
       "beta_confidence": 0.8,
       "status": "survived"
-    },
-    {
-      "text": "On topic Fisher information and thermodynamics of learning, Optimal Low-Rank Quantum State Tomography with Bounded-Sample Joint Measurements reports: We determine the optimal sample complexity of low-rank quantum state tomography when each measurement may act jointly on at most $t$ samples. [restricted: narrower scope within Fisher information and thermodynamics of learning (run 2026-09-14)] [restricted: narrower scope within Fisher information and thermodynamics of learning (run 2026-09-21)]",
-      "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
-      "confidence": 0.3333333333333333,
-      "passed": 0,
-      "failed": 1,
-      "logical_form": "",
-      "scope": {
-        "topic": "Fisher information and thermodynamics of learning",
-        "source": "arxiv",
-        "config_hash": "e0aafb43c5315474",
-        "restrictions": [
-          "narrower scope within Fisher information and thermodynamics of learning (run 2026-09-14)",
-          "narrower scope within Fisher information and thermodynamics of learning (run 2026-09-21)"
-        ]
-      },
-      "reference_class": "Fisher information and thermodynamics of learning / arxiv findings",
-      "reformulation_count": 2,
-      "id": "9c58e7e4aa6968ba51282143",
-      "source_url": "http://arxiv.org/abs/2609.10514v1",
-      "status_override": "",
-      "beta_confidence": 0.3333333333333333,
-      "status": "active"
     },
     {
       "text": "On topic Fisher information and thermodynamics of learning, Cross-Model Agreement as a Deployment-Time Reliability Signal for Automatic Polyp Segmentation reports: In real-time colonoscopy, ground-truth annotations are unavailable at inference, so polyp segmentation models can fail silently.",
@@ -4667,8 +4619,8 @@
       "text": "On topic hidden variable detection / causal discovery from residuals, Maximizing Anomaly Detection Performance Using Latent Variable Models in Industrial Systems reports: In conventional process monitoring, a latent variable model (LVM) is first learned in offline training and the statistics related to extracted latent features and residuals are then used for online monitoring. [restricted: narrower scope within hidden variable detection / causal discovery from residuals (run 2026-09-17)] [restricted: narrower scope within hidden variable detection / causal discovery from residuals (run 2026-09-24)]",
       "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
       "confidence": 0.5,
-      "passed": 0,
-      "failed": 0,
+      "passed": 1,
+      "failed": 1,
       "logical_form": "",
       "scope": {
         "topic": "hidden variable detection / causal discovery from residuals",
@@ -4688,26 +4640,27 @@
       "status": "active"
     },
     {
-      "text": "On topic hidden variable detection / causal discovery from residuals, Vibration-Based Anomaly Detection in Industrial Machines: A Comparison of Autoencoders and Latent Spaces reports: In industrial settings, machinery components inevitably wear and degrade due to friction between moving parts. [restricted: narrower scope within hidden variable detection / causal discovery from residuals (run 2026-09-21)]",
+      "text": "On topic hidden variable detection / causal discovery from residuals, Vibration-Based Anomaly Detection in Industrial Machines: A Comparison of Autoencoders and Latent Spaces reports: In industrial settings, machinery components inevitably wear and degrade due to friction between moving parts. [restricted: narrower scope within hidden variable detection / causal discovery from residuals (run 2026-09-21)] [restricted: narrower scope within hidden variable detection / causal discovery from residuals (run 2026-09-28)]",
       "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
-      "confidence": 0.3333333333333333,
+      "confidence": 0.5,
       "passed": 0,
-      "failed": 1,
+      "failed": 0,
       "logical_form": "",
       "scope": {
         "topic": "hidden variable detection / causal discovery from residuals",
         "source": "semantic_scholar",
         "config_hash": "e0aafb43c5315474",
         "restrictions": [
-          "narrower scope within hidden variable detection / causal discovery from residuals (run 2026-09-21)"
+          "narrower scope within hidden variable detection / causal discovery from residuals (run 2026-09-21)",
+          "narrower scope within hidden variable detection / causal discovery from residuals (run 2026-09-28)"
         ]
       },
       "reference_class": "hidden variable detection / causal discovery from residuals / semantic_scholar findings",
-      "reformulation_count": 1,
+      "reformulation_count": 2,
       "id": "865e34c7653118dd17367059",
       "source_url": "https://doi.org/10.3390/machines13020139",
       "status_override": "",
-      "beta_confidence": 0.3333333333333333,
+      "beta_confidence": 0.5,
       "status": "active"
     },
     {
@@ -4756,8 +4709,8 @@
     {
       "text": "On topic hidden variable detection / causal discovery from residuals, Quality-Oriented Dynamic Sparse Latent Variable Detection Approach for Industrial IoT Based on Joint Spatial and Temporal Decomposition reports: Quality-oriented fault detection facilitates intelligent inspection, operation optimization, and product quality improvement in the industrial Internet of Things. [restricted: narrower scope within hidden variable detection / causal discovery from residuals (run 2026-09-21)]",
       "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
-      "confidence": 0.6666666666666666,
-      "passed": 1,
+      "confidence": 0.75,
+      "passed": 2,
       "failed": 0,
       "logical_form": "",
       "scope": {
@@ -4773,7 +4726,7 @@
       "id": "52f23d08b2f07715d3b29120",
       "source_url": "https://doi.org/10.1109/JIOT.2025.3538627",
       "status_override": "",
-      "beta_confidence": 0.6666666666666666,
+      "beta_confidence": 0.75,
       "status": "active"
     }
   ]
