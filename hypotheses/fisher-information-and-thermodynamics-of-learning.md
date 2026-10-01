@@ -1,6 +1,6 @@
 # Hypothesis draft: Fisher information and thermodynamics of learning
 
-_Regenerated 2026-09-28T12:07:31+00:00 by hypothesis_engine.py — do not hand-edit._
+_Regenerated 2026-10-01T11:55:28+00:00 by hypothesis_engine.py — do not hand-edit._
 
 ## Hypothesis statement
 

@@ -1,6 +1,6 @@
 # Hypothesis draft: model collapse, variance suppression and recursive training
 
-_Regenerated 2026-09-28T12:07:31+00:00 by hypothesis_engine.py — do not hand-edit._
+_Regenerated 2026-10-01T11:55:28+00:00 by hypothesis_engine.py — do not hand-edit._
 
 ## Hypothesis statement
 
@@ -8,7 +8,7 @@ Across corroborated findings, the following claims survived staked testing (beta
 
 > On topic model collapse, variance suppression and recursive training, CollapseTracker: An Empirical Dataset Documenting Progressive Model Collapse Across Recursive Generations of Synthetic Training Data reports: Model collapse-the progressive degradation of model quality when recursively trained on synthetic data-has emerged as a critical concern for the sustainability of AI development.
 
-Status: **established** (29 surviving claims)
+Status: **established** (30 surviving claims)
 
 ## Supporting claims
 
@@ -36,6 +36,7 @@ Status: **established** (29 surviving claims)
 - (0.80) On topic model collapse, variance suppression and recursive training, Advancing Interaction-Sensitive Feature Selection: Novel Relief-Based Algorithms, Expanded Comparisons, and Recommendations for Biomedical Data Mining reports: As a precursor to high-dimensional biomedical data modeling, reliable feature selection can reduce computational expense, improve modeling performance, and yield simpler, more interpretable models. [restricted: narrower scope within model collapse, variance suppression and recursive training (run 2026-08-31)] — [source](http://arxiv.org/abs/2608.28552v1)
 - (0.80) On topic model collapse, variance suppression and recursive training, Large Language Models for HVAC Operations in Building Energy Systems: A Critical Review of Methods, Applications, and Deployment Readiness reports: Building automation systems generate rich sensor data yet remain insight-poor because heterogeneous point naming, missing metadata, and fragmented documentation obstruct their operational use. — [source](http://arxiv.org/abs/2609.05314v1)
 - (0.75) On topic model collapse, variance suppression and recursive training, Critical Slowing Down Theory Gives Precursor Signals for Early Warning of Landslides reports: (no abstract) — [source](https://doi.org/10.2139/ssrn.4127850)
+- (0.75) On topic model collapse, variance suppression and recursive training, cua-speedrun: Standardized Benchmarking of the Speed of Computer-Use Agents reports: Computer use agents (CUAs), which use graphical user interfaces (GUIs) to complete tasks on a computer, have recently surpassed human performance on many standard benchmarks, including difficult long-horizon tasks. — [source](http://arxiv.org/abs/2609.40284v1)
 - (0.71) On topic model collapse, variance suppression and recursive training, Critical slowing down theory provides early warning signals for sandstone failure reports: The critical point of rock mass transition from stable to unstable states is significant for the prevention and control of rock engineering hazards. — [source](https://doi.org/10.3389/feart.2022.934498)
 - (0.71) On topic model collapse, variance suppression and recursive training, Early Warning Signals of the Tipping Point in Strongly Interacting Rydberg Atoms. reports: The identification of tipping points is essential for the prediction of collapses or other sudden changes in complex systems. [restricted: narrower scope within model collapse, variance suppression and recursive training (run 2026-09-03)] — [source](https://doi.org/10.1103/physrevlett.133.243601)
 - (0.71) On topic model collapse, variance suppression and recursive training, Choosing observables that capture critical slowing down before tipping points: A Fokker-Planck operator approach. reports: Tipping points (TP) are abrupt transitions between metastable states in complex systems, most often described by a bifurcation or crisis of a multistable system induced by a slowly changing control parameter. [restricted: narrower scope within model collapse, variance suppression and recursive training (run 2026-09-03)] — [source](https://doi.org/10.1103/l2v2-xndy)

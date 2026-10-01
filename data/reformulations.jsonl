@@ -136,3 +136,5 @@
 {"id": "76c3358cbf534d6de6a47093", "count": 3, "condition": "narrower scope within loss-landscape geometry and basin stability (run 2026-09-28)", "at": "2026-09-28T12:07:31+00:00"}
 {"id": "9c58e7e4aa6968ba51282143", "count": 3, "condition": "narrower scope within Fisher information and thermodynamics of learning (run 2026-09-28)", "at": "2026-09-28T12:07:31+00:00"}
 {"id": "865e34c7653118dd17367059", "count": 2, "condition": "narrower scope within hidden variable detection / causal discovery from residuals (run 2026-09-28)", "at": "2026-09-28T12:07:31+00:00"}
+{"id": "f653667bebbdbac9ce88968f", "count": 3, "condition": "narrower scope within hidden variable detection / causal discovery from residuals (run 2026-10-01)", "at": "2026-10-01T11:55:28+00:00"}
+{"id": "285eef573bff227d2bb8f52f", "count": 1, "condition": "narrower scope within loss-landscape geometry and basin stability (run 2026-10-01)", "at": "2026-10-01T11:55:28+00:00"}
