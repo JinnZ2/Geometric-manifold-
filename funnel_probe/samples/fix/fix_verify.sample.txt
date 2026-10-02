@@ -1,0 +1,23 @@
+V1  KL on the FIXED reference over 100 steps (default.yaml, seed 42)
+    KL 3.7906 -> 0.1734   (ratio 0.0457; gate < 0.1)   max single-step rise -3.16e-03 (gate <= 1e-3)
+    KL every 20 steps: ['3.791', '1.711', '0.846', '0.434', '0.259', '0.173']
+    dist to ref 17.070 -> 16.138 ; ||delta|| mean 0.0422 (cap 0.05) ; steps at cap 53/100
+    task loss step 0 7.5626 -> step 100 1.8343
+    V1 HELD
+
+V2  check C2 re-run on the corrected objective
+    C2  one repair step with the cap removed; finite-difference check of the KL change
+       cap on  (trust_radius=0.05)          ||delta|| 0.05   KL 3.37302 -> 3.23838  (dKL -0.1346)   grad(KL).delta = -0.1368   same sign
+                                            cos(delta, grad KL) = -0.9949  (+1 would be pure KL ascent, -1 pure descent)
+       cap off (trust_radius=1e9)           ||delta|| 0.3239   KL 3.37302 -> 2.59346  (dKL -0.7796)   grad(KL).delta = -0.8862   same sign
+                                            cos(delta, grad KL) = -0.9949  (+1 would be pure KL ascent, -1 pure descent)
+       cap off, lr=1e-4 (linear regime)     ||delta|| 0.003239   KL 3.37302 -> 3.36416  (dKL -0.008853)   grad(KL).delta = -0.008862   same sign
+                                            cos(delta, grad KL) = -0.9949  (+1 would be pure KL ascent, -1 pure descent)
+       VERDICT: one repair step RAISES KL with or without the cap, and the first-order prediction grad(KL).delta has the same sign, so the step is pointed up the KL gradient; the cap is not the cause, it only bounds the rate.
+    parsed dKL [-0.1346, -0.7796, -0.008853] ; grad.delta [-0.1368, -0.8862, -0.008862] ; cos [-0.9949, -0.9949, -0.9949]
+    V2 HELD
+
+V3  repo suite
+    pytest exit 1: ['/usr/local/bin/python3: No module named pytest']
+
+GATE for step 2: OPEN  (V1 True, V2 True)

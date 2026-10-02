@@ -1,0 +1,16 @@
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/lib/python3.11/importlib/__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/test_repair.py:4: in <module>
+    from repair.monitors import Monitor
+repair/monitors.py:6: in <module>
+    import pandas as pd
+E   ModuleNotFoundError: No module named 'pandas'
+=========================== short test summary info ============================
+ERROR tests/test_controller.py
+ERROR tests/test_repair.py
+!!!!!!!!!!!!!!!!!!! Interrupted: 2 errors during collection !!!!!!!!!!!!!!!!!!!!
+2 errors in 4.17s
+pytest exit 2

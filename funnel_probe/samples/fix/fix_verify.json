@@ -1,0 +1,105 @@
+{
+ "kl_first": 3.7906370162963867,
+ "kl_last": 0.17340241372585297,
+ "max_rise": -0.003161191940307617,
+ "rows": [
+  {
+   "step": 0,
+   "delta": 0.05000000819563866,
+   "kl_before": 3.7906370162963867,
+   "kl_after": 3.6439480781555176,
+   "dist": 17.05987548828125,
+   "task_loss": 7.5625715255737305
+  },
+  {
+   "step": 10,
+   "delta": 0.05000000074505806,
+   "kl_before": 2.536013126373291,
+   "kl_after": 2.436089515686035,
+   "dist": 16.956377029418945,
+   "task_loss": 6.34557580947876
+  },
+  {
+   "step": 20,
+   "delta": 0.04999999329447746,
+   "kl_before": 1.7106873989105225,
+   "kl_after": 1.6464885473251343,
+   "dist": 16.844995498657227,
+   "task_loss": 5.470539569854736
+  },
+  {
+   "step": 30,
+   "delta": 0.05000000819563866,
+   "kl_before": 1.186120867729187,
+   "kl_after": 1.1458920240402222,
+   "dist": 16.721656799316406,
+   "task_loss": 4.836491584777832
+  },
+  {
+   "step": 40,
+   "delta": 0.05000000819563866,
+   "kl_before": 0.8458936214447021,
+   "kl_after": 0.81805419921875,
+   "dist": 16.590234756469727,
+   "task_loss": 4.2575201988220215
+  },
+  {
+   "step": 50,
+   "delta": 0.05000000819563866,
+   "kl_before": 0.6039789915084839,
+   "kl_after": 0.5834587216377258,
+   "dist": 16.463300704956055,
+   "task_loss": 3.677966833114624
+  },
+  {
+   "step": 60,
+   "delta": 0.0421665795147419,
+   "kl_before": 0.433668315410614,
+   "kl_after": 0.4209229350090027,
+   "dist": 16.354589462280273,
+   "task_loss": 3.1452488899230957
+  },
+  {
+   "step": 70,
+   "delta": 0.03494499623775482,
+   "kl_before": 0.3286953866481781,
+   "kl_after": 0.32047656178474426,
+   "dist": 16.27442169189453,
+   "task_loss": 2.716118335723877
+  },
+  {
+   "step": 80,
+   "delta": 0.030051708221435547,
+   "kl_before": 0.2590031325817108,
+   "kl_after": 0.2533216178417206,
+   "dist": 16.21453285217285,
+   "task_loss": 2.361870288848877
+  },
+  {
+   "step": 90,
+   "delta": 0.026279035955667496,
+   "kl_before": 0.20952238142490387,
+   "kl_after": 0.20539619028568268,
+   "dist": 16.169374465942383,
+   "task_loss": 2.0630204677581787
+  },
+  {
+   "step": 99,
+   "delta": 0.02358049526810646,
+   "kl_before": 0.17656360566616058,
+   "kl_after": 0.17340241372585297,
+   "dist": 16.138019561767578,
+   "task_loss": 1.8342621326446533
+  }
+ ],
+ "disp0": 17.070159912109375,
+ "V1": true,
+ "V2": true,
+ "c2_text": "C2  one repair step with the cap removed; finite-difference check of the KL change\n   cap on  (trust_radius=0.05)          ||delta|| 0.05   KL 3.37302 -> 3.23838  (dKL -0.1346)   grad(KL).delta = -0.1368   same sign\n                                        cos(delta, grad KL) = -0.9949  (+1 would be pure KL ascent, -1 pure descent)\n   cap off (trust_radius=1e9)           ||delta|| 0.3239   KL 3.37302 -> 2.59346  (dKL -0.7796)   grad(KL).delta = -0.8862   same sign\n                                        cos(delta, grad KL) = -0.9949  (+1 would be pure KL ascent, -1 pure descent)\n   cap off, lr=1e-4 (linear regime)     ||delta|| 0.003239   KL 3.37302 -> 3.36416  (dKL -0.008853)   grad(KL).delta = -0.008862   same sign\n                                        cos(delta, grad KL) = -0.9949  (+1 would be pure KL ascent, -1 pure descent)\n   VERDICT: one repair step RAISES KL with or without the cap, and the first-order prediction grad(KL).delta has the same sign, so the step is pointed up the KL gradient; the cap is not the cause, it only bounds the rate.\n",
+ "pytest_summary": [
+  "/usr/local/bin/python3: No module named pytest"
+ ],
+ "pytest_failed": [],
+ "pytest_exit": 1,
+ "gate_open": true
+}
