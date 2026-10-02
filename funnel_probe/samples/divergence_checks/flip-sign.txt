@@ -1,0 +1,5 @@
+C3  flip the step sign once (theta - delta instead of theta + delta)
+   one step:  KL(theta)=3.7906   KL(theta+delta)=3.9417   KL(theta-delta)=3.6445
+   100 steps, sign flipped: KL 3.7906 -> 0.2725   dist 17.070 -> 16.818   (unflipped run: KL 3.79 -> 39.37, dist 17.08 -> 18.53)
+   KL every 20 steps: ['3.791', '1.705', '0.857', '0.489', '0.340', '0.272']
+   VERDICT: flipping the sign of the step makes KL FALL monotonically; the step direction is the cause, not the metric and not the reference.
