@@ -1,0 +1,8 @@
+C4  why is drift not applied per step?
+   config wiring: configs/default.yaml simulation.drift_strength = 0.3
+   main.py passes config['simulation'] to Environment: True
+   Environment reads it: True
+   Environment applies it ONCE, in _setup: True
+   loops in simulation/ or main.py whose body mentions randn or drift: 0
+   README line 20: 'Run the default simulation (drift=0.3, 100 steps)'; line 52: drift_strength = 'How far the model drifts from safe reference' (a distance, not a rate).
+   VERDICT: the config IS wired and IS applied -- once, as the initial displacement theta_drifted = theta_ref + 0.3*randn. There is no per-step drift code anywhere in simulation/ or main.py, so there is no branch that is never taken; the scenario the code runs is 'start displaced, repair for 100 steps'. The README's verb 'drifts' reads as a process; the implementation is an initial condition. Finding 1 narrows from 'never applied' to 'applied once, not per step'.
