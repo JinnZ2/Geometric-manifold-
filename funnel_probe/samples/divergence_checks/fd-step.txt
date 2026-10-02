@@ -1,0 +1,8 @@
+C2  one repair step with the cap removed; finite-difference check of the KL change
+   cap on  (trust_radius=0.05)          ||delta|| 0.05   KL 3.37302 -> 3.51148  (dKL +0.1385)   grad(KL).delta = +0.1365   same sign
+                                        cos(delta, grad KL) = +0.9930  (+1 would be pure KL ascent, -1 pure descent)
+   cap off (trust_radius=1e9)           ||delta|| 0.296   KL 3.37302 -> 4.23813  (dKL +0.8651)   grad(KL).delta = +0.8083   same sign
+                                        cos(delta, grad KL) = +0.9930  (+1 would be pure KL ascent, -1 pure descent)
+   cap off, lr=1e-4 (linear regime)     ||delta|| 0.00296   KL 3.37302 -> 3.38111  (dKL +0.00809)   grad(KL).delta = +0.008083   same sign
+                                        cos(delta, grad KL) = +0.9930  (+1 would be pure KL ascent, -1 pure descent)
+   VERDICT: one repair step RAISES KL with or without the cap, and the first-order prediction grad(KL).delta has the same sign, so the step is pointed up the KL gradient; the cap is not the cause, it only bounds the rate.
