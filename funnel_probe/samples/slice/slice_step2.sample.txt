@@ -1,0 +1,40 @@
+slice: R = 17.070 ; dense 41 x 41 ; log set 930 ; total starts 2611 ; epsilon_ball 0.10 ; steps 100
+      0/2611  0s
+    200/2611  18s
+    400/2611  36s
+    600/2611  55s
+    800/2611  71s
+   1000/2611  90s
+   1200/2611  109s
+   1400/2611  128s
+   1600/2611  144s
+   1800/2611  161s
+   2000/2611  179s
+   2200/2611  197s
+   2400/2611  214s
+   2600/2611  231s
+
+STEP 2 (repair OFF, as pre-registered fde6c0e): autonomous dynamics move nothing (check C4)
+  starts inside the KL ball at t=0: 843 of 2611 ; outside: 1768
+  outside-ball starts that return inside on their own: 0
+  inside-ball starts that leave: 0
+  -> degenerate as predicted: no dynamics, both counts 0
+
+STEP 2b (repair ON, corrected sign): {'STRANDED': 1466, 'REPAIRED': 302, 'HELD': 843}
+  by start distance to theta_ref:
+  band         n  REPAIRED  STRANDED  EXPELLED   HELD   KL1 median
+  [ 0,  1)   601         0         0         0    601   0.0036
+  [ 1,  2)   106         0         0         0    106   0.0045
+  [ 2,  3)     4         0         0         0      4   0.0080
+  [ 3,  4)   118         0         0         0    118   0.0114
+  [ 4,  5)     8         0         0         0      8   0.0180
+  [ 5, 10)    84        78         0         0      6   0.0371
+  [10, 20)   446       224       222         0      0   0.0996
+  [20,100)  1244         0      1244         0      0   2.6202
+
+  S1 EXPELLED = 0:                    HELD (0)
+  S2 reach band (<= 4.0) all REPAIRED: HELD (0 of 0 outside-ball starts in band)
+  S3 monotone along the four rays:     HELD (0 violations)
+
+OUTCOME step 2b: NOT_FOUND_IN_RANGE (S1 True S2 True S3 True; the repaired set is the reach-bounded region; grid s,u in [-34.1, 34.1] dense 41x41 + log set)
+scope: deterministic (torch CPU, seed 42 env, seed 1 slice), default.yaml, 100 steps, one 2D slice of 3216 dims; 232 s

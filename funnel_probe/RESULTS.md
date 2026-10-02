@@ -57,7 +57,7 @@ The twin is not the same bytes as the repo (different RNG for the init), and
 the two agree on every rate to two figures; it is kept because the
 pre-registration named it and because it needs no torch.
 
-## Step 2 — NOT RUN
+## Step 2 — NOT RUN (superseded below after the sign fix; left as recorded)
 
 Per the order ("If none -> NOT_IN_CLASS, stop") and the pre-registration.
 Stated for the record: with repair off this simulation has no autonomous
@@ -69,3 +69,74 @@ engine, not a measurement of a basin.
 Scope: deterministic; default.yaml (drift_strength 0.3, trust_radius 0.05,
 asymmetry_lambda 10, curvature_weight 2, lr 0.01, 100 steps, seed 42);
 continuous parameter space.
+
+## Step 2 (literal) and step 2b — RUN after the sign fix
+
+Pre-registration: `PREREGISTRATION_FIX.md` (commit eaf0b14), run on the
+fixed objective (`task + lambda*safety`, commit 59031bc; V1-V3 in
+`samples/fix/`). Script `slice_step2.py`; output in `samples/slice/`.
+Slice: d = unit drift direction, o = orthogonalised Gaussian (seed 1),
+theta = theta_ref + s d + u o; dense s,u in [-2R, 2R] (41 x 41 = 1681,
+R = 17.07) plus a log set (s = +-10^k, k = -6..1 by half-decades; u in
+{0, +-10^k}; 930) = 2611 starts; 100 repair steps each; KL ball epsilon
+0.1 to theta_ref; 232 s single-threaded.
+
+### What did not hold, first
+
+Nothing pre-registered was contradicted. One pre-registered check turned
+out to be vacuous rather than passed: S2 ("every outside-ball start within
+reach 4.0 is REPAIRED") has an empty antecedent. Every start within 4.0 of
+theta_ref is ALREADY inside the KL ball at t=0 (the ball's radius in
+parameter distance is about 4.5 on this slice), so 0 of 0. The check is
+HELD by construction and says nothing about repair.
+
+### Step 2 literal (repair OFF)
+
+    starts inside the KL ball at t=0     843 of 2611
+    starts outside                      1768
+    outside that return on their own       0
+    inside that leave                      0
+
+Degenerate as predicted in the original Step 2 section above: with repair
+off there is no flow.
+
+### Step 2b (repair ON, corrected sign)
+
+    class        n
+    HELD        843     inside the ball at t=0, still inside at t=100
+    REPAIRED    302     outside -> inside
+    STRANDED   1466     outside -> outside
+    EXPELLED      0     inside -> outside
+
+    band [dist0)   n   REPAIRED  STRANDED  HELD   KL1 median
+    [ 0,  1)     601         0         0   601    0.0036
+    [ 1,  2)     106         0         0   106    0.0045
+    [ 2,  3)       4         0         0     4    0.0080
+    [ 3,  4)     118         0         0   118    0.0114
+    [ 4,  5)       8         0         0     8    0.0180
+    [ 5, 10)      84        78         0     6    0.0371
+    [10, 20)     446       224       222     0    0.0996
+    [20,100)    1244         0      1244     0    2.6202
+
+    S1 EXPELLED = 0                         HELD (0)
+    S2 reach band all REPAIRED              HELD, vacuous (0 of 0)
+    S3 KL1 monotone along the four rays     HELD (0 violations)
+
+    OUTCOME step 2b: NOT_FOUND_IN_RANGE
+    range: s, u in [-34.1, 34.1] dense 41 x 41 + log set to 10^-6
+
+Reading. The repaired set is the reach-bounded region: 100 steps at the
+0.05 cap is a reach of 5.0 in parameter distance, the ball edge sits near
+4.5, and the REPAIRED/STRANDED boundary falls in [10, 20) where the
+transition zone splits 224 / 222 — the start distance at which 5.0 of
+travel is or is not enough to cross the ball edge, modulated by the
+direction (the KL ball is not a Euclidean sphere, so the cut is not at one
+radius). No start closer than the reach is stranded, no start is
+expelled, and KL after 100 steps rises monotonically with start distance
+along every ray. That is a single basin with a reach limit, not a funnel:
+there is no thin region of starts that fail while their neighbours
+succeed. One slice of a 3216-dimensional space; a funnel transverse to
+both d and o would not appear here.
+
+Scope: deterministic (torch CPU, seed 42 environment, seed 1 slice
+vector), default.yaml, 100 steps, corrected sign; 2D slice only.
