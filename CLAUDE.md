@@ -184,7 +184,7 @@ These constraints exist for mathematical or safety reasons. Violating them silen
 - **Do not swap KL divergence for Euclidean distance** in `BasinDivergenceMonitor` or `parameter_manifold.py`. KL gives distributional basin boundaries; Euclidean is arbitrary in parameter space and doesn't correspond to behavioral difference.
 - **Do not remove `torch.no_grad()`** from inference-only code paths (reference model evaluations, basin checks). Tracking gradients through the reference would corrupt the repair direction.
 - **Do not compute full Hessians**. The framework deliberately uses cheap curvature proxies (softmax variance, diagonal Fisher). Full Hessians are O(n^2) in parameter count and will OOM on anything larger than ToyLLM.
-- **Do not change the sign in `task_loss - λ * weighted_safety`** in `parameter_manifold.py`. This is an adversarial/saddle-point formulation, not a typo. The minus sign creates tension between task performance and safety alignment; the trust region resolves it.
+- **The objective is `task_loss + λ * weighted_safety`** in `parameter_manifold.py` (sign corrected 2026-10-02). It was shipped as `task_loss - λ * weighted_safety`, documented here as an intentional saddle-point formulation; measured, that step was gradient ASCENT on KL to the fixed reference (cos(delta, ∇KL) = +0.993; KL 3.79 → 39.37 over 100 steps, 0.27 with the sign flipped — `funnel_probe/FINDING_REPAIR_DIVERGENCE.md`, and independently `sims/objective_sign/FINDING.md`). Do not reintroduce the minus sign without a pre-registered reason and a run showing KL falls under it.
 
 ## Config Rationale
 
@@ -248,7 +248,7 @@ python -m pytest tests/test_environment.py::test_model_fn_matches_module -v
 
 ## Key Design Decisions
 
-- **Saddle-point objective**: The parameter manifold loss is `task_loss - λ * safety_loss`, not `task_loss + λ * safety_loss`. The minus sign is intentional — it creates adversarial tension between task and safety. The trust region prevents runaway; the saddle-point structure ensures the repair explores the loss landscape rather than collapsing to a local minimum.
+- **Penalty objective (corrected)**: The parameter manifold loss is `task_loss + λ * safety_loss`. The original minus sign was documented as a saddle-point formulation; on the delivered configuration it drove KL to the reference UP at the trust-region cap every step, and the trust region bounded the rate of divergence rather than preventing it. The correction and its verification are in `funnel_probe/` (PREREGISTRATION_FIX.md, FINDING_REPAIR_DIVERGENCE.md).
 - **Asymmetric penalties**: Safety violations penalized `λ` times more than task loss (`asymmetry_lambda`, default 10.0). This is intentional — safety > performance.
 - **Trust regions**: Parameter updates capped at `trust_radius` (default 0.05) to prevent catastrophic jumps.
 - **Curvature proxy**: Uses variance of softmax distribution as a cheap curvature estimate (not full Hessian).
