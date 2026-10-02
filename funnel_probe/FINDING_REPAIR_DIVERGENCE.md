@@ -71,3 +71,21 @@ on task loss), or whether the saddle-point form has a regime where it repairs
 
 Funnel probe step 2 remains unrun: the gate is "repair lowers KL on a fixed
 reference", and the delivered repair does not.
+
+## Fix applied and verified (PREREGISTRATION_FIX.md; fix 59031bc, verification ff63359)
+
+    line 71   total_loss = task_loss + self.lambda_asym * weighted_safety
+    V1  HELD  KL 3.7906 -> 0.1734 over 100 steps (ratio 0.046, gate < 0.1);
+              largest single-step change -3.2e-3 (no rise); 53 of 100 steps at
+              the cap; dist 17.07 -> 16.14; task loss 7.56 -> 1.83
+    V2  HELD  one step: dKL -0.135 (cap on), -0.780 (cap off), -0.0089 (lr 1e-4);
+              grad(KL).delta negative in all three; cos(delta, grad KL) = -0.995
+              (the C2 printout's VERDICT sentence is the pre-fix text hard-coded
+              in divergence_checks.py and reads "RAISES"; the numbers above it
+              are the post-fix measurement)
+    V3        pytest: 2 collection errors on a missing `pandas` import in
+              repair/monitors.py (environment, not the sign); with pandas
+              installed, 216 passed in 20 s. No test encoded the old sign.
+
+The sims/objective_sign plus arm (3.36 -> 0.40 at 60 steps) is the
+independent prior and is consistent. Gate for step 2: OPEN.
