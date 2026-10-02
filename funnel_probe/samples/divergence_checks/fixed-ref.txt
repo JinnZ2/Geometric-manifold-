@@ -1,0 +1,12 @@
+C1  is the KL target a fixed theta0 snapshot?
+   code: every use of theta_ref in parameter_manifold.py:
+         def __init__(self, theta_ref: torch.Tensor, config: dict):
+         self.theta_ref = theta_ref.detach().clone()
+         dist = LA.norm(theta - self.theta_ref).item()
+         ref_out = model_fn(safety_inputs, self.theta_ref)
+         'dist_to_ref': LA.norm(theta_new - self.theta_ref).item(),
+   runtime: sha(env.theta_ref)   before 22ce1f97cc358811 after 22ce1f97cc358811
+            sha(layer.theta_ref) before 22ce1f97cc358811 after 22ce1f97cc358811
+            layer.theta_ref is a .detach().clone() of env.theta_ref: same bytes = True
+            max |layer safety_loss(theta_k) - external KL(theta_k || env.theta_ref)| = 0.00e+00
+   VERDICT: the reference is FIXED (hashes unchanged, layer KL equals the external KL to the frozen env.theta_ref at every step). 'moving reference' is ruled out.
