@@ -1,0 +1,90 @@
+{
+ "config": {
+  "simulation": {
+   "drift_strength": 0.3,
+   "steps": 100,
+   "seed": 42
+  },
+  "manifolds": {
+   "data": {
+    "enabled": true,
+    "confidence_threshold_majority": 0.7,
+    "confidence_threshold_minority": 0.3,
+    "alpha": 0.5,
+    "beta": 1.0
+   },
+   "parameter": {
+    "enabled": true,
+    "trust_radius": 0.05,
+    "asymmetry_lambda": 10.0,
+    "curvature_weight": 2.0,
+    "lr": 0.01
+   },
+   "policy": {
+    "enabled": true,
+    "confidence_threshold": 0.4,
+    "reanchor_strength": 0.1
+   }
+  },
+  "monitoring": {
+   "log_interval": 5,
+   "save_metrics": true,
+   "output_dir": "results/"
+  }
+ },
+ "code_reading": {
+  "theta_assignments_in_loop": [
+   "self.param_layer.repair_step(theta, self.model_fn, self.env."
+  ],
+  "drift_or_randn_calls_in_loop": 0,
+  "theta_drifted_defined_at": [
+   "self.theta_drifted = self.theta_ref + \\"
+  ],
+  "loop_calls": [
+   "metrics.get",
+   "metrics.update",
+   "range",
+   "self.confidence.combined",
+   "self.model_fn",
+   "self.monitor.detect_cost_spike",
+   "self.monitor.log",
+   "self.param_layer.repair_step",
+   "self.policy_layer.needs_repair",
+   "self.policy_layer.trajectory_confidence",
+   "torch.no_grad",
+   "torch.softmax"
+  ]
+ },
+ "torch_available": true,
+ "torch": {
+  "initial_displacement": 17.070159912109375,
+  "repair_rate_mean_delta_per_step": 0.050000004656612876,
+  "trust_radius": 0.05,
+  "fraction_steps_at_trust_radius": 1.0,
+  "steps_to_close_if_every_step_pointed_home": 341.4031664465399,
+  "dist_first": 17.079904556274414,
+  "dist_last": 18.534748077392578,
+  "kl_first": 3.7906370162963867,
+  "kl_last": 39.374610900878906,
+  "mean_dKL_per_step": 0.3558397388458252,
+  "steps": 100
+ },
+ "twin": {
+  "initial_displacement": 16.925359909307115,
+  "repair_rate_mean_delta_per_step": 0.04999999999999992,
+  "trust_radius": 0.05,
+  "fraction_steps_at_trust_radius": 1.0,
+  "steps_to_close_if_every_step_pointed_home": 338.50719818614283,
+  "dist_first": 16.933916396252737,
+  "dist_last": 18.4289313999951,
+  "kl_first": 3.7789417899859115,
+  "kl_last": 39.5250892135224,
+  "mean_dKL_per_step": 0.35746147423536484,
+  "steps": 100
+ },
+ "twin_gradient_check": {
+  "rel_err": 5.33024299567958e-16,
+  "grad_norm_torch": 23.21841314650878
+ },
+ "outcome": "NOT_IN_CLASS"
+}
