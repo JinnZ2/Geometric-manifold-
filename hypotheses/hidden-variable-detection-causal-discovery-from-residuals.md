@@ -1,6 +1,6 @@
 # Hypothesis draft: hidden variable detection / causal discovery from residuals
 
-_Regenerated 2026-10-01T11:55:28+00:00 by hypothesis_engine.py — do not hand-edit._
+_Regenerated 2026-10-05T12:48:14+00:00 by hypothesis_engine.py — do not hand-edit._
 
 ## Hypothesis statement
 
@@ -27,3 +27,4 @@ Status: **established** (3 surviving claims)
 ## Open unknowns
 
 - [escape-hatch] On topic hidden variable detection / causal discovery from residuals, Maximizing Anomaly Detection Performance Using Latent Variable Models in Industrial System
+- [escape-hatch] On topic hidden variable detection / causal discovery from residuals, Vibration-Based Anomaly Detection in Industrial Machines: A Comparison of Autoencoders and

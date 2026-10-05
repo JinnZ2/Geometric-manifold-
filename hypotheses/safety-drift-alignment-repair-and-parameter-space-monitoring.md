@@ -1,6 +1,6 @@
 # Hypothesis draft: safety drift, alignment repair and parameter-space monitoring
 
-_Regenerated 2026-10-01T11:55:28+00:00 by hypothesis_engine.py — do not hand-edit._
+_Regenerated 2026-10-05T12:48:14+00:00 by hypothesis_engine.py — do not hand-edit._
 
 ## Hypothesis statement
 
@@ -8,11 +8,12 @@ Across corroborated findings, the following claims survived staked testing (beta
 
 > On topic safety drift, alignment repair and parameter-space monitoring, Mitigating Backdoor Attacks using Activation-Guided Model Editing reports: Backdoor attacks compromise the integrity and reliability of machine learning models by embedding a hidden trigger during the training process, which can later be activated to cause unintended misbehavior.
 
-Status: **established** (15 surviving claims)
+Status: **established** (16 surviving claims)
 
 ## Supporting claims
 
 - (0.83) On topic safety drift, alignment repair and parameter-space monitoring, Bilevel Coordinated Reflection: A Game-Theoretic Approach to Multi-Agent LLM Systems reports: Multi-agent LLM systems commonly use an orchestrator to decompose a task for a team of workers and then improve through textual reflection. — [source](http://arxiv.org/abs/2609.02750v1)
+- (0.83) On topic safety drift, alignment repair and parameter-space monitoring, PivotOPD: Learning to Recover from Pivotal Mistakes in Multi-Turn Agents reports: On-policy distillation (OPD) is a promising approach for training language agents, providing dense teacher supervision on student-generated trajectories. — [source](http://arxiv.org/abs/2609.40285v1)
 - (0.80) On topic safety drift, alignment repair and parameter-space monitoring, Mitigating Backdoor Attacks using Activation-Guided Model Editing reports: Backdoor attacks compromise the integrity and reliability of machine learning models by embedding a hidden trigger during the training process, which can later be activated to cause unintended misbehavior. — [source](https://doi.org/10.48550/arXiv.2407.07662)
 - (0.80) On topic safety drift, alignment repair and parameter-space monitoring, VAKRA: Evaluating Multi-Hop Reasoning Across APIs and Retrieval Under Tool-Use Policies reports: Agents deployed in enterprise settings must reason across structured APIs and document collections, yet existing benchmarks evaluate these capabilities in isolation. — [source](http://arxiv.org/abs/2608.12282v1)
 - (0.80) On topic safety drift, alignment repair and parameter-space monitoring, Beyond the Transcript: Detecting Covert Co ordination in Latent Multi-Agent Communication reports: Language-model agents can communicate through continuous hidden states that are invisible in public transcripts, creating opportunities for covert harmful coordination. — [source](http://arxiv.org/abs/2608.19161v1)
@@ -26,7 +27,7 @@ Status: **established** (15 surviving claims)
 - (0.80) On topic safety drift, alignment repair and parameter-space monitoring, Testing Interchangeability in LLM Agent Teams reports: Production multi-agent systems replace agents constantly, on the assumption that an agent filling a role is interchangeable with any other agent that can do the job. — [source](http://arxiv.org/abs/2609.05279v1)
 - (0.80) On topic safety drift, alignment repair and parameter-space monitoring, Semigroup-JEPA: Latent Dynamics Consistency for Zero-Shot Physics Generalization reports: Joint-Embedding Predictive Architecture (JEPA) world models learn a compact latent representation of the world that supports prediction and planning, but their capability to learn physics and generate physically realistic dynamics remains hitherto untested. — [source](http://arxiv.org/abs/2609.10464v1)
 - (0.80) On topic safety drift, alignment repair and parameter-space monitoring, Multi-Agent Reinforcement Learning for Autonomous UAV Exploration in Wildfire Response reports: This study develops a deep reinforcement learning framework for training Unmanned Aerial Vehicle (UAV) agents to navigate and monitor simulated wildfire environments. — [source](http://arxiv.org/abs/2609.10433v1)
-- (0.75) On topic safety drift, alignment repair and parameter-space monitoring, PivotOPD: Learning to Recover from Pivotal Mistakes in Multi-Turn Agents reports: On-policy distillation (OPD) is a promising approach for training language agents, providing dense teacher supervision on student-generated trajectories. — [source](http://arxiv.org/abs/2609.40285v1)
+- (0.75) On topic safety drift, alignment repair and parameter-space monitoring, DynaHarness: A Dynamic Physical Harness for Self-Evolving Robot Agents reports: Pretrained robot policies provide useful action priors, but long-horizon manipulation still requires coordination between semantic reasoning and physical execution. — [source](http://arxiv.org/abs/2609.40306v1)
 
 ## Contradicted/refuted claims
 
