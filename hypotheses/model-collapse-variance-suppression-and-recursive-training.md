@@ -1,6 +1,6 @@
 # Hypothesis draft: model collapse, variance suppression and recursive training
 
-_Regenerated 2026-10-08T12:19:59+00:00 by hypothesis_engine.py — do not hand-edit._
+_Regenerated 2026-10-12T13:39:23+00:00 by hypothesis_engine.py — do not hand-edit._
 
 ## Hypothesis statement
 
@@ -55,7 +55,6 @@ Status: **established** (30 surviving claims)
 
 ## Open unknowns
 
-- [escape-hatch] On topic model collapse, variance suppression and recursive training, Rate of Model Collapse in Recursive Training reports: Given the ease of creating synthetic
 - [escape-hatch] On topic model collapse, variance suppression and recursive training, Structural Silence: When AI Infrastructure Fails Speakers of Underrepresented Languages re
 - [escape-hatch] On topic model collapse, variance suppression and recursive training, Noise suppression in photon-counting computed tomography using unsupervised Poisson flow g
 - [escape-hatch] On topic model collapse, variance suppression and recursive training, On the Statistical Capacity of Deep Generative Models reports: Deep generative models are 
@@ -65,3 +64,4 @@ Status: **established** (30 surviving claims)
 - [escape-hatch] On topic model collapse, variance suppression and recursive training, Koopman early warning signals for bifurcation and rate-induced tipping reports: Abrupt tra
 - [escape-hatch] On topic model collapse, variance suppression and recursive training, Model Collapse in Recursive Synthetic Data Training: Mechanisms, Evaluation, and Mitigatio
 - [escape-hatch] On topic model collapse, variance suppression and recursive training, Noiseless Diffusion-GAN: Scaling-based data augmentation for generative models reports: Th
+- [escape-hatch] On topic model collapse, variance suppression and recursive training, Language Models that Play Chess and Explain Their Moves reports: Modern chess engines are 
