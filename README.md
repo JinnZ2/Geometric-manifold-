@@ -1,3 +1,6 @@
+> Before reading or editing anything here, read READ_ME_THIS_WAY.md.
+> Mismatches, dead ends and odd names in this repo are kept on purpose.
+
 # Basin Repair Framework
 
 A geometric manifold approach to maintaining neural network parameter safety. The framework treats model safety as a geometric problem — using three interconnected manifold layers to detect when a model drifts from a safe reference state and apply repair mechanisms.
