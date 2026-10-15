@@ -1,27 +1,27 @@
 # Hypothesis engine run report
 
-Run at: 2026-10-12T13:39:23+00:00
+Run at: 2026-10-15T10:26:50+00:00
 
 ## Stage counts
 
 - **topics**: 5
-- **raw_findings**: 140
-- **new_findings**: 41
-- **duplicates_skipped**: 99
-- **claims_staked**: 29
+- **raw_findings**: 112
+- **new_findings**: 24
+- **duplicates_skipped**: 88
+- **claims_staked**: 14
 - **routed_to_unknown**: 0
-- **cross_domain_candidates**: 12
+- **cross_domain_candidates**: 10
 - **claims_from_superseded_config**: 0
 - **claims_predating_provenance**: 66
-- **test_pass**: 140
-- **test_fail**: 37
-- **test_untested**: 73
-- **modify_reformulated**: 9
-- **modify_escape_hatched**: 2
+- **test_pass**: 83
+- **test_fail**: 31
+- **test_untested**: 74
+- **modify_reformulated**: 12
+- **modify_escape_hatched**: 3
 - **hidden_variable_suggestions**: []
 - **hypothesis_files**: 5
 - **new_hypotheses**: []
-- **total_claims_in_tree**: 316
+- **total_claims_in_tree**: 327
 
 ## New hypotheses
 
