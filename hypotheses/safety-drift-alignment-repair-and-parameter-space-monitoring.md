@@ -1,6 +1,6 @@
 # Hypothesis draft: safety drift, alignment repair and parameter-space monitoring
 
-_Regenerated 2026-10-19T11:22:30+00:00 by hypothesis_engine.py — do not hand-edit._
+_Regenerated 2026-10-22T10:44:42+00:00 by hypothesis_engine.py — do not hand-edit._
 
 ## Hypothesis statement
 
@@ -8,11 +8,12 @@ Across corroborated findings, the following claims survived staked testing (beta
 
 > On topic safety drift, alignment repair and parameter-space monitoring, Concept-ROT: Poisoning Concepts in Large Language Models with Model Editing reports: Model editing methods modify specific behaviors of Large Language Models by altering a small, targeted set of network weights and require very little data and compute.
 
-Status: **established** (42 surviving claims)
+Status: **established** (45 surviving claims)
 
 ## Supporting claims
 
 - (0.91) On topic safety drift, alignment repair and parameter-space monitoring, GR-SAP: Generative Replay for Safety Alignment Preservation during Fine-Tuning reports: Recent studies show that the safety alignment of large language models (LLMs) can be easily compromised even by seemingly non-adversarial fine-tuning. — [source](https://doi.org/10.48550/arXiv.2603.10243)
+- (0.89) On topic safety drift, alignment repair and parameter-space monitoring, Circuits of LLM Classifiers reports: Language models make it easy to build classifiers by simply prompting a model with the sample to classify. — [source](http://arxiv.org/abs/2610.30076v1)
 - (0.86) On topic safety drift, alignment repair and parameter-space monitoring, The Collapse of Safety Guardrails in Lightweight Models: A Similarity-Based Study on the Impact of Full-Parameter Fine-Tuning on Safety Alignment reports: Large Language Models (LLMs), especially small-parameter ones, face safety degradation during finetuning due to semantic similarity between fine-tuning data and upstream safety datasets. — [source](https://doi.org/10.1109/AICSIP65423.2025.11427215)
 - (0.86) On topic safety drift, alignment repair and parameter-space monitoring, SelfAug: Mitigating Catastrophic Forgetting in Retrieval-Augmented Generation via Distribution Self-Alignment reports: Recent advancements in large language models (LLMs) have revolutionized natural language processing through their remarkable capabilities in understanding and executing diverse tasks. — [source](https://doi.org/10.48550/arXiv.2509.03934)
 - (0.85) On topic safety drift, alignment repair and parameter-space monitoring, Why LLM Safety Guardrails Collapse After Fine-tuning: A Similarity Analysis Between Alignment and Fine-tuning Datasets reports: Recent advancements in large language models (LLMs) have underscored their vulnerability to safety alignment jailbreaks, particularly when subjected to downstream fine-tuning. — [source](https://doi.org/10.48550/arXiv.2506.05346)
@@ -49,7 +50,9 @@ Status: **established** (42 surviving claims)
 - (0.80) On topic safety drift, alignment repair and parameter-space monitoring, Why Summaries Turn Neutral: Policy Attribution for Sentiment Drift in Reinforcement Learning from Human Feedback reports: Reinforcement learning with human feedback (RLHF) aligns LLMs with human preferences, improving summarization fluency and safety, but causes sentiment drift: overly neutral summaries stripped of emotional nuance. — [source](https://www.semanticscholar.org/paper/3d142b399db6f83423dc4d4af7f1dcbaee462a2c)
 - (0.80) On topic safety drift, alignment repair and parameter-space monitoring, Multilingual Sentiment Aware Text Summarization A Reinforcement Learning Approach for Consistency Maintenance reports: Reinforcement Learning from Human Feedback (RLHF) has significantly improved the quality and fluency of large language models in text summarization. — [source](https://doi.org/10.48550/arXiv.2606.08940)
 - (0.80) On topic safety drift, alignment repair and parameter-space monitoring, When KL Regularization Misfires in Group Policy Optimization reports: Why does removing reference-policy KL regularization sometimes improve group policy optimization? — [source](https://www.semanticscholar.org/paper/f7db6aab2acef4fec958f284690f7df6f685db25)
-- (0.75) On topic safety drift, alignment repair and parameter-space monitoring, One Task, Many Interfaces: Simple Cross-Interface Consistency Training Improves LLM Agent Robustness reports: Post-training binds the competence of an LLM agent to the interface it was trained on. — [source](http://arxiv.org/abs/2610.20576v1)
+- (0.80) On topic safety drift, alignment repair and parameter-space monitoring, One Task, Many Interfaces: Simple Cross-Interface Consistency Training Improves LLM Agent Robustness reports: Post-training binds the competence of an LLM agent to the interface it was trained on. — [source](http://arxiv.org/abs/2610.20576v1)
+- (0.75) On topic safety drift, alignment repair and parameter-space monitoring, Learning Personalized Memory Gating from Delayed One-Sided Feedback reports: Long-term memory enables language-model agents to personalize future interactions, but a finite memory bank cannot preserve every extracted fact. — [source](http://arxiv.org/abs/2610.23812v1)
+- (0.75) On topic safety drift, alignment repair and parameter-space monitoring, AtomicRL: Atomic Reinforcement Learning for Long-Horizon Robotic Manipulation reports: Vision-language-action (VLA) models have shown promise in robotic manipulation, but imitation learning (IL) alone often struggles to master complex long-horizon skills. — [source](http://arxiv.org/abs/2610.30097v1)
 - (0.71) On topic safety drift, alignment repair and parameter-space monitoring, Long-WAM: Scaling the Context of World-Action Models reports: Real-time robot control demands enough visual history to infer motion and task progress, but processing that history can delay action. — [source](http://arxiv.org/abs/2610.10528v1)
 - (0.67) On topic safety drift, alignment repair and parameter-space monitoring, DynaHarness: A Dynamic Physical Harness for Self-Evolving Robot Agents reports: Pretrained robot policies provide useful action priors, but long-horizon manipulation still requires coordination between semantic reasoning and physical execution. — [source](http://arxiv.org/abs/2609.40306v1)
 - (0.67) On topic safety drift, alignment repair and parameter-space monitoring, RECAST: Learning to Compute the Right Context through Adaptive Evidence Routing reports: Large language models are increasingly applied to tasks grounded in long, heterogeneous information sources. — [source](http://arxiv.org/abs/2610.10507v1)
@@ -65,4 +68,4 @@ Status: **established** (42 surviving claims)
 
 ## Open unknowns
 
-- (none)
+- [escape-hatch] On topic safety drift, alignment repair and parameter-space monitoring, EmbodiedRSI: Active Continual Robot Learning Through Hypothesis-Guided Co-Evolution repo
