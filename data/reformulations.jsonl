@@ -201,3 +201,10 @@
 {"id": "c8877f3f60a92f84c1859dae", "count": 1, "condition": "narrower scope within loss-landscape geometry and basin stability (run 2026-10-22)", "at": "2026-10-22T10:44:42+00:00"}
 {"id": "429e8cdd9a22655cb167e302", "count": 1, "condition": "narrower scope within loss-landscape geometry and basin stability (run 2026-10-22)", "at": "2026-10-22T10:44:42+00:00"}
 {"id": "b8af6c7c040ea1fc29e0d765", "count": 1, "condition": "narrower scope within loss-landscape geometry and basin stability (run 2026-10-22)", "at": "2026-10-22T10:44:42+00:00"}
+{"id": "40646d5ab8b89f74cda09bc6", "count": 3, "condition": "narrower scope within safety drift, alignment repair and parameter-space monitoring (run 2026-10-26)", "at": "2026-10-26T11:39:52+00:00"}
+{"id": "d26680d75b4c45e1ac6c0bc9", "count": 3, "condition": "narrower scope within loss-landscape geometry and basin stability (run 2026-10-26)", "at": "2026-10-26T11:39:52+00:00"}
+{"id": "afc96196e6e2965064a421dd", "count": 3, "condition": "narrower scope within loss-landscape geometry and basin stability (run 2026-10-26)", "at": "2026-10-26T11:39:52+00:00"}
+{"id": "21bc94840a2d2a8b9d08b6ec", "count": 3, "condition": "narrower scope within loss-landscape geometry and basin stability (run 2026-10-26)", "at": "2026-10-26T11:39:52+00:00"}
+{"id": "c8877f3f60a92f84c1859dae", "count": 2, "condition": "narrower scope within loss-landscape geometry and basin stability (run 2026-10-26)", "at": "2026-10-26T11:39:52+00:00"}
+{"id": "18b7c447d4f7bc9de155fe7b", "count": 1, "condition": "narrower scope within loss-landscape geometry and basin stability (run 2026-10-26)", "at": "2026-10-26T11:39:52+00:00"}
+{"id": "24051b10a2fdc92f3c3cdb53", "count": 1, "condition": "narrower scope within loss-landscape geometry and basin stability (run 2026-10-26)", "at": "2026-10-26T11:39:52+00:00"}
