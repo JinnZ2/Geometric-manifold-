@@ -1,6 +1,6 @@
 # Hypothesis draft: Fisher information and thermodynamics of learning
 
-_Regenerated 2026-11-05T13:35:21+00:00 by hypothesis_engine.py — do not hand-edit._
+_Regenerated 2026-11-09T14:29:46+00:00 by hypothesis_engine.py — do not hand-edit._
 
 ## Hypothesis statement
 
@@ -24,7 +24,7 @@ Status: **established** (13 surviving claims)
 - (0.80) On topic Fisher information and thermodynamics of learning, Quantum estimation, channel orders, and private capacity reports: Recent examples have shown that zero private capacity need not imply antidegradability and that two channels with zero private capacity can nevertheless transmit private information together. [restricted: narrower scope within Fisher information and thermodynamics of learning (run 2026-10-08)] — [source](http://arxiv.org/abs/2610.03706v1)
 - (0.80) On topic Fisher information and thermodynamics of learning, FisherMask: Enhancing Neural Network Labeling Efficiency in Image Classification Using Fisher Information reports: Deep learning (DL) models are popular across various domains due to their remarkable performance and efficiency. — [source](https://doi.org/10.1109/BigData62323.2024.10825241)
 - (0.80) On topic Fisher information and thermodynamics of learning, Information geometry of evolution of neural network parameters while training reports: Artificial neural networks (ANNs) are powerful tools capable of approximating any arbitrary mathematical function, but their interpretability remains limited, rendering them as black box models. — [source](https://doi.org/10.1016/j.neucom.2024.128007)
-- (0.75) On topic Fisher information and thermodynamics of learning, SATFRONT: Detecting Atmospheric Fronts with Satellite Data using Machine Learning reports: Atmospheric fronts are associated with much of the high-impact weather in the mid-latitudes, yet their identification and classification remain largely manual and subjective. — [source](http://arxiv.org/abs/2610.42111v1)
+- (0.80) On topic Fisher information and thermodynamics of learning, SATFRONT: Detecting Atmospheric Fronts with Satellite Data using Machine Learning reports: Atmospheric fronts are associated with much of the high-impact weather in the mid-latitudes, yet their identification and classification remain largely manual and subjective. — [source](http://arxiv.org/abs/2610.42111v1)
 
 ## Contradicted/refuted claims
 
