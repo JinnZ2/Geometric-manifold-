@@ -519,8 +519,8 @@
     {
       "text": "On topic safety drift, alignment repair and parameter-space monitoring, PatternFormer: Learning Multiple Solution Patterns in Reaction--Diffusion Systems reports: Many nonlinear models across physics, chemistry, and biology exhibit multiple solutions for the same parameters, and capturing this entire solution set is essential for understanding pattern-forming systems.",
       "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
-      "confidence": 0.75,
-      "passed": 2,
+      "confidence": 0.8,
+      "passed": 3,
       "failed": 0,
       "logical_form": "",
       "scope": {
@@ -532,8 +532,8 @@
       "id": "bd4c404d4d00a8968a3b2f0c",
       "source_url": "http://arxiv.org/abs/2608.12286v1",
       "status_override": "",
-      "beta_confidence": 0.75,
-      "status": "active"
+      "beta_confidence": 0.8,
+      "status": "survived"
     },
     {
       "text": "On topic safety drift, alignment repair and parameter-space monitoring, On the optimal constant in the Montgomery-Vaughan weighted Hilbert inequality reports: We give a proof that the optimal constant in the weighted Hilbert inequality is strictly greater than $π$, answering in the negative a question asked by Montgomery and Vaughan.",
@@ -5290,8 +5290,8 @@
     {
       "text": "On topic safety drift, alignment repair and parameter-space monitoring, Revisiting Input Time-frequency Representations in Multi-pitch Estimation for Vocal Ensembles reports: Multi-pitch estimation in vocal ensembles is challenging because singers occupy overlapping pitch ranges and often sing at closely spaced fundamental frequencies, causing their harmonics to overlap in time-frequency representations.",
       "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
-      "confidence": 0.75,
-      "passed": 2,
+      "confidence": 0.8,
+      "passed": 3,
       "failed": 0,
       "logical_form": "",
       "scope": {
@@ -5304,8 +5304,8 @@
       "id": "77e681f0e8c2c190ff398b76",
       "source_url": "http://arxiv.org/abs/2610.03656v1",
       "status_override": "",
-      "beta_confidence": 0.75,
-      "status": "active"
+      "beta_confidence": 0.8,
+      "status": "survived"
     },
     {
       "text": "On topic loss-landscape geometry and basin stability, Decoupling Exploration from Optimization in RLVR reports: Modern language models undergo reinforcement learning with verifiable rewards (RLVR) on top of already-trained checkpoints.",
@@ -7341,30 +7341,6 @@
       "status": "active"
     },
     {
-      "text": "On topic Fisher information and thermodynamics of learning, RobustRLlib: A Unified Library and Benchmark for Robust Reinforcement Learning Algorithms reports: Robust reinforcement learning (RL) is critical for reliable real-world deployment, where policies may fail under diverse shifts and disruptions. [restricted: narrower scope within Fisher information and thermodynamics of learning (run 2026-10-29)] [restricted: narrower scope within Fisher information and thermodynamics of learning (run 2026-11-05)]",
-      "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
-      "confidence": 0.3333333333333333,
-      "passed": 0,
-      "failed": 1,
-      "logical_form": "",
-      "scope": {
-        "topic": "Fisher information and thermodynamics of learning",
-        "source": "arxiv",
-        "config_hash": "e0aafb43c5315474",
-        "restrictions": [
-          "narrower scope within Fisher information and thermodynamics of learning (run 2026-10-29)",
-          "narrower scope within Fisher information and thermodynamics of learning (run 2026-11-05)"
-        ]
-      },
-      "reference_class": "Fisher information and thermodynamics of learning / arxiv findings",
-      "reformulation_count": 2,
-      "id": "59a3eb5921d644c868e9c833",
-      "source_url": "http://arxiv.org/abs/2610.32971v1",
-      "status_override": "",
-      "beta_confidence": 0.3333333333333333,
-      "status": "active"
-    },
-    {
       "text": "On topic safety drift, alignment repair and parameter-space monitoring, Beyond Discrete Tokens: Preserving Numerical Continuity in Medical Vision-Language Models reports: Objective: To develop a unified vision-language model for prompt-conditioned quantitative ultrasound measurement that addresses the mismatch between continuous measurement targets and discrete token-based numerical prediction. [restricted: narrower scope within safety drift, alignment repair and parameter-space monitoring (run 2026-11-02)]",
       "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
       "confidence": 0.5,
@@ -7433,9 +7409,9 @@
     {
       "text": "On topic loss-landscape geometry and basin stability, Attention as Lattice Gauge Theory: Relations Interact Only Through Wilson Loops reports: Relations compose through the entity they share - Alice is Bob's mother and Bob is Carol's father, so Alice is Carol's grandmother - and the order matters, since a father's mother is not a mother's father; verifying a composed relation means closing the loop. [restricted: narrower scope within loss-landscape geometry and basin stability (run 2026-11-02)] [restricted: narrower scope within loss-landscape geometry and basin stability (run 2026-11-09)]",
       "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
-      "confidence": 0.5,
+      "confidence": 0.3333333333333333,
       "passed": 0,
-      "failed": 0,
+      "failed": 1,
       "logical_form": "",
       "scope": {
         "topic": "loss-landscape geometry and basin stability",
@@ -7451,7 +7427,7 @@
       "id": "9dfcf8933c38ed39c3a29282",
       "source_url": "http://arxiv.org/abs/2610.37656v1",
       "status_override": "",
-      "beta_confidence": 0.5,
+      "beta_confidence": 0.3333333333333333,
       "status": "active"
     },
     {
@@ -7537,9 +7513,9 @@
     {
       "text": "On topic loss-landscape geometry and basin stability, SLICE-CiM: Selective Layer-wise Inference Control Engine with Confidence-Based Early Exit for SRAM based Digital Compute-in-Memory reports: Digital SRAM compute-in-memory (CIM) macros enable energy-efficient CNN inference by eliminating off-chip weight transfers; however, peripheral control logic introduces three inefficiencies: bit- slice over-activation at reduced precision (L1), unnecessary accumula- tion depth (L2), and idle precisi [restricted: narrower scope within loss-landscape geometry and basin stability (run 2026-11-02)] [restricted: narrower scope within loss-landscape geometry and basin stability (run 2026-11-09)]",
       "falsification": "Numeric check: an independent replication or reanalysis fails to reproduce the reported quantitative effect within a factor of 2.",
-      "confidence": 0.5,
+      "confidence": 0.3333333333333333,
       "passed": 0,
-      "failed": 0,
+      "failed": 1,
       "logical_form": "abs_diff_lt",
       "scope": {
         "topic": "loss-landscape geometry and basin stability",
@@ -7555,7 +7531,7 @@
       "id": "f6b7c14a08769ae8d43a91c5",
       "source_url": "http://arxiv.org/abs/2610.37601v1",
       "status_override": "",
-      "beta_confidence": 0.5,
+      "beta_confidence": 0.3333333333333333,
       "status": "active"
     },
     {
@@ -7577,30 +7553,6 @@
       "status_override": "",
       "beta_confidence": 0.8333333333333334,
       "status": "survived"
-    },
-    {
-      "text": "On topic loss-landscape geometry and basin stability, GNBG-C: A Unified and Configurable Benchmark Generator for Constrained Continuous Optimization reports: Many real-world optimization tasks are governed not only by what should be optimized, but also by what is allowed: a solution must first satisfy physical, operational, safety, budgetary, or structural requirements before its objective value becomes meaningful. [restricted: narrower scope within loss-landscape geometry and basin stability (run 2026-10-29)] [restricted: narrower scope within loss-landscape geometry and basin stability (run 2026-11-05)]",
-      "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
-      "confidence": 0.3333333333333333,
-      "passed": 0,
-      "failed": 1,
-      "logical_form": "",
-      "scope": {
-        "topic": "loss-landscape geometry and basin stability",
-        "source": "arxiv",
-        "config_hash": "e0aafb43c5315474",
-        "restrictions": [
-          "narrower scope within loss-landscape geometry and basin stability (run 2026-10-29)",
-          "narrower scope within loss-landscape geometry and basin stability (run 2026-11-05)"
-        ]
-      },
-      "reference_class": "loss-landscape geometry and basin stability / arxiv findings",
-      "reformulation_count": 2,
-      "id": "d157b795048fbfc2670f1a98",
-      "source_url": "http://arxiv.org/abs/2610.37590v1",
-      "status_override": "",
-      "beta_confidence": 0.3333333333333333,
-      "status": "active"
     },
     {
       "text": "On topic loss-landscape geometry and basin stability, Heads of Security: Learned Attention Gates Improve Prompt Injection Robustness reports: We introduce Heads of Security (HoS), a prompt injection defense that enforces instruction-data separation via a small set of learned per-head attention gates.",
@@ -7625,9 +7577,9 @@
     {
       "text": "On topic loss-landscape geometry and basin stability, When uncertainty quantification fails: structural vulnerabilities and corrections for selective prediction under clinical class imbalance reports: Background. [restricted: narrower scope within loss-landscape geometry and basin stability (run 2026-11-02)] [restricted: narrower scope within loss-landscape geometry and basin stability (run 2026-11-09)]",
       "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
-      "confidence": 0.5,
+      "confidence": 0.3333333333333333,
       "passed": 0,
-      "failed": 0,
+      "failed": 1,
       "logical_form": "",
       "scope": {
         "topic": "loss-landscape geometry and basin stability",
@@ -7643,7 +7595,7 @@
       "id": "4fd02aa11ba67b70a156451b",
       "source_url": "http://arxiv.org/abs/2610.37561v1",
       "status_override": "",
-      "beta_confidence": 0.5,
+      "beta_confidence": 0.3333333333333333,
       "status": "active"
     },
     {
@@ -7918,8 +7870,8 @@
     {
       "text": "On topic loss-landscape geometry and basin stability, Regret-Optimal Wasserstein-Robust Linear Regression reports: Distributionally robust optimization (DRO) minimizes worst-case risk under distributional uncertainty, but its decisions can be suboptimal in terms of their excess risk, or regret. [restricted: narrower scope within loss-landscape geometry and basin stability (run 2026-11-02)]",
       "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
-      "confidence": 0.75,
-      "passed": 2,
+      "confidence": 0.8,
+      "passed": 3,
       "failed": 0,
       "logical_form": "",
       "scope": {
@@ -7935,8 +7887,8 @@
       "id": "4c10543d74de4e057e0649fa",
       "source_url": "http://arxiv.org/abs/2610.42109v1",
       "status_override": "",
-      "beta_confidence": 0.75,
-      "status": "active"
+      "beta_confidence": 0.8,
+      "status": "survived"
     },
     {
       "text": "On topic loss-landscape geometry and basin stability, A richness-sensitive Acoustic Biodiversity Index from species-level detections: classifier benchmarking, false-positive control and validation against standard soundscape indices in an African savanna and an urban zoo reports: Acoustic indices are widely used as rapid proxies for biodiversity, but they summarise the distribution of sound energy rather than the species producing it and often track richness poorly.",
@@ -8164,8 +8116,8 @@
     {
       "text": "On topic loss-landscape geometry and basin stability, A Framework for Context Enrichment and Selective Robustness in LLM Social Agents reports: Researchers use large language models as agents in social simulations, where agents are prompted with observations and background information intended to shape their actions. [restricted: narrower scope within loss-landscape geometry and basin stability (run 2026-11-05)]",
       "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
-      "confidence": 0.6666666666666666,
-      "passed": 1,
+      "confidence": 0.75,
+      "passed": 2,
       "failed": 0,
       "logical_form": "",
       "scope": {
@@ -8181,7 +8133,7 @@
       "id": "c53bf139fc7b2896de271462",
       "source_url": "http://arxiv.org/abs/2611.06914v1",
       "status_override": "",
-      "beta_confidence": 0.6666666666666666,
+      "beta_confidence": 0.75,
       "status": "active"
     },
     {
@@ -8225,30 +8177,6 @@
       "status": "survived"
     },
     {
-      "text": "On topic loss-landscape geometry and basin stability, Reinforcement Learning Enables Scaling Generalist Robot Policy Improvement reports: The introduction of generalist robot policies has enabled a single, large model to learn to perform a variety of tasks from a vast pre-training corpus. [restricted: narrower scope within loss-landscape geometry and basin stability (run 2026-11-05)] [restricted: narrower scope within loss-landscape geometry and basin stability (run 2026-11-09)]",
-      "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
-      "confidence": 0.5,
-      "passed": 0,
-      "failed": 0,
-      "logical_form": "",
-      "scope": {
-        "topic": "loss-landscape geometry and basin stability",
-        "source": "arxiv",
-        "config_hash": "e0aafb43c5315474",
-        "restrictions": [
-          "narrower scope within loss-landscape geometry and basin stability (run 2026-11-05)",
-          "narrower scope within loss-landscape geometry and basin stability (run 2026-11-09)"
-        ]
-      },
-      "reference_class": "loss-landscape geometry and basin stability / arxiv findings",
-      "reformulation_count": 2,
-      "id": "5c8a0eac5aca34c59cd3586a",
-      "source_url": "http://arxiv.org/abs/2611.06905v1",
-      "status_override": "",
-      "beta_confidence": 0.5,
-      "status": "active"
-    },
-    {
       "text": "On topic loss-landscape geometry and basin stability, Learning Time-Varying Connectomes for Stable Behavior Across Development reports: Neural circuits must maintain functionality to drive effective behavior while their size, topology, geometry, and intrinsic dynamics change across development.",
       "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
       "confidence": 0.8333333333333334,
@@ -8271,8 +8199,8 @@
     {
       "text": "On topic loss-landscape geometry and basin stability, Adaptive Multi Mode: Budget-Aware Routing of Optimizers By Online Landscape Probes reports: The best classical optimizer for a continuous black-box problem depends on its budget and landscape. [restricted: narrower scope within loss-landscape geometry and basin stability (run 2026-11-09)]",
       "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
-      "confidence": 0.5,
-      "passed": 0,
+      "confidence": 0.6666666666666666,
+      "passed": 1,
       "failed": 0,
       "logical_form": "",
       "scope": {
@@ -8288,14 +8216,14 @@
       "id": "c9624d6d5ac261ae48460e28",
       "source_url": "http://arxiv.org/abs/2611.06879v1",
       "status_override": "",
-      "beta_confidence": 0.5,
+      "beta_confidence": 0.6666666666666666,
       "status": "active"
     },
     {
       "text": "On topic loss-landscape geometry and basin stability, Regression with Many Generated Controls reports: We consider linear regression when some covariates are endogenous, a variable sufficient to control for endogeneity exists but is latent, and the practitioner can generate many proxies for the latent control.",
       "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
-      "confidence": 0.75,
-      "passed": 2,
+      "confidence": 0.8,
+      "passed": 3,
       "failed": 0,
       "logical_form": "",
       "scope": {
@@ -8308,14 +8236,14 @@
       "id": "e4f455d1e4a7b03cc65e1f10",
       "source_url": "http://arxiv.org/abs/2611.06855v1",
       "status_override": "",
-      "beta_confidence": 0.75,
-      "status": "active"
+      "beta_confidence": 0.8,
+      "status": "survived"
     },
     {
       "text": "On topic loss-landscape geometry and basin stability, Thermally Conditioned Time-Series Forecasting of Grain Growth in Polycrystalline Materials reports: Grain growth during heat treatment strongly affects the microstructure of polycrystalline materials and, consequently, their mechanical properties.",
       "falsification": "Numeric check: an independent replication or reanalysis fails to reproduce the reported quantitative effect within a factor of 2.",
-      "confidence": 0.75,
-      "passed": 2,
+      "confidence": 0.8,
+      "passed": 3,
       "failed": 0,
       "logical_form": "abs_diff_lt",
       "scope": {
@@ -8328,14 +8256,14 @@
       "id": "b9a23652e3ee9522185b6a76",
       "source_url": "http://arxiv.org/abs/2611.06843v1",
       "status_override": "",
-      "beta_confidence": 0.75,
-      "status": "active"
+      "beta_confidence": 0.8,
+      "status": "survived"
     },
     {
       "text": "On topic loss-landscape geometry and basin stability, Systolic Linear Attention: Co-Designing Tile-Grouped Gated Delta Attention for TPUs reports: Gated-delta linear attention layers such as Gated DeltaNet (GDN), Kimi Delta Attention (KDA), and GDN-2 are tuned for GPUs, where small tensor-core tiles and fast vector registers make per-channel decay rescaling and sequential in-block solves cheap.",
       "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
-      "confidence": 0.75,
-      "passed": 2,
+      "confidence": 0.8,
+      "passed": 3,
       "failed": 0,
       "logical_form": "",
       "scope": {
@@ -8348,8 +8276,8 @@
       "id": "45bfbd2cd0c7e70b16b49fb1",
       "source_url": "http://arxiv.org/abs/2611.06828v1",
       "status_override": "",
-      "beta_confidence": 0.75,
-      "status": "active"
+      "beta_confidence": 0.8,
+      "status": "survived"
     },
     {
       "text": "On topic loss-landscape geometry and basin stability, Visual Token Routing: Learning to keep tokens that matter reports: Computer-use agents (CUAs) have recently achieved superhuman performance on several long-horizon benchmarks.",
@@ -8374,8 +8302,8 @@
     {
       "text": "On topic loss-landscape geometry and basin stability, Enabling AWS Cloud FPGA Development Using High-Level Vitis HLS reports: We present a toolchain for development of ML models on AWS EC2 F2 cloud FPGA infrastructure from high-level language, implementing a complete Vitis HLS to HDK bridge to AFI workflow that has been absent from the academic literature despite eight years of AWS FPGA availability.",
       "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
-      "confidence": 0.75,
-      "passed": 2,
+      "confidence": 0.8,
+      "passed": 3,
       "failed": 0,
       "logical_form": "",
       "scope": {
@@ -8388,8 +8316,8 @@
       "id": "700c32f7463d087f8e5b0550",
       "source_url": "http://arxiv.org/abs/2611.06829v1",
       "status_override": "",
-      "beta_confidence": 0.75,
-      "status": "active"
+      "beta_confidence": 0.8,
+      "status": "survived"
     },
     {
       "text": "On topic loss-landscape geometry and basin stability, Trust Region Constrained Measure Transport in Path Space for Stochastic Optimal Control and Inference reports: Solving stochastic optimal control problems with quadratic control costs can be viewed as approximating a target path space measure, e.g.",
@@ -8412,30 +8340,6 @@
       "status": "survived"
     },
     {
-      "text": "On topic loss-landscape geometry and basin stability, Fine-tuning Semantic Vector Models in Trust Region reports: This study addresses the challenge of fine-tuning pre-trained semantic vector models to accommodate the specific meanings of proprietary vocabulary in vertical domains, while mitigating catastrophic forgetting and preserving model robustness. [restricted: narrower scope within loss-landscape geometry and basin stability (run 2026-11-05)] [restricted: narrower scope within loss-landscape geometry and basin stability (run 2026-11-09)]",
-      "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
-      "confidence": 0.5,
-      "passed": 0,
-      "failed": 0,
-      "logical_form": "",
-      "scope": {
-        "topic": "loss-landscape geometry and basin stability",
-        "source": "semantic_scholar",
-        "config_hash": "e0aafb43c5315474",
-        "restrictions": [
-          "narrower scope within loss-landscape geometry and basin stability (run 2026-11-05)",
-          "narrower scope within loss-landscape geometry and basin stability (run 2026-11-09)"
-        ]
-      },
-      "reference_class": "loss-landscape geometry and basin stability / semantic_scholar findings",
-      "reformulation_count": 2,
-      "id": "3b7b101a0ce4648e08ec7313",
-      "source_url": "https://doi.org/10.1109/AEMCSE65292.2025.11042704",
-      "status_override": "",
-      "beta_confidence": 0.5,
-      "status": "active"
-    },
-    {
       "text": "On topic loss-landscape geometry and basin stability, QUATRO: Query-Adaptive Trust Region Policy Optimization for LLM Fine-tuning reports: GRPO-style reinforcement learning (RL)-based LLM fine-tuning algorithms have recently gained popularity.",
       "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
       "confidence": 0.875,
@@ -8456,34 +8360,10 @@
       "status": "survived"
     },
     {
-      "text": "On topic loss-landscape geometry and basin stability, TeamTR: Trust-Region Fine-Tuning for Multi-Agent LLM Coordination reports: Multi-agent LLM systems have shown promise for complex reasoning, yet recent evaluations reveal they often underperform single-model baselines. [restricted: narrower scope within loss-landscape geometry and basin stability (run 2026-11-05)] [restricted: narrower scope within loss-landscape geometry and basin stability (run 2026-11-09)]",
-      "falsification": "Numeric check: an independent replication or reanalysis fails to reproduce the reported quantitative effect within a factor of 2.",
-      "confidence": 0.5,
-      "passed": 0,
-      "failed": 0,
-      "logical_form": "abs_diff_lt",
-      "scope": {
-        "topic": "loss-landscape geometry and basin stability",
-        "source": "semantic_scholar",
-        "config_hash": "e0aafb43c5315474",
-        "restrictions": [
-          "narrower scope within loss-landscape geometry and basin stability (run 2026-11-05)",
-          "narrower scope within loss-landscape geometry and basin stability (run 2026-11-09)"
-        ]
-      },
-      "reference_class": "loss-landscape geometry and basin stability / semantic_scholar findings",
-      "reformulation_count": 2,
-      "id": "044e4eaefb4d1fc3b555f922",
-      "source_url": "https://doi.org/10.48550/arXiv.2605.15207",
-      "status_override": "",
-      "beta_confidence": 0.5,
-      "status": "active"
-    },
-    {
       "text": "On topic loss-landscape geometry and basin stability, MpSub: A Momentum $p$-Dimensional Subspace Trust-Region Method for Derivative-Free Fine-Tuning of Large Language Models reports: Full-parameter fine-tuning of large language models has substantial memory costs because backpropagation stores activations and gradients. [restricted: narrower scope within loss-landscape geometry and basin stability (run 2026-11-05)]",
       "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
-      "confidence": 0.75,
-      "passed": 2,
+      "confidence": 0.8333333333333334,
+      "passed": 4,
       "failed": 0,
       "logical_form": "",
       "scope": {
@@ -8499,8 +8379,8 @@
       "id": "b05544cb370201230164f801",
       "source_url": "https://www.semanticscholar.org/paper/7c4072823574c6559c0db28f0a39210537564388",
       "status_override": "",
-      "beta_confidence": 0.75,
-      "status": "active"
+      "beta_confidence": 0.8333333333333334,
+      "status": "survived"
     },
     {
       "text": "On topic Fisher information and thermodynamics of learning, Balancing hierarchical representation and quantization: A performance trade-off in text embeddings reports: Hierarchical text embedding models offer variable-length representations, while quantization reduces numerical precision; both aim to improve computational efficiency.",
@@ -8666,7 +8546,7 @@
       "status": "active"
     },
     {
-      "text": "On topic loss-landscape geometry and basin stability, On Agentic Manipulation Policies reports: Recent work on robot manipulation has focused on specialist policies trained on demonstrations. [restricted: narrower scope within loss-landscape geometry and basin stability (run 2026-11-09)]",
+      "text": "On topic loss-landscape geometry and basin stability, On Agentic Manipulation Policies reports: Recent work on robot manipulation has focused on specialist policies trained on demonstrations. [restricted: narrower scope within loss-landscape geometry and basin stability (run 2026-11-09)] [restricted: narrower scope within loss-landscape geometry and basin stability (run 2026-11-12)]",
       "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
       "confidence": 0.5,
       "passed": 0,
@@ -8677,11 +8557,12 @@
         "source": "arxiv",
         "config_hash": "e0aafb43c5315474",
         "restrictions": [
-          "narrower scope within loss-landscape geometry and basin stability (run 2026-11-09)"
+          "narrower scope within loss-landscape geometry and basin stability (run 2026-11-09)",
+          "narrower scope within loss-landscape geometry and basin stability (run 2026-11-12)"
         ]
       },
       "reference_class": "loss-landscape geometry and basin stability / arxiv findings",
-      "reformulation_count": 1,
+      "reformulation_count": 2,
       "id": "145557366baea52eb4b83d2b",
       "source_url": "http://arxiv.org/abs/2611.09892v1",
       "status_override": "",
@@ -8691,8 +8572,8 @@
     {
       "text": "On topic loss-landscape geometry and basin stability, FlowMoP: Stochastic Multi-Person Motion Prediction reports: Predicting the future motion of multiple people is inherently stochastic: the same observed history admits many plausible continuations depending on intent, coordination, and social context.",
       "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
-      "confidence": 0.6666666666666666,
-      "passed": 1,
+      "confidence": 0.75,
+      "passed": 2,
       "failed": 0,
       "logical_form": "",
       "scope": {
@@ -8705,11 +8586,11 @@
       "id": "3f0c28d929d59c7a484d86f6",
       "source_url": "http://arxiv.org/abs/2611.09882v1",
       "status_override": "",
-      "beta_confidence": 0.6666666666666666,
+      "beta_confidence": 0.75,
       "status": "active"
     },
     {
-      "text": "On topic loss-landscape geometry and basin stability, Flow-Guided Target-Space Alignment via Path Consistency reports: Many multimodal alignment problems require mapping a source modality into a fixed space defined by a target modality, where the target space is not merely an intermediate embedding but is used directly for downstream analysis. [restricted: narrower scope within loss-landscape geometry and basin stability (run 2026-11-09)]",
+      "text": "On topic loss-landscape geometry and basin stability, Flow-Guided Target-Space Alignment via Path Consistency reports: Many multimodal alignment problems require mapping a source modality into a fixed space defined by a target modality, where the target space is not merely an intermediate embedding but is used directly for downstream analysis. [restricted: narrower scope within loss-landscape geometry and basin stability (run 2026-11-09)] [restricted: narrower scope within loss-landscape geometry and basin stability (run 2026-11-12)]",
       "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
       "confidence": 0.5,
       "passed": 0,
@@ -8720,11 +8601,12 @@
         "source": "arxiv",
         "config_hash": "e0aafb43c5315474",
         "restrictions": [
-          "narrower scope within loss-landscape geometry and basin stability (run 2026-11-09)"
+          "narrower scope within loss-landscape geometry and basin stability (run 2026-11-09)",
+          "narrower scope within loss-landscape geometry and basin stability (run 2026-11-12)"
         ]
       },
       "reference_class": "loss-landscape geometry and basin stability / arxiv findings",
-      "reformulation_count": 1,
+      "reformulation_count": 2,
       "id": "b749bbac4b223accd4c3e90c",
       "source_url": "http://arxiv.org/abs/2611.09863v1",
       "status_override": "",
@@ -8752,31 +8634,34 @@
       "status": "survived"
     },
     {
-      "text": "On topic loss-landscape geometry and basin stability, Can Agentic Systems Close the Gap in Radiology with Production AI Tools? reports: Radiology AI has developed along two paths: specialized models that perform well on narrow tasks but cover few clinical findings, and generalist models that address a broader range of tasks but remain prone to hallucination and inaccurate measurements.",
+      "text": "On topic loss-landscape geometry and basin stability, Can Agentic Systems Close the Gap in Radiology with Production AI Tools? reports: Radiology AI has developed along two paths: specialized models that perform well on narrow tasks but cover few clinical findings, and generalist models that address a broader range of tasks but remain prone to hallucination and inaccurate measurements. [restricted: narrower scope within loss-landscape geometry and basin stability (run 2026-11-12)]",
       "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
-      "confidence": 0.6,
-      "passed": 2,
-      "failed": 1,
+      "confidence": 0.5,
+      "passed": 0,
+      "failed": 0,
       "logical_form": "",
       "scope": {
         "topic": "loss-landscape geometry and basin stability",
         "source": "arxiv",
-        "config_hash": "e0aafb43c5315474"
+        "config_hash": "e0aafb43c5315474",
+        "restrictions": [
+          "narrower scope within loss-landscape geometry and basin stability (run 2026-11-12)"
+        ]
       },
       "reference_class": "loss-landscape geometry and basin stability / arxiv findings",
-      "reformulation_count": 0,
+      "reformulation_count": 1,
       "id": "54140c97403a3085c58d1da4",
       "source_url": "http://arxiv.org/abs/2611.09836v1",
       "status_override": "",
-      "beta_confidence": 0.6,
+      "beta_confidence": 0.5,
       "status": "active"
     },
     {
       "text": "On topic loss-landscape geometry and basin stability, On the (non-)closedness of the set of ReLU networks reports: We prove that the set $\\mathcal{N}_N$ of ReLU networks with one hidden layer and at most $N\\in\\mathbb N$ neurons is weakly closed in $W^{1,p}(Ω)$, for a bounded connected open set $Ω\\subset\\mathbb R^d$.",
       "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
-      "confidence": 0.75,
-      "passed": 2,
-      "failed": 0,
+      "confidence": 0.7142857142857143,
+      "passed": 4,
+      "failed": 1,
       "logical_form": "",
       "scope": {
         "topic": "loss-landscape geometry and basin stability",
@@ -8788,14 +8673,14 @@
       "id": "5fd06882e8ec2689cdc69aa5",
       "source_url": "http://arxiv.org/abs/2611.09887v1",
       "status_override": "",
-      "beta_confidence": 0.75,
-      "status": "active"
+      "beta_confidence": 0.7142857142857143,
+      "status": "survived"
     },
     {
       "text": "On topic loss-landscape geometry and basin stability, Graded convolutional networks: scale invariance without the scale and robustness to unknown blur reports: The Gaussian jet of an image is a graded vector space: a dilation by $λ$ multiplies derivatives of order $k$ by $λ^{-k}$.",
       "falsification": "Numeric check: an independent replication or reanalysis fails to reproduce the reported quantitative effect within a factor of 2.",
-      "confidence": 0.75,
-      "passed": 2,
+      "confidence": 0.8333333333333334,
+      "passed": 4,
       "failed": 0,
       "logical_form": "abs_diff_lt",
       "scope": {
@@ -8808,14 +8693,14 @@
       "id": "ba1807d11c83e37ecdbcee34",
       "source_url": "http://arxiv.org/abs/2611.09878v1",
       "status_override": "",
-      "beta_confidence": 0.75,
-      "status": "active"
+      "beta_confidence": 0.8333333333333334,
+      "status": "survived"
     },
     {
       "text": "On topic loss-landscape geometry and basin stability, Grasp-TAGS: Task-Aware Grasp Selection via Critic Distillation for Prehensile Loco-Manipulation reports: Loco-manipulation, which requires mobile manipulators to coordinate locomotion and manipulation over long horizons, is a key capability for large-object rearrangement in applications such as service robotics and warehouse automation.",
       "falsification": "Numeric check: an independent replication or reanalysis fails to reproduce the reported quantitative effect within a factor of 2.",
-      "confidence": 0.6666666666666666,
-      "passed": 1,
+      "confidence": 0.75,
+      "passed": 2,
       "failed": 0,
       "logical_form": "abs_diff_lt",
       "scope": {
@@ -8828,14 +8713,14 @@
       "id": "84fe6d48156371a78a26d3eb",
       "source_url": "http://arxiv.org/abs/2611.09864v1",
       "status_override": "",
-      "beta_confidence": 0.6666666666666666,
+      "beta_confidence": 0.75,
       "status": "active"
     },
     {
       "text": "On topic loss-landscape geometry and basin stability, Knowing When to Intervene: Causal Evaluation of AI Agents reports: Current evaluations of agentic AI systems primarily rely on benchmarks. [restricted: narrower scope within loss-landscape geometry and basin stability (run 2026-11-09)]",
       "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
-      "confidence": 0.5,
-      "passed": 0,
+      "confidence": 0.6666666666666666,
+      "passed": 1,
       "failed": 0,
       "logical_form": "",
       "scope": {
@@ -8851,14 +8736,14 @@
       "id": "2339dbd290677ab1b8ee28fe",
       "source_url": "http://arxiv.org/abs/2611.09792v1",
       "status_override": "",
-      "beta_confidence": 0.5,
+      "beta_confidence": 0.6666666666666666,
       "status": "active"
     },
     {
       "text": "On topic loss-landscape geometry and basin stability, Safety Is $Π_1$, Provability Is $Σ_1$: One Framework for the Hugging Face Breach and OpenAI's Mathematical Proofs reports: OpenAI's agents breached Hugging Face in July 2026, and the same company released more than seven hundred AI-generated manuscripts of mathematical proofs in October 2026.",
       "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
-      "confidence": 0.6666666666666666,
-      "passed": 1,
+      "confidence": 0.75,
+      "passed": 2,
       "failed": 0,
       "logical_form": "",
       "scope": {
@@ -8871,14 +8756,14 @@
       "id": "256506723156c52cd86b4fe7",
       "source_url": "http://arxiv.org/abs/2611.09736v1",
       "status_override": "",
-      "beta_confidence": 0.6666666666666666,
+      "beta_confidence": 0.75,
       "status": "active"
     },
     {
       "text": "On topic loss-landscape geometry and basin stability, ICare-DT: a digital twin for continuous forecasting of intensive care patients reports: Digital twins of intensive care patients should update forecasts from new data and predict treatment responses, but few studies test whether routine records support either.",
       "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
-      "confidence": 0.6666666666666666,
-      "passed": 1,
+      "confidence": 0.75,
+      "passed": 2,
       "failed": 0,
       "logical_form": "",
       "scope": {
@@ -8891,15 +8776,15 @@
       "id": "a7ecd3973a6f23bf463b91b9",
       "source_url": "http://arxiv.org/abs/2611.09712v1",
       "status_override": "",
-      "beta_confidence": 0.6666666666666666,
+      "beta_confidence": 0.75,
       "status": "active"
     },
     {
       "text": "On topic loss-landscape geometry and basin stability, RidgeFill: Training-Free Late-Layer Cache Fill for Faster Prefill reports: RidgeFill shortens prefill by not computing most of a model's upper layers for the prompt. [restricted: narrower scope within loss-landscape geometry and basin stability (run 2026-11-09)]",
       "falsification": "Numeric check: an independent replication or reanalysis fails to reproduce the reported quantitative effect within a factor of 2.",
-      "confidence": 0.5,
+      "confidence": 0.3333333333333333,
       "passed": 0,
-      "failed": 0,
+      "failed": 1,
       "logical_form": "abs_diff_lt",
       "scope": {
         "topic": "loss-landscape geometry and basin stability",
@@ -8914,7 +8799,7 @@
       "id": "fb8a0f9e23ec563889491554",
       "source_url": "http://arxiv.org/abs/2611.09709v1",
       "status_override": "",
-      "beta_confidence": 0.5,
+      "beta_confidence": 0.3333333333333333,
       "status": "active"
     },
     {
@@ -9020,8 +8905,8 @@
     {
       "text": "On topic safety drift, alignment repair and parameter-space monitoring, From PAC bounds on the generalization error to PAC bounds on the parameter estimation error reports: Probably Approximately Correct (PAC) bounds on the generalization error (the difference between the empirical prediction error computed on the training data and its expectation) are an established tool in statistical machine learning, and there have been several extensions of these bounds to dynamic",
       "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
-      "confidence": 0.6666666666666666,
-      "passed": 1,
+      "confidence": 0.75,
+      "passed": 2,
       "failed": 0,
       "logical_form": "",
       "scope": {
@@ -9034,7 +8919,491 @@
       "id": "fcbf84ae72e1517baff6a3d5",
       "source_url": "http://arxiv.org/abs/2611.09767v1",
       "status_override": "",
+      "beta_confidence": 0.75,
+      "status": "active"
+    },
+    {
+      "text": "On topic loss-landscape geometry and basin stability, TorchCurves: Differentiable Parametric Curves reports: We present TorchCurves, a PyTorch library that treats vector-valued parametric curves as learnable primitives.",
+      "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
+      "confidence": 0.6666666666666666,
+      "passed": 1,
+      "failed": 0,
+      "logical_form": "",
+      "scope": {
+        "topic": "loss-landscape geometry and basin stability",
+        "source": "arxiv",
+        "config_hash": "e0aafb43c5315474"
+      },
+      "reference_class": "loss-landscape geometry and basin stability / arxiv findings",
+      "reformulation_count": 0,
+      "id": "51564da84ca3fc36e533c3f3",
+      "source_url": "http://arxiv.org/abs/2611.14516v1",
+      "status_override": "",
       "beta_confidence": 0.6666666666666666,
+      "status": "active"
+    },
+    {
+      "text": "On topic loss-landscape geometry and basin stability, AutoScaffold: AI-Guided Scaffolding for Reinforcement Learning of Language Models reports: Reinforcement learning with verifiable rewards (RLVR) produces rich training experience, yet outcome rewards reduce each attempt to a single number and leave most of this information unused. [restricted: narrower scope within loss-landscape geometry and basin stability (run 2026-11-12)]",
+      "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
+      "confidence": 0.5,
+      "passed": 0,
+      "failed": 0,
+      "logical_form": "",
+      "scope": {
+        "topic": "loss-landscape geometry and basin stability",
+        "source": "arxiv",
+        "config_hash": "e0aafb43c5315474",
+        "restrictions": [
+          "narrower scope within loss-landscape geometry and basin stability (run 2026-11-12)"
+        ]
+      },
+      "reference_class": "loss-landscape geometry and basin stability / arxiv findings",
+      "reformulation_count": 1,
+      "id": "c400caab5cc4e5314c99db83",
+      "source_url": "http://arxiv.org/abs/2611.14515v1",
+      "status_override": "",
+      "beta_confidence": 0.5,
+      "status": "active"
+    },
+    {
+      "text": "On topic loss-landscape geometry and basin stability, Pyrite: Building and Benchmarking Protein-Ligand Pose Ranking Agents reports: Predicting how a ligand binds to its target is central to small-molecule drug discovery.",
+      "falsification": "Numeric check: an independent replication or reanalysis fails to reproduce the reported quantitative effect within a factor of 2.",
+      "confidence": 0.6666666666666666,
+      "passed": 1,
+      "failed": 0,
+      "logical_form": "abs_diff_lt",
+      "scope": {
+        "topic": "loss-landscape geometry and basin stability",
+        "source": "arxiv",
+        "config_hash": "e0aafb43c5315474"
+      },
+      "reference_class": "loss-landscape geometry and basin stability / arxiv findings",
+      "reformulation_count": 0,
+      "id": "f790ab41d3f1a8ca77c94a83",
+      "source_url": "http://arxiv.org/abs/2611.14511v1",
+      "status_override": "",
+      "beta_confidence": 0.6666666666666666,
+      "status": "active"
+    },
+    {
+      "text": "On topic loss-landscape geometry and basin stability, Continual-ARC: Measuring Skill Acquisition over a Working Lifetime reports: Agent harnesses have emerged as a promising mechanism for continual learning, alongside test-time parametric learning.",
+      "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
+      "confidence": 0.75,
+      "passed": 2,
+      "failed": 0,
+      "logical_form": "",
+      "scope": {
+        "topic": "loss-landscape geometry and basin stability",
+        "source": "arxiv",
+        "config_hash": "e0aafb43c5315474"
+      },
+      "reference_class": "loss-landscape geometry and basin stability / arxiv findings",
+      "reformulation_count": 0,
+      "id": "774cc49e3154d08818945378",
+      "source_url": "http://arxiv.org/abs/2611.14505v1",
+      "status_override": "",
+      "beta_confidence": 0.75,
+      "status": "active"
+    },
+    {
+      "text": "On topic loss-landscape geometry and basin stability, Emergent Biological Capabilities in a Foundation Model for Molecular Interactions reports: Foundation models trained on large unlabeled corpora develop emergent capabilities, tasks that go beyond the training objective. [restricted: narrower scope within loss-landscape geometry and basin stability (run 2026-11-12)]",
+      "falsification": "Numeric check: an independent replication or reanalysis fails to reproduce the reported quantitative effect within a factor of 2.",
+      "confidence": 0.5,
+      "passed": 0,
+      "failed": 0,
+      "logical_form": "abs_diff_lt",
+      "scope": {
+        "topic": "loss-landscape geometry and basin stability",
+        "source": "arxiv",
+        "config_hash": "e0aafb43c5315474",
+        "restrictions": [
+          "narrower scope within loss-landscape geometry and basin stability (run 2026-11-12)"
+        ]
+      },
+      "reference_class": "loss-landscape geometry and basin stability / arxiv findings",
+      "reformulation_count": 1,
+      "id": "5c94e5aab5c849c6163f1a39",
+      "source_url": "http://arxiv.org/abs/2611.14504v1",
+      "status_override": "",
+      "beta_confidence": 0.5,
+      "status": "active"
+    },
+    {
+      "text": "On topic loss-landscape geometry and basin stability, When Does the Real Wiring Win? Testing connectome structure-function claims against unmeasured physiology reports: Connectome-constrained models are often used to argue that a measured wiring diagram outperforms shuffled or rewired wiring, and hence that structure shapes function.",
+      "falsification": "Numeric check: an independent replication or reanalysis fails to reproduce the reported quantitative effect within a factor of 2.",
+      "confidence": 0.5,
+      "passed": 1,
+      "failed": 1,
+      "logical_form": "abs_diff_lt",
+      "scope": {
+        "topic": "loss-landscape geometry and basin stability",
+        "source": "arxiv",
+        "config_hash": "e0aafb43c5315474"
+      },
+      "reference_class": "loss-landscape geometry and basin stability / arxiv findings",
+      "reformulation_count": 0,
+      "id": "e67bbf95709f7a336011dcdf",
+      "source_url": "http://arxiv.org/abs/2611.14508v1",
+      "status_override": "",
+      "beta_confidence": 0.5,
+      "status": "active"
+    },
+    {
+      "text": "On topic loss-landscape geometry and basin stability, TimeSeek: Multi-Task and Multi-Domain Pretraining for Generalized Time Series Analytics reports: Time series analytics has been widely applied across various domains. [restricted: narrower scope within loss-landscape geometry and basin stability (run 2026-11-12)]",
+      "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
+      "confidence": 0.5,
+      "passed": 0,
+      "failed": 0,
+      "logical_form": "",
+      "scope": {
+        "topic": "loss-landscape geometry and basin stability",
+        "source": "arxiv",
+        "config_hash": "e0aafb43c5315474",
+        "restrictions": [
+          "narrower scope within loss-landscape geometry and basin stability (run 2026-11-12)"
+        ]
+      },
+      "reference_class": "loss-landscape geometry and basin stability / arxiv findings",
+      "reformulation_count": 1,
+      "id": "fec29c7c3f3098dbf98fd0ca",
+      "source_url": "http://arxiv.org/abs/2611.14491v1",
+      "status_override": "",
+      "beta_confidence": 0.5,
+      "status": "active"
+    },
+    {
+      "text": "On topic loss-landscape geometry and basin stability, Bayesian inverse problems and epidemic-threshold uncertainty for a heterogeneous SIS reaction-diffusion model reports: We study Bayesian inference of persistence from early observations of a heterogeneous susceptible--infected--susceptible (SIS) reaction--diffusion model with standard incidence.",
+      "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
+      "confidence": 0.6666666666666666,
+      "passed": 1,
+      "failed": 0,
+      "logical_form": "",
+      "scope": {
+        "topic": "loss-landscape geometry and basin stability",
+        "source": "arxiv",
+        "config_hash": "e0aafb43c5315474"
+      },
+      "reference_class": "loss-landscape geometry and basin stability / arxiv findings",
+      "reformulation_count": 0,
+      "id": "85a7bf1ab96d58eb3258392f",
+      "source_url": "http://arxiv.org/abs/2611.14468v1",
+      "status_override": "",
+      "beta_confidence": 0.6666666666666666,
+      "status": "active"
+    },
+    {
+      "text": "On topic loss-landscape geometry and basin stability, C$^2$-Routing: Complementary Cropping and Compression for Efficient Vision-Language Inference reports: Visual Question Answering (VQA) imposes substantial computational overhead on vision-language models (VLMs), motivating model-agnostic input reduction methods that can be readily applied across diverse VLMs, including in black-box settings. [restricted: narrower scope within loss-landscape geometry and basin stability (run 2026-11-12)]",
+      "falsification": "Numeric check: an independent replication or reanalysis fails to reproduce the reported quantitative effect within a factor of 2.",
+      "confidence": 0.5,
+      "passed": 0,
+      "failed": 0,
+      "logical_form": "abs_diff_lt",
+      "scope": {
+        "topic": "loss-landscape geometry and basin stability",
+        "source": "arxiv",
+        "config_hash": "e0aafb43c5315474",
+        "restrictions": [
+          "narrower scope within loss-landscape geometry and basin stability (run 2026-11-12)"
+        ]
+      },
+      "reference_class": "loss-landscape geometry and basin stability / arxiv findings",
+      "reformulation_count": 1,
+      "id": "e4298e80c0455a46ca6b14c0",
+      "source_url": "http://arxiv.org/abs/2611.14469v1",
+      "status_override": "",
+      "beta_confidence": 0.5,
+      "status": "active"
+    },
+    {
+      "text": "On topic loss-landscape geometry and basin stability, A Margin Perspective on LoRA: Robustness to Catastrophic Forgetting and Adapter Merging (MaLoRA) reports: Low-rank adaptation (LoRA) is the de facto method for parameter-efficient fine-tuning of large neural networks, achieving strong task adaptation with minimal trainable parameters and low optimization cost.",
+      "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
+      "confidence": 0.7777777777777778,
+      "passed": 6,
+      "failed": 1,
+      "logical_form": "",
+      "scope": {
+        "topic": "loss-landscape geometry and basin stability",
+        "source": "arxiv",
+        "config_hash": "e0aafb43c5315474"
+      },
+      "reference_class": "loss-landscape geometry and basin stability / arxiv findings",
+      "reformulation_count": 0,
+      "id": "875e6e354a03d562772455ae",
+      "source_url": "http://arxiv.org/abs/2611.14397v1",
+      "status_override": "",
+      "beta_confidence": 0.7777777777777778,
+      "status": "survived"
+    },
+    {
+      "text": "On topic loss-landscape geometry and basin stability, The Unused Input: The Initial State as a Conditioning Interface for Recurrent TSFMs reports: Time series foundation models (TSFMs) forecast unseen series without task-specific training. [restricted: narrower scope within loss-landscape geometry and basin stability (run 2026-11-12)]",
+      "falsification": "Numeric check: an independent replication or reanalysis fails to reproduce the reported quantitative effect within a factor of 2.",
+      "confidence": 0.5,
+      "passed": 0,
+      "failed": 0,
+      "logical_form": "abs_diff_lt",
+      "scope": {
+        "topic": "loss-landscape geometry and basin stability",
+        "source": "arxiv",
+        "config_hash": "e0aafb43c5315474",
+        "restrictions": [
+          "narrower scope within loss-landscape geometry and basin stability (run 2026-11-12)"
+        ]
+      },
+      "reference_class": "loss-landscape geometry and basin stability / arxiv findings",
+      "reformulation_count": 1,
+      "id": "083bd24681b2516edbb8c4a2",
+      "source_url": "http://arxiv.org/abs/2611.14357v1",
+      "status_override": "",
+      "beta_confidence": 0.5,
+      "status": "active"
+    },
+    {
+      "text": "On topic loss-landscape geometry and basin stability, Auditing the Judge: Internal Signals for LLM Reasoning Assurance reports: Language-model systems use self-judgment to decide which answers to release, review, or recompute. [restricted: narrower scope within loss-landscape geometry and basin stability (run 2026-11-12)]",
+      "falsification": "Numeric check: an independent replication or reanalysis fails to reproduce the reported quantitative effect within a factor of 2.",
+      "confidence": 0.5,
+      "passed": 0,
+      "failed": 0,
+      "logical_form": "abs_diff_lt",
+      "scope": {
+        "topic": "loss-landscape geometry and basin stability",
+        "source": "arxiv",
+        "config_hash": "e0aafb43c5315474",
+        "restrictions": [
+          "narrower scope within loss-landscape geometry and basin stability (run 2026-11-12)"
+        ]
+      },
+      "reference_class": "loss-landscape geometry and basin stability / arxiv findings",
+      "reformulation_count": 1,
+      "id": "57eac0ad0ea5b7c6f2ef1e36",
+      "source_url": "http://arxiv.org/abs/2611.14323v1",
+      "status_override": "",
+      "beta_confidence": 0.5,
+      "status": "active"
+    },
+    {
+      "text": "On topic Fisher information and thermodynamics of learning, Comparative Analysis of Agent Evaluation Frameworks: Stability, Detection, and Discovery in Enterprise Analytics Agents reports: Deploying LLM-based analytics agents in enterprise settings requires evaluation frameworks that can reliably detect failures across complex, multi-tool workflows.",
+      "falsification": "Numeric check: an independent replication or reanalysis fails to reproduce the reported quantitative effect within a factor of 2.",
+      "confidence": 0.5,
+      "passed": 0,
+      "failed": 0,
+      "logical_form": "abs_diff_lt",
+      "scope": {
+        "topic": "Fisher information and thermodynamics of learning",
+        "source": "arxiv",
+        "config_hash": "e0aafb43c5315474"
+      },
+      "reference_class": "Fisher information and thermodynamics of learning / arxiv findings",
+      "reformulation_count": 0,
+      "id": "41794b6726879096b7a5aefc",
+      "source_url": "http://arxiv.org/abs/2611.14493v1",
+      "status_override": "",
+      "beta_confidence": 0.5,
+      "status": "active"
+    },
+    {
+      "text": "On topic Fisher information and thermodynamics of learning, Contrastive Discovery: Open-Ended Scientific Discovery over Competing Explanations reports: LLM agents are increasingly used for open-ended, data-driven scientific discovery, yet most of them evaluate hypotheses pointwise, testing an empirical claim $h$ only against its complement $\\neg h$.",
+      "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
+      "confidence": 0.5,
+      "passed": 0,
+      "failed": 0,
+      "logical_form": "",
+      "scope": {
+        "topic": "Fisher information and thermodynamics of learning",
+        "source": "arxiv",
+        "config_hash": "e0aafb43c5315474"
+      },
+      "reference_class": "Fisher information and thermodynamics of learning / arxiv findings",
+      "reformulation_count": 0,
+      "id": "a62f30a41d21832e85601c5c",
+      "source_url": "http://arxiv.org/abs/2611.14514v1",
+      "status_override": "",
+      "beta_confidence": 0.5,
+      "status": "active"
+    },
+    {
+      "text": "On topic safety drift, alignment repair and parameter-space monitoring, Quantifying the Sampling Frequency Invariance of Time-Series Foundation Models for Sensor Data Applications reports: Time-Series Foundation Models (TSFMs) are increasingly used in sensor applications, where sampling frequency (SF) varies across sensors, devices, and operating modes (e.g., power saving).",
+      "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
+      "confidence": 0.6666666666666666,
+      "passed": 1,
+      "failed": 0,
+      "logical_form": "",
+      "scope": {
+        "topic": "safety drift, alignment repair and parameter-space monitoring",
+        "source": "arxiv",
+        "config_hash": "e0aafb43c5315474"
+      },
+      "reference_class": "safety drift, alignment repair and parameter-space monitoring / arxiv findings",
+      "reformulation_count": 0,
+      "id": "6fb3afd62b7bb4ae3bf9cc11",
+      "source_url": "http://arxiv.org/abs/2611.14425v1",
+      "status_override": "",
+      "beta_confidence": 0.6666666666666666,
+      "status": "active"
+    },
+    {
+      "text": "On topic safety drift, alignment repair and parameter-space monitoring, DnNP: Denoising Input Uncertainty in Neural Processes reports: Neural Processes (NPs) are flexible meta-learning models capable of uncertainty quantification across diverse applications.",
+      "falsification": "Numeric check: an independent replication or reanalysis fails to reproduce the reported quantitative effect within a factor of 2.",
+      "confidence": 0.6666666666666666,
+      "passed": 1,
+      "failed": 0,
+      "logical_form": "abs_diff_lt",
+      "scope": {
+        "topic": "safety drift, alignment repair and parameter-space monitoring",
+        "source": "arxiv",
+        "config_hash": "e0aafb43c5315474"
+      },
+      "reference_class": "safety drift, alignment repair and parameter-space monitoring / arxiv findings",
+      "reformulation_count": 0,
+      "id": "d61f5de6e9b37fc3add38b31",
+      "source_url": "http://arxiv.org/abs/2611.14424v1",
+      "status_override": "",
+      "beta_confidence": 0.6666666666666666,
+      "status": "active"
+    },
+    {
+      "text": "On topic safety drift, alignment repair and parameter-space monitoring, Evaluating LLM-Generated World Models for Neuro-Symbolic Reasoning reports: Formal world models can support planning, verification, and safety reasoning, but constructing them from open-ended natural-language situations is difficult, particularly in multi-agent settings where several formalizations may be plausible.",
+      "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
+      "confidence": 0.6666666666666666,
+      "passed": 1,
+      "failed": 0,
+      "logical_form": "",
+      "scope": {
+        "topic": "safety drift, alignment repair and parameter-space monitoring",
+        "source": "arxiv",
+        "config_hash": "e0aafb43c5315474"
+      },
+      "reference_class": "safety drift, alignment repair and parameter-space monitoring / arxiv findings",
+      "reformulation_count": 0,
+      "id": "27b30706415185caedb6522a",
+      "source_url": "http://arxiv.org/abs/2611.14419v1",
+      "status_override": "",
+      "beta_confidence": 0.6666666666666666,
+      "status": "active"
+    },
+    {
+      "text": "On topic safety drift, alignment repair and parameter-space monitoring, A Theory of Policy Optimization in Post-Training: Coverage Collapse and Reference Resets reports: Policy optimization is central to language model post-training, yet principled guidance remains limited.",
+      "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
+      "confidence": 0.875,
+      "passed": 6,
+      "failed": 0,
+      "logical_form": "",
+      "scope": {
+        "topic": "safety drift, alignment repair and parameter-space monitoring",
+        "source": "arxiv",
+        "config_hash": "e0aafb43c5315474"
+      },
+      "reference_class": "safety drift, alignment repair and parameter-space monitoring / arxiv findings",
+      "reformulation_count": 0,
+      "id": "8c29987f049b4b9109c8743f",
+      "source_url": "http://arxiv.org/abs/2611.14467v1",
+      "status_override": "",
+      "beta_confidence": 0.875,
+      "status": "survived"
+    },
+    {
+      "text": "On topic safety drift, alignment repair and parameter-space monitoring, One Policy for 100 Household Tasks: Our Solution for the 2026 BEHAVIOR Challenge reports: We describe our solution for the 2026 BEHAVIOR Challenge: 100 long-horizon household tasks in the OmniGibson simulator.",
+      "falsification": "Numeric check: an independent replication or reanalysis fails to reproduce the reported quantitative effect within a factor of 2.",
+      "confidence": 0.75,
+      "passed": 2,
+      "failed": 0,
+      "logical_form": "abs_diff_lt",
+      "scope": {
+        "topic": "safety drift, alignment repair and parameter-space monitoring",
+        "source": "arxiv",
+        "config_hash": "e0aafb43c5315474"
+      },
+      "reference_class": "safety drift, alignment repair and parameter-space monitoring / arxiv findings",
+      "reformulation_count": 0,
+      "id": "2a87a59915b57e6c660c3ac4",
+      "source_url": "http://arxiv.org/abs/2611.14432v1",
+      "status_override": "",
+      "beta_confidence": 0.75,
+      "status": "active"
+    },
+    {
+      "text": "On topic safety drift, alignment repair and parameter-space monitoring, Precision on Demand: Escalating Weight Bits at Uncertain Decoding Steps in a Small Local Model reports: Local decoding usually fixes one weight precision for the whole generation.",
+      "falsification": "Numeric check: an independent replication or reanalysis fails to reproduce the reported quantitative effect within a factor of 2.",
+      "confidence": 0.6666666666666666,
+      "passed": 1,
+      "failed": 0,
+      "logical_form": "abs_diff_lt",
+      "scope": {
+        "topic": "safety drift, alignment repair and parameter-space monitoring",
+        "source": "arxiv",
+        "config_hash": "e0aafb43c5315474"
+      },
+      "reference_class": "safety drift, alignment repair and parameter-space monitoring / arxiv findings",
+      "reformulation_count": 0,
+      "id": "a317cdae4abd35937d7d3f89",
+      "source_url": "http://arxiv.org/abs/2611.14418v1",
+      "status_override": "",
+      "beta_confidence": 0.6666666666666666,
+      "status": "active"
+    },
+    {
+      "text": "On topic model collapse, variance suppression and recursive training, FERN: Cross-Benchmark Table Retrieval for Text-to-SQL with Frozen Retrievers and Learned Ranking reports: Text-to-SQL systems over large pooled catalogs must first retrieve the tables a question needs. [restricted: narrower scope within model collapse, variance suppression and recursive training (run 2026-11-12)]",
+      "falsification": "Numeric check: an independent replication or reanalysis fails to reproduce the reported quantitative effect within a factor of 2.",
+      "confidence": 0.5,
+      "passed": 0,
+      "failed": 0,
+      "logical_form": "abs_diff_lt",
+      "scope": {
+        "topic": "model collapse, variance suppression and recursive training",
+        "source": "arxiv",
+        "config_hash": "e0aafb43c5315474",
+        "restrictions": [
+          "narrower scope within model collapse, variance suppression and recursive training (run 2026-11-12)"
+        ]
+      },
+      "reference_class": "model collapse, variance suppression and recursive training / arxiv findings",
+      "reformulation_count": 1,
+      "id": "02ed4d0216f9b732ec2f090d",
+      "source_url": "http://arxiv.org/abs/2611.14477v1",
+      "status_override": "",
+      "beta_confidence": 0.5,
+      "status": "active"
+    },
+    {
+      "text": "On topic model collapse, variance suppression and recursive training, Blurring the Block Boundaries: Overlapping Block Denoising for Efficient Diffusion Language Models reports: Diffusion Language Models (DLMs) have emerged as effective alternatives to autoregressive models for latency-critical tasks, enabling faster token generation. [restricted: narrower scope within model collapse, variance suppression and recursive training (run 2026-11-12)]",
+      "falsification": "Numeric check: an independent replication or reanalysis fails to reproduce the reported quantitative effect within a factor of 2.",
+      "confidence": 0.5,
+      "passed": 0,
+      "failed": 0,
+      "logical_form": "abs_diff_lt",
+      "scope": {
+        "topic": "model collapse, variance suppression and recursive training",
+        "source": "arxiv",
+        "config_hash": "e0aafb43c5315474",
+        "restrictions": [
+          "narrower scope within model collapse, variance suppression and recursive training (run 2026-11-12)"
+        ]
+      },
+      "reference_class": "model collapse, variance suppression and recursive training / arxiv findings",
+      "reformulation_count": 1,
+      "id": "41ba8ec25f2a3416178217ba",
+      "source_url": "http://arxiv.org/abs/2611.14387v1",
+      "status_override": "",
+      "beta_confidence": 0.5,
+      "status": "active"
+    },
+    {
+      "text": "On topic hidden variable detection / causal discovery from residuals, Exploring Post-Hoc Disentanglement of Audio Foundation Models for Music Similarity reports: Audio foundation models like CLAP, MuQ, and MERT excel at capturing general musical similarity.",
+      "falsification": "Replication check: an independent replication or reanalysis of the reported result contradicts it on the same task/metric class.",
+      "confidence": 0.5,
+      "passed": 0,
+      "failed": 0,
+      "logical_form": "",
+      "scope": {
+        "topic": "hidden variable detection / causal discovery from residuals",
+        "source": "arxiv",
+        "config_hash": "e0aafb43c5315474"
+      },
+      "reference_class": "hidden variable detection / causal discovery from residuals / arxiv findings",
+      "reformulation_count": 0,
+      "id": "9c277b8f84914b4f4326f9bb",
+      "source_url": "http://arxiv.org/abs/2611.14415v1",
+      "status_override": "",
+      "beta_confidence": 0.5,
       "status": "active"
     }
   ]
