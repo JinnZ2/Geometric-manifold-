@@ -33,3 +33,15 @@ ce065e36d75a7bf167bbaa6dc2a67c1d07d56755dda1c56ebae4ea0a96674918  ./runs/exp1/EX
 ```
 
 Check: `python3 docs/research/residual-audit/residual_audit.py selftest`
+
+## Merge record, 2026-11-19
+
+PR #23 was merged with a merge commit, `601a48c`. No CI configured for PRs; checks run:
+`residual_audit.py` selftest 0 failures, `subliminal_guard.py` demo exit 0, sha256 byte-identical.
+
+- No CI: the only workflow, `.github/workflows/hypothesis-engine.yml`, does not run on pull requests.
+- The three checks were run again on main at `601a48c` after the merge, with the same results:
+  selftest `0 failure(s)`, exit 0; `python3 docs/research/subliminal_guard.py` exit 0;
+  `subliminal_guard.py` sha256 `d5f92b6d…` equal to the upload, and the six per-file hashes above match.
+- Post-merge CI: NOT READ (none configured).
+- Not run: `pytest` (torch is absent where the checks ran), `ruff`.
