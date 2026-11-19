@@ -24,6 +24,19 @@ UNVERIFIED (cited by an external model, not yet read here). More asterisks = thi
 - Concurrent mechanism claim: token entanglement + statistical logit leakage (Zur et al. 2025);
   cited inside Schrodi et al., not read directly.
 
+### 1.1 Added 2026-11-19 (OBSERVED: abstract read; arXiv abstract page fetched 2026-11-19 by Claude Code, full text not read)
+
+- Madl, "Channel Location Constrains the Auditability of Subliminal Learning",
+  arXiv 2606.22019 (v1, 2026-06-20). Three regimes by channel location:
+  - a controlled initialization-dependent body channel, where a pre-training screen (coverage)
+    predicts held-out transfer;
+  - in pretrained language models, masked single-token traits ride vocabulary geometry; this
+    channel is initialization-independent, so initialization-alignment screens are not mechanistic
+    there;
+  - conditional behaviours routed through the network body: sycophancy transfer reaches about
+    0.63 of the teacher's effect and evades four audits across two model families.
+  - an audit used outside its carrier regime can give false assurance.
+
 ## 2. Instruments built (OBSERVED: runs on toy data only)
 
 `subliminal_guard.py` (stdlib):
@@ -37,6 +50,12 @@ UNVERIFIED (cited by an external model, not yet read here). More asterisks = thi
   cross-lineage agreement.
 - Known limits: needs a known-clean same-base reference teacher; thresholds PROPOSED;
   long-range (sequence-level) encodings are not covered.
+
+### 2.1 Limits added 2026-11-19 (DERIVED from §1.1)
+
+- Layers 1 / 1b and the residual harness (§4.1) are output-side: they read token log-probs or
+  output text. They are blind to the body channel by construction.
+- The "lineage is the bottleneck" reading holds only for the initialization-dependent channel.
 
 ## 3. External extensions received 2026-11-19 (author model: [void, unlabeled in paste])
 
@@ -94,6 +113,19 @@ Note 2026-11-19 (Claude Code, code read at `d67b12e`): term collision.
 | 8 | supply-chain scale: does transmission compound / attenuate / saturate across generations of synthetic data | — | "filtering can't remove non-semantic signals" (Cloud: consistent) |
 
 Also UNVERIFIED: a "penguin" exception where divergence tokens fail to explain transmission**.
+
+### 4.1 Linked builds, added 2026-11-19 (PROPOSED; received as a zip, not filed in this repository)
+
+- `residual-audit` (Kimi build; `residual_audit.py`, 713 lines, stdlib):
+  - selftest: pass. Re-run here from the received file: `selftest: 0 failure(s)`, exit 0.
+  - EXP1: null run by its own statement; 3 claims x 4 destruction batches, 12 records;
+    single lineage (kimi-k3); operator = Q.
+- Tooling report, "Tooling the Residual Check: An Ecosystem Survey and Build Plan for Four
+  Repositories": 17 proposals (ids `em.*` 4, `gm.*` 4, `fa.*` 4, `ra.*` 5). All PROPOSED.
+  Its citations other than Madl (§1.1) are UNVERIFIED.
+- Received zip sha256 `f531061fc49e57acda6d3fb01144e98c08a0a5043d81a40f76ef69ac7d52487b`.
+- Provenance flag: EXP1.md is headed 2026-11-20; this file was filed 2026-11-19.
+  The 12 EXP1 records carry `created` = `2026-11-19T1946Z`.
 
 ## 5. Open slots
 
