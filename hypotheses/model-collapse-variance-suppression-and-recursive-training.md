@@ -1,6 +1,6 @@
 # Hypothesis draft: model collapse, variance suppression and recursive training
 
-_Regenerated 2026-11-16T14:11:54+00:00 by hypothesis_engine.py — do not hand-edit._
+_Regenerated 2026-11-19T14:46:50+00:00 by hypothesis_engine.py — do not hand-edit._
 
 ## Hypothesis statement
 
@@ -8,7 +8,7 @@ Across corroborated findings, the following claims survived staked testing (beta
 
 > On topic model collapse, variance suppression and recursive training, CollapseTracker: An Empirical Dataset Documenting Progressive Model Collapse Across Recursive Generations of Synthetic Training Data reports: Model collapse-the progressive degradation of model quality when recursively trained on synthetic data-has emerged as a critical concern for the sustainability of AI development.
 
-Status: **established** (32 surviving claims)
+Status: **established** (33 surviving claims)
 
 ## Supporting claims
 
@@ -28,6 +28,7 @@ Status: **established** (32 surviving claims)
 - (0.83) On topic model collapse, variance suppression and recursive training, Curvature-Conditioned Multiscale Momentum with Sphere Constraints for LLM Pretraining reports: Pretraining accounts for a large fraction of the total computational cost in LLM training. — [source](http://arxiv.org/abs/2608.28442v1)
 - (0.83) On topic model collapse, variance suppression and recursive training, DiscoSign: Discourse-Aware Text to Sign Language Gloss Translation reports: Sign language processing systems have traditionally operated at the sentence level, ignoring critical discourse phenomena fundamental to sign language comprehension. [restricted: narrower scope within model collapse, variance suppression and recursive training (run 2026-09-03)] — [source](http://arxiv.org/abs/2609.02796v1)
 - (0.83) On topic model collapse, variance suppression and recursive training, cua-speedrun: Standardized Benchmarking of the Speed of Computer-Use Agents reports: Computer use agents (CUAs), which use graphical user interfaces (GUIs) to complete tasks on a computer, have recently surpassed human performance on many standard benchmarks, including difficult long-horizon tasks. — [source](http://arxiv.org/abs/2609.40284v1)
+- (0.83) On topic model collapse, variance suppression and recursive training, FERN: Cross-Benchmark Table Retrieval for Text-to-SQL with Frozen Retrievers and Learned Ranking reports: Text-to-SQL systems over large pooled catalogs must first retrieve the tables a question needs. [restricted: narrower scope within model collapse, variance suppression and recursive training (run 2026-11-12)] — [source](http://arxiv.org/abs/2611.14477v1)
 - (0.80) On topic model collapse, variance suppression and recursive training, CollapseTracker: An Empirical Dataset Documenting Progressive Model Collapse Across Recursive Generations of Synthetic Training Data reports: Model collapse-the progressive degradation of model quality when recursively trained on synthetic data-has emerged as a critical concern for the sustainability of AI development. — [source](https://doi.org/10.2139/ssrn.6560303)
 - (0.80) On topic model collapse, variance suppression and recursive training, Self-Verification Provably Prevents Model Collapse in Recursive Synthetic Training reports: (no abstract) — [source](https://doi.org/10.52202/085713-1213)
 - (0.80) On topic model collapse, variance suppression and recursive training, Preventing Model Collapse when Training LLMs with Synthetic Data reports: (no abstract) — [source](https://doi.org/10.1109/cdc57313.2025.11312306)
@@ -38,7 +39,6 @@ Status: **established** (32 surviving claims)
 - (0.80) On topic model collapse, variance suppression and recursive training, Large Language Models for HVAC Operations in Building Energy Systems: A Critical Review of Methods, Applications, and Deployment Readiness reports: Building automation systems generate rich sensor data yet remain insight-poor because heterogeneous point naming, missing metadata, and fragmented documentation obstruct their operational use. — [source](http://arxiv.org/abs/2609.05314v1)
 - (0.80) On topic model collapse, variance suppression and recursive training, Blurring the Block Boundaries: Overlapping Block Denoising for Efficient Diffusion Language Models reports: Diffusion Language Models (DLMs) have emerged as effective alternatives to autoregressive models for latency-critical tasks, enabling faster token generation. [restricted: narrower scope within model collapse, variance suppression and recursive training (run 2026-11-12)] — [source](http://arxiv.org/abs/2611.14387v1)
 - (0.75) On topic model collapse, variance suppression and recursive training, Critical Slowing Down Theory Gives Precursor Signals for Early Warning of Landslides reports: (no abstract) — [source](https://doi.org/10.2139/ssrn.4127850)
-- (0.75) On topic model collapse, variance suppression and recursive training, FERN: Cross-Benchmark Table Retrieval for Text-to-SQL with Frozen Retrievers and Learned Ranking reports: Text-to-SQL systems over large pooled catalogs must first retrieve the tables a question needs. [restricted: narrower scope within model collapse, variance suppression and recursive training (run 2026-11-12)] — [source](http://arxiv.org/abs/2611.14477v1)
 - (0.71) On topic model collapse, variance suppression and recursive training, Critical slowing down theory provides early warning signals for sandstone failure reports: The critical point of rock mass transition from stable to unstable states is significant for the prevention and control of rock engineering hazards. — [source](https://doi.org/10.3389/feart.2022.934498)
 - (0.71) On topic model collapse, variance suppression and recursive training, Early Warning Signals of the Tipping Point in Strongly Interacting Rydberg Atoms. reports: The identification of tipping points is essential for the prediction of collapses or other sudden changes in complex systems. [restricted: narrower scope within model collapse, variance suppression and recursive training (run 2026-09-03)] — [source](https://doi.org/10.1103/physrevlett.133.243601)
 - (0.71) On topic model collapse, variance suppression and recursive training, Choosing observables that capture critical slowing down before tipping points: A Fokker-Planck operator approach. reports: Tipping points (TP) are abrupt transitions between metastable states in complex systems, most often described by a bifurcation or crisis of a multistable system induced by a slowly changing control parameter. [restricted: narrower scope within model collapse, variance suppression and recursive training (run 2026-09-03)] — [source](https://doi.org/10.1103/l2v2-xndy)
@@ -46,6 +46,7 @@ Status: **established** (32 surviving claims)
 - (0.67) On topic model collapse, variance suppression and recursive training, When Tails Are Heavy: The Benefits of Variance-Targeted, Non-Gaussian, Quasi-Maximum Likelihood Estimation of GARCH Models reports: (no abstract) — [source](https://doi.org/10.2139/ssrn.5445994)
 - (0.67) On topic model collapse, variance suppression and recursive training, The Spatial Distribution of High-Growth Entrepreneurship: Generative Mechanisms of Heavy Tails reports: (no abstract) — [source](https://doi.org/10.5465/amproc.2025.18964abstract)
 - (0.67) On topic model collapse, variance suppression and recursive training, Distribution tails of a history-dependent random linear recursion reports: (no abstract) [restricted: narrower scope within model collapse, variance suppression and recursive training (run 2026-08-13)] — [source](https://doi.org/10.1080/15326349.2021.2003712)
+- (0.67) On topic model collapse, variance suppression and recursive training, Who are you? The Personal Imitation Game reports: Large Language Models (LLMs) now perform strongly on Alan Turing's 1950 Imitation Game, so we propose a harder challenge, the Personal Imitation Game, which asks whether a machine can replicate a specific individual in conversation rather than a generic human. — [source](http://arxiv.org/abs/2611.24888v1)
 
 ## Contradicted/refuted claims
 
