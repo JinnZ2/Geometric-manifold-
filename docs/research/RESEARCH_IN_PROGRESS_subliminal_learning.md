@@ -55,6 +55,14 @@ PROPOSED by the external model, filed as received in summary:
 - tie-in to this repo: is the claim stable only inside the current safe basin; does it flip
   toward the trust-region boundary
 
+Note 2026-11-19 (Claude Code, code read at `d67b12e`): term collision.
+- "trust-region boundary" in the external text above = the edge of the safe basin.
+- "trust region" in this repo = a clamp on the norm of one update step
+  (`manifolds/parameter_manifold.py:78`), not a region of parameter space.
+- Nearest basin handle here: `BasinDivergenceMonitor.kl_from_reference` / `.in_basin`
+  (`addon_thermodynamic_control/energy.py:110`, `:117`).
+- The tie-in needs a claim→theta adapter; none exists in this repo.
+
 ### 3.1 Audit notes on the residual check (DERIVED, chat Claude, L0 for its own Layer 5)
 
 - A1: P and RC sit on different scales. P is the agreement of a re-ask; RC is the semantic
@@ -118,3 +126,8 @@ All void until a run fills them. Unknown → void, never dropped.
        Every function above takes `theta` (flat parameter vector) plus input tensors through
        `model_fn(inputs, theta)`. An adapter from "claim" to (theta, inputs) is not in the repo.
 3. Pick runs by what can be done stdlib on a phone vs what needs model API access; state the barrier
+   - Note 2026-11-19 (Claude Code): barrier for the tie-in runs. The basin code in this repo
+     imports torch (`manifolds/`, `addon_thermodynamic_control/`, `simulation/`), so those runs
+     cannot be done stdlib / on a phone. OBSERVED in the filing session: `python -m pytest tests/`
+     stopped at collection with `No module named 'torch'`. Route: a session or machine with torch.
+     `subliminal_guard.py` itself is stdlib and runs anywhere.
