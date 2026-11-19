@@ -118,7 +118,7 @@ Note 2026-11-19 (Claude Code, code read at `d67b12e`): term collision.
 
 Also UNVERIFIED: a "penguin" exception where divergence tokens fail to explain transmission**.
 
-### 4.1 Linked builds, added 2026-11-19 (PROPOSED; received as a zip, not filed in this repository)
+### 4.1 Linked builds, added 2026-11-19 (PROPOSED; received as a zip; filed 2026-11-19 at an interim home, see below)
 
 - `residual-audit` (Kimi build; `residual_audit.py`, 713 lines, stdlib):
   - selftest: pass. Re-run here from the received file: `selftest: 0 failure(s)`, exit 0.
@@ -135,9 +135,19 @@ Clean-up 2026-11-19 (DERIVED):
 - Date of EXP1: read it from the records. The 12 records are stamped `2026-11-19T1946Z`; the
   CF02 runner in the companion zip is stamped `2026-11-19T19:13:29Z`. Records and runner
   agree; the heading (2026-11-20) is the outlier: a typo or a sandbox-clock issue.
-- UNRESOLVABLE until filed: `residual-audit`, the tooling report and the zip are in no
-  repository. A reader cannot resolve the sha256 above. This section's links stay UNRESOLVABLE
-  until those files have a home; that is to be settled before this file's PR merges.
+- Resolved 2026-11-19 (this line replaces the "UNRESOLVABLE until filed" mark): the files are
+  filed in this repository at an interim home, commit `32417d9`. `JinnZ2/residual-audit` does
+  not exist; they move there when it does. Links, as path@commit:
+  - `docs/research/residual-audit/INTERIM_HOME.md@32417d9` (zip sha256, per-file sha256, one rename)
+  - `docs/research/residual-audit/residual_audit.py@32417d9`
+  - `docs/research/residual-audit/README.md@32417d9`
+  - `docs/research/residual-audit/examples/owl_claim.json@32417d9`
+  - `docs/research/residual-audit/runs/exp1/EXP1.md@32417d9`
+  - `docs/research/residual-audit/runs/exp1/archive/records.jsonl@32417d9`
+  - `docs/research/residual-audit/tooling-report/Tooling_the_Residual_Check_Survey_and_Build_Plan.md@32417d9`
+  - The zip itself is still in no repository; its sha256 is kept as provenance. The six filed
+    files are byte-identical to the zip's members.
+  - Selftest re-run from the filed copy, 2026-11-19: `selftest: 0 failure(s)`, 14 lines `ok`, exit 0.
 
 ## 5. Open slots
 

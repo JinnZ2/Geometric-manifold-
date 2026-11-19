@@ -36,6 +36,7 @@ machinery this repo is converging on.
 | `DOMAIN_PHYSICS.md` | This repo, cross-domain | Where the physics leads: the framework's failure mode is corrector saturation, not curvature. Ashby, MCPM's L/A, R-tipping, actuator saturation and Kramers escape as one object; why fold/CSD physics does not transfer to a KL sublevel set. |
 | `HARNESS.md` | All six repos | Sim Harness Standard v1: required directory layout, config manifest, execution contract, and verdict discipline for any sim whose result enters the ledger. |
 | `RESEARCH_IN_PROGRESS_subliminal_learning.md` + `subliminal_guard.py` | This repo (filed 2026-11-19) | Subliminal learning, research in progress: field state, toy-data instruments (Layers 1, 1b, 5; stdlib), external extensions as received, candidates with citations UNVERIFIED. §6.2 carries a dated note on which basin / trust-region functions the tie-in would call. `python3 docs/research/subliminal_guard.py` runs the demos. |
+| `residual-audit/` | Interim home (no `JinnZ2/residual-audit` repository yet) | Kimi build of the residual check (`residual_audit.py`, stdlib, selftest), its EXP1 null run, and the tooling report with 17 proposals; all PROPOSED. `INTERIM_HOME.md` holds the zip sha256 and per-file hashes; `FIRING_LOG.md` holds one F01 row from the filing. |
 
 **Note on numbering:** the notes series is the sibling ecosystem's and arrived here in
 fragments. Still absent and cited by the files above: **notes 13, 16, and 18** — those
