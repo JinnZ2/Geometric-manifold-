@@ -172,6 +172,14 @@ Source for the Perplexity attribution, added 2026-11-19:
 - formula-audit PR #2's description carries a "Created with Perplexity" footer (read
   2026-11-19). study-aperture PR #35's description: not read.
 
+Added 2026-11-19, later (relayed quote): the owner's order gives, from the owner's 2026-11-19
+16:20 paste (a chat-side attachment), line 151, verbatim: `Perplexity:`. By the same order that
+is the line directly above the paragraph beginning "The hunt is built and running in both repos,
+and it's merged into both.", and that paragraph names JinnZ2/formula-audit#2 and
+JinnZ2/study-aperture#35. Source: chat Claude, which holds the paste; relayed here through the
+owner's order. The filing session has not seen the paste, so only the two quoted strings above
+are recorded, and the rest of the paragraph is not quoted.
+
 ## 5. Open slots
 
 ```
