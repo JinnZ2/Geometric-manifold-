@@ -159,6 +159,19 @@ Authorship 2026-11-19 (owner-stated): `residual-audit` and the tooling report ar
 The bound-example hunt (the README claim hunt, `tests/test_readme_claims.py --hunt`, in
 formula-audit PR #2 and study-aperture PR #35) is Perplexity's.
 
+Source for the Perplexity attribution, added 2026-11-19:
+
+- The owner's statement of 2026-11-19 ("The bound-example hunt = Perplexity").
+- The owner's order received in the filing session 2026-11-19T22:22Z (16:20 owner-side). As
+  received there it opens with the label line `PERPLEXITY FINDING → RIPPLE (DERIVED)`, and
+  its item 4 names the PR: `Copy formula-audit#2 and study-aperture#35 status into the
+  housekeeping records: merged? CI?`
+- The owner states that in the paste the hunt report sits under an explicit `Perplexity:`
+  label and names study-aperture#35. That label line and the hunt report text are not in the
+  text the filing session received; the two lines quoted above are what it holds.
+- formula-audit PR #2's description carries a "Created with Perplexity" footer (read
+  2026-11-19). study-aperture PR #35's description: not read.
+
 ## 5. Open slots
 
 ```
