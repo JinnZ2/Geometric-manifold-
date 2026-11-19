@@ -61,7 +61,10 @@ UNVERIFIED (cited by an external model, not yet read here). More asterisks = thi
   other is the sycophancy body routing, which evaded the audits. The first bullet holds for
   both: the output-side layers are blind to both.
 
-## 3. External extensions received 2026-11-19 (author model: [void, unlabeled in paste])
+## 3. External extensions received 2026-11-19 (author model: Kimi (owner-stated 2026-11-19))
+
+Author slot filled 2026-11-19: it read "[void, unlabeled in paste]" when filed; the owner stated
+the author is Kimi. "The external model" in §3, §3.1 and §4 means Kimi.
 
 PROPOSED by the external model, filed as received in summary:
 - multi-scale invariance → distance-to-break instead of a boolean
@@ -103,7 +106,7 @@ Note 2026-11-19 (Claude Code, code read at `d67b12e`): term collision.
 - A5: the ladder × carrier matrix (candidate 1) is the place the Layer 1 / 1b carrier scans plug in:
   a rung "kills" a carrier when the carrier scan's excess z drops at that rung.
 
-## 4. Research candidates (from the external model; citations UNVERIFIED)
+## 4. Research candidates (from the external model = Kimi, owner-stated 2026-11-19; citations UNVERIFIED)
 
 | # | candidate | external model's rank note | to verify |
 |---|---|---|---|
@@ -117,6 +120,8 @@ Note 2026-11-19 (Claude Code, code read at `d67b12e`): term collision.
 | 8 | supply-chain scale: does transmission compound / attenuate / saturate across generations of synthetic data | — | "filtering can't remove non-semantic signals" (Cloud: consistent) |
 
 Also UNVERIFIED: a "penguin" exception where divergence tokens fail to explain transmission**.
+
+Authorship of candidates 1–8: Kimi (owner-stated 2026-11-19).
 
 ### 4.1 Linked builds, added 2026-11-19 (PROPOSED; received as a zip; filed 2026-11-19 at an interim home, see below)
 
@@ -148,6 +153,11 @@ Clean-up 2026-11-19 (DERIVED):
   - The zip itself is still in no repository; its sha256 is kept as provenance. The six filed
     files are byte-identical to the zip's members.
   - Selftest re-run from the filed copy, 2026-11-19: `selftest: 0 failure(s)`, 14 lines `ok`, exit 0.
+
+Authorship 2026-11-19 (owner-stated): `residual-audit` and the tooling report are Kimi's
+(OKComputer zip, sha256 `f531061fc49e57acda6d3fb01144e98c08a0a5043d81a40f76ef69ac7d52487b`).
+The bound-example hunt (the README claim hunt, `tests/test_readme_claims.py --hunt`, in
+formula-audit PR #2 and study-aperture PR #35) is Perplexity's.
 
 ## 5. Open slots
 

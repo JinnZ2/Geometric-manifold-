@@ -8,7 +8,9 @@ Filed 2026-11-19 as received, byte-identical, from the zip
 sha256 `f531061fc49e57acda6d3fb01144e98c08a0a5043d81a40f76ef69ac7d52487b`.
 The zip itself is not in this repository. It held no `__pycache__`.
 
-Author as stated in the files: Kimi build (`residual_audit.py`, EXP1), operator = Q = kimi-k3.
+Author: Kimi, for `residual-audit` and for the tooling report (owner-stated 2026-11-19; the
+files themselves name a Kimi build for `residual_audit.py` and EXP1, operator = Q = kimi-k3).
+Source: the OKComputer zip named above.
 Status: PROPOSED. EXP1 is a null run by its own statement. The tooling report's citations other
 than Madl (arXiv 2606.22019) are UNVERIFIED.
 
