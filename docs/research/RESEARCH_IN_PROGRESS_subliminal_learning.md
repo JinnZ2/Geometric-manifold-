@@ -56,6 +56,10 @@ UNVERIFIED (cited by an external model, not yet read here). More asterisks = thi
 - Layers 1 / 1b and the residual harness (§4.1) are output-side: they read token log-probs or
   output text. They are blind to the body channel by construction.
 - The "lineage is the bottleneck" reading holds only for the initialization-dependent channel.
+- Wording note 2026-11-19 (accepted): "body" appears in two regimes of §1.1. One is the
+  controlled initialization-dependent body channel, where the pre-training screen works. The
+  other is the sycophancy body routing, which evaded the audits. The first bullet holds for
+  both: the output-side layers are blind to both.
 
 ## 3. External extensions received 2026-11-19 (author model: [void, unlabeled in paste])
 
@@ -126,6 +130,14 @@ Also UNVERIFIED: a "penguin" exception where divergence tokens fail to explain t
 - Received zip sha256 `f531061fc49e57acda6d3fb01144e98c08a0a5043d81a40f76ef69ac7d52487b`.
 - Provenance flag: EXP1.md is headed 2026-11-20; this file was filed 2026-11-19.
   The 12 EXP1 records carry `created` = `2026-11-19T1946Z`.
+
+Clean-up 2026-11-19 (DERIVED):
+- Date of EXP1: read it from the records. The 12 records are stamped `2026-11-19T1946Z`; the
+  CF02 runner in the companion zip is stamped `2026-11-19T19:13:29Z`. Records and runner
+  agree; the heading (2026-11-20) is the outlier: a typo or a sandbox-clock issue.
+- UNRESOLVABLE until filed: `residual-audit`, the tooling report and the zip are in no
+  repository. A reader cannot resolve the sha256 above. This section's links stay UNRESOLVABLE
+  until those files have a home; that is to be settled before this file's PR merges.
 
 ## 5. Open slots
 
