@@ -58,4 +58,28 @@ Source: owner work order in chat, 2026-11-20.
 `encode()` rounds exact halves to the lower grid point (OBSERVED 2026-11-20, rerun from the filed
 copy). Count flips at tie points separately from edge-band flips.
 
+## Addition 2026-11-20: known risks, second entry
+
+Source: owner work order in chat, 2026-11-20. Placed at the end of the file so the earlier
+sections stay as written; it belongs under "Known risk".
+
+- Carry ripple (DERIVED, not measured): a minimal change can flip many bits (0111 -> 1000), so
+  the highest set bit of the XOR overstates the coarsest level moved.
+- Claim amended: the coarsest level moved is read from the arithmetic difference (new - old),
+  not from the XOR. The XOR is kept only as a fast upper bound. The "Claim" section above is kept
+  as first written; this line replaces its second sentence.
+- Non-dyadic values (e.g. 1/3) never terminate in binary -> always ESCAPE to the residual; count
+  them per run.
+
+Note on the last line, from what is on record: the one non-dyadic value rerun so far, 355/113,
+gave codes [14, 13, 0, ESCAPE] with terminal residual 7/7232. Three levels accepted a code and one
+level ESCAPEd; the value did not ESCAPE at every level. What held is that the terminal residual is
+not zero. So "always ESCAPE to the residual" reads here as "always leaves a nonzero terminal
+residual"; whether a level ESCAPEs depends on the value. 1/3 itself has not been run.
+
+| slot | value | counts |
+|---|---|---|
+| carry_ripple_count | VOID | cases where the XOR level and the difference level disagree |
+| nondyadic_escape_count | VOID | non-dyadic values per run |
+
 Observer slots: null.
