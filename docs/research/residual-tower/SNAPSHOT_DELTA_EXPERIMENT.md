@@ -226,4 +226,70 @@ parity-bit-error line of the fifth entry, which is kept as written. Nothing run.
   an independent path (arithmetic difference or the Gray check), the same rule as the
   three-corner case.
 
+## Addition 2026-11-20: Test 1 run (flat binary snapshots)
+
+Source: owner work order in chat, 2026-11-20 (the order for this held item). Script
+`snapshot_delta_test1.py`, results `snapshot_delta_test1_results.json` (status "ran"), both
+beside this file. Run by Claude Code, Python 3.13.18. Everything above this entry is kept as
+written; "Nothing below has been run" in the status line and "not run" in the entries above
+were true when written. Every number below is from the results file.
+
+What Test 1 names, quoted from above: inputs "A large linear computation, done two ways:
+incremental from the diff, and full recompute"; measures "Pass = bit-identical results. Record
+the cost of each"; slots `speedup`, `mismatch count`, `edge-flip count`,
+`nonlinear bound width`.
+
+Choices made by the builder, because this file leaves them open (which computation, size,
+snapshots, cost, runs): snapshots are lists of unsigned 64-bit words with exact integer
+arithmetic; computations are sum, dot (200,000 entries) and matrix-times-vector (8 x 20,000);
+1 to all entries changed; cost is operation counts, plus wall time as the median of 5 repeats;
+seed 20261120. Tower codes are not used: the run covers flat binary snapshots only.
+
+Self-test (runs before the run and gates it): 34 planted cases, each with its known answer, all
+pass; 8 planted-wrong cases, all reported as failing.
+
+| slot | value | from |
+|---|---|---|
+| mismatch count | 0 of 13 comparisons (Test 1 pass) | run |
+| speedup | not one number; see the table below | run |
+| carry_ripple_count | 7434 of 10,000 random pairs (steps up to 65,536); XOR level below the difference level: 0 | run |
+| gray_unit_agree_count | 10,000 of 10,000 clean unit steps | run |
+| gray_unit_disagree_count | 0 of 10,000 clean unit steps | run |
+| parity_located_count | 1000 of 1000 one-error chunks | run |
+| parity_detected_unlocated_count | 1000 of 1000 two-error chunks | run |
+| rectangle_miss_count | 1000 of 1000 planted 4-corner chunks | run |
+| miscorrection_count | 1000 of 1000 planted 3-corner chunks; the second check caught 1000 | run |
+| edge-flip count | VOID | not built |
+| tie_flip_count | VOID | not built |
+| nonlinear bound width | VOID | not built |
+| nondyadic_nonzero_residual_count | VOID | not built |
+| line_op_speedup | VOID | not built |
+
+Speedup (full cost / incremental cost). "With scan" adds the cost of finding the diff by
+comparing all entries of the two snapshots. Wall figures are this machine, this run.
+
+| computation | changed / entries | ops | ops, with scan | wall | wall, with scan |
+|---|---|---|---|---|---|
+| sum | 1 / 200,000 | 200000 | 1.0 | 3454.57 | 0.4409 |
+| sum | 10,000 / 200,000 | 20 | 0.9524 | 7.42 | 0.3248 |
+| sum | 200,000 / 200,000 | 1 | 0.5 | 0.71 | 0.1055 |
+| dot | 1 / 200,000 | 200000 | 1.0 | 19501.34 | 1.9206 |
+| dot | 10,000 / 200,000 | 20 | 0.9524 | 11.48 | 1.3412 |
+| dot | 200,000 / 200,000 | 1 | 0.5 | 1.84 | 0.4417 |
+| matvec 8 x 20,000 | 1 / 20,000 | 20000 | 7.9968 | 4308.38 | 15.2979 |
+| matvec 8 x 20,000 | 20,000 / 20,000 | 1 | 0.8889 | 1.04 | 0.8277 |
+
+Observed in the run, not in the entries above:
+
+- With the diff scan counted, the incremental sum was slower than the full sum at every size
+  run, and the incremental dot was faster only while few entries changed. The gain shown without
+  the scan needs the list of changed entries to come from somewhere other than a full compare.
+- Gray check on corrupted steps: 1000 unit steps with one random bit of the new value flipped;
+  996 flagged, 4 not flagged. In all 4 the flip turned the upper neighbour into the lower one
+  (or the reverse), which is itself a unit step. Planted case: 5 -> 6 with bit 1 flipped gives 4.
+- Lone parity flag: 1000 of 1000 classified as a bad parity bit, data left unchanged in all.
+
+Limits: one seed, one machine; the snapshots are random words, not tower output; the second
+check in the parity cases compares against the known-good chunk, which only a test has.
+
 Observer slots: null.

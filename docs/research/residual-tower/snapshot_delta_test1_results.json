@@ -1,0 +1,470 @@
+{
+  "step": "snapshot_delta_test1",
+  "status": "ran",
+  "test1_pass": true,
+  "python": "3.13.18",
+  "seed": 20261120,
+  "choices": {
+    "note": "not stated in SNAPSHOT_DELTA_EXPERIMENT.md; fixed by the builder",
+    "snapshots": "lists of unsigned 64-bit words, exact integer arithmetic",
+    "computations": [
+      "sum",
+      "dot with a fixed 64-bit weight vector",
+      "matrix (8 x 20000) times vector"
+    ],
+    "entries": 200000,
+    "changed": [
+      1,
+      100,
+      10000,
+      100000,
+      200000
+    ],
+    "matvec_shape": [
+      8,
+      20000
+    ],
+    "matvec_changed": [
+      1,
+      100,
+      20000
+    ],
+    "cost": "operation counts (deterministic) and wall time, median of 5 repeats (this machine, this run)",
+    "bit_identical": "equal canonical bytes of the exact integer results",
+    "parity_layout": "8 x 8 row-major, bit index = row * 8 + col, bit 0 least significant",
+    "second_check": "arithmetic difference against the known-good chunk"
+  },
+  "self_test": {
+    "self_test": "PASS",
+    "planted_cases": 34,
+    "planted_cases_failed": [],
+    "planted_wrong_cases": 8,
+    "planted_wrong_reported_failing": 8,
+    "planted_wrong_not_caught": []
+  },
+  "deterministic": {
+    "linear": {
+      "sum": [
+        {
+          "entries": 200000,
+          "changed": 1,
+          "bit_identical": true,
+          "ops_unit": "additions",
+          "ops_full": 200000,
+          "ops_incremental": 1,
+          "ops_diff_scan_compares": 200000,
+          "speedup_ops_excluding_scan": 200000.0,
+          "speedup_ops_including_scan": 1.0
+        },
+        {
+          "entries": 200000,
+          "changed": 100,
+          "bit_identical": true,
+          "ops_unit": "additions",
+          "ops_full": 200000,
+          "ops_incremental": 100,
+          "ops_diff_scan_compares": 200000,
+          "speedup_ops_excluding_scan": 2000.0,
+          "speedup_ops_including_scan": 0.9995
+        },
+        {
+          "entries": 200000,
+          "changed": 10000,
+          "bit_identical": true,
+          "ops_unit": "additions",
+          "ops_full": 200000,
+          "ops_incremental": 10000,
+          "ops_diff_scan_compares": 200000,
+          "speedup_ops_excluding_scan": 20.0,
+          "speedup_ops_including_scan": 0.9524
+        },
+        {
+          "entries": 200000,
+          "changed": 100000,
+          "bit_identical": true,
+          "ops_unit": "additions",
+          "ops_full": 200000,
+          "ops_incremental": 100000,
+          "ops_diff_scan_compares": 200000,
+          "speedup_ops_excluding_scan": 2.0,
+          "speedup_ops_including_scan": 0.6667
+        },
+        {
+          "entries": 200000,
+          "changed": 200000,
+          "bit_identical": true,
+          "ops_unit": "additions",
+          "ops_full": 200000,
+          "ops_incremental": 200000,
+          "ops_diff_scan_compares": 200000,
+          "speedup_ops_excluding_scan": 1.0,
+          "speedup_ops_including_scan": 0.5
+        }
+      ],
+      "dot": [
+        {
+          "entries": 200000,
+          "changed": 1,
+          "bit_identical": true,
+          "ops_unit": "multiply-adds",
+          "ops_full": 200000,
+          "ops_incremental": 1,
+          "ops_diff_scan_compares": 200000,
+          "speedup_ops_excluding_scan": 200000.0,
+          "speedup_ops_including_scan": 1.0
+        },
+        {
+          "entries": 200000,
+          "changed": 100,
+          "bit_identical": true,
+          "ops_unit": "multiply-adds",
+          "ops_full": 200000,
+          "ops_incremental": 100,
+          "ops_diff_scan_compares": 200000,
+          "speedup_ops_excluding_scan": 2000.0,
+          "speedup_ops_including_scan": 0.9995
+        },
+        {
+          "entries": 200000,
+          "changed": 10000,
+          "bit_identical": true,
+          "ops_unit": "multiply-adds",
+          "ops_full": 200000,
+          "ops_incremental": 10000,
+          "ops_diff_scan_compares": 200000,
+          "speedup_ops_excluding_scan": 20.0,
+          "speedup_ops_including_scan": 0.9524
+        },
+        {
+          "entries": 200000,
+          "changed": 100000,
+          "bit_identical": true,
+          "ops_unit": "multiply-adds",
+          "ops_full": 200000,
+          "ops_incremental": 100000,
+          "ops_diff_scan_compares": 200000,
+          "speedup_ops_excluding_scan": 2.0,
+          "speedup_ops_including_scan": 0.6667
+        },
+        {
+          "entries": 200000,
+          "changed": 200000,
+          "bit_identical": true,
+          "ops_unit": "multiply-adds",
+          "ops_full": 200000,
+          "ops_incremental": 200000,
+          "ops_diff_scan_compares": 200000,
+          "speedup_ops_excluding_scan": 1.0,
+          "speedup_ops_including_scan": 0.5
+        }
+      ],
+      "matvec": [
+        {
+          "entries": 20000,
+          "changed": 1,
+          "bit_identical": true,
+          "ops_unit": "multiply-adds",
+          "ops_full": 160000,
+          "ops_incremental": 8,
+          "ops_diff_scan_compares": 20000,
+          "speedup_ops_excluding_scan": 20000.0,
+          "speedup_ops_including_scan": 7.9968
+        },
+        {
+          "entries": 20000,
+          "changed": 100,
+          "bit_identical": true,
+          "ops_unit": "multiply-adds",
+          "ops_full": 160000,
+          "ops_incremental": 800,
+          "ops_diff_scan_compares": 20000,
+          "speedup_ops_excluding_scan": 200.0,
+          "speedup_ops_including_scan": 7.6923
+        },
+        {
+          "entries": 20000,
+          "changed": 20000,
+          "bit_identical": true,
+          "ops_unit": "multiply-adds",
+          "ops_full": 160000,
+          "ops_incremental": 160000,
+          "ops_diff_scan_compares": 20000,
+          "speedup_ops_excluding_scan": 1.0,
+          "speedup_ops_including_scan": 0.8889
+        }
+      ]
+    },
+    "linear_comparisons": 13,
+    "mismatch_count": 0,
+    "levels": {
+      "pairs": 10000,
+      "max_step": 65536,
+      "carry_ripple_count": 7434,
+      "xor_below_difference_count": 0
+    },
+    "gray": {
+      "clean_unit_steps": 10000,
+      "gray_unit_agree_count": 10000,
+      "gray_unit_disagree_count": 0,
+      "corrupted_steps": 1000,
+      "corrupted_flagged": 996,
+      "corrupted_not_flagged": 4,
+      "corrupted_not_flagged_other_unit_neighbour": 4
+    },
+    "parity": {
+      "chunks_per_pattern": 1000,
+      "side": 8,
+      "parity_located_count": 1000,
+      "one_error_corrected_and_confirmed": 1000,
+      "parity_detected_unlocated_count": 1000,
+      "two_errors_wrongly_located": 0,
+      "two_errors_not_detected": 0,
+      "miscorrection_count": 1000,
+      "three_corner_flip_passes_parity_after": 1000,
+      "three_corner_caught_by_second_check": 1000,
+      "rectangle_miss_count": 1000,
+      "lone_flag_classified_parity_bit_bad": 1000,
+      "lone_flag_data_changed": 0
+    }
+  },
+  "deterministic_sha256": "b88473c48a6edacaa8948fda8347ffab5f2cd2dc76c7f1f71288cbec24f85769",
+  "timing_this_run": {
+    "sum": [
+      {
+        "entries": 200000,
+        "changed": 1,
+        "bit_identical": true,
+        "ops_unit": "additions",
+        "ops_full": 200000,
+        "ops_incremental": 1,
+        "ops_diff_scan_compares": 200000,
+        "speedup_ops_excluding_scan": 200000.0,
+        "speedup_ops_including_scan": 1.0,
+        "wall_s_full": 0.003765,
+        "wall_s_incremental": 1e-06,
+        "wall_s_diff_scan": 0.008538,
+        "speedup_wall_excluding_scan": 3454.57,
+        "speedup_wall_including_scan": 0.4409
+      },
+      {
+        "entries": 200000,
+        "changed": 100,
+        "bit_identical": true,
+        "ops_unit": "additions",
+        "ops_full": 200000,
+        "ops_incremental": 100,
+        "ops_diff_scan_compares": 200000,
+        "speedup_ops_excluding_scan": 2000.0,
+        "speedup_ops_including_scan": 0.9995,
+        "wall_s_full": 0.003539,
+        "wall_s_incremental": 4e-06,
+        "wall_s_diff_scan": 0.008491,
+        "speedup_wall_excluding_scan": 820.57,
+        "speedup_wall_including_scan": 0.4166
+      },
+      {
+        "entries": 200000,
+        "changed": 10000,
+        "bit_identical": true,
+        "ops_unit": "additions",
+        "ops_full": 200000,
+        "ops_incremental": 10000,
+        "ops_diff_scan_compares": 200000,
+        "speedup_ops_excluding_scan": 20.0,
+        "speedup_ops_including_scan": 0.9524,
+        "wall_s_full": 0.00371,
+        "wall_s_incremental": 0.0005,
+        "wall_s_diff_scan": 0.010922,
+        "speedup_wall_excluding_scan": 7.42,
+        "speedup_wall_including_scan": 0.3248
+      },
+      {
+        "entries": 200000,
+        "changed": 100000,
+        "bit_identical": true,
+        "ops_unit": "additions",
+        "ops_full": 200000,
+        "ops_incremental": 100000,
+        "ops_diff_scan_compares": 200000,
+        "speedup_ops_excluding_scan": 2.0,
+        "speedup_ops_including_scan": 0.6667,
+        "wall_s_full": 0.004825,
+        "wall_s_incremental": 0.005009,
+        "wall_s_diff_scan": 0.036506,
+        "speedup_wall_excluding_scan": 0.96,
+        "speedup_wall_including_scan": 0.1162
+      },
+      {
+        "entries": 200000,
+        "changed": 200000,
+        "bit_identical": true,
+        "ops_unit": "additions",
+        "ops_full": 200000,
+        "ops_incremental": 200000,
+        "ops_diff_scan_compares": 200000,
+        "speedup_ops_excluding_scan": 1.0,
+        "speedup_ops_including_scan": 0.5,
+        "wall_s_full": 0.007026,
+        "wall_s_incremental": 0.009887,
+        "wall_s_diff_scan": 0.056698,
+        "speedup_wall_excluding_scan": 0.71,
+        "speedup_wall_including_scan": 0.1055
+      }
+    ],
+    "dot": [
+      {
+        "entries": 200000,
+        "changed": 1,
+        "bit_identical": true,
+        "ops_unit": "multiply-adds",
+        "ops_full": 200000,
+        "ops_incremental": 1,
+        "ops_diff_scan_compares": 200000,
+        "speedup_ops_excluding_scan": 200000.0,
+        "speedup_ops_including_scan": 1.0,
+        "wall_s_full": 0.016401,
+        "wall_s_incremental": 1e-06,
+        "wall_s_diff_scan": 0.008538,
+        "speedup_wall_excluding_scan": 19501.34,
+        "speedup_wall_including_scan": 1.9206
+      },
+      {
+        "entries": 200000,
+        "changed": 100,
+        "bit_identical": true,
+        "ops_unit": "multiply-adds",
+        "ops_full": 200000,
+        "ops_incremental": 100,
+        "ops_diff_scan_compares": 200000,
+        "speedup_ops_excluding_scan": 2000.0,
+        "speedup_ops_including_scan": 0.9995,
+        "wall_s_full": 0.017066,
+        "wall_s_incremental": 1.8e-05,
+        "wall_s_diff_scan": 0.008491,
+        "speedup_wall_excluding_scan": 934.16,
+        "speedup_wall_including_scan": 2.0055
+      },
+      {
+        "entries": 200000,
+        "changed": 10000,
+        "bit_identical": true,
+        "ops_unit": "multiply-adds",
+        "ops_full": 200000,
+        "ops_incremental": 10000,
+        "ops_diff_scan_compares": 200000,
+        "speedup_ops_excluding_scan": 20.0,
+        "speedup_ops_including_scan": 0.9524,
+        "wall_s_full": 0.016587,
+        "wall_s_incremental": 0.001445,
+        "wall_s_diff_scan": 0.010922,
+        "speedup_wall_excluding_scan": 11.48,
+        "speedup_wall_including_scan": 1.3412
+      },
+      {
+        "entries": 200000,
+        "changed": 100000,
+        "bit_identical": true,
+        "ops_unit": "multiply-adds",
+        "ops_full": 200000,
+        "ops_incremental": 100000,
+        "ops_diff_scan_compares": 200000,
+        "speedup_ops_excluding_scan": 2.0,
+        "speedup_ops_including_scan": 0.6667,
+        "wall_s_full": 0.02128,
+        "wall_s_incremental": 0.010573,
+        "wall_s_diff_scan": 0.036506,
+        "speedup_wall_excluding_scan": 2.01,
+        "speedup_wall_including_scan": 0.452
+      },
+      {
+        "entries": 200000,
+        "changed": 200000,
+        "bit_identical": true,
+        "ops_unit": "multiply-adds",
+        "ops_full": 200000,
+        "ops_incremental": 200000,
+        "ops_diff_scan_compares": 200000,
+        "speedup_ops_excluding_scan": 1.0,
+        "speedup_ops_including_scan": 0.5,
+        "wall_s_full": 0.032962,
+        "wall_s_incremental": 0.017929,
+        "wall_s_diff_scan": 0.056698,
+        "speedup_wall_excluding_scan": 1.84,
+        "speedup_wall_including_scan": 0.4417
+      }
+    ],
+    "matvec": [
+      {
+        "entries": 20000,
+        "changed": 1,
+        "bit_identical": true,
+        "ops_unit": "multiply-adds",
+        "ops_full": 160000,
+        "ops_incremental": 8,
+        "ops_diff_scan_compares": 20000,
+        "speedup_ops_excluding_scan": 20000.0,
+        "speedup_ops_including_scan": 7.9968,
+        "wall_s_full": 0.012658,
+        "wall_s_incremental": 3e-06,
+        "wall_s_diff_scan": 0.000824,
+        "speedup_wall_excluding_scan": 4308.38,
+        "speedup_wall_including_scan": 15.2979
+      },
+      {
+        "entries": 20000,
+        "changed": 100,
+        "bit_identical": true,
+        "ops_unit": "multiply-adds",
+        "ops_full": 160000,
+        "ops_incremental": 800,
+        "ops_diff_scan_compares": 20000,
+        "speedup_ops_excluding_scan": 200.0,
+        "speedup_ops_including_scan": 7.6923,
+        "wall_s_full": 0.013206,
+        "wall_s_incremental": 8e-05,
+        "wall_s_diff_scan": 0.0009,
+        "speedup_wall_excluding_scan": 164.31,
+        "speedup_wall_including_scan": 13.473
+      },
+      {
+        "entries": 20000,
+        "changed": 20000,
+        "bit_identical": true,
+        "ops_unit": "multiply-adds",
+        "ops_full": 160000,
+        "ops_incremental": 160000,
+        "ops_diff_scan_compares": 20000,
+        "speedup_ops_excluding_scan": 1.0,
+        "speedup_ops_including_scan": 0.8889,
+        "wall_s_full": 0.015075,
+        "wall_s_incremental": 0.01443,
+        "wall_s_diff_scan": 0.003785,
+        "speedup_wall_excluding_scan": 1.04,
+        "speedup_wall_including_scan": 0.8277
+      }
+    ]
+  },
+  "slots": {
+    "speedup": "table, not one number: deterministic.linear[*].speedup_ops_* and timing_this_run[*].speedup_wall_*; depends on changed / entries",
+    "mismatch count": 0,
+    "carry_ripple_count": 7434,
+    "gray_unit_agree_count": 10000,
+    "gray_unit_disagree_count": 0,
+    "parity_located_count": 1000,
+    "parity_detected_unlocated_count": 1000,
+    "rectangle_miss_count": 1000,
+    "miscorrection_count": 1000,
+    "edge-flip count": "VOID",
+    "tie_flip_count": "VOID",
+    "nonlinear bound width": "VOID",
+    "nondyadic_nonzero_residual_count": "VOID",
+    "line_op_speedup": "VOID"
+  },
+  "not_built": [
+    "tower codes (encode_tower) as snapshots",
+    "edge and tie flips",
+    "nonlinear bounds",
+    "non-dyadic values",
+    "line operations"
+  ]
+}
