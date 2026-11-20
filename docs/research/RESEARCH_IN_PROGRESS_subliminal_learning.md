@@ -92,6 +92,7 @@ Note 2026-11-19 (Claude Code, code read at `d67b12e`): term collision.
 Note 2026-11-20 (Claude Code): main's `repair_step` ascended on KL until the objective-sign
 PR (branch `claude/objective-sign-fix`, cherry-pick of `59031bc`); any basin-handle result
 before the merge is void.
+- The PR is #26, merged at `a9d5b5c` (2026-11-19, 22:17 -06:00). "The merge" above means that commit.
 - Diagnosis: `edd8ef9` (branch `funnel-probe`): `delta = -lr*grad(task - lambda*KL)`,
   cos(delta, grad KL) = +0.993.
 - Verification on that branch: `ff63359`: KL 3.79 → 0.17, cos(delta, grad KL) = −0.995.
