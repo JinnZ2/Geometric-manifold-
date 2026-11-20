@@ -80,7 +80,7 @@ residual"; whether a level ESCAPEs depends on the value. 1/3 itself has not been
 | slot | value | counts |
 |---|---|---|
 | carry_ripple_count | VOID | cases where the XOR level and the difference level disagree |
-| nondyadic_escape_count | VOID | non-dyadic values per run |
+| ~~nondyadic_escape_count~~ | VOID | non-dyadic values per run (renamed 2026-11-20, see the correction at the end) |
 
 ## Addition 2026-11-20: checks
 
@@ -111,5 +111,23 @@ Notes on the derivation (worked by hand for this file, 2026-11-20; nothing run):
 |---|---|
 | gray_unit_agree_count | VOID |
 | gray_unit_disagree_count | VOID |
+
+## Correction 2026-11-20: non-dyadic values
+
+Source: chat Claude, relayed in the owner work order of 2026-11-20.
+
+The line "Non-dyadic values (e.g. 1/3) never terminate in binary -> always ESCAPE to the
+residual" (second known-risks entry, above) overstated it. That line and the 355/113 note under it
+are kept as written.
+
+- Values take codes at each level.
+- What holds is a nonzero terminal residual at every finite depth. DERIVED: dyadic codes sum only
+  to dyadic values, so a non-dyadic value minus any finite sum of them is not zero. Not run.
+- Slot renamed: `nondyadic_escape_count` -> `nondyadic_nonzero_residual_count`. The old name is
+  struck in its table and kept.
+
+| slot | value |
+|---|---|
+| nondyadic_nonzero_residual_count | VOID |
 
 Observer slots: null.
