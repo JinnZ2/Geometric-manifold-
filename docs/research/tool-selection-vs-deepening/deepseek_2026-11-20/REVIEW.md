@@ -46,26 +46,65 @@ executed there. The filed slots tables stay verbatim.
 
 ## 3. Findings
 
-### Chat Claude's findings (R1–R2, D1–D9, P1–P4, Holds): text not located
+### Chat Claude's findings (R1–R2, D1–D9, P1–P4, Holds)
 
-The order names findings R1–R2 (OBSERVED by chat Claude, sandbox), D1–D9 (DERIVED), P1–P4 and
-Holds. Their text was not in the message and is not in any repository file the filer could
-find. They are **not written here**; nothing below is chat Claude's wording. When the owner
-relays them, they go in this section unchanged.
+Source: chat Claude, L0, sandbox + reading, 2026-11-20, relayed by owner.
 
-The order's own items 3 and 4 name two faults: the self-test crash and the step1b record drop.
-The filer takes these to be R1 and R2. That mapping is the filer's reading, not confirmed.
+The block below is verbatim from the owner's relay (sha256 of the block: `8bab01c35dd37ae4c1469dc34d3ed1a644f0affdce00808fb8263e836ca4b5f2`). Nothing in it
+is the filer's. The filer's own run results are under R1 and R2 below; F-a to F-d are the
+filer's.
 
-### R1 (as read from the order): `step1_recheck.py --self-test` crashes
+```
+R1 OBSERVED: step1_recheck.py --self-test crashes, TypeError run()
+   missing 'mapping'. Slot harness_self_test = VOID, not OBSERVED.
+R2 OBSERVED: step1b drops the 2nd record (re-inject line overwrites
+   it); 3 in, 2 out. Fail-open.
+R1/R2 context: the DeepSeek app on the owner's phone has no code
+   execution; "OBSERVED (synthetic)" marks checks it could not run.
+   Recorded as a mislabel from an environment limit, not a run claim.
+D1 measurand substitution: keyword markers != Princeton's annotated
+   shift (not comparable to 6.31%); spike AND spontaneous shift is
+   observational != Princeton's +8.41pp (an intervention). Neither can
+   confirm or refute the cited numbers.
+D2 "logprobs" auto-read as entropies: wrong measurand.
+D3 "score" >= 0.5 auto-read as correctness: fail-open.
+D4 --limit 20000 on >1M records: silent file-order subsample.
+D5 one pooled p90 gate across models: no per-model offset.
+D6 step1b detects fields from 1 record: fragile.
+D7 capacity probe (2): majority vote cannot raise pass@k; incoherent.
+   Temperature/diversity is the lever.
+D8 glyph_sensing_real decides neither way: CoT hurting has other causes;
+   CoT helping does not rule out a non-verbal channel.
+D9 0.8 x pass@256(A) threshold: chosen, no source.
+P1 headers said "owner + chat Claude": the author is DeepSeek.
+P2 owner's statement (voice, 2026-11-20): no similar English or Chinese
+   word; reasoning tools, like how an organism senses its physics: it
+   knows the constraints, knows they are there, reasons through what it
+   can and cannot do. DeepSeek's "glyph = tool-choice" is its PROPOSED
+   reduction; the constraint-sensing part is absent from it.
+P3 "direct-to-main" + same path as the voice-order file: collision,
+   resolved by this folder.
+P4 interest: the 2025 sources include DeepSeek's own R1 paper; fill
+   observer.ai_interest when an outside party can.
+HOLDS: oracle problem (outcome-conditional C = B by construction, so
+   counterfactual is forced) · ablations C-/C0/B(beta) · Chen pass@k
+   estimator and problem-level bootstrap.
+```
 
-- Chat Claude: OBSERVED in sandbox, per the order (result text not relayed).
+Note 2026-11-20 (filer): this section first read "text not located", because the finding texts
+were not in the first order. The earlier wording is in commit `f33bfc2`. The R1 / R2 mapping the
+filer had read from the order matches the relayed text.
+
+### R1, filer's run: `step1_recheck.py --self-test` crashes
+
+- Chat Claude: OBSERVED, text in the block above.
 - Filer, 2026-11-20, Python 3.13.18, filed copy: **reproduced.** Exit 1,
   `TypeError: run() missing 1 required positional argument: 'mapping'` at `self_test()`,
   `res, err = run(recs)`.
 
-### R2 (as read from the order): `step1b_passk_from_dump.py` drops one record
+### R2, filer's run: `step1b_passk_from_dump.py` drops one record
 
-- Chat Claude: OBSERVED in sandbox, per the order (result text not relayed).
+- Chat Claude: OBSERVED, text in the block above.
 - Filer, 2026-11-20, filed copy: **reproduced.** Input: one `.jsonl`, 3 records, same
   `problem_id`, same model, all correct. Output: `{"n": 2, "c": 2}`,
   `n_samples_correctness_known: 2`, `max samples/problem = 2`.
