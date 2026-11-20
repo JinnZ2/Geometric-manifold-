@@ -65,3 +65,61 @@ PR #23 was merged with a merge commit, `601a48c`. No CI configured for PRs; chec
    - the carrier regime assumed;
    - the channels the record is blind to. The body channel is always listed.
    The 12 filed EXP1 records predate this rule and are not edited.
+
+## Replacement, 2026-11-20: zip `f56a94c5…5a97`
+
+The filed copy now follows a second zip, `OKComputer_Exploring_Deep_Research_Tools.zip`,
+sha256 `f56a94c50de0872e61652995704302fd1b3e1b892eb35b76eed7d74a6dc35a97` (owner-supplied,
+Kimi; uploaded to the filing session 2026-11-20). The prior version is the zip
+`f531061fc49e57acda6d3fb01144e98c08a0a5043d81a40f76ef69ac7d52487b` recorded above; its
+per-file hashes above are kept as the prior version's. Neither zip is in this repository.
+The new zip held no `__pycache__`. Nothing was stripped.
+
+New zip, 10 members, against the prior 6:
+
+- Same bytes (5): `README.md`, `examples/owl_claim.json`, `residual_audit.py`,
+  `runs/exp1/EXP1.md`, `runs/exp1/archive/records.jsonl`.
+- Changed (1): the tooling report. Same rename as before (`#U2014` dash name to
+  `Tooling_the_Residual_Check_Survey_and_Build_Plan.md`). Diff against the prior filed copy:
+  - "Madl et al." occurred 11 times before and occurs once now, inside the erratum line.
+    10 were replaced.
+  - 5 wording changes that follow from the single author, on lines 13, 37, 99 and 136:
+    "document" to "documents", "Their closing warning" to "The paper's closing warning",
+    "show" to "shows", "they establish" to "it establishes", "as Madl do" to "as Madl does".
+  - 2 lines added at the end: a blank line and the erratum line dated 2026-11-20.
+  - No other difference.
+- New (4): `CHANNEL_SCOPE.md`, `tooling-report/figs/fig1_priority.png`,
+  `tooling-report/figs/fig2_interlock.png`, `tooling-report/figs/fig3_heatmap.png`.
+
+sha256 of each filed file after the replacement (each equals the zip member):
+
+```text
+e96f49531a2dd5a3defd1113a5b677133a04cf32bfb5cbab15f1657cd40dd2e0  ./CHANNEL_SCOPE.md
+cb56e29609fd64e64dbe5b7601f5d57a5c84a43dabb918014c3cf43c9604c525  ./README.md
+66cc67ac4be537d82e4a7a4327ece5a00f9d798bc76190fbecd4e15dc8fd51a2  ./examples/owl_claim.json
+53ccbfed03b40054d10b4e385dd3dd1c5f736e072f2dc8947bf04ff68c1dd4be  ./residual_audit.py
+ce065e36d75a7bf167bbaa6dc2a67c1d07d56755dda1c56ebae4ea0a96674918  ./runs/exp1/EXP1.md
+20223e8c517b4ff0bc220a53d407fb9eec5dbca705c785c5485235c938bb5da5  ./runs/exp1/archive/records.jsonl
+a99b85050b1ff39af6a1d75f25a5d95dfbf9cd6b95851d6c3b7c1c666b04a5f9  ./tooling-report/Tooling_the_Residual_Check_Survey_and_Build_Plan.md
+3bd1cc9de1b5d08e6d8fe3f9a243bb4de5dc85cadef742d2d4bf5f69fc10bb5c  ./tooling-report/figs/fig1_priority.png
+eb5b571c624e3b0fad0a0601b4c43140d479caa098955c23f9f78a345203445e  ./tooling-report/figs/fig2_interlock.png
+ce493470395acc64ea89cbec42e2139a5a8f7da6de90eb2d9d2a25ff9ac85311  ./tooling-report/figs/fig3_heatmap.png
+```
+
+Notes, 2026-11-20 (second set):
+
+1. Figures resolved. The three figures the report links are now filed under
+   `tooling-report/figs/`. This supersedes note 1 of "Notes, 2026-11-20" above (the
+   UNRESOLVABLE mark); that note is kept as written.
+2. Figure 1 (`fig1_priority.png`): the effort and payoff positions are Kimi's estimates.
+   Status PROPOSED. They are judgments, not measurements.
+3. The figures label a repository "residual-audit". No such repository exists (see the top of
+   this file); read that label as this interim home until one does.
+4. `CHANNEL_SCOPE.md`: status PROPOSED, held under the 2026-11-11 feature freeze
+   (owner-stated; the file states the same in its own Status line). No code here was changed
+   for it. The 12 EXP1 records are not edited; the file's own backfill policy is append-only.
+5. Note 2 of "Notes, 2026-11-20" above (read "Madl et al." as "Madl") described the prior
+   report. The filed report now carries the correction itself.
+6. Dates: the report's erratum is dated 2026-11-20. `runs/exp1/EXP1.md` is still headed
+   2026-11-20 while its 12 records are stamped `2026-11-19T1946Z`; that flag stands.
+

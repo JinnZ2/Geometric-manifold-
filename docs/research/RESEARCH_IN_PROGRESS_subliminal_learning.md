@@ -211,6 +211,16 @@ are recorded, and the rest of the paragraph is not quoted.
    - the channels the record is blind to. The body channel is always listed.
    The 12 filed EXP1 records predate this rule and are not edited.
 
+### 4.3 Replacement zip, 2026-11-20
+
+- The interim home now follows zip sha256 `f56a94c5…5a97` (owner-supplied, Kimi). Prior: `f531061f…487b`.
+- Added: three figures under `residual-audit/tooling-report/figs/`, and `residual-audit/CHANNEL_SCOPE.md`.
+- The report now writes "Madl" itself and carries an erratum line. Notes 1 and 2 of §4.2 are
+  superseded; they are kept as written.
+- Figure 1's effort and payoff positions are Kimi's estimates: PROPOSED, not measurements.
+- `CHANNEL_SCOPE.md`: PROPOSED, held under the 2026-11-11 feature freeze.
+- Per-file hashes and the report diff: `residual-audit/INTERIM_HOME.md`.
+
 ## 5. Open slots
 
 ```
