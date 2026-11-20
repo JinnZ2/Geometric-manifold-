@@ -45,3 +45,23 @@ PR #23 was merged with a merge commit, `601a48c`. No CI configured for PRs; chec
   `subliminal_guard.py` sha256 `d5f92b6d…` equal to the upload, and the six per-file hashes above match.
 - Post-merge CI: NOT READ (none configured).
 - Not run: `pytest` (torch is absent where the checks ran), `ruff`.
+
+## Notes, 2026-11-20
+
+1. Figures. The tooling report refers to 3 figures: `figs/fig1_priority.png` (build effort vs.
+   expected payoff, report line 173), `figs/fig2_interlock.png` (four-repository interlock,
+   line 169), `figs/fig3_heatmap.png` (research candidates x repositories, line 196). The zip
+   (sha256 `f531061f…487b`) lists 6 members and none is under `figs/`. The three figures are
+   UNRESOLVABLE until Kimi supplies them. The same zip was uploaded again 2026-11-20 with the
+   same sha256 and the same 6 members.
+2. Citation correction. The tooling report writes "Madl et al." (lines 37, 142, 219). The
+   paper has a single author: Madl, arXiv 2606.22019 (abstract read 2026-11-19; see
+   `RESEARCH_IN_PROGRESS_subliminal_learning.md` §1.1). Read "Madl et al." in the report as
+   "Madl". The report file is kept byte-identical; the correction is this note.
+3. Proposed build sprint. The report's "immediate sprint" (line 213) names `ra.manifest`,
+   `fa.conformal` and `ra.laddercal`. Status: PROPOSED, held under the 2026-11-11 feature
+   freeze (owner-stated in the order of 2026-11-20). Nothing from the sprint is built here.
+4. Scope law (owner-stated in the order of 2026-11-20), to carry on every residual record:
+   - the carrier regime assumed;
+   - the channels the record is blind to. The body channel is always listed.
+   The 12 filed EXP1 records predate this rule and are not edited.
