@@ -1,6 +1,6 @@
 # RESEARCH IN PROGRESS: subliminal learning
 
-co-authored (Kavik + Claude chat + external model contributions as marked), CC0.
+co-authored (JinnZ2 + Claude chat + external model contributions as marked), CC0.
 Opened 2026-11-19. Status: IN PROGRESS. Nothing here is a finding unless tagged OBSERVED.
 Mode of this file: SUGGEST. Next stages: AUDIT (different family, L2+) → IMPLEMENT runs.
 

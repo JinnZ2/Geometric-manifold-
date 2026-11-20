@@ -1,6 +1,6 @@
 """
 subliminal_guard.py — two instruments against planted traits (subliminal learning)
-co-authored (Kavik + Claude), CC0. stdlib only.
+co-authored (JinnZ2 + Claude), CC0. stdlib only.
 
 STATUS TAGS
   OBSERVED  : divergence/entangled tokens carry the trait; paraphrase and
