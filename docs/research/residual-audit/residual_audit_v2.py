@@ -777,7 +777,7 @@ def cmd_compare(outdir: str, claim_id: str) -> dict:
         else:
             out["kin_only"] = {"state": "NOT_FLAGGED",
                                "note": f"{len(high)} lineages clear threshold"}
-    # V2 (CHANNEL_SCOPE.md line 58): records that differ in assumed_regime
+    # V2 (CHANNEL_SCOPE.md line 59): records that differ in assumed_regime
     # are flagged, and the cross-regime comparison is UNCHECKED by default.
     # [CHOICE] a record with no channel_scope counts as "unrecorded"; when
     # every record is unrecorded the output is the original one, no key added.
@@ -918,7 +918,7 @@ def selftest() -> int:
         _check("T11 external rung refuses missing params", True, failures)
 
     # ---- V2 ----------------------------------------------------------
-    # T12 (CHANNEL_SCOPE.md line 57): every produced record; enum; raises
+    # T12 (CHANNEL_SCOPE.md line 58): every produced record; enum; raises
     produced = [rec, rec6, rec7] + [audit(inp, regime=g) for g in REGIMES]
     _check("T12 body in blind_channels of every produced record",
            all("body" in r["channel_scope"]["blind_channels"]
