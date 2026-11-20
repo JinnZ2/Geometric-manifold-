@@ -35,6 +35,15 @@ The slots tables in `EXPERIMENT.md` are verbatim. They say `harness_self_test` a
 | `passk_unit_check` | OBSERVED (synthetic) | Unrun until someone runs it; run by the filer on 2026-11-20: **PASS** (section 4). |
 | all other slots | not run | not run |
 
+### 2b. Context for the "OBSERVED (synthetic)" labels (owner, relayed 2026-11-20)
+
+The DeepSeek app on the owner's phone has no code execution. Its "OBSERVED (synthetic)" labels
+on `harness_self_test` and `passk_unit_check` mark checks it could not run. They are recorded
+here as a **mislabel from an environment limit, not a run claim**: no run by DeepSeek is
+asserted or disputed. Source: the owner's statement; the filer did not see the DeepSeek session.
+This applies to R1: the crash was not seen by the author because the self-test was never
+executed there. The filed slots tables stay verbatim.
+
 ## 3. Findings
 
 ### Chat Claude's findings (R1–R2, D1–D9, P1–P4, Holds): text not located
