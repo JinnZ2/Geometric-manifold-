@@ -48,3 +48,11 @@ def test_regime_out_of_reach_is_void_never_a_pass(sg):
 def test_regime_outside_enum_rejected(sg):
     with pytest.raises(sg.ChannelScopeError):
         sg.audit("owl", ASK, PROMPTS, regime="surface")
+
+
+def test_unknown_regime_pass_is_holds_regime_unknown_never_holds(sg):
+    for kw in ({}, {"regime": "unknown"}):
+        r = sg.audit("owl", ASK, PROMPTS, **kw)
+        assert r["flags"] == []
+        assert r["verdict"] == "holds_regime_unknown"
+    assert sg.audit("owl", ASK, PROMPTS, regime="vocab_geometry")["verdict"].startswith("holds (")
