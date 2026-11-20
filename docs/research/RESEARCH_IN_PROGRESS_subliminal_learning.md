@@ -89,6 +89,16 @@ Note 2026-11-19 (Claude Code, code read at `d67b12e`): term collision.
   (`addon_thermodynamic_control/energy.py:110`, `:117`).
 - The tie-in needs a claim→theta adapter; none exists in this repo.
 
+Note 2026-11-20 (Claude Code): main's `repair_step` ascended on KL until the objective-sign
+PR (branch `claude/objective-sign-fix`, cherry-pick of `59031bc`); any basin-handle result
+before the merge is void.
+- Diagnosis: `edd8ef9` (branch `funnel-probe`): `delta = -lr*grad(task - lambda*KL)`,
+  cos(delta, grad KL) = +0.993.
+- Verification on that branch: `ff63359`: KL 3.79 → 0.17, cos(delta, grad KL) = −0.995.
+- Rerun in the filing session, 2026-11-20 (torch 2.15.0, default config, 100 steps):
+  - main `55a2d1a`: KL 3.7906 → 39.3746, KL rises on 100 of 100 steps, cos +0.991 at step 1
+  - this branch: KL 3.7906 → 0.1734, KL rises on 0 of 100 steps, cos −0.994 at step 1
+
 ### 3.1 Audit notes on the residual check (DERIVED, chat Claude, L0 for its own Layer 5)
 
 - A1: P and RC sit on different scales. P is the agreement of a re-ask; RC is the semantic
