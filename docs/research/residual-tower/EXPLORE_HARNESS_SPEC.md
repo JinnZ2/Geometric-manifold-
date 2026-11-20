@@ -147,3 +147,27 @@ residual-tower is right.
 
 Probe outputs from that sandbox run are not printed here. Any reader who saw the
 chat session that produced this amendment is exposed and is not BLIND.
+
+## Addition 2026-11-20: raw_output is sealed in committed records
+
+Dated addition, appended; the text above is unchanged (sha256 of the file before
+this addition: `fada7cb0fa8726a6b03bad5a5ae13866ab9cb12893701b45aca6ed73317e4f7c`, at d6d1eda).
+
+- In a public repository, `raw_output` in a committed record is
+  `sealed:<sha256 of the canonical output>`, or `void`. The harness refuses to
+  append a record with plain output.
+- Reason: BLIND runners read the repository. A plain `raw_output` in `runs/`
+  shows a later BLIND runner the outputs that `expected/` holds only as hashes.
+- The full records (plain `raw_output`) are written to a sealed file outside the
+  repository. The outputs are deterministic for a pinned input, so that file can
+  be regenerated.
+- REVIEW compares the sealed hash to the commitment in `expected/`.
+- Plain text appears only at the reveal step, which is a separate, later step.
+- `runner_version` may be `void`; the reason is then stated in `notes`.
+
+Exposure note: branch `claude/explore-harness` @ 4d79e45 (PR #34, closed unmerged)
+holds plain outputs in `runs/records.jsonl`. Any reader of that branch is exposed
+and is not BLIND.
+
+Source: owner order, 2026-11-20 (the first order asked both that plain outputs not
+be committed and that the records be committed; see Simulators FIRING_LOG FL09).

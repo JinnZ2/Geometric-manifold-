@@ -1,0 +1,13 @@
+{
+ "94fcd1e8679a6f65375f4034b00cd8a88f93c0bd14a39128eb47f6e85ece92d9|top_range=4|levels=4|codes_per_level=16": {
+  "check-demo": "6614349057bd5bafcfb1e249f97c22efb21a5d4be9a07bbea4f7f6b4b94d12aa",
+  "selftest": "34d62745a4cb87d8c6a0814e88053e18b7140d620f3e23ef29ce1b8fbe283033"
+ },
+ "94fcd1e8679a6f65375f4034b00cd8a88f93c0bd14a39128eb47f6e85ece92d9|top_range=4|levels=5|codes_per_level=16": {
+  "carry-ripple": "76bfb2a0f96e0cac3590cc684584ca8827a5e549b2a7b964c9ca679f2f00ce93",
+  "gray-unit-step": "b8c34e476d6b71fbeab3db9345b1455c582976f4230a6617064d8083a63dc82f",
+  "pi-approx": "0e25c9e47917c6e0bd178b005aae9780dba2058bffb87d963b63ff1ab22acdc4",
+  "quarter-tie": "e85a1e22de86589d031806c4849b3f50f12782729b3bdd7d2e546b4ded58ce48",
+  "third-nondyadic": "06262e88a4fa303dee44eb8c6187fa985ca6590f9c70c2403fd12bdfb973efb0"
+ }
+}
