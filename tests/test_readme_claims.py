@@ -134,34 +134,41 @@ CLAIMS = [
         "README",
         "this framework detects the drift and pulls parameters back using curvature-aware, "
         "asymmetric repair",
-        "KNOWN_MISMATCH",
+        "MATCHES",
         # observed 2026-11-19 on the default run: dist_to_ref 17.08 -> 18.45, every
         # step flagged; the parameters move away from the reference
+        # (registered then as KNOWN_MISMATCH, expected (True, True))
+        # Note 2026-11-20: objective sign corrected (cherry-pick of 59031bc). Observed on
+        # the default run: dist_to_ref 17.06 -> 16.14, every step flagged. Moved to MATCHES.
         pulls_back,
-        (True, True),
+        (False, True),
     ),
     (
         "prior-work-pulls-back",
         "README",
         "applies curvature-regularized, trust-region-bounded updates that pull drifting "
         "parameters back toward the reference",
-        "KNOWN_MISMATCH",
+        "MATCHES",
+        # Note 2026-11-20: was KNOWN_MISMATCH, expected (True, True); see the entry above.
         pulls_back,
-        (True, True),
+        (False, True),
     ),
     (
         "minus-sign-in-code",
         "CLAUDE",
         "**Do not change the sign in `task_loss - λ * weighted_safety`** in "
         "`parameter_manifold.py`.",
-        "MATCHES",
+        "KNOWN_MISMATCH",
         # the sign is still in the code; its documented rationale is refuted by
         # sims/objective_sign (see the dated note in CLAUDE.md)
+        # (registered 2026-11-19 as MATCHES, expected True)
+        # Note 2026-11-20: the sign in the code is now "+" (cherry-pick of 59031bc). The
+        # sentence is kept in CLAUDE.md, struck through; the code no longer follows it.
         lambda d: (
             "total_loss = task_loss - self.lambda_asym * weighted_safety"
             in (ROOT / "manifolds" / "parameter_manifold.py").read_text()
         ),
-        True,
+        False,
     ),
     (
         "confidence-weights",
@@ -194,8 +201,9 @@ CLAIMS = [
         "Combined with trust_radius=0.05, most steps are trust-region-limited, not lr-limited.",
         "MATCHES",
         # observed 2026-11-19: all 100 steps are at the trust radius
+        # Note 2026-11-20: with the sign corrected, 53 of 100 steps are at the trust radius
         lambda d: trust_limited_steps(),
-        100,
+        53,
     ),
     (
         "stability-line-count",

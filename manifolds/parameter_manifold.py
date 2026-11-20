@@ -67,8 +67,8 @@ class ParameterManifold:
         curv = self.curvature_proxy(safety_out)
         weighted_safety = kl_loss * (1.0 + self.lambda_curv * curv)
 
-        # Asymmetric combined loss
-        total_loss = task_loss - self.lambda_asym * weighted_safety
+        # Asymmetric combined loss (sign corrected 2026-10-02: descent on KL; see funnel_probe/FINDING_REPAIR_DIVERGENCE.md)
+        total_loss = task_loss + self.lambda_asym * weighted_safety
         total_loss.backward()
 
         with torch.no_grad():

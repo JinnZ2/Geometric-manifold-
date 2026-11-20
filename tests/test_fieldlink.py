@@ -220,7 +220,9 @@ def test_topology_export_structure(tmp_path):
     assert "curvature" in data
     assert "confidence_geometry" in data
     assert "loss_landscape" in data
-    assert data["loss_landscape"]["type"] == "saddle_point"
+    # Note 2026-11-20: was `== "saddle_point"` until the objective-sign fix.
+    assert data["loss_landscape"]["type"] == "penalty"
+    assert data["loss_landscape"]["objective"].startswith("task_loss + ")
     assert "pipeline" in data
     assert "rosetta_bridge" in data
 

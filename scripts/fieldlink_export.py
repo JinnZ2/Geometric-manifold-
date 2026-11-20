@@ -187,11 +187,19 @@ def generate_basin_topology() -> dict:
             "range": [0.0, 1.0],
             "monotonicity": "decreasing with both risk and distance",
         },
+        # Note 2026-11-20: until the objective-sign fix (cherry-pick of 59031bc) this block
+        # exported the form the code then had:
+        #   "objective": "task_loss - asymmetry_lambda * curvature_weighted_safety_loss",
+        #   "type": "saddle_point",
+        #   "sign_convention": "MINUS — intentional adversarial tension",
+        #   "resolution": "trust region prevents runaway; saddle-point explores landscape",
+        # manifolds/parameter_manifold.py now computes task_loss + lambda * weighted_safety,
+        # and the export states that.
         "loss_landscape": {
-            "objective": "task_loss - asymmetry_lambda * curvature_weighted_safety_loss",
-            "type": "saddle_point",
-            "sign_convention": "MINUS — intentional adversarial tension",
-            "resolution": "trust region prevents runaway; saddle-point explores landscape",
+            "objective": "task_loss + asymmetry_lambda * curvature_weighted_safety_loss",
+            "type": "penalty",
+            "sign_convention": "PLUS: descent on the safety term (corrected 2026-11-20)",
+            "resolution": "trust region caps the step length",
         },
         "pipeline": {
             "data_manifold": {
