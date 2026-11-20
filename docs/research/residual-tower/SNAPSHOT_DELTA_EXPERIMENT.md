@@ -178,4 +178,23 @@ Notes (worked by hand for this file, 2026-11-20; nothing run):
 - Not stated in the order, so not fixed here: an error in a stored parity bit itself, and where
   the parity bits are kept.
 
+## Addition 2026-11-20: checks, fourth entry (three-corner miscorrection)
+
+Source: owner message in chat, 2026-11-20, continuing the third checks entry. Nothing run.
+
+- three bad bits on three corners of a rectangle -> miscorrection: parity points at the 4th
+  corner and flips a good bit (DERIVED).
+- Rule: correct only with a second independent check after correcting.
+
+| slot | value | note |
+|---|---|---|
+| miscorrection_count | VOID | needs planted 3-corner errors |
+
+Note (worked by hand for this file, 2026-11-20; nothing run): with bad bits at (r1,c1), (r1,c2)
+and (r2,c1), row r1 and column c1 each hold two errors and pass; row r2 and column c2 each hold
+one and fail. The crossing is (r2,c2), a good bit. Flipping it leaves four errors on the corners
+of a rectangle, which is the blind spot of the third entry: every row and column then passes. So
+the parity check alone reports the miscorrection as a clean repair, and the "single bad bit ->
+detect + correct" line of the third entry holds only when exactly one bit is bad.
+
 Observer slots: null.
