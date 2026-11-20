@@ -130,4 +130,20 @@ are kept as written.
 |---|---|
 | nondyadic_nonzero_residual_count | VOID |
 
+## Addition 2026-11-20: checks, second entry (index rule and scope)
+
+Source: chat Claude, relayed in the owner work order of 2026-11-20. The first checks entry above
+is kept as written.
+
+1. Index rule: read the flipped Gray bit from the LOWER of the two values (the trailing-ones
+   count of the lower value). This supersedes "trailing-ones count" for both directions in the
+   first checks entry. Credit: the hand-worked note under that entry (first bullet of "Notes on
+   the derivation").
+2. Scope (DERIVED): the Gray cross-check applies to flat binary snapshots only. Tower codes
+   (signed, nearest-grid, ESCAPE, exact residual) are not positional digits, so the relation does
+   not transfer. Tower snapshots compare by per-level arithmetic difference. This settles the
+   third bullet of the hand-worked note ("how it reads on a tower ... is not fixed here").
+
+Nothing run.
+
 Observer slots: null.
