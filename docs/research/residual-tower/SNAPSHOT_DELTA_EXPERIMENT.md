@@ -197,4 +197,24 @@ of a rectangle, which is the blind spot of the third entry: every row and column
 the parity check alone reports the miscorrection as a clean repair, and the "single bad bit ->
 detect + correct" line of the third entry holds only when exactly one bit is bad.
 
+## Addition 2026-11-20: checks, fifth entry (2D chunk check: layout, parity bits, storage)
+
+Source: chat Claude, relayed in the owner work order of 2026-11-20. Nothing run. This entry
+settles the three points the third entry's hand-worked notes left open.
+
+- Layout: row-major (bitboard convention); shift 1 = along a row, shift `side` = along a column,
+  `side`+/-1 = diagonals.
+- Three bad bits on three corners of a rectangle -> miscorrection, the rule, and the slot
+  `miscorrection_count`: already filed as the fourth checks entry above (same wording; the order
+  adds "planted 3-corner errors", which that slot's note carries). Not filed twice.
+- Parity-bit error (DERIVED): a data-bit error flags its row AND its column; a lone row flag or a
+  lone column flag = the parity bit itself is bad -> leave the data unchanged.
+- Parity storage: beside the snapshot in its record, with its own sha256.
+
+Note (worked by hand for this file, 2026-11-20; nothing run): the number of failing rows and the
+number of failing columns are both odd or both even, because each equals the number of bad data
+bits modulo 2. So data errors alone cannot produce exactly one failing row and no failing
+column, or the reverse. A lone flag therefore means at least one parity bit is bad. It does not
+show that the data bits are all good: bad data bits can sit under a bad parity bit.
+
 Observer slots: null.
