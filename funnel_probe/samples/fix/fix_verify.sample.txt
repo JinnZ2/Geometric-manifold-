@@ -21,3 +21,10 @@ V3  repo suite
     pytest exit 1: ['/usr/local/bin/python3: No module named pytest']
 
 GATE for step 2: OPEN  (V1 True, V2 True)
+
+Note 2026-11-20: the V2 "VERDICT:" line above contradicts its own numbers. It says one repair
+step RAISES KL and is pointed up the KL gradient, but every row beside it shows the opposite:
+dKL -0.1346 / -0.7796 / -0.008853, grad(KL).delta negative, cos(delta, grad KL) = -0.9949
+(descent). V2 HELD is the correct reading. The VERDICT sentence is text carried over from the
+pre-fix check (cos +0.993, branch commit 7fa2b7d), printed unchanged by the check script rather
+than computed from these numbers. The lines above are left as written.
