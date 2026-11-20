@@ -204,7 +204,7 @@ These constraints exist for mathematical or safety reasons. Violating them silen
     the reference grows every step (17.08 → 18.45) with confidence 0.000. The rule itself is left
     as written; whether to change the sign is the owner's call. What the sign was *for* is still
     not established (FINDING.md, last section). Registered in `tests/test_readme_claims.py`.
-- **The objective is `task_loss + λ * weighted_safety`** in `parameter_manifold.py` (sign corrected 2026-10-02). It was shipped as `task_loss - λ * weighted_safety`, documented here as an intentional saddle-point formulation; measured, that step was gradient ASCENT on KL to the fixed reference (cos(delta, ∇KL) = +0.993; KL 3.79 → 39.37 over 100 steps, 0.27 with the sign flipped — `funnel_probe/FINDING_REPAIR_DIVERGENCE.md`, and independently `sims/objective_sign/FINDING.md`). Do not reintroduce the minus sign without a pre-registered reason and a run showing KL falls under it.
+- **The objective is `task_loss + λ * weighted_safety`** in `parameter_manifold.py` (sign corrected 2026-10-02). It was shipped as `task_loss - λ * weighted_safety`, documented here as an intentional saddle-point formulation; measured, that step was gradient ASCENT on KL to the fixed reference (cos(delta, ∇KL) = +0.993; KL 3.79 → 39.37 over 100 steps, 0.27 with the sign flipped — `funnel_probe/FINDING_REPAIR_DIVERGENCE.md` at `funnel-probe@8d2da92` (the file is on branch `funnel-probe`, not on main), and independently `sims/objective_sign/FINDING.md`). Do not reintroduce the minus sign without a pre-registered reason and a run showing KL falls under it.
 
 ## Config Rationale
 
@@ -272,7 +272,7 @@ python -m pytest tests/test_environment.py::test_model_fn_matches_module -v
   - Struck 2026-11-20 (line kept as written): replaced by the next entry; see the struck line under "Do Not".
   - Note 2026-11-19: see the note under "Do Not" on the sign; `sims/objective_sign/FINDING.md`
     refutes "explores ... rather than collapsing" as written.
-- **Penalty objective (corrected)**: The parameter manifold loss is `task_loss + λ * safety_loss`. The original minus sign was documented as a saddle-point formulation; on the delivered configuration it drove KL to the reference UP at the trust-region cap every step, and the trust region bounded the rate of divergence rather than preventing it. The correction and its verification are in `funnel_probe/` (PREREGISTRATION_FIX.md, FINDING_REPAIR_DIVERGENCE.md).
+- **Penalty objective (corrected)**: The parameter manifold loss is `task_loss + λ * safety_loss`. The original minus sign was documented as a saddle-point formulation; on the delivered configuration it drove KL to the reference UP at the trust-region cap every step, and the trust region bounded the rate of divergence rather than preventing it. The correction and its verification are on branch `funnel-probe`: `funnel_probe/PREREGISTRATION_FIX.md` and `funnel_probe/FINDING_REPAIR_DIVERGENCE.md` at `funnel-probe@8d2da92` (not on main).
 - **Asymmetric penalties**: Safety violations penalized `λ` times more than task loss (`asymmetry_lambda`, default 10.0). This is intentional — safety > performance.
 - **Trust regions**: Parameter updates capped at `trust_radius` (default 0.05) to prevent catastrophic jumps.
 - **Curvature proxy**: Uses variance of softmax distribution as a cheap curvature estimate (not full Hessian).

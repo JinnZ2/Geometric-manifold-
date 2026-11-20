@@ -187,6 +187,10 @@ def generate_basin_topology() -> dict:
             "range": [0.0, 1.0],
             "monotonicity": "decreasing with both risk and distance",
         },
+        # Note 2026-11-20: the three lines below state the form the code had until the
+        # objective-sign fix (cherry-pick of 59031bc). manifolds/parameter_manifold.py now
+        # computes task_loss + lambda * weighted_safety. The exported values are left as
+        # written; tests/test_fieldlink.py pins "type": "saddle_point".
         "loss_landscape": {
             "objective": "task_loss - asymmetry_lambda * curvature_weighted_safety_loss",
             "type": "saddle_point",

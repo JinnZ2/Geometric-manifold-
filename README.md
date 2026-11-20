@@ -80,13 +80,21 @@ The framework's internal vocabulary maps onto standard research terminology:
 | `kappa_eff = θ̇ᵀHθ̇ / θ̇ᵀθ̇` | Rayleigh quotient of the Hessian; spectral instability indicator | Ghorbani et al. 2019; Cohen et al., "edge of stability" (2021) |
 | Curvature-weighted safety loss | Second-order / curvature-aware regularization | Optimal Brain Damage/Surgeon (LeCun 1990; Hassibi 1992); K-FAC (Martens & Grosse 2015) |
 | Asymmetric repair penalty (`asymmetry_lambda`) | Cost-sensitive loss; constrained optimization via Lagrangian | Altman 1999; Achiam et al., CPO (2017) |
-| Saddle-form total loss (`task − λ·safety`) | Adversarial/Lagrangian saddle-point objective | Standard in safe RL and GAN literature |
+| ~~Saddle-form total loss (`task − λ·safety`)~~ | ~~Adversarial/Lagrangian saddle-point objective~~ | ~~Standard in safe RL and GAN literature~~ |
+| Penalty-form total loss (`task + λ·safety`) | Penalty method / Lagrangian relaxation of a constraint | Nocedal & Wright, penalty methods |
 | Fisher energy accounting `C = δᵀGδ` | Natural-gradient metric; Mahalanobis step cost | Amari, natural gradient (1998); K-FAC |
 | Energy trend spike detection | Change-point / anomaly detection on loss curves | CUSUM; early-warning-signal literature (Scheffer 2009) |
 | GMR data cleaning (minority never dropped) | Neighborhood-based label-noise filtering with class-conditional weighting | Wilson & Martinez editing; class-imbalance literature |
 | Policy manifold JS re-anchoring | Distributional alignment via JS divergence; EMA target | JS-GAN lineage; target networks in RL |
 | Phase classifier (stable/threshold/critical) | Regime classification on stability indicators | Scheffer et al. 2009, 2012 |
 | `ISS_proof_pending` | Input-to-state stability analysis (open problem) | Sontag, "Input to State Stability" (1989+); Jiang & Wang 2001 |
+
+Note 2026-11-20, on the struck row above (kept as written): the code no longer has the
+`task − λ·safety` form. `manifolds/parameter_manifold.py` and
+`repair/generic_repair_controller.py` now compute `task + λ·safety`. Measured on the default
+run, the minus form raised KL to the reference on 100 of 100 steps (3.79 → 39.37); the plus
+form lowers it (3.79 → 0.17). The anchor-literature cell of the new row is from model
+knowledge, not checked against a source.
 
 Full cross-repo mapping and citation posture: [`docs/research/TERMINOLOGY_MAP.md`](docs/research/TERMINOLOGY_MAP.md).
 

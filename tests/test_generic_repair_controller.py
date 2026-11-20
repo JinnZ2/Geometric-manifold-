@@ -6,7 +6,8 @@ Invariants verified
 1. Trust region: delta_norm <= trust_radius after every step
 2. Confidence bounded: confidence in [0, 1] for all inputs
 3. Finite outputs: no NaN or inf in theta after any step
-4. Saddle-point sign: saddle_objective = task - lambda * safety (minus intentional)
+4. Objective sign: saddle_objective = task + lambda * safety
+   (was "task - lambda * safety (minus intentional)" until 2026-11-20)
 5. KL basin boundary: in_basin iff KL(softmax(theta) || softmax(ref)) < epsilon_basin
 6. FD-HVP linearity: fd_hvp(f, x, alpha*v) = alpha * fd_hvp(f, x, v)
 7. Claim table structure: 6 claims, required keys present
@@ -230,16 +231,16 @@ def test_finite_outputs_extreme_start():
 
 
 def test_saddle_objective_sign(ctrl, theta_start):
-    """saddle_objective == task_loss − λ·safety_loss (minus sign preserved)."""
+    """saddle_objective == task_loss + λ·safety_loss (was minus until 2026-11-20)."""
     _, state = ctrl.step(theta_start)
-    expected = round(state.task_loss - ctrl.lambda_safety * state.safety_loss, 6)
+    expected = round(state.task_loss + ctrl.lambda_safety * state.safety_loss, 6)
     assert abs(state.saddle_objective - expected) < 1e-9
 
 
 def test_saddle_objective_direct():
     ctrl = GenericRepairController(REF, _task, _safe, BASE_CONFIG, domain="sign_check")
     theta = [1.0, 0.0, 0.0, 0.0]
-    expected = _task(theta) - ctrl.lambda_safety * _safe(theta)
+    expected = _task(theta) + ctrl.lambda_safety * _safe(theta)
     assert abs(ctrl._saddle_objective(theta) - expected) < 1e-9
 
 

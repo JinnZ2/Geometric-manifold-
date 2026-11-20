@@ -1,7 +1,10 @@
 """
 Generic basin repair controller — stdlib only, no external dependencies.
 
-Saddle-point objective: task_loss − λ·safety_loss (minus sign intentional).
+Objective: task_loss + λ·safety_loss (penalty form).
+Note 2026-11-20: was "Saddle-point objective: task_loss − λ·safety_loss (minus sign
+intentional)". Sign corrected; the names `_saddle_objective` and `saddle_objective` are
+kept so callers and stored records do not break.
 Trust region, KL basin boundary, diagonal Fisher — see CLAUDE.md for rationale.
 
 ISS_PROOF_PENDING: True. Phase labels are heuristic, not certified stability claims.
@@ -81,7 +84,7 @@ class RepairState:
     theta: StateVec
     task_loss: float
     safety_loss: float
-    saddle_objective: float  # task_loss − λ·safety_loss
+    saddle_objective: float  # task_loss + λ·safety_loss (was minus until 2026-11-20)
     delta_norm: float
     trust_radius: float
     kl_from_reference: float
@@ -135,8 +138,10 @@ class GenericRepairController:
         self._history: list[RepairState] = []
 
     def _saddle_objective(self, theta: StateVec) -> float:
-        # minus sign is intentional — adversarial tension resolved by trust region
-        return self.task_loss_fn(theta) - self.lambda_safety * self.safety_loss_fn(theta)
+        # Sign corrected 2026-11-20 (was: task - lambda * safety, "minus sign is intentional").
+        # Measured over 100 steps on the three demo substrates: the minus form raised the
+        # safety loss on every step on constraint_geometry; the plus form lowers it on all three.
+        return self.task_loss_fn(theta) + self.lambda_safety * self.safety_loss_fn(theta)
 
     def _kl_from_reference(self, theta: StateVec) -> float:
         return _kl(_softmax(theta), _softmax(self.theta_ref))
@@ -226,7 +231,7 @@ class GenericRepairController:
             theta=[round(t, 6) for t in theta_new],
             task_loss=round(task, 6),
             safety_loss=round(safe, 6),
-            saddle_objective=round(task - self.lambda_safety * safe, 6),
+            saddle_objective=round(task + self.lambda_safety * safe, 6),
             delta_norm=round(delta_n, 6),
             trust_radius=round(trust_r, 6),
             kl_from_reference=round(kl, 6),
@@ -316,8 +321,8 @@ class GenericRepairController:
             },
             {
                 "claim_id": f"{source_id}.repair.saddle_point",
-                "claim": "Saddle-point objective: task_loss - lambda * safety_loss (minus intentional)",
-                "falsification_condition": "Find configuration where plus sign produces better safety-task tradeoff",
+                "claim": "Objective: task_loss + lambda * safety_loss (penalty form; sign corrected 2026-11-20)",
+                "falsification_condition": "Find configuration where minus sign produces lower safety loss over the run",
                 "status": "OPEN",
             },
             {
