@@ -171,3 +171,13 @@ and is not BLIND.
 
 Source: owner order, 2026-11-20 (the first order asked both that plain outputs not
 be committed and that the records be committed; see Simulators FIRING_LOG FL09).
+
+## Addition 2026-11-20 (second): what the seal does for deterministic probes
+
+Dated addition, appended; the text above is unchanged.
+
+For deterministic probes the seal blocks reading, not deriving; REVIEW-2 of them
+measures reproducibility across runner, machine and environment. Exposure is
+load-bearing in AUDIT and SUGGEST.
+
+Source: owner order, 2026-11-20.
