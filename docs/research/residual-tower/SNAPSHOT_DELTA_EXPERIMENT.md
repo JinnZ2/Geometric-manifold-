@@ -217,4 +217,13 @@ bits modulo 2. So data errors alone cannot produce exactly one failing row and n
 column, or the reverse. A lone flag therefore means at least one parity bit is bad. It does not
 show that the data bits are all good: bad data bits can sit under a bad parity bit.
 
+## Addition 2026-11-20: checks, sixth entry (lone parity flag)
+
+Source: chat Claude, relayed in the owner work order of 2026-11-20. It goes with the
+parity-bit-error line of the fifth entry, which is kept as written. Nothing run.
+
+- A lone flag proves a parity bit is bad, not that the data is clean; certify the data only with
+  an independent path (arithmetic difference or the Gray check), the same rule as the
+  three-corner case.
+
 Observer slots: null.
