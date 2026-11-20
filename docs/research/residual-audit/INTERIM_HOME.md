@@ -153,3 +153,13 @@ Owner-supplied 2026-11-20 (Kimi), zip sha256
   codes [14, 13, 0, ESCAPE], residual 7/7232, value exact; `encode_tower(1/4)` codes
   [8, ESCAPE, ESCAPE, ESCAPE], residual 1/4; `div` by a zero tower raises `TowerVoid`.
   `demo` was not run (it writes a record file).
+
+## Note, 2026-11-20: freeze source
+
+The notes of 2026-11-20 above (commit `fb3c0f8`) and the status lines in this file say "held
+under the 2026-11-11 feature freeze". The freeze has a lift record: Simulators
+`FREEZE_CLEANUP_MEASURAND.md`, section 6, sixth entry ("Lift record"), at Simulators commit
+`56a208e` (dated 2026-11-20). The earlier lines are kept as written. The lift record does not
+start any held item here: each one (the sprint, `CHANNEL_SCOPE.md` code, the snapshot-delta
+tests) needs its own order from the owner.
+
