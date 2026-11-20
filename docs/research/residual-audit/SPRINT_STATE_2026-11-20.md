@@ -233,3 +233,32 @@ CHANNEL_SCOPE §2 (line 30); the `formula-audit` repository as the home of `fa.c
 - `formula-audit` was not read, so "ABSENT" for `fa.conformal` means absent from this directory.
 
 Observer slots: null.
+
+## Dated addition, 2026-11-20 (later the same day): build order; what was built
+
+Co-authored (JinnZ2 + Claude). Appended; nothing above is changed.
+
+**Build order: `ra.manifest` + §4 target → `ra.laddercal` → `fa.conformal`.** DERIVED, not
+stated as an order in any one source. The three lines it is derived from, as filed:
+
+- CHANNEL_SCOPE.md:23: "| `channels_reached` | list of strings | Channels the run's ladder could in principle affect, per the current calibration. Today: `char_ngram`, `token_multiset`, `token_order`. When `ra.laddercal` publishes its carrier × rung matrix, this list is read from the calibration file, not asserted. |"
+- CHANNEL_SCOPE.md:60: "- Estimated size: ~15 lines plus one selftest. Deliberately deferred so it lands together with `ra.manifest`, whose hash chain will then cover the new field from day one."
+- Tooling report, line 179: "| 0 | ra.manifest | Tamper-evident archives (retroactive to EXP1) | nothing |"
+
+Reading: :60 puts the §4 target with `ra.manifest`; line 179 puts `ra.manifest` at order 0,
+blocked by nothing; :23 has `channels_reached` read from the `ra.laddercal` file once that
+exists, so `ra.laddercal` follows. The place of `fa.conformal` after `ra.laddercal` is not in
+these three lines; it rests on section 3 above.
+
+**Built under an order of this date** (branch `claude/ra-manifest-channel-scope`):
+`residual_audit_v2.py`, beside `residual_audit.py`, which is unchanged
+(sha256 `53ccbfed…1dd4be`, the pin in INTERIM_HOME.md). The order said "in residual_audit.py";
+the file is pinned as filed, so the build is a `_v2` copy. It holds `ra.manifest` (hash chain
+on `append_record`, run headers, `verify`) and the §4 target (`channel_scope` on `audit()`,
+`--regime`, `regime_mismatch` in compare, T12). Section 2 above reads "ABSENT" for both; that
+was the state when it was written.
+
+Not built: `ra.laddercal`, `fa.conformal`, the §3 backfill of the 12 EXP1 records (they read
+as UNCHAINED and carry no `channel_scope`; not rewritten).
+
+Observer slots: null.
