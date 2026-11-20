@@ -58,3 +58,29 @@ For the post-freeze sprint, the change is small by design:
 - `selftest()`: add **T12** — for every produced record, assert `"body" in record["channel_scope"]["blind_channels"]`; assert `assumed_regime` is in the enum; assert schema violation raises.
 - `compare()`: when two records differ in `assumed_regime`, flag `regime_mismatch` alongside `kin_only` states; cross-regime residual comparisons are UNCHECKED by default.
 - Estimated size: ~15 lines plus one selftest. Deliberately deferred so it lands together with `ra.manifest`, whose hash chain will then cover the new field from day one.
+
+## Addition 2026-11-20 (dated append; the text above is unchanged)
+
+Sha256 of this file before the addition: `e96f49531a2dd5a3defd1113a5b677133a04cf32bfb5cbab15f1657cd40dd2e0`.
+
+(a) Freeze line superseded. The status line and the §4 heading say the change is held
+under the 2026-11-11 feature freeze. The freeze has a lift record: Simulators
+`FREEZE_CLEANUP_MEASURAND.md` §6, at Simulators commit `56a208e`. Those two lines are
+kept as written and are read as superseded by the lift record.
+
+(b) Two rules added, beyond §1, §2 and §4:
+
+- An audit run outside its carrier regime returns status `VOID` with the regime named;
+  it never returns a pass.
+- A pass under `assumed_regime: unknown` reads `holds_regime_unknown`, never `holds`.
+
+Source for both: `../RESEARCH_IN_PROGRESS_subliminal_learning.md` §1.1 (Madl,
+arXiv 2606.22019, abstract read; full text not read): "an audit used outside its
+carrier regime can give false assurance". The rules themselves are the owner's order of
+2026-11-20; §4 as written has only the `regime_mismatch` flag on `compare()`.
+
+(c) Where §4 has been applied. §4 was applied by transfer to
+`../subliminal_guard_v2.py` (`audit()` there; `subliminal_guard.py` untouched), with
+`channels_reached` naming what that function reads rather than the ladder channels of §1.
+§4's own target, the residual-audit `audit()` / `selftest()` / `compare()`, is still
+unbuilt. The §3 backfill has not been run.
