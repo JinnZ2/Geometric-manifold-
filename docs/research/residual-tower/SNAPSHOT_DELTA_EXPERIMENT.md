@@ -292,4 +292,61 @@ Observed in the run, not in the entries above:
 Limits: one seed, one machine; the snapshots are random words, not tower output; the second
 check in the parity cases compares against the known-good chunk, which only a test has.
 
+## Addition 2026-11-20: Test 1 labels (second entry)
+
+Source: owner work order in chat, 2026-11-20. Labels only: the run was repeated and the
+deterministic sha256 is unchanged (`b88473c48a6edacaa8948fda8347ffab5f2cd2dc76c7f1f71288cbec24f85769`).
+The first Test 1 entry above is kept as written. Its wall figures are from the first run (commit
+`59143f2`); the results file now holds the repeat run's wall figures, shown here.
+
+Independence L1 (Claude Code, fresh session). Test design choices are judgment; REVIEW-2 of the
+design pending. Request: `REVIEW2_REQUEST_test1_design.md`, beside this file.
+
+**1. Speedup, split.** The slot `speedup` is replaced by two; each row in the results file
+(`speedup_rows`) declares which one it is and its `diff_source`.
+
+- `speedup_given_diff`: op count. diff_source = given: the list of changed entries is supplied;
+  finding it is not counted.
+- `speedup_with_scan`: op count and wall time. diff_source = full compare: both snapshots
+  compared entry by entry (n compares), counted.
+
+| computation | changed / entries | speedup_given_diff (op count) | speedup_with_scan (op count) | speedup_with_scan (wall) |
+|---|---|---|---|---|
+| sum | 1 / 200,000 | 200000.0 | 1.0 | 0.3985 |
+| sum | 100 / 200,000 | 2000.0 | 0.9995 | 0.4526 |
+| sum | 10,000 / 200,000 | 20.0 | 0.9524 | 0.3378 |
+| sum | 100,000 / 200,000 | 2.0 | 0.6667 | 0.1442 |
+| sum | 200,000 / 200,000 | 1.0 | 0.5 | 0.0951 |
+| dot | 1 / 200,000 | 200000.0 | 1.0 | 1.1922 |
+| dot | 100 / 200,000 | 2000.0 | 0.9995 | 1.8588 |
+| dot | 10,000 / 200,000 | 20.0 | 0.9524 | 1.5325 |
+| dot | 100,000 / 200,000 | 2.0 | 0.6667 | 0.507 |
+| dot | 200,000 / 200,000 | 1.0 | 0.5 | 0.3582 |
+| matvec | 1 / 20,000 | 20000.0 | 7.9968 | 14.7684 |
+| matvec | 100 / 20,000 | 200.0 | 7.6923 | 13.3708 |
+| matvec | 20,000 / 20,000 | 1.0 | 0.8889 | 0.8442 |
+
+Wall time for the given-diff case is in `timing_this_run` in the results file; it is not a slot.
+
+**2. Parity, three-corner case.**
+
+| field | value | basis |
+|---|---|---|
+| miscorrection_count | 1000 of 1000 planted 3-corner chunks | run |
+| test_reference_catch | 1000 of 1000 | run; the catch compares against the known-good chunk, which exists only in a test (was "the second check caught 1000") |
+| miscorrection_detected_in_field | 0 of 1000 | DERIVED, not run: no reference outside a test; after the flip every row and column passes |
+
+**3. Aliasing.** One class name for both rows: *aliasing* = the error lands on a state the check
+accepts as valid, so the check cannot detect it.
+
+| row | value | check | class |
+|---|---|---|---|
+| rectangle_miss_count | 1000 of 1000 planted 4-corner chunks | 2D parity | aliasing |
+| gray corrupted_not_flagged | 4 of 1000 corrupted unit steps | Gray unit-step check | aliasing: corruption landing on a valid unit step, undetectable by the unit-step check |
+
+**4. carry_ripple_count, pair rule.** 7434 of 10,000 pairs. Rule: old = uniform random 64-bit
+word; step = uniform integer in [1, 65536] with a random sign; new = old + step, or old - step
+if that leaves the 64-bit range; a pair is counted when the XOR level differs from the
+difference level. The count belongs to this rule; another step range gives another count.
+
 Observer slots: null.

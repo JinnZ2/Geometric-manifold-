@@ -577,6 +577,26 @@ def run(out_path):
     }
     digest = hashlib.sha256(
         json.dumps(deterministic, sort_keys=True).encode()).hexdigest()
+    # Labels added 2026-11-20 (owner order). They sit outside `deterministic`,
+    # so its sha256 does not move.
+    DIFF_GIVEN = "given: the list of changed entries is supplied; finding it is not counted"
+    DIFF_SCAN = "full compare: both snapshots compared entry by entry (n compares), counted"
+    speedup_rows = []
+    for name, rows in linear.items():
+        for r in rows:
+            base = {"computation": name, "entries": r["entries"], "changed": r["changed"]}
+            speedup_rows.append(dict(base, kind="speedup_given_diff", measure="op count",
+                                     value=r["speedup_ops_excluding_scan"],
+                                     diff_source=DIFF_GIVEN))
+            speedup_rows.append(dict(base, kind="speedup_with_scan", measure="op count",
+                                     value=r["speedup_ops_including_scan"],
+                                     diff_source=DIFF_SCAN))
+            speedup_rows.append(dict(base, kind="speedup_with_scan",
+                                     measure="wall time, this machine, this run",
+                                     value=r["speedup_wall_including_scan"],
+                                     diff_source=DIFF_SCAN))
+    ALIASING = ("aliasing: the error lands on a state the check accepts as valid, "
+                "so the check cannot detect it")
     result = {
         "step": "snapshot_delta_test1",
         "status": "ran",
@@ -596,13 +616,51 @@ def run(out_path):
             "parity_layout": "8 x 8 row-major, bit index = row * 8 + col, bit 0 least significant",
             "second_check": "arithmetic difference against the known-good chunk",
         },
+        "independence": "Independence L1 (Claude Code, fresh session). Test design choices "
+                        "are judgment; REVIEW-2 of the design pending.",
         "self_test": st,
         "deterministic": deterministic,
         "deterministic_sha256": digest,
         "timing_this_run": linear,
+        "speedup_rows": speedup_rows,
+        "labels": {
+            "carry_ripple_pair_rule": (
+                "old = uniform random 64-bit word; step = uniform integer in [1, %d] with a "
+                "random sign; new = old + step, or old - step if that leaves the 64-bit range; "
+                "%d pairs; counted when the XOR level differs from the difference level"
+                % (RIPPLE_MAX_STEP, N_RIPPLE)),
+            "miscorrection": {
+                "miscorrection_count": "%d of %d planted 3-corner chunks: parity pointed at "
+                                       "the good 4th corner" % (parity["miscorrection_count"],
+                                                                N_PARITY),
+                "test_reference_catch": "%d of %d: caught by comparing against the known-good "
+                                        "chunk, which exists only in a test"
+                                        % (parity["three_corner_caught_by_second_check"],
+                                           N_PARITY),
+                "miscorrection_detected_in_field": "0 of %d (DERIVED, not run: no reference "
+                                                   "outside a test; after the flip every row "
+                                                   "and column passes)" % N_PARITY,
+            },
+            "undetected_by_design": [
+                {"row": "rectangle_miss_count",
+                 "value": "%d of %d planted 4-corner chunks" % (parity["rectangle_miss_count"],
+                                                                N_PARITY),
+                 "check": "2D parity", "class": ALIASING},
+                {"row": "gray corrupted_not_flagged",
+                 "value": "%d of %d corrupted unit steps"
+                          % (gray_res["corrupted_not_flagged"], N_GRAY_CORRUPT),
+                 "check": "Gray unit-step check",
+                 "note": "corruption landing on a valid unit step, undetectable by the "
+                         "unit-step check",
+                 "class": ALIASING},
+            ],
+        },
         "slots": {
-            "speedup": "table, not one number: deterministic.linear[*].speedup_ops_* and "
-                       "timing_this_run[*].speedup_wall_*; depends on changed / entries",
+            "speedup": "split 2026-11-20 into speedup_given_diff and speedup_with_scan",
+            "speedup_given_diff": "op count; see speedup_rows (kind = speedup_given_diff); "
+                                  "depends on changed / entries",
+            "speedup_with_scan": "op count and wall time; see speedup_rows "
+                                 "(kind = speedup_with_scan)",
             "mismatch count": mismatches,
             "carry_ripple_count": levels["carry_ripple_count"],
             "gray_unit_agree_count": gray_res["gray_unit_agree_count"],
@@ -611,6 +669,8 @@ def run(out_path):
             "parity_detected_unlocated_count": parity["parity_detected_unlocated_count"],
             "rectangle_miss_count": parity["rectangle_miss_count"],
             "miscorrection_count": parity["miscorrection_count"],
+            "test_reference_catch": parity["three_corner_caught_by_second_check"],
+            "miscorrection_detected_in_field": "0 of %d (DERIVED, not run)" % N_PARITY,
             "edge-flip count": "VOID",
             "tie_flip_count": "VOID",
             "nonlinear bound width": "VOID",
