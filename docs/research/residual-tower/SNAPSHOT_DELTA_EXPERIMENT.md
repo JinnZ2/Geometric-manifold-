@@ -47,4 +47,15 @@ are, how cost is measured, and how many runs.
 | edge-flip count | VOID |
 | nonlinear bound width | VOID |
 
+### Addition 2026-11-20: tie_flip_count
+
+Source: owner work order in chat, 2026-11-20.
+
+| slot | value |
+|---|---|
+| tie_flip_count | VOID |
+
+`encode()` rounds exact halves to the lower grid point (OBSERVED 2026-11-20, rerun from the filed
+copy). Count flips at tie points separately from edge-band flips.
+
 Observer slots: null.
