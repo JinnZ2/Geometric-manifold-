@@ -1,0 +1,7 @@
+{
+  "_about": "Dated notes that inventory.py re-emits into INVENTORY.md. Add lines; do not remove old ones.",
+  "section3_after_mechanical": [
+    "  - Note 2026-11-20: until the objective-sign fix (cherry-pick of `59031bc`) this line read: One gradient step on `task_loss - self.lambda_asym * weighted_safety` (the saddle-point sign is intentional, per CLAUDE.md). The drift_spectrum results in this folder were run on that minus form.",
+    "  - Note 2026-11-20: this note is kept in `inventory_notes.json` and written back by `inventory.py` on each regeneration."
+  ]
+}

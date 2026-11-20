@@ -223,6 +223,8 @@ Why these specific default values exist.
 | `confidence_threshold_minority` | 0.3 | Very low bar — keeps almost all minority samples even in noisy regions. |
 | `reanchor_strength` | 0.1 | Gentle blend toward reference. At 0.5+: policy snaps back too hard, erasing adaptation. |
 
+Note 2026-11-20 on the `lr` row: with the corrected sign, 53 of 100 steps hit the trust-region cap on the default run (it was 100 of 100 on the minus form). Registered in `tests/test_readme_claims.py` as `trust-region-limited`.
+
 ### `adversarial.yaml` differences
 | Parameter | Default | Adversarial | Why |
 |-----------|---------|-------------|-----|

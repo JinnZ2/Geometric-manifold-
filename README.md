@@ -81,7 +81,7 @@ The framework's internal vocabulary maps onto standard research terminology:
 | Curvature-weighted safety loss | Second-order / curvature-aware regularization | Optimal Brain Damage/Surgeon (LeCun 1990; Hassibi 1992); K-FAC (Martens & Grosse 2015) |
 | Asymmetric repair penalty (`asymmetry_lambda`) | Cost-sensitive loss; constrained optimization via Lagrangian | Altman 1999; Achiam et al., CPO (2017) |
 | ~~Saddle-form total loss (`task − λ·safety`)~~ | ~~Adversarial/Lagrangian saddle-point objective~~ | ~~Standard in safe RL and GAN literature~~ |
-| Penalty-form total loss (`task + λ·safety`) | Penalty method / Lagrangian relaxation of a constraint | Nocedal & Wright, penalty methods |
+| Penalty-form total loss (`task + λ·safety`) | Penalty method / Lagrangian relaxation of a constraint | UNVERIFIED: Nocedal & Wright, penalty methods (from model knowledge, not checked against the book) |
 | Fisher energy accounting `C = δᵀGδ` | Natural-gradient metric; Mahalanobis step cost | Amari, natural gradient (1998); K-FAC |
 | Energy trend spike detection | Change-point / anomaly detection on loss curves | CUSUM; early-warning-signal literature (Scheffer 2009) |
 | GMR data cleaning (minority never dropped) | Neighborhood-based label-noise filtering with class-conditional weighting | Wilson & Martinez editing; class-imbalance literature |

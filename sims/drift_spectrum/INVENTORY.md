@@ -37,8 +37,9 @@ lines are sentences about what the code means, with the source beside them.
 
 ## 3. What a repair DOES to theta
 
-- [MECHANICAL] One gradient step on `task_loss - self.lambda_asym * weighted_safety` (the saddle-point sign is intentional, per CLAUDE.md), `delta = -lr * grad`, then an L2 clamp `||delta|| <= trust_radius` (clamp present = True). Defaults: `trust_radius` 0.05, `lr` 0.01 (`configs/default.yaml`).
-  - Note 2026-11-20 (line above kept as read then): the code line is now `task_loss + self.lambda_asym * weighted_safety` (objective-sign fix, cherry-pick of `59031bc`). This file is written by `inventory.py`; a regeneration will read the new line and drop this note. The drift_spectrum results in this folder were run on the minus form.
+- [MECHANICAL] One gradient step on `task_loss + self.lambda_asym * weighted_safety` (penalty form; CLAUDE.md records the sign correction of 2026-11-20), `delta = -lr * grad`, then an L2 clamp `||delta|| <= trust_radius` (clamp present = True). Defaults: `trust_radius` 0.05, `lr` 0.01 (`configs/default.yaml`).
+  - Note 2026-11-20: until the objective-sign fix (cherry-pick of `59031bc`) this line read: One gradient step on `task_loss - self.lambda_asym * weighted_safety` (the saddle-point sign is intentional, per CLAUDE.md). The drift_spectrum results in this folder were run on that minus form.
+  - Note 2026-11-20: this note is kept in `inventory_notes.json` and written back by `inventory.py` on each regeneration.
 - [READING] Every step therefore moves theta by at most `trust_radius` in L2. In the
   delta-theta vocabulary of this test, the repo already produces exactly one per-step
   delta vector per step; it does not keep it (section 5).

@@ -15,6 +15,7 @@ inventory going stale. Stdlib only.
 from __future__ import annotations
 
 import ast
+import json
 import re
 import sys
 from pathlib import Path
@@ -172,6 +173,14 @@ def collect() -> dict:
 # ------------------------------------------------------------------ render
 
 
+def sidecar_notes(key):
+    """Dated notes kept in inventory_notes.json, re-emitted on every regeneration."""
+    path = HERE / "inventory_notes.json"
+    if not path.exists():
+        return []
+    return json.loads(path.read_text(encoding="utf-8")).get(key, [])
+
+
 def render(f: dict) -> str:
     L = []
     w = L.append
@@ -251,12 +260,21 @@ def render(f: dict) -> str:
     w("")
     w("## 3. What a repair DOES to theta")
     w("")
+    # Note 2026-11-20: the parenthesis used to read "(the saddle-point sign is intentional,
+    # per CLAUDE.md)" for every expression. It now depends on the sign read from the code.
+    sign_text = (
+        "(the saddle-point sign is intentional, per CLAUDE.md)"
+        if " - " in f["total_loss_expr"]
+        else "(penalty form; CLAUDE.md records the sign correction of 2026-11-20)"
+    )
     w(
-        f"- [MECHANICAL] One gradient step on `{f['total_loss_expr']}` (the saddle-point sign is intentional, "
-        "per CLAUDE.md), `delta = -lr * grad`, then an L2 clamp `||delta|| <= trust_radius` "
+        f"- [MECHANICAL] One gradient step on `{f['total_loss_expr']}` {sign_text}, "
+        "`delta = -lr * grad`, then an L2 clamp `||delta|| <= trust_radius` "
         f"(clamp present = {f['trust_clamp_present']}). Defaults: `trust_radius` {f['trust_radius_yaml']}, "
         f"`lr` {f['lr_yaml']} (`configs/default.yaml`)."
     )
+    for note in sidecar_notes("section3_after_mechanical"):
+        w(note)
     w("- [READING] Every step therefore moves theta by at most `trust_radius` in L2. In the")
     w("  delta-theta vocabulary of this test, the repo already produces exactly one per-step")
     w("  delta vector per step; it does not keep it (section 5).")
