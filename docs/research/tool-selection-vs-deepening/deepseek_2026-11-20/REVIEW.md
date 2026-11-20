@@ -92,3 +92,36 @@ Result: `passk unit check: PASS`, exit 0. The asserts are DeepSeek's, from the s
 relayed: Liu et al. 2025, arXiv 2410.21333 (ICML 2025). Recorded here only; the filed
 `NOURISHMENT.md` is not changed. The filer did not read the paper; identifier and venue are as
 relayed.
+
+## 6. `_v2` files (separate commit; originals not edited)
+
+`step1_recheck_v2.py` and `step1b_passk_from_dump_v2.py` sit beside the originals. Changes, by
+Claude Code at the owner's order, 2026-11-20:
+
+| # | change | file |
+|---|---|---|
+| 1 | `self_test()` calls `run(recs, {})` (R1) | step1_recheck_v2 |
+| 2 | the first record is chained back in front of the rest instead of replacing record 2 (R2); the loop is now `collect()` | step1b_v2 |
+| 3 | `"logprobs"` removed from `ENTROPY_FIELDS` and `"score"` from `CORRECT_FIELDS`; they are used only when pinned with `--map` | step1_recheck_v2 |
+| 4 | results and console output carry `records_seen`, `limit`, `limit_applied` (`limit_applied` is true only when a record was left unread) | both |
+| 5 | metric keys renamed: `shift_rate` → `marker_rate`, `entropy_gated_gain` → `spike_shift_assoc` | step1_recheck_v2 |
+| 6 | self-test is deterministic (exact counts: 200 with a marker, 130 correct; 1800 without, 990 correct) and asserts the planted accuracy effect `0.65 − 0.55 == 0.10`, the limit fields, and that `score` / `logprobs` are not auto-detected | step1_recheck_v2 |
+| 7 | `--self-test` added: 3 records, one problem, one model; asserts `n == 3, c == 3` (3 of 3), and `--limit 2` gives `records_seen == 2, limit_applied == true` | step1b_v2 |
+| 8 | `--map` added (the original names it in an error message but has no such option; needed once change 3 makes pinning the only route for those fields); imports from `step1_recheck_v2` | step1b_v2 |
+
+Changes 7 (as a CLI flag) and 8 go beyond the wording of the order; they are listed so they can
+be struck. `accuracy_given_shift` keeps its name; the order named two renames. `passk.py` has no
+`_v2`.
+
+Runs by the filer, 2026-11-20, Python 3.13.18:
+
+- `python3 step1_recheck_v2.py --self-test` → exit 0, `"self_test": "PASS"`,
+  `marker_rate 0.1`, `with_shift 0.65`, `without_shift 0.55`, `planted_effect 0.1`.
+- `python3 step1b_passk_from_dump_v2.py --self-test` → exit 0,
+  `{"self_test": "PASS", "counted": "3 of 3"}`.
+- The 3-record input from R2 through `step1b_passk_from_dump_v2.py` → `records seen = 3`,
+  `max samples/problem = 3`.
+
+These are synthetic runs of the `_v2` files. They do not change the slots in the filed
+`EXPERIMENT.md`, which stay verbatim; `harness_self_test` for the original stays VOID. Neither
+script has been run on the Princeton dump.
