@@ -146,4 +146,36 @@ is kept as written.
 
 Nothing run.
 
+## Addition 2026-11-20: checks, third entry (2D chunk geometry)
+
+Source: owner work order in chat, 2026-11-20. Nothing run.
+
+- 2D chunk geometry cross-check (PROPOSED, not run): lay each snapshot chunk as a square
+  (64 bits -> 8x8, 256 -> 16x16); store parity per row and per column.
+  - single bad bit -> located at the crossing of the bad row and column (detect + correct)
+  - two bad bits -> detected, not located
+  - blind spot: four errors at the corners of a rectangle cancel in every row and column ->
+    undetected (DERIVED)
+- Line operations (PROPOSED): shifts move a whole row / column / diagonal in one op (+/-1 row,
+  +/-side column, +/-side+/-1 diagonals), as chess bitboards do; candidate for shortening
+  per-line calculations. Masks needed at the edges (wraparound), as in bitboards.
+- Independent of the arithmetic path and the Gray check; NOT of the source bits.
+
+| slot | value | note |
+|---|---|---|
+| parity_located_count | VOID | |
+| parity_detected_unlocated_count | VOID | |
+| rectangle_miss_count | VOID | needs planted 4-corner errors |
+| line_op_speedup | VOID | |
+
+Notes (worked by hand for this file, 2026-11-20; nothing run):
+
+- Two bad bits, checked by hand: in one row, the row parity holds and two column parities fail;
+  in one column, the reverse; otherwise two rows and two columns fail, which fits two different
+  pairs of positions. Detected in each case, located in none. Agrees with the line above.
+- "+/-1 row, +/-side column" is read here for a row-major layout: a shift by 1 moves a bit along
+  its row, a shift by `side` moves it along its column. The order does not state the layout.
+- Not stated in the order, so not fixed here: an error in a stored parity bit itself, and where
+  the parity bits are kept.
+
 Observer slots: null.
