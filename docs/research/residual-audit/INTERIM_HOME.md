@@ -123,3 +123,33 @@ Notes, 2026-11-20 (second set):
 6. Dates: the report's erratum is dated 2026-11-20. `runs/exp1/EXP1.md` is still headed
    2026-11-20 while its 12 records are stamped `2026-11-19T1946Z`; that flag stands.
 
+
+## Addition, 2026-11-20: `residual-tower/` from zip `79085d17…190d`
+
+Owner-supplied 2026-11-20 (Kimi), zip sha256
+`79085d170c176d33000eada8e16fde9d8e1421048c7c07c0757df3c73630190d`, 13 members.
+
+- New: `residual-tower/` (3 files), filed byte-identical at `docs/research/residual-tower/`:
+
+  | file | sha256 |
+  |---|---|
+  | `README.md` | `e1535d223bc7a2047ab68cd5372c0c8cd77b9ae997daab25764060487d4218a8` |
+  | `demo_record.jsonl` | `42fe38804fa352d2217439c59fd0bf96983f2c555d66a2331e5ae11809ca6f50` |
+  | `residual_tower.py` | `94fcd1e8679a6f65375f4034b00cd8a88f93c0bd14a39128eb47f6e85ece92d9` |
+
+- The other 10 members (6 under `residual-audit/`, the report, 3 figures) are byte-identical to
+  the copies filed from zip `f56a94c5…5a97`. Nothing new was filed for them.
+- Status: PROPOSED, held under the 2026-11-11 feature freeze (owner-stated). Not wired into any
+  repository. Its own README says "Not yet reviewed by a second reader"; that line is kept as
+  delivered and predates the audit below.
+- Second-reader audit (chat Claude, 2026-11-20, relayed by the owner): selftest 22/22; `check`
+  0 diffs; the 355/113 trace and the edge band reproduced; division by a zero-valued tower is
+  VOID.
+- Open (same audit): the tie-breaking rule in `encode()` is unstated. A value exactly halfway
+  between two grid points goes to the lower one: 1/4 on the level-0 grid (step 1/2) takes the
+  code whose value is 0, not 1/2.
+- Rerun from the filed copy, 2026-11-20 (`python3 -I`, files re-hashed after: unchanged):
+  `selftest` n 22, fails 0; `check demo_record.jsonl` diffs 0, ok true; `encode_tower(355/113)`
+  codes [14, 13, 0, ESCAPE], residual 7/7232, value exact; `encode_tower(1/4)` codes
+  [8, ESCAPE, ESCAPE, ESCAPE], residual 1/4; `div` by a zero tower raises `TowerVoid`.
+  `demo` was not run (it writes a record file).
