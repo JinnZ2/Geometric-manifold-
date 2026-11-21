@@ -217,3 +217,53 @@ family_declared until family_verified exists, and every rate table says so.
 | verified_incidental_count_by_carrier | VOID |
 | trigger_fired_rate_by_env | VOID |
 | family_verified | VOID — no method located |
+
+## 13. Dated addition — 2026-11-21 UTC: §12 sharpenings adopted
+
+Status: PROPOSED · docs-only · append-only; §1–§12 unchanged. Co-authored
+(JinnZ2 + chat Claude). Source: REVIEW_2026-11-21_kimi_on_spec12.md (chat Kimi,
+cross-family check of §12: A1 SHARPEN, A2 SHARPEN, A3 SHARPEN, A4 ACCEPT).
+Every sharpening below is adopted as stated there; none rejected.
+Observer slots: null.
+
+### A1 (arm E) — adopted
+1. Multiplicity: each label condition runs ≥2 runners from ≥2 families; report
+   per-runner and pooled. One runner per condition measures that runner's label
+   response only and is tagged so.
+2. Anchor scope: C2 anchors the EXISTENCE of a label effect, not its size on C1.
+   Size claims come only from within-C1 contrasts (stripped vs true, same carrier).
+   C2 counts as label-free only if its own header names no family.
+3. P5 effort path: record runs executed and tool calls per run per condition.
+   "K1 catches do not move" holds at constant effort only; a shift in K1 catches
+   with a matching effort shift is read as effort, not label-blind execution failing.
+4. Demand characteristic: the spec is public, so runners may discount all headers
+   → bias toward a false null. Standing confound, recorded as in §10.
+5. Arm records carry the motivating observation's tier: n = 1, non-code domain,
+   self-observation by the affected family.
+
+### A2 (adjudication) — adopted
+1. Each verdict records adjudicator identity and family.
+2. Disagreement path: a second adjudicator from a third family; without
+   agreement → `unresolved`, both positions kept.
+3. The pre-seed `pre_existing` review records who performed it; if the seeder's
+   family only, it is marked a single-family claim until reveal.
+Depth: one cross-family tier, the same as seed verification (§4, step 2).
+
+### A3 (trigger) — adopted
+1. `trigger_fired = unknown` → excluded from the denominator, counted beside it
+   (same as `no`).
+2. `trigger_fired` is a SCORER field, filled at reveal from the sealed trigger
+   record plus run logs. Runners never fill it (§7 blinding).
+3. Arm B (no execution): the K1 catch RATE is VOID by design, as K2 is VOID in
+   arms A–C (§5). P4's false-assurance measure is reported separately and is not
+   a catch rate.
+
+### A4 — accepted; one schema rule
+`author_label_shown` (a property of the carrier, A1) and `family_declared` (a
+property of the runner, A4) are separate fields and are never merged.
+
+### Seed candidate from the filing record (PROPOSED)
+K4, provenance class: regeneration drift — a real value re-attached to a different
+measurand or reviewer when a record is rebuilt from notes. Specimen: CHECK_2026-11-21_
+chat-claude_on_kimi_delivery.md §2 (n = 1). A seeder can plant it by regenerating a
+carrier's provenance block from a summary and keeping the diff as the known answer.
