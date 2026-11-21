@@ -24,5 +24,6 @@ What it does not add: no real data was run; nothing here bears on the paper's
 numbers. Self-tests check the code against its own planted cases only.
 Matrix cells re-checked on these copies (static, OBSERVED): row 8 present
 (NOURISHMENT.md:57); row 11 unlabeled (EXPERIMENT.md:62); row 10 — `--limit`
-present, no records_seen/limit_applied fields; new — field detection uses a 0.8
+present in step1_recheck.py and step1b_passk_from_dump.py (absent from passk.py),
+no records_seen/limit_applied fields in any of the three; new — field detection uses a 0.8
 row fraction (step1_recheck.py:207, 230), chosen, unlabeled (row 11 class).
