@@ -1,0 +1,12 @@
+[
+  "EXPLORE_HARNESS_SPEC.md read in full at a440c12, including both dated additions of 2026-11-20, before the run",
+  "REVIEW2_REQUEST_harness_run.md and REVIEW2_REQUEST_test1_design.md read in full",
+  "GitHub compare patches d6d1eda..a440c12 for the three modified docs (spec additions; SNAPSHOT_DELTA Test 1 additions incl. its results tables; CHANNEL_SCOPE additions)",
+  "explore_harness.py --help and run --help output",
+  "sha256 of residual_tower.py (matches pin 94fcd1e8...), explore_harness.py, snapshot_delta_test1.py, computed locally",
+  "repo directory listings; repo obtained as a tarball of a440c12 via the GitHub API, not a git clone",
+  "Project history: earlier sessions of this project (Kimi family, same family as this runner) drafted the EXPLORE_HARNESS_SPEC text and the residual-tower prototype; this session has no text from those sessions in context beyond that fact",
+  "NOT read: expected/commitments.json contents; runs/records.jsonl contents; explore_harness.py source; residual_tower.py source; snapshot_delta_test1.py source; demo_record.jsonl contents",
+  "NOT read: branch claude/explore-harness @ 4d79e45 (never fetched)",
+  "NOT seen: the chat session that produced the F1-F6 amendment"
+]
