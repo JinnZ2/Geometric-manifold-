@@ -132,3 +132,88 @@ Not a leaderboard: the family axis measures *channels*, and a low rate in a clas
 a stance never claims is scope, not failure. Not a certification of any reviewer
 or artifact. Not code: the build (a small stdlib applier + runner-log schema,
 estimated well under 200 lines) needs its own order.
+
+## 12. Dated addition — 2026-11-21 UTC (2026-11-20 America/Chicago), chat Claude
+
+Status: PROPOSED · docs-only · append-only; §1–§11 unchanged. Co-authored
+(JinnZ2 + chat Claude). Reviewer standing for this addition: L1-with-exposure
+(Claude family; read DEVIATIONS and the review texts before writing).
+Observer slots: null.
+
+Sources: A1 — label-asymmetry observation, chat session of the same date.
+A2, A3 — GPT-6 review of Geometric-manifold- @ a440c12, findings D3 and D2.
+A4 — the Perplexity review's self-declared family, as recorded in Kimi's
+response record.
+
+### A1 — author-label arm (amends §5, §7)
+
+Observation, OBSERVED, n = 1 comparison, outside code review: in a two-country
+comparison table, the reviewer (chat Claude) attached 6 source/abuse caveats to
+one country and 1 to the other with names shown; with names hidden and the same
+evidence, the count was 4 and 4. The label moved the caveat count; the evidence
+did not. Transfer to code review: PROPOSED, not shown.
+
+Gap: §7 blinds seeds, seed ids and known answers, but every C1 carrier names its
+author family in its provenance header. If a reviewer's scrutiny scales with the
+author label, the effect lands in the family/channel columns and is read as
+channel.
+
+Arm E: the same carrier and seeds as arm C; the provenance header per run is one of
+`stripped` / `true` / `swapped:<other family>`. Record `author_label_shown`.
+Measures: catch and false-alarm rate per label condition, same seeds; the
+difference between conditions is the label effect. C2 (synthetic, no author) is
+the label-free anchor. Minimum run set: stripped vs true; swapped optional. [CHOICE]
+
+P5 (PROPOSED, refutable): false alarms rise under labels naming a family the
+reviewer treats as less reliable; K1 catches do not move (execution does not see
+the label). Refuted if the E conditions come out flat.
+
+### A2 — a non-seed finding is not automatically a false alarm (amends §6)
+
+C1 is pinned from real artifacts and carries wild defects. Example: matrix row 8
+(majority-vote capacity probe) is present in the Kimi-lineage copy of
+NOURISHMENT.md (sha256 b2d6ac8e22de4a25c95e6a3742d324eab3c17543cc0114c1fa3e59652fb98f3b),
+line 57; under §6 as written, a reviewer who catches it scores a false alarm.
+
+Every non-seed finding is adjudicated into one of:
+
+| outcome | rule |
+|---|---|
+| verified_incidental | real defect, not seeded; reproduced or mechanism-checked by an adjudicator of a family other than the reporter's |
+| false_alarm | adjudicated not a defect |
+| unresolved | adjudication incomplete; excluded from both rates, counted beside them |
+| out_of_scope | outside the carrier pin or the class list |
+
+Pre-seed step: C1 pins are reviewed for known wild defects before seeding; those
+found go into the sealed record as `pre_existing`, so catching them is
+pre-classified. false_alarm_rate = false_alarm / all non-seed findings, with
+unresolved reported beside it.
+
+### A3 — trigger verification (amends §4)
+
+§4, step 2 verifies the known answer by a second family; it does not verify that
+the seed's trigger fires in the runner's environment. A seed that never fires in a
+run is not a miss for that run.
+
+Known-answer record adds `trigger_verified_env` (environments where the trigger
+was observed to fire). Run record adds, per seed, `trigger_fired` ∈ {yes, no,
+not_applicable, unknown}; not_applicable = no-execution arm.
+Run denominator = verified seeds whose trigger fired, plus K3/K4 seeds in static
+arms. Seeds with trigger_fired = no are reported in their own column, not as misses.
+
+### A4 — declared vs verified family (amends §5)
+
+Runner identity is declared, not verified (parent spec). The Perplexity cell
+self-identified as Claude and was recorded on that declaration.
+Run record adds `family_declared` and `family_verified` (VOID at v1 — no
+verification method located). Dedupe and independence-level counting use
+family_declared until family_verified exists, and every rate table says so.
+
+### Slots added (VOID until run)
+
+| slot | value |
+|---|---|
+| label_effect_by_class_and_condition (catch, false alarm, with n) | VOID |
+| verified_incidental_count_by_carrier | VOID |
+| trigger_fired_rate_by_env | VOID |
+| family_verified | VOID — no method located |
