@@ -1,6 +1,6 @@
 # Hypothesis draft: safety drift, alignment repair and parameter-space monitoring
 
-_Regenerated 2026-11-19T14:46:50+00:00 by hypothesis_engine.py — do not hand-edit._
+_Regenerated 2026-11-23T16:38:05+00:00 by hypothesis_engine.py — do not hand-edit._
 
 ## Hypothesis statement
 
@@ -8,7 +8,7 @@ Across corroborated findings, the following claims survived staked testing (beta
 
 > On topic safety drift, alignment repair and parameter-space monitoring, PatternFormer: Learning Multiple Solution Patterns in Reaction--Diffusion Systems reports: Many nonlinear models across physics, chemistry, and biology exhibit multiple solutions for the same parameters, and capturing this entire solution set is essential for understanding pattern-forming systems.
 
-Status: **established** (69 surviving claims)
+Status: **established** (72 surviving claims)
 
 ## Supporting claims
 
@@ -77,6 +77,9 @@ Status: **established** (69 surviving claims)
 - (0.80) On topic safety drift, alignment repair and parameter-space monitoring, DnNP: Denoising Input Uncertainty in Neural Processes reports: Neural Processes (NPs) are flexible meta-learning models capable of uncertainty quantification across diverse applications. — [source](http://arxiv.org/abs/2611.14424v1)
 - (0.80) On topic safety drift, alignment repair and parameter-space monitoring, Evaluating LLM-Generated World Models for Neuro-Symbolic Reasoning reports: Formal world models can support planning, verification, and safety reasoning, but constructing them from open-ended natural-language situations is difficult, particularly in multi-agent settings where several formalizations may be plausible. — [source](http://arxiv.org/abs/2611.14419v1)
 - (0.80) On topic safety drift, alignment repair and parameter-space monitoring, Precision on Demand: Escalating Weight Bits at Uncertain Decoding Steps in a Small Local Model reports: Local decoding usually fixes one weight precision for the whole generation. — [source](http://arxiv.org/abs/2611.14418v1)
+- (0.75) On topic safety drift, alignment repair and parameter-space monitoring, Mapping the AI Supply Chain: Dependencies, Vulnerabilities, and Market Concentration in the AI Ecosystem reports: AI systems are built across many organizations that contribute models, data, compute, capital, talent, and other assets. — [source](http://arxiv.org/abs/2611.24927v1)
+- (0.75) On topic safety drift, alignment repair and parameter-space monitoring, Variance-Optimal Counterfactual Policy Design for Sample-Efficient Online A/B Testing reports: Online A/B testing is the standard approach for evaluating changes to user-facing systems, such as a new recommendation or ranking policy, before deployment. — [source](http://arxiv.org/abs/2611.24757v1)
+- (0.75) On topic safety drift, alignment repair and parameter-space monitoring, Non-penetrating World Models reports: We study a new problem of preventing object penetration in interactive video world models. — [source](http://arxiv.org/abs/2611.27963v1)
 - (0.71) On topic safety drift, alignment repair and parameter-space monitoring, Long-WAM: Scaling the Context of World-Action Models reports: Real-time robot control demands enough visual history to infer motion and task progress, but processing that history can delay action. — [source](http://arxiv.org/abs/2610.10528v1)
 - (0.67) On topic safety drift, alignment repair and parameter-space monitoring, DynaHarness: A Dynamic Physical Harness for Self-Evolving Robot Agents reports: Pretrained robot policies provide useful action priors, but long-horizon manipulation still requires coordination between semantic reasoning and physical execution. — [source](http://arxiv.org/abs/2609.40306v1)
 - (0.67) On topic safety drift, alignment repair and parameter-space monitoring, RECAST: Learning to Compute the Right Context through Adaptive Evidence Routing reports: Large language models are increasingly applied to tasks grounded in long, heterogeneous information sources. — [source](http://arxiv.org/abs/2610.10507v1)
