@@ -24,7 +24,32 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  # Offline gate before the network run, mirroring JinnZ2/simulation's
+  # hypothesis-engine.yml. Only the engine's own tests run here: the engine is
+  # stdlib-only, while the rest of tests/ needs torch and friends.
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Install pytest
+        run: pip install pytest
+
+      - name: Unit tests (engine)
+        run: python -m pytest tests/test_hypothesis_engine.py -q
+
+      - name: Offline smoke run
+        run: |
+          python scripts/hypothesis_engine.py --dry-run \
+            --data-dir "$RUNNER_TEMP/data" \
+            --hypotheses-dir "$RUNNER_TEMP/hypotheses"
+
   run-engine:
+    needs: test
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
