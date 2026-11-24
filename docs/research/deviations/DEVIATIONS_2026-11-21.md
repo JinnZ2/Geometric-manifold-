@@ -152,3 +152,26 @@ Notes:
   PRESENT", not REPRODUCED; confirmed 2 and 4 carry REPRODUCED.
 - The checks were run by a Claude session; the register's author is GPT.
   No rates; n = 6. Observer slots: null.
+
+## 7. Correction, 2026-11-24 UTC
+
+Appended; every line above is unchanged (first 11117 bytes sha256
+`16fe4bea9a25c57b3a75bc8f1aef37d6291967da9dfeedc990bee331b8c1ba1b`).
+
+Class added: "statement-present": the artifact contains the statement the
+reviewer points to; what the statement says was not checked.
+
+"Correction 2026-11-23: reproduced 2 (not 3); statement-present 1
+ (confirmed 3). Row totals: reproduced 2, statement-present 1,
+ inherited-from-artifact 1, differs 1, not checkable 1 = 6.
+ The '3' was an ordering error by chat Claude."
+
+The counts of the section 6 row, as corrected (reviewer, artifact, channel
+and volume cells are as in section 6):
+
+| confirmed items | reproduced | statement-present | inherited-from-artifact | differs | not checkable |
+|---|---|---|---|---|---|
+| 6 | 2 (confirmed 2, 4) | 1 (confirmed 3) | 1 (confirmed 1) | 1 (confirmed 6) | 1 (confirmed 5) |
+
+The correction text is the owner's order 336-F4, quoted. Co-authored, Kavik +
+Claude. License CC0-1.0. Observer slots: null.
