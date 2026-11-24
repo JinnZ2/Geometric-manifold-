@@ -124,3 +124,31 @@ D1–D9, P1–P4, F-a–F-d; filer runs); `REVIEW_2026-11-21_kimi.md` (reproduct
 every runnable REVIEW.md claim; the three-lineage comparison; D7/D9 owned);
 KM-delivered script docstrings (repairs R1–R7); the rows-API fetch of 2026-11-20
 (2 rows); `EXPLORE_HARNESS_SPEC.md` (the VOID slot this analysis feeds).
+
+## 6. Dated addition, 2026-11-24 UTC: one row from another review (append only)
+
+Nothing above this heading is changed; the first 9455 bytes are the file as
+received (sha256 01e805a7e757f5adc0edc0a63cba5c26eb18997596d930622be6dd515eb87f98).
+Added by the filing session (Claude Code) on the owner's order 336-F3,
+co-authored (JinnZ2 + Claude). This row is about a different artifact from
+rows 1-23 and does not use the DS / CC / KM columns.
+
+New class, added to this file's class list by this section:
+"inherited-from-artifact": "reviewer's claim matches an error already in the artifact's own text."
+
+| reviewer | artifact | confirmed items | reproduced | inherited-from-artifact | differs | not checkable | channel | volume |
+|---|---|---|---|---|---|---|---|---|
+| GPT | register 2026-11-23 (Simulators #336, `REGISTER_AS_RECEIVED.md` sha 33092afccd1f1081f087edd2cfdf3537375419cb8c82e6612c887a85802eea39) | 6 | 3 | 1 (confirmed 1: matches repo docstring, not code) | 1 | 1 | FETCH/HYGIENE | thin |
+
+Notes:
+- Source of every count: Simulators PR #336,
+  `audit/gpt_register_2026-11-23/REPRODUCTION.md`, sections C5, D1 and E3
+  (not merged at the time of writing).
+- differs 1 is confirmed 6 (`META-PROTOCOL.md` read in full, 673 lines; the
+  claimed rule is not in it). not checkable 1 is confirmed 5 (the register
+  names no path).
+- reproduced 3 is as ordered: confirmed 2, 3 and 4. In the source record
+  confirmed 3 carries the label "order RECORDED only; no-results STATEMENT
+  PRESENT", not REPRODUCED; confirmed 2 and 4 carry REPRODUCED.
+- The checks were run by a Claude session; the register's author is GPT.
+  No rates; n = 6. Observer slots: null.
