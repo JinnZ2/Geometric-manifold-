@@ -1,6 +1,6 @@
 # Hypothesis draft: Fisher information and thermodynamics of learning
 
-_Regenerated 2026-11-23T16:38:05+00:00 by hypothesis_engine.py — do not hand-edit._
+_Regenerated 2026-11-24T18:57:55+00:00 by hypothesis_engine.py — do not hand-edit._
 
 ## Hypothesis statement
 
@@ -8,7 +8,7 @@ Across corroborated findings, the following claims survived staked testing (beta
 
 > On topic Fisher information and thermodynamics of learning, Satellite Infrastructure Sharing: Orbit-Structured Stochastic Geometry Modeling and Connectivity Analysis in Heterogeneous Satellite Networks reports: This paper develops an analytical framework to evaluate the feasibility and performance of satellite infrastructure sharing among multiple low Earth orbit (LEO) satellite operators.
 
-Status: **established** (14 surviving claims)
+Status: **established** (15 surviving claims)
 
 ## Supporting claims
 
@@ -25,7 +25,8 @@ Status: **established** (14 surviving claims)
 - (0.80) On topic Fisher information and thermodynamics of learning, FisherMask: Enhancing Neural Network Labeling Efficiency in Image Classification Using Fisher Information reports: Deep learning (DL) models are popular across various domains due to their remarkable performance and efficiency. — [source](https://doi.org/10.1109/BigData62323.2024.10825241)
 - (0.80) On topic Fisher information and thermodynamics of learning, Information geometry of evolution of neural network parameters while training reports: Artificial neural networks (ANNs) are powerful tools capable of approximating any arbitrary mathematical function, but their interpretability remains limited, rendering them as black box models. — [source](https://doi.org/10.1016/j.neucom.2024.128007)
 - (0.80) On topic Fisher information and thermodynamics of learning, SATFRONT: Detecting Atmospheric Fronts with Satellite Data using Machine Learning reports: Atmospheric fronts are associated with much of the high-impact weather in the mid-latitudes, yet their identification and classification remain largely manual and subjective. — [source](http://arxiv.org/abs/2610.42111v1)
-- (0.75) On topic Fisher information and thermodynamics of learning, Comparative Analysis of Agent Evaluation Frameworks: Stability, Detection, and Discovery in Enterprise Analytics Agents reports: Deploying LLM-based analytics agents in enterprise settings requires evaluation frameworks that can reliably detect failures across complex, multi-tool workflows. — [source](http://arxiv.org/abs/2611.14493v1)
+- (0.80) On topic Fisher information and thermodynamics of learning, Comparative Analysis of Agent Evaluation Frameworks: Stability, Detection, and Discovery in Enterprise Analytics Agents reports: Deploying LLM-based analytics agents in enterprise settings requires evaluation frameworks that can reliably detect failures across complex, multi-tool workflows. — [source](http://arxiv.org/abs/2611.14493v1)
+- (0.75) On topic Fisher information and thermodynamics of learning, Optimal Linear Regression Without a Variance reports: We study high-probability linear regression in the infinite variance regime, wherecthe regression noise has only a finite conditional $α$-moment $ν$ for some unknown $α\in(1,2)$, and the covariates may only have finite moments up to a given order (e.g., 4th moment). — [source](http://arxiv.org/abs/2611.27983v1)
 
 ## Contradicted/refuted claims
 
