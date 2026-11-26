@@ -1,6 +1,6 @@
 # Hypothesis draft: hidden variable detection / causal discovery from residuals
 
-_Regenerated 2026-11-24T18:57:55+00:00 by hypothesis_engine.py — do not hand-edit._
+_Regenerated 2026-11-26T15:54:02+00:00 by hypothesis_engine.py — do not hand-edit._
 
 ## Hypothesis statement
 

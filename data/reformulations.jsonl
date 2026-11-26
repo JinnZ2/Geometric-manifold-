@@ -298,3 +298,17 @@
 {"id": "b5f88f4dcc2141f7ef0e4028", "count": 1, "condition": "narrower scope within loss-landscape geometry and basin stability (run 2026-11-24)", "at": "2026-11-24T18:57:55+00:00"}
 {"id": "5df3541d8907789fac9be27e", "count": 1, "condition": "narrower scope within loss-landscape geometry and basin stability (run 2026-11-24)", "at": "2026-11-24T18:57:55+00:00"}
 {"id": "1f6d3bdab80c5ad5d6be62e4", "count": 1, "condition": "narrower scope within safety drift, alignment repair and parameter-space monitoring (run 2026-11-24)", "at": "2026-11-24T18:57:55+00:00"}
+{"id": "2de5206106245cd119735a71", "count": 2, "condition": "narrower scope within loss-landscape geometry and basin stability (run 2026-11-26)", "at": "2026-11-26T15:54:02+00:00"}
+{"id": "5c9aeb81cdc79a6f61e36a03", "count": 2, "condition": "narrower scope within loss-landscape geometry and basin stability (run 2026-11-26)", "at": "2026-11-26T15:54:02+00:00"}
+{"id": "f3c2e09b47dd4be3dfc369aa", "count": 2, "condition": "narrower scope within loss-landscape geometry and basin stability (run 2026-11-26)", "at": "2026-11-26T15:54:02+00:00"}
+{"id": "d9222b4b1f80762364e8b81f", "count": 2, "condition": "narrower scope within loss-landscape geometry and basin stability (run 2026-11-26)", "at": "2026-11-26T15:54:02+00:00"}
+{"id": "eba194837bfebe5685091eee", "count": 2, "condition": "narrower scope within loss-landscape geometry and basin stability (run 2026-11-26)", "at": "2026-11-26T15:54:02+00:00"}
+{"id": "4937230118531678255b6705", "count": 3, "condition": "narrower scope within loss-landscape geometry and basin stability (run 2026-11-26)", "at": "2026-11-26T15:54:02+00:00"}
+{"id": "5b7a9663f1e0c30c7abb8da7", "count": 2, "condition": "narrower scope within safety drift, alignment repair and parameter-space monitoring (run 2026-11-26)", "at": "2026-11-26T15:54:02+00:00"}
+{"id": "056334c0273bc7afe04e1ecf", "count": 1, "condition": "narrower scope within safety drift, alignment repair and parameter-space monitoring (run 2026-11-26)", "at": "2026-11-26T15:54:02+00:00"}
+{"id": "5a4b8e4e629a224f4263f381", "count": 1, "condition": "narrower scope within safety drift, alignment repair and parameter-space monitoring (run 2026-11-26)", "at": "2026-11-26T15:54:02+00:00"}
+{"id": "f56ca256a93fd6fdb27c5daa", "count": 1, "condition": "narrower scope within safety drift, alignment repair and parameter-space monitoring (run 2026-11-26)", "at": "2026-11-26T15:54:02+00:00"}
+{"id": "945a0c51cb7aa9f084dc1607", "count": 1, "condition": "narrower scope within loss-landscape geometry and basin stability (run 2026-11-26)", "at": "2026-11-26T15:54:02+00:00"}
+{"id": "919d061d226369c0c7ddd836", "count": 1, "condition": "narrower scope within loss-landscape geometry and basin stability (run 2026-11-26)", "at": "2026-11-26T15:54:02+00:00"}
+{"id": "c3d8eb89dbc333279ba3b8f4", "count": 1, "condition": "narrower scope within loss-landscape geometry and basin stability (run 2026-11-26)", "at": "2026-11-26T15:54:02+00:00"}
+{"id": "1e3582edba7d9c14f366ec5c", "count": 1, "condition": "narrower scope within model collapse, variance suppression and recursive training (run 2026-11-26)", "at": "2026-11-26T15:54:02+00:00"}
