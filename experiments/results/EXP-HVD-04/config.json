@@ -1,0 +1,24 @@
+{
+  "name": "dark_constraint_q7_eqhvd04",
+  "written": "2026-11-27, before running; new config for EXP-HVD-04 (sims/dark_constraint/config.json untouched)",
+  "seeds": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+  "n_load_cases": [1, 2, 3, 4],
+  "dark_strength": [0.0, 0.01, 0.03, 0.1, 0.3, 1.0],
+  "kinds": {
+    "brace": "hidden spring on an antipodal pair, unit stiffness, rest length ref*(1+s) (the repo's dark brace)",
+    "tether": "hidden spring, unit stiffness, pulling vertex i toward V0[i] + s*u_i, u_i a fixed unit vector tangent to the sphere"
+  },
+  "locations": {
+    "brace": [[0, 1], [2, 3], [4, 5]],
+    "tether": [[0, [0, 1, 0]], [2, [0, 0, 1]], [4, [1, 0, 0]]]
+  },
+  "visible_residual_sd": 0.03,
+  "visible_residuals": "per seed, r_vis ~ N(0, 0.03^2) per visible edge (rng seed 5000 + seed); present in the observed truth in BOTH arms, so the strength-0 arm exercises the fit",
+  "relaxation": {"steps": 1500, "lr": 0.02, "jacobian_epsilon": 1e-4},
+  "load": {"magnitude": 0.05},
+  "prediction": {
+    "k1": "residual <= 3x floor at all strengths (absorbed)",
+    "k_ge_2": "Spearman rho(strength, residual) >= 0.5 and residual >= 3x floor at the largest strength",
+    "falsified_if": "K >= 2 residual flat in strength (rho < 0.5) once the null is non-degenerate"
+  }
+}

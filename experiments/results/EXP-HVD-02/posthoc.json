@@ -1,0 +1,48 @@
+{
+ "same_topic_at": {
+  "rhs": "abs_tokens + topic_tokens + pub_days + src_semantic_scholar + lane_none + same_topic_at + C(topic)",
+  "logit": {
+   "coef": -1.6211404205412445,
+   "se": 0.3126083450892433,
+   "ci95": [
+    -2.23384151818283,
+    -1.008439322899659
+   ],
+   "p": 2.1503023219162827e-07
+  },
+  "logit_converged": true,
+  "count_model": {
+   "coef": 0.004002742726054321,
+   "se": 0.0349508408182063,
+   "ci95": [
+    -0.06449964650702246,
+    0.0725051319591311
+   ],
+   "p": 0.9088216822278576
+  },
+  "count_fallback": "poisson (NB alpha ~ 0 or singular Hessian)"
+ },
+ "retr_days": {
+  "rhs": "abs_tokens + topic_tokens + pub_days + src_semantic_scholar + lane_none + retr_days + C(topic)",
+  "logit": {
+   "coef": -0.3769975572981548,
+   "se": 0.15701777566704272,
+   "ci95": [
+    -0.6847467425381482,
+    -0.06924837205816142
+   ],
+   "p": 0.01635094037778118
+  },
+  "logit_converged": true,
+  "count_model": {
+   "coef": 0.047638730390071625,
+   "se": 0.03148045722377102,
+   "ci95": [
+    -0.01406183198537335,
+    0.1093392927655166
+   ],
+   "p": 0.13020867909010445
+  },
+  "count_fallback": "poisson (NB alpha ~ 0 or singular Hessian)"
+ }
+}

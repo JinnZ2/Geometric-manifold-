@@ -1,0 +1,697 @@
+{
+ "experiment": "EXP-ENG-02",
+ "environment": {
+  "python": "3.14.8",
+  "platform": "Linux-6.1.155-x86_64-with-glibc2.43",
+  "cpu": "Intel(R) Xeon(R) Processor @ 2.90GHz",
+  "commit": "e814887bed510ef0d4bd67c54820399f0ad088d6",
+  "numpy": "2.5.5",
+  "scipy": "1.18.1",
+  "torch": "2.15.0+cpu"
+ },
+ "runs": {
+  "0": {
+   "cross_topic_map": {
+    "Fisher information and thermodynamics of learning": "hidden variable detection / causal discovery from residuals",
+    "hidden variable detection / causal discovery from residuals": "Fisher information and thermodynamics of learning",
+    "loss-landscape geometry and basin stability": "safety drift, alignment repair and parameter-space monitoring",
+    "model collapse, variance suppression and recursive training": "loss-landscape geometry and basin stability",
+    "safety drift, alignment repair and parameter-space monitoring": "model collapse, variance suppression and recursive training"
+   },
+   "C_cross_topic_null": {
+    "loss-landscape geometry and basin stability": {
+     "pos": 129,
+     "neg": 32,
+     "zero": 62221,
+     "pairs": 62382,
+     "claims": 281,
+     "claims_ge3_pass": 15
+    },
+    "Fisher information and thermodynamics of learning": {
+     "pos": 9,
+     "neg": 7,
+     "zero": 1446,
+     "pairs": 1462,
+     "claims": 43,
+     "claims_ge3_pass": 0
+    },
+    "safety drift, alignment repair and parameter-space monitoring": {
+     "pos": 55,
+     "neg": 5,
+     "zero": 8907,
+     "pairs": 8967,
+     "claims": 147,
+     "claims_ge3_pass": 4
+    },
+    "model collapse, variance suppression and recursive training": {
+     "pos": 60,
+     "neg": 35,
+     "zero": 18945,
+     "pairs": 19040,
+     "claims": 34,
+     "claims_ge3_pass": 8
+    },
+    "hidden variable detection / causal discovery from residuals": {
+     "pos": 0,
+     "neg": 1,
+     "zero": 1899,
+     "pairs": 1900,
+     "claims": 20,
+     "claims_ge3_pass": 0
+    }
+   }
+  },
+  "1": {
+   "cross_topic_map": {
+    "Fisher information and thermodynamics of learning": "loss-landscape geometry and basin stability",
+    "hidden variable detection / causal discovery from residuals": "model collapse, variance suppression and recursive training",
+    "loss-landscape geometry and basin stability": "safety drift, alignment repair and parameter-space monitoring",
+    "model collapse, variance suppression and recursive training": "Fisher information and thermodynamics of learning",
+    "safety drift, alignment repair and parameter-space monitoring": "hidden variable detection / causal discovery from residuals"
+   },
+   "C_cross_topic_null": {
+    "loss-landscape geometry and basin stability": {
+     "pos": 129,
+     "neg": 32,
+     "zero": 62221,
+     "pairs": 62382,
+     "claims": 281,
+     "claims_ge3_pass": 15
+    },
+    "Fisher information and thermodynamics of learning": {
+     "pos": 186,
+     "neg": 90,
+     "zero": 23804,
+     "pairs": 24080,
+     "claims": 43,
+     "claims_ge3_pass": 17
+    },
+    "safety drift, alignment repair and parameter-space monitoring": {
+     "pos": 16,
+     "neg": 7,
+     "zero": 4975,
+     "pairs": 4998,
+     "claims": 147,
+     "claims_ge3_pass": 0
+    },
+    "model collapse, variance suppression and recursive training": {
+     "pos": 2,
+     "neg": 2,
+     "zero": 3226,
+     "pairs": 3230,
+     "claims": 34,
+     "claims_ge3_pass": 0
+    },
+    "hidden variable detection / causal discovery from residuals": {
+     "pos": 5,
+     "neg": 1,
+     "zero": 1214,
+     "pairs": 1220,
+     "claims": 20,
+     "claims_ge3_pass": 0
+    }
+   }
+  },
+  "2": {
+   "cross_topic_map": {
+    "Fisher information and thermodynamics of learning": "model collapse, variance suppression and recursive training",
+    "hidden variable detection / causal discovery from residuals": "Fisher information and thermodynamics of learning",
+    "loss-landscape geometry and basin stability": "safety drift, alignment repair and parameter-space monitoring",
+    "model collapse, variance suppression and recursive training": "loss-landscape geometry and basin stability",
+    "safety drift, alignment repair and parameter-space monitoring": "hidden variable detection / causal discovery from residuals"
+   },
+   "C_cross_topic_null": {
+    "loss-landscape geometry and basin stability": {
+     "pos": 129,
+     "neg": 32,
+     "zero": 62221,
+     "pairs": 62382,
+     "claims": 281,
+     "claims_ge3_pass": 15
+    },
+    "Fisher information and thermodynamics of learning": {
+     "pos": 20,
+     "neg": 0,
+     "zero": 2603,
+     "pairs": 2623,
+     "claims": 43,
+     "claims_ge3_pass": 1
+    },
+    "safety drift, alignment repair and parameter-space monitoring": {
+     "pos": 16,
+     "neg": 7,
+     "zero": 4975,
+     "pairs": 4998,
+     "claims": 147,
+     "claims_ge3_pass": 0
+    },
+    "model collapse, variance suppression and recursive training": {
+     "pos": 60,
+     "neg": 35,
+     "zero": 18945,
+     "pairs": 19040,
+     "claims": 34,
+     "claims_ge3_pass": 8
+    },
+    "hidden variable detection / causal discovery from residuals": {
+     "pos": 0,
+     "neg": 1,
+     "zero": 1899,
+     "pairs": 1900,
+     "claims": 20,
+     "claims_ge3_pass": 0
+    }
+   }
+  },
+  "3": {
+   "cross_topic_map": {
+    "Fisher information and thermodynamics of learning": "hidden variable detection / causal discovery from residuals",
+    "hidden variable detection / causal discovery from residuals": "Fisher information and thermodynamics of learning",
+    "loss-landscape geometry and basin stability": "safety drift, alignment repair and parameter-space monitoring",
+    "model collapse, variance suppression and recursive training": "loss-landscape geometry and basin stability",
+    "safety drift, alignment repair and parameter-space monitoring": "model collapse, variance suppression and recursive training"
+   },
+   "C_cross_topic_null": {
+    "loss-landscape geometry and basin stability": {
+     "pos": 129,
+     "neg": 32,
+     "zero": 62221,
+     "pairs": 62382,
+     "claims": 281,
+     "claims_ge3_pass": 15
+    },
+    "Fisher information and thermodynamics of learning": {
+     "pos": 9,
+     "neg": 7,
+     "zero": 1446,
+     "pairs": 1462,
+     "claims": 43,
+     "claims_ge3_pass": 0
+    },
+    "safety drift, alignment repair and parameter-space monitoring": {
+     "pos": 55,
+     "neg": 5,
+     "zero": 8907,
+     "pairs": 8967,
+     "claims": 147,
+     "claims_ge3_pass": 4
+    },
+    "model collapse, variance suppression and recursive training": {
+     "pos": 60,
+     "neg": 35,
+     "zero": 18945,
+     "pairs": 19040,
+     "claims": 34,
+     "claims_ge3_pass": 8
+    },
+    "hidden variable detection / causal discovery from residuals": {
+     "pos": 0,
+     "neg": 1,
+     "zero": 1899,
+     "pairs": 1900,
+     "claims": 20,
+     "claims_ge3_pass": 0
+    }
+   }
+  },
+  "4": {
+   "cross_topic_map": {
+    "Fisher information and thermodynamics of learning": "model collapse, variance suppression and recursive training",
+    "hidden variable detection / causal discovery from residuals": "safety drift, alignment repair and parameter-space monitoring",
+    "loss-landscape geometry and basin stability": "Fisher information and thermodynamics of learning",
+    "model collapse, variance suppression and recursive training": "loss-landscape geometry and basin stability",
+    "safety drift, alignment repair and parameter-space monitoring": "hidden variable detection / causal discovery from residuals"
+   },
+   "C_cross_topic_null": {
+    "loss-landscape geometry and basin stability": {
+     "pos": 25,
+     "neg": 8,
+     "zero": 26662,
+     "pairs": 26695,
+     "claims": 281,
+     "claims_ge3_pass": 0
+    },
+    "Fisher information and thermodynamics of learning": {
+     "pos": 20,
+     "neg": 0,
+     "zero": 2603,
+     "pairs": 2623,
+     "claims": 43,
+     "claims_ge3_pass": 1
+    },
+    "safety drift, alignment repair and parameter-space monitoring": {
+     "pos": 16,
+     "neg": 7,
+     "zero": 4975,
+     "pairs": 4998,
+     "claims": 147,
+     "claims_ge3_pass": 0
+    },
+    "model collapse, variance suppression and recursive training": {
+     "pos": 60,
+     "neg": 35,
+     "zero": 18945,
+     "pairs": 19040,
+     "claims": 34,
+     "claims_ge3_pass": 8
+    },
+    "hidden variable detection / causal discovery from residuals": {
+     "pos": 10,
+     "neg": 4,
+     "zero": 4426,
+     "pairs": 4440,
+     "claims": 20,
+     "claims_ge3_pass": 1
+    }
+   }
+  },
+  "5": {
+   "cross_topic_map": {
+    "Fisher information and thermodynamics of learning": "loss-landscape geometry and basin stability",
+    "hidden variable detection / causal discovery from residuals": "model collapse, variance suppression and recursive training",
+    "loss-landscape geometry and basin stability": "safety drift, alignment repair and parameter-space monitoring",
+    "model collapse, variance suppression and recursive training": "hidden variable detection / causal discovery from residuals",
+    "safety drift, alignment repair and parameter-space monitoring": "Fisher information and thermodynamics of learning"
+   },
+   "C_cross_topic_null": {
+    "loss-landscape geometry and basin stability": {
+     "pos": 129,
+     "neg": 32,
+     "zero": 62221,
+     "pairs": 62382,
+     "claims": 281,
+     "claims_ge3_pass": 15
+    },
+    "Fisher information and thermodynamics of learning": {
+     "pos": 186,
+     "neg": 90,
+     "zero": 23804,
+     "pairs": 24080,
+     "claims": 43,
+     "claims_ge3_pass": 17
+    },
+    "safety drift, alignment repair and parameter-space monitoring": {
+     "pos": 13,
+     "neg": 5,
+     "zero": 13947,
+     "pairs": 13965,
+     "claims": 147,
+     "claims_ge3_pass": 0
+    },
+    "model collapse, variance suppression and recursive training": {
+     "pos": 8,
+     "neg": 0,
+     "zero": 1148,
+     "pairs": 1156,
+     "claims": 34,
+     "claims_ge3_pass": 1
+    },
+    "hidden variable detection / causal discovery from residuals": {
+     "pos": 5,
+     "neg": 1,
+     "zero": 1214,
+     "pairs": 1220,
+     "claims": 20,
+     "claims_ge3_pass": 0
+    }
+   }
+  },
+  "6": {
+   "cross_topic_map": {
+    "Fisher information and thermodynamics of learning": "safety drift, alignment repair and parameter-space monitoring",
+    "hidden variable detection / causal discovery from residuals": "model collapse, variance suppression and recursive training",
+    "loss-landscape geometry and basin stability": "hidden variable detection / causal discovery from residuals",
+    "model collapse, variance suppression and recursive training": "loss-landscape geometry and basin stability",
+    "safety drift, alignment repair and parameter-space monitoring": "Fisher information and thermodynamics of learning"
+   },
+   "C_cross_topic_null": {
+    "loss-landscape geometry and basin stability": {
+     "pos": 8,
+     "neg": 1,
+     "zero": 9545,
+     "pairs": 9554,
+     "claims": 281,
+     "claims_ge3_pass": 0
+    },
+    "Fisher information and thermodynamics of learning": {
+     "pos": 69,
+     "neg": 30,
+     "zero": 9447,
+     "pairs": 9546,
+     "claims": 43,
+     "claims_ge3_pass": 10
+    },
+    "safety drift, alignment repair and parameter-space monitoring": {
+     "pos": 13,
+     "neg": 5,
+     "zero": 13947,
+     "pairs": 13965,
+     "claims": 147,
+     "claims_ge3_pass": 0
+    },
+    "model collapse, variance suppression and recursive training": {
+     "pos": 60,
+     "neg": 35,
+     "zero": 18945,
+     "pairs": 19040,
+     "claims": 34,
+     "claims_ge3_pass": 8
+    },
+    "hidden variable detection / causal discovery from residuals": {
+     "pos": 5,
+     "neg": 1,
+     "zero": 1214,
+     "pairs": 1220,
+     "claims": 20,
+     "claims_ge3_pass": 0
+    }
+   }
+  },
+  "7": {
+   "cross_topic_map": {
+    "Fisher information and thermodynamics of learning": "safety drift, alignment repair and parameter-space monitoring",
+    "hidden variable detection / causal discovery from residuals": "Fisher information and thermodynamics of learning",
+    "loss-landscape geometry and basin stability": "model collapse, variance suppression and recursive training",
+    "model collapse, variance suppression and recursive training": "hidden variable detection / causal discovery from residuals",
+    "safety drift, alignment repair and parameter-space monitoring": "loss-landscape geometry and basin stability"
+   },
+   "C_cross_topic_null": {
+    "loss-landscape geometry and basin stability": {
+     "pos": 68,
+     "neg": 16,
+     "zero": 17057,
+     "pairs": 17141,
+     "claims": 281,
+     "claims_ge3_pass": 1
+    },
+    "Fisher information and thermodynamics of learning": {
+     "pos": 69,
+     "neg": 30,
+     "zero": 9447,
+     "pairs": 9546,
+     "claims": 43,
+     "claims_ge3_pass": 10
+    },
+    "safety drift, alignment repair and parameter-space monitoring": {
+     "pos": 312,
+     "neg": 122,
+     "zero": 81886,
+     "pairs": 82320,
+     "claims": 147,
+     "claims_ge3_pass": 43
+    },
+    "model collapse, variance suppression and recursive training": {
+     "pos": 8,
+     "neg": 0,
+     "zero": 1148,
+     "pairs": 1156,
+     "claims": 34,
+     "claims_ge3_pass": 1
+    },
+    "hidden variable detection / causal discovery from residuals": {
+     "pos": 0,
+     "neg": 1,
+     "zero": 1899,
+     "pairs": 1900,
+     "claims": 20,
+     "claims_ge3_pass": 0
+    }
+   }
+  },
+  "8": {
+   "cross_topic_map": {
+    "Fisher information and thermodynamics of learning": "model collapse, variance suppression and recursive training",
+    "hidden variable detection / causal discovery from residuals": "Fisher information and thermodynamics of learning",
+    "loss-landscape geometry and basin stability": "safety drift, alignment repair and parameter-space monitoring",
+    "model collapse, variance suppression and recursive training": "loss-landscape geometry and basin stability",
+    "safety drift, alignment repair and parameter-space monitoring": "hidden variable detection / causal discovery from residuals"
+   },
+   "C_cross_topic_null": {
+    "loss-landscape geometry and basin stability": {
+     "pos": 129,
+     "neg": 32,
+     "zero": 62221,
+     "pairs": 62382,
+     "claims": 281,
+     "claims_ge3_pass": 15
+    },
+    "Fisher information and thermodynamics of learning": {
+     "pos": 20,
+     "neg": 0,
+     "zero": 2603,
+     "pairs": 2623,
+     "claims": 43,
+     "claims_ge3_pass": 1
+    },
+    "safety drift, alignment repair and parameter-space monitoring": {
+     "pos": 16,
+     "neg": 7,
+     "zero": 4975,
+     "pairs": 4998,
+     "claims": 147,
+     "claims_ge3_pass": 0
+    },
+    "model collapse, variance suppression and recursive training": {
+     "pos": 60,
+     "neg": 35,
+     "zero": 18945,
+     "pairs": 19040,
+     "claims": 34,
+     "claims_ge3_pass": 8
+    },
+    "hidden variable detection / causal discovery from residuals": {
+     "pos": 0,
+     "neg": 1,
+     "zero": 1899,
+     "pairs": 1900,
+     "claims": 20,
+     "claims_ge3_pass": 0
+    }
+   }
+  },
+  "9": {
+   "cross_topic_map": {
+    "Fisher information and thermodynamics of learning": "safety drift, alignment repair and parameter-space monitoring",
+    "hidden variable detection / causal discovery from residuals": "Fisher information and thermodynamics of learning",
+    "loss-landscape geometry and basin stability": "hidden variable detection / causal discovery from residuals",
+    "model collapse, variance suppression and recursive training": "loss-landscape geometry and basin stability",
+    "safety drift, alignment repair and parameter-space monitoring": "model collapse, variance suppression and recursive training"
+   },
+   "C_cross_topic_null": {
+    "loss-landscape geometry and basin stability": {
+     "pos": 8,
+     "neg": 1,
+     "zero": 9545,
+     "pairs": 9554,
+     "claims": 281,
+     "claims_ge3_pass": 0
+    },
+    "Fisher information and thermodynamics of learning": {
+     "pos": 69,
+     "neg": 30,
+     "zero": 9447,
+     "pairs": 9546,
+     "claims": 43,
+     "claims_ge3_pass": 10
+    },
+    "safety drift, alignment repair and parameter-space monitoring": {
+     "pos": 55,
+     "neg": 5,
+     "zero": 8907,
+     "pairs": 8967,
+     "claims": 147,
+     "claims_ge3_pass": 4
+    },
+    "model collapse, variance suppression and recursive training": {
+     "pos": 60,
+     "neg": 35,
+     "zero": 18945,
+     "pairs": 19040,
+     "claims": 34,
+     "claims_ge3_pass": 8
+    },
+    "hidden variable detection / causal discovery from residuals": {
+     "pos": 0,
+     "neg": 1,
+     "zero": 1899,
+     "pairs": 1900,
+     "claims": 20,
+     "claims_ge3_pass": 0
+    }
+   }
+  }
+ },
+ "deterministic_conditions": {
+  "A_as_is": {
+   "loss-landscape geometry and basin stability": {
+    "pos": 773,
+    "neg": 127,
+    "zero": 156179,
+    "pairs": 157079,
+    "claims": 281,
+    "claims_ge3_pass": 113
+   },
+   "Fisher information and thermodynamics of learning": {
+    "pos": 36,
+    "neg": 1,
+    "zero": 4005,
+    "pairs": 4042,
+    "claims": 43,
+    "claims_ge3_pass": 4
+   },
+   "safety drift, alignment repair and parameter-space monitoring": {
+    "pos": 272,
+    "neg": 26,
+    "zero": 32189,
+    "pairs": 32487,
+    "claims": 147,
+    "claims_ge3_pass": 36
+   },
+   "model collapse, variance suppression and recursive training": {
+    "pos": 187,
+    "neg": 63,
+    "zero": 1790,
+    "pairs": 2040,
+    "claims": 34,
+    "claims_ge3_pass": 34
+   },
+   "hidden variable detection / causal discovery from residuals": {
+    "pos": 5,
+    "neg": 0,
+    "zero": 655,
+    "pairs": 660,
+    "claims": 20,
+    "claims_ge3_pass": 0
+   }
+  },
+  "A1_as_is_primary_lane": {
+   "loss-landscape geometry and basin stability": {
+    "pos": 655,
+    "neg": 98,
+    "zero": 91696,
+    "pairs": 92449,
+    "claims": 281,
+    "claims_ge3_pass": 92
+   },
+   "Fisher information and thermodynamics of learning": {
+    "pos": 26,
+    "neg": 1,
+    "zero": 1908,
+    "pairs": 1935,
+    "claims": 43,
+    "claims_ge3_pass": 2
+   },
+   "safety drift, alignment repair and parameter-space monitoring": {
+    "pos": 251,
+    "neg": 24,
+    "zero": 21628,
+    "pairs": 21903,
+    "claims": 147,
+    "claims_ge3_pass": 34
+   },
+   "model collapse, variance suppression and recursive training": {
+    "pos": 187,
+    "neg": 63,
+    "zero": 1518,
+    "pairs": 1768,
+    "claims": 34,
+    "claims_ge3_pass": 34
+   },
+   "hidden variable detection / causal discovery from residuals": {
+    "pos": 5,
+    "neg": 0,
+    "zero": 415,
+    "pairs": 420,
+    "claims": 20,
+    "claims_ge3_pass": 0
+   }
+  },
+  "B_no_prefix": {
+   "loss-landscape geometry and basin stability": {
+    "pos": 1703,
+    "neg": 634,
+    "zero": 154742,
+    "pairs": 157079,
+    "claims": 281,
+    "claims_ge3_pass": 156
+   },
+   "Fisher information and thermodynamics of learning": {
+    "pos": 62,
+    "neg": 6,
+    "zero": 3974,
+    "pairs": 4042,
+    "claims": 43,
+    "claims_ge3_pass": 7
+   },
+   "safety drift, alignment repair and parameter-space monitoring": {
+    "pos": 625,
+    "neg": 182,
+    "zero": 31680,
+    "pairs": 32487,
+    "claims": 147,
+    "claims_ge3_pass": 62
+   },
+   "model collapse, variance suppression and recursive training": {
+    "pos": 152,
+    "neg": 73,
+    "zero": 1815,
+    "pairs": 2040,
+    "claims": 34,
+    "claims_ge3_pass": 26
+   },
+   "hidden variable detection / causal discovery from residuals": {
+    "pos": 12,
+    "neg": 2,
+    "zero": 646,
+    "pairs": 660,
+    "claims": 20,
+    "claims_ge3_pass": 1
+   }
+  },
+  "D_prefix_only": {
+   "loss-landscape geometry and basin stability": {
+    "pos": 3924,
+    "neg": 1684,
+    "zero": 151471,
+    "pairs": 157079,
+    "claims": 281,
+    "claims_ge3_pass": 281
+   },
+   "Fisher information and thermodynamics of learning": {
+    "pos": 508,
+    "neg": 42,
+    "zero": 3492,
+    "pairs": 4042,
+    "claims": 43,
+    "claims_ge3_pass": 43
+   },
+   "safety drift, alignment repair and parameter-space monitoring": {
+    "pos": 3651,
+    "neg": 585,
+    "zero": 28251,
+    "pairs": 32487,
+    "claims": 147,
+    "claims_ge3_pass": 147
+   },
+   "model collapse, variance suppression and recursive training": {
+    "pos": 600,
+    "neg": 403,
+    "zero": 1037,
+    "pairs": 2040,
+    "claims": 34,
+    "claims_ge3_pass": 34
+   },
+   "hidden variable detection / causal discovery from residuals": {
+    "pos": 39,
+    "neg": 78,
+    "zero": 543,
+    "pairs": 660,
+    "claims": 20,
+    "claims_ge3_pass": 0
+   }
+  }
+ },
+ "n_claims": 525,
+ "n_findings": 972,
+ "runtime_seconds": 1400.1182495079993
+}

@@ -1,0 +1,194 @@
+[
+ {
+  "kind": "brace",
+  "loc": 0,
+  "k": 1,
+  "rho_s_gt_0": 0.5576153996919287,
+  "median_ratio_s0.1_over_s0.01": 0.9414504889053049,
+  "median_ratio_s1_over_s0.01": 4.655308769289516
+ },
+ {
+  "kind": "brace",
+  "loc": 0,
+  "k": 2,
+  "rho_s_gt_0": 0.6781544052492349,
+  "median_ratio_s0.1_over_s0.01": 1.0168160740995522,
+  "median_ratio_s1_over_s0.01": 4.3684199460810085
+ },
+ {
+  "kind": "brace",
+  "loc": 0,
+  "k": 3,
+  "rho_s_gt_0": 0.5252756664936271,
+  "median_ratio_s0.1_over_s0.01": 0.961978546385021,
+  "median_ratio_s1_over_s0.01": 3.114497443454245
+ },
+ {
+  "kind": "brace",
+  "loc": 0,
+  "k": 4,
+  "rho_s_gt_0": 0.5125357715973263,
+  "median_ratio_s0.1_over_s0.01": 0.9660545289390101,
+  "median_ratio_s1_over_s0.01": 2.869546592322474
+ },
+ {
+  "kind": "brace",
+  "loc": 1,
+  "k": 1,
+  "rho_s_gt_0": 0.5076358120218262,
+  "median_ratio_s0.1_over_s0.01": 1.1669319426859985,
+  "median_ratio_s1_over_s0.01": 4.9605242800994676
+ },
+ {
+  "kind": "brace",
+  "loc": 1,
+  "k": 2,
+  "rho_s_gt_0": 0.7457738473911385,
+  "median_ratio_s0.1_over_s0.01": 1.3527733979607999,
+  "median_ratio_s1_over_s0.01": 8.073216359274022
+ },
+ {
+  "kind": "brace",
+  "loc": 1,
+  "k": 3,
+  "rho_s_gt_0": 0.6899143082304355,
+  "median_ratio_s0.1_over_s0.01": 0.9799804262284201,
+  "median_ratio_s1_over_s0.01": 5.006874101697057
+ },
+ {
+  "kind": "brace",
+  "loc": 1,
+  "k": 4,
+  "rho_s_gt_0": 0.6438546882207331,
+  "median_ratio_s0.1_over_s0.01": 0.9436756876366036,
+  "median_ratio_s1_over_s0.01": 3.9992035834892516
+ },
+ {
+  "kind": "brace",
+  "loc": 2,
+  "k": 1,
+  "rho_s_gt_0": 0.6095549711922315,
+  "median_ratio_s0.1_over_s0.01": 1.1441388061789743,
+  "median_ratio_s1_over_s0.01": 3.46251929756583
+ },
+ {
+  "kind": "brace",
+  "loc": 2,
+  "k": 2,
+  "rho_s_gt_0": 0.7134341141928366,
+  "median_ratio_s0.1_over_s0.01": 1.0153228249837243,
+  "median_ratio_s1_over_s0.01": 4.066577243875993
+ },
+ {
+  "kind": "brace",
+  "loc": 2,
+  "k": 3,
+  "rho_s_gt_0": 0.5086158039369262,
+  "median_ratio_s0.1_over_s0.01": 0.925383644201042,
+  "median_ratio_s1_over_s0.01": 2.780352068486252
+ },
+ {
+  "kind": "brace",
+  "loc": 2,
+  "k": 4,
+  "rho_s_gt_0": 0.5350755856446275,
+  "median_ratio_s0.1_over_s0.01": 0.9206081887711206,
+  "median_ratio_s1_over_s0.01": 3.006254816266762
+ },
+ {
+  "kind": "tether",
+  "loc": 0,
+  "k": 1,
+  "rho_s_gt_0": 0.008819927235900455,
+  "median_ratio_s0.1_over_s0.01": 1.0001936700586143,
+  "median_ratio_s1_over_s0.01": 0.9915292882122577
+ },
+ {
+  "kind": "tether",
+  "loc": 0,
+  "k": 2,
+  "rho_s_gt_0": 0.3939567498702203,
+  "median_ratio_s0.1_over_s0.01": 1.065855281888948,
+  "median_ratio_s1_over_s0.01": 1.5280723241273169
+ },
+ {
+  "kind": "tether",
+  "loc": 0,
+  "k": 3,
+  "rho_s_gt_0": 0.33613722687931735,
+  "median_ratio_s0.1_over_s0.01": 1.025478200878236,
+  "median_ratio_s1_over_s0.01": 1.3297318592409897
+ },
+ {
+  "kind": "tether",
+  "loc": 0,
+  "k": 4,
+  "rho_s_gt_0": 0.39003678220982013,
+  "median_ratio_s0.1_over_s0.01": 1.0028261035030566,
+  "median_ratio_s1_over_s0.01": 1.2300097739589417
+ },
+ {
+  "kind": "tether",
+  "loc": 1,
+  "k": 1,
+  "rho_s_gt_0": -0.038219684688901974,
+  "median_ratio_s0.1_over_s0.01": 1.0036938396745525,
+  "median_ratio_s1_over_s0.01": 1.045330357780161
+ },
+ {
+  "kind": "tether",
+  "loc": 1,
+  "k": 2,
+  "rho_s_gt_0": 0.3086974532565159,
+  "median_ratio_s0.1_over_s0.01": 0.9264177887578445,
+  "median_ratio_s1_over_s0.01": 1.3978630170591018
+ },
+ {
+  "kind": "tether",
+  "loc": 1,
+  "k": 3,
+  "rho_s_gt_0": 0.28713763112431484,
+  "median_ratio_s0.1_over_s0.01": 0.9913939139741618,
+  "median_ratio_s1_over_s0.01": 1.5441965442986396
+ },
+ {
+  "kind": "tether",
+  "loc": 1,
+  "k": 4,
+  "rho_s_gt_0": 0.38121685497391966,
+  "median_ratio_s0.1_over_s0.01": 1.0041795062928582,
+  "median_ratio_s1_over_s0.01": 1.4749103379041004
+ },
+ {
+  "kind": "tether",
+  "loc": 2,
+  "k": 1,
+  "rho_s_gt_0": -0.0019599838302001007,
+  "median_ratio_s0.1_over_s0.01": 1.0004067910801342,
+  "median_ratio_s1_over_s0.01": 1.0099203099348426
+ },
+ {
+  "kind": "tether",
+  "loc": 2,
+  "k": 2,
+  "rho_s_gt_0": 0.3802368630588196,
+  "median_ratio_s0.1_over_s0.01": 1.0338978135643178,
+  "median_ratio_s1_over_s0.01": 1.6453461351111551
+ },
+ {
+  "kind": "tether",
+  "loc": 2,
+  "k": 3,
+  "rho_s_gt_0": 0.5154757473426266,
+  "median_ratio_s0.1_over_s0.01": 1.0312138152564736,
+  "median_ratio_s1_over_s0.01": 1.4768453550279501
+ },
+ {
+  "kind": "tether",
+  "loc": 2,
+  "k": 4,
+  "rho_s_gt_0": 0.5340955937295275,
+  "median_ratio_s0.1_over_s0.01": 1.0299391271870992,
+  "median_ratio_s1_over_s0.01": 1.6911812655585807
+ }
+]
