@@ -9,3 +9,6 @@ results/
 # (docs/research/HARNESS.md sections 1 and 3: metrics.json + summary.md +
 # ledger_entry.jsonl are the committed evidence for a run's verdict).
 !sims/*/results/
+# ...and experiment results, which are the committed record for experiments/*.md
+# designs (added 2026-11-27; previously these needed git add -f).
+!experiments/results/
