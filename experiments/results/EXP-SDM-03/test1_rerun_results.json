@@ -1,0 +1,851 @@
+{
+  "step": "snapshot_delta_test1",
+  "status": "ran",
+  "test1_pass": true,
+  "python": "3.14.8",
+  "seed": 20261120,
+  "choices": {
+    "note": "not stated in SNAPSHOT_DELTA_EXPERIMENT.md; fixed by the builder",
+    "snapshots": "lists of unsigned 64-bit words, exact integer arithmetic",
+    "computations": [
+      "sum",
+      "dot with a fixed 64-bit weight vector",
+      "matrix (8 x 20000) times vector"
+    ],
+    "entries": 200000,
+    "changed": [
+      1,
+      100,
+      10000,
+      100000,
+      200000
+    ],
+    "matvec_shape": [
+      8,
+      20000
+    ],
+    "matvec_changed": [
+      1,
+      100,
+      20000
+    ],
+    "cost": "operation counts (deterministic) and wall time, median of 5 repeats (this machine, this run)",
+    "bit_identical": "equal canonical bytes of the exact integer results",
+    "parity_layout": "8 x 8 row-major, bit index = row * 8 + col, bit 0 least significant",
+    "second_check": "arithmetic difference against the known-good chunk"
+  },
+  "independence": "Independence L1 (Claude Code, fresh session). Test design choices are judgment; REVIEW-2 of the design pending.",
+  "self_test": {
+    "self_test": "PASS",
+    "planted_cases": 34,
+    "planted_cases_failed": [],
+    "planted_wrong_cases": 8,
+    "planted_wrong_reported_failing": 8,
+    "planted_wrong_not_caught": []
+  },
+  "deterministic": {
+    "linear": {
+      "sum": [
+        {
+          "entries": 200000,
+          "changed": 1,
+          "bit_identical": true,
+          "ops_unit": "additions",
+          "ops_full": 200000,
+          "ops_incremental": 1,
+          "ops_diff_scan_compares": 200000,
+          "speedup_ops_excluding_scan": 200000.0,
+          "speedup_ops_including_scan": 1.0
+        },
+        {
+          "entries": 200000,
+          "changed": 100,
+          "bit_identical": true,
+          "ops_unit": "additions",
+          "ops_full": 200000,
+          "ops_incremental": 100,
+          "ops_diff_scan_compares": 200000,
+          "speedup_ops_excluding_scan": 2000.0,
+          "speedup_ops_including_scan": 0.9995
+        },
+        {
+          "entries": 200000,
+          "changed": 10000,
+          "bit_identical": true,
+          "ops_unit": "additions",
+          "ops_full": 200000,
+          "ops_incremental": 10000,
+          "ops_diff_scan_compares": 200000,
+          "speedup_ops_excluding_scan": 20.0,
+          "speedup_ops_including_scan": 0.9524
+        },
+        {
+          "entries": 200000,
+          "changed": 100000,
+          "bit_identical": true,
+          "ops_unit": "additions",
+          "ops_full": 200000,
+          "ops_incremental": 100000,
+          "ops_diff_scan_compares": 200000,
+          "speedup_ops_excluding_scan": 2.0,
+          "speedup_ops_including_scan": 0.6667
+        },
+        {
+          "entries": 200000,
+          "changed": 200000,
+          "bit_identical": true,
+          "ops_unit": "additions",
+          "ops_full": 200000,
+          "ops_incremental": 200000,
+          "ops_diff_scan_compares": 200000,
+          "speedup_ops_excluding_scan": 1.0,
+          "speedup_ops_including_scan": 0.5
+        }
+      ],
+      "dot": [
+        {
+          "entries": 200000,
+          "changed": 1,
+          "bit_identical": true,
+          "ops_unit": "multiply-adds",
+          "ops_full": 200000,
+          "ops_incremental": 1,
+          "ops_diff_scan_compares": 200000,
+          "speedup_ops_excluding_scan": 200000.0,
+          "speedup_ops_including_scan": 1.0
+        },
+        {
+          "entries": 200000,
+          "changed": 100,
+          "bit_identical": true,
+          "ops_unit": "multiply-adds",
+          "ops_full": 200000,
+          "ops_incremental": 100,
+          "ops_diff_scan_compares": 200000,
+          "speedup_ops_excluding_scan": 2000.0,
+          "speedup_ops_including_scan": 0.9995
+        },
+        {
+          "entries": 200000,
+          "changed": 10000,
+          "bit_identical": true,
+          "ops_unit": "multiply-adds",
+          "ops_full": 200000,
+          "ops_incremental": 10000,
+          "ops_diff_scan_compares": 200000,
+          "speedup_ops_excluding_scan": 20.0,
+          "speedup_ops_including_scan": 0.9524
+        },
+        {
+          "entries": 200000,
+          "changed": 100000,
+          "bit_identical": true,
+          "ops_unit": "multiply-adds",
+          "ops_full": 200000,
+          "ops_incremental": 100000,
+          "ops_diff_scan_compares": 200000,
+          "speedup_ops_excluding_scan": 2.0,
+          "speedup_ops_including_scan": 0.6667
+        },
+        {
+          "entries": 200000,
+          "changed": 200000,
+          "bit_identical": true,
+          "ops_unit": "multiply-adds",
+          "ops_full": 200000,
+          "ops_incremental": 200000,
+          "ops_diff_scan_compares": 200000,
+          "speedup_ops_excluding_scan": 1.0,
+          "speedup_ops_including_scan": 0.5
+        }
+      ],
+      "matvec": [
+        {
+          "entries": 20000,
+          "changed": 1,
+          "bit_identical": true,
+          "ops_unit": "multiply-adds",
+          "ops_full": 160000,
+          "ops_incremental": 8,
+          "ops_diff_scan_compares": 20000,
+          "speedup_ops_excluding_scan": 20000.0,
+          "speedup_ops_including_scan": 7.9968
+        },
+        {
+          "entries": 20000,
+          "changed": 100,
+          "bit_identical": true,
+          "ops_unit": "multiply-adds",
+          "ops_full": 160000,
+          "ops_incremental": 800,
+          "ops_diff_scan_compares": 20000,
+          "speedup_ops_excluding_scan": 200.0,
+          "speedup_ops_including_scan": 7.6923
+        },
+        {
+          "entries": 20000,
+          "changed": 20000,
+          "bit_identical": true,
+          "ops_unit": "multiply-adds",
+          "ops_full": 160000,
+          "ops_incremental": 160000,
+          "ops_diff_scan_compares": 20000,
+          "speedup_ops_excluding_scan": 1.0,
+          "speedup_ops_including_scan": 0.8889
+        }
+      ]
+    },
+    "linear_comparisons": 13,
+    "mismatch_count": 0,
+    "levels": {
+      "pairs": 10000,
+      "max_step": 65536,
+      "carry_ripple_count": 7434,
+      "xor_below_difference_count": 0
+    },
+    "gray": {
+      "clean_unit_steps": 10000,
+      "gray_unit_agree_count": 10000,
+      "gray_unit_disagree_count": 0,
+      "corrupted_steps": 1000,
+      "corrupted_flagged": 996,
+      "corrupted_not_flagged": 4,
+      "corrupted_not_flagged_other_unit_neighbour": 4
+    },
+    "parity": {
+      "chunks_per_pattern": 1000,
+      "side": 8,
+      "parity_located_count": 1000,
+      "one_error_corrected_and_confirmed": 1000,
+      "parity_detected_unlocated_count": 1000,
+      "two_errors_wrongly_located": 0,
+      "two_errors_not_detected": 0,
+      "miscorrection_count": 1000,
+      "three_corner_flip_passes_parity_after": 1000,
+      "three_corner_caught_by_second_check": 1000,
+      "rectangle_miss_count": 1000,
+      "lone_flag_classified_parity_bit_bad": 1000,
+      "lone_flag_data_changed": 0
+    }
+  },
+  "deterministic_sha256": "b88473c48a6edacaa8948fda8347ffab5f2cd2dc76c7f1f71288cbec24f85769",
+  "timing_this_run": {
+    "sum": [
+      {
+        "entries": 200000,
+        "changed": 1,
+        "bit_identical": true,
+        "ops_unit": "additions",
+        "ops_full": 200000,
+        "ops_incremental": 1,
+        "ops_diff_scan_compares": 200000,
+        "speedup_ops_excluding_scan": 200000.0,
+        "speedup_ops_including_scan": 1.0,
+        "wall_s_full": 0.004678,
+        "wall_s_incremental": 1e-06,
+        "wall_s_diff_scan": 0.035315,
+        "speedup_wall_excluding_scan": 8584.25,
+        "speedup_wall_including_scan": 0.1325
+      },
+      {
+        "entries": 200000,
+        "changed": 100,
+        "bit_identical": true,
+        "ops_unit": "additions",
+        "ops_full": 200000,
+        "ops_incremental": 100,
+        "ops_diff_scan_compares": 200000,
+        "speedup_ops_excluding_scan": 2000.0,
+        "speedup_ops_including_scan": 0.9995,
+        "wall_s_full": 0.020522,
+        "wall_s_incremental": 6e-06,
+        "wall_s_diff_scan": 0.031319,
+        "speedup_wall_excluding_scan": 3663.38,
+        "speedup_wall_including_scan": 0.6551
+      },
+      {
+        "entries": 200000,
+        "changed": 10000,
+        "bit_identical": true,
+        "ops_unit": "additions",
+        "ops_full": 200000,
+        "ops_incremental": 10000,
+        "ops_diff_scan_compares": 200000,
+        "speedup_ops_excluding_scan": 20.0,
+        "speedup_ops_including_scan": 0.9524,
+        "wall_s_full": 0.013012,
+        "wall_s_incremental": 0.000539,
+        "wall_s_diff_scan": 0.02456,
+        "speedup_wall_excluding_scan": 24.15,
+        "speedup_wall_including_scan": 0.5184
+      },
+      {
+        "entries": 200000,
+        "changed": 100000,
+        "bit_identical": true,
+        "ops_unit": "additions",
+        "ops_full": 200000,
+        "ops_incremental": 100000,
+        "ops_diff_scan_compares": 200000,
+        "speedup_ops_excluding_scan": 2.0,
+        "speedup_ops_including_scan": 0.6667,
+        "wall_s_full": 0.008267,
+        "wall_s_incremental": 0.010945,
+        "wall_s_diff_scan": 0.072908,
+        "speedup_wall_excluding_scan": 0.76,
+        "speedup_wall_including_scan": 0.0986
+      },
+      {
+        "entries": 200000,
+        "changed": 200000,
+        "bit_identical": true,
+        "ops_unit": "additions",
+        "ops_full": 200000,
+        "ops_incremental": 200000,
+        "ops_diff_scan_compares": 200000,
+        "speedup_ops_excluding_scan": 1.0,
+        "speedup_ops_including_scan": 0.5,
+        "wall_s_full": 0.026397,
+        "wall_s_incremental": 0.027698,
+        "wall_s_diff_scan": 0.137376,
+        "speedup_wall_excluding_scan": 0.95,
+        "speedup_wall_including_scan": 0.1599
+      }
+    ],
+    "dot": [
+      {
+        "entries": 200000,
+        "changed": 1,
+        "bit_identical": true,
+        "ops_unit": "multiply-adds",
+        "ops_full": 200000,
+        "ops_incremental": 1,
+        "ops_diff_scan_compares": 200000,
+        "speedup_ops_excluding_scan": 200000.0,
+        "speedup_ops_including_scan": 1.0,
+        "wall_s_full": 0.060239,
+        "wall_s_incremental": 1e-06,
+        "wall_s_diff_scan": 0.035315,
+        "speedup_wall_excluding_scan": 89640.18,
+        "speedup_wall_including_scan": 1.7057
+      },
+      {
+        "entries": 200000,
+        "changed": 100,
+        "bit_identical": true,
+        "ops_unit": "multiply-adds",
+        "ops_full": 200000,
+        "ops_incremental": 100,
+        "ops_diff_scan_compares": 200000,
+        "speedup_ops_excluding_scan": 2000.0,
+        "speedup_ops_including_scan": 0.9995,
+        "wall_s_full": 0.064833,
+        "wall_s_incremental": 1.2e-05,
+        "wall_s_diff_scan": 0.031319,
+        "speedup_wall_excluding_scan": 5431.69,
+        "speedup_wall_including_scan": 2.0693
+      },
+      {
+        "entries": 200000,
+        "changed": 10000,
+        "bit_identical": true,
+        "ops_unit": "multiply-adds",
+        "ops_full": 200000,
+        "ops_incremental": 10000,
+        "ops_diff_scan_compares": 200000,
+        "speedup_ops_excluding_scan": 20.0,
+        "speedup_ops_including_scan": 0.9524,
+        "wall_s_full": 0.064269,
+        "wall_s_incremental": 0.002147,
+        "wall_s_diff_scan": 0.02456,
+        "speedup_wall_excluding_scan": 29.93,
+        "speedup_wall_including_scan": 2.4065
+      },
+      {
+        "entries": 200000,
+        "changed": 100000,
+        "bit_identical": true,
+        "ops_unit": "multiply-adds",
+        "ops_full": 200000,
+        "ops_incremental": 100000,
+        "ops_diff_scan_compares": 200000,
+        "speedup_ops_excluding_scan": 2.0,
+        "speedup_ops_including_scan": 0.6667,
+        "wall_s_full": 0.133828,
+        "wall_s_incremental": 0.04062,
+        "wall_s_diff_scan": 0.072908,
+        "speedup_wall_excluding_scan": 3.29,
+        "speedup_wall_including_scan": 1.1788
+      },
+      {
+        "entries": 200000,
+        "changed": 200000,
+        "bit_identical": true,
+        "ops_unit": "multiply-adds",
+        "ops_full": 200000,
+        "ops_incremental": 200000,
+        "ops_diff_scan_compares": 200000,
+        "speedup_ops_excluding_scan": 1.0,
+        "speedup_ops_including_scan": 0.5,
+        "wall_s_full": 0.097419,
+        "wall_s_incremental": 0.111556,
+        "wall_s_diff_scan": 0.137376,
+        "speedup_wall_excluding_scan": 0.87,
+        "speedup_wall_including_scan": 0.3913
+      }
+    ],
+    "matvec": [
+      {
+        "entries": 20000,
+        "changed": 1,
+        "bit_identical": true,
+        "ops_unit": "multiply-adds",
+        "ops_full": 160000,
+        "ops_incremental": 8,
+        "ops_diff_scan_compares": 20000,
+        "speedup_ops_excluding_scan": 20000.0,
+        "speedup_ops_including_scan": 7.9968,
+        "wall_s_full": 0.096263,
+        "wall_s_incremental": 4e-06,
+        "wall_s_diff_scan": 0.001143,
+        "speedup_wall_excluding_scan": 24556.98,
+        "speedup_wall_including_scan": 83.9583
+      },
+      {
+        "entries": 20000,
+        "changed": 100,
+        "bit_identical": true,
+        "ops_unit": "multiply-adds",
+        "ops_full": 160000,
+        "ops_incremental": 800,
+        "ops_diff_scan_compares": 20000,
+        "speedup_ops_excluding_scan": 200.0,
+        "speedup_ops_including_scan": 7.6923,
+        "wall_s_full": 0.116941,
+        "wall_s_incremental": 0.000104,
+        "wall_s_diff_scan": 0.001161,
+        "speedup_wall_excluding_scan": 1126.05,
+        "speedup_wall_including_scan": 92.4813
+      },
+      {
+        "entries": 20000,
+        "changed": 20000,
+        "bit_identical": true,
+        "ops_unit": "multiply-adds",
+        "ops_full": 160000,
+        "ops_incremental": 160000,
+        "ops_diff_scan_compares": 20000,
+        "speedup_ops_excluding_scan": 1.0,
+        "speedup_ops_including_scan": 0.8889,
+        "wall_s_full": 0.143644,
+        "wall_s_incremental": 0.077234,
+        "wall_s_diff_scan": 0.02448,
+        "speedup_wall_excluding_scan": 1.86,
+        "speedup_wall_including_scan": 1.4122
+      }
+    ]
+  },
+  "speedup_rows": [
+    {
+      "computation": "sum",
+      "entries": 200000,
+      "changed": 1,
+      "kind": "speedup_given_diff",
+      "measure": "op count",
+      "value": 200000.0,
+      "diff_source": "given: the list of changed entries is supplied; finding it is not counted"
+    },
+    {
+      "computation": "sum",
+      "entries": 200000,
+      "changed": 1,
+      "kind": "speedup_with_scan",
+      "measure": "op count",
+      "value": 1.0,
+      "diff_source": "full compare: both snapshots compared entry by entry (n compares), counted"
+    },
+    {
+      "computation": "sum",
+      "entries": 200000,
+      "changed": 1,
+      "kind": "speedup_with_scan",
+      "measure": "wall time, this machine, this run",
+      "value": 0.1325,
+      "diff_source": "full compare: both snapshots compared entry by entry (n compares), counted"
+    },
+    {
+      "computation": "sum",
+      "entries": 200000,
+      "changed": 100,
+      "kind": "speedup_given_diff",
+      "measure": "op count",
+      "value": 2000.0,
+      "diff_source": "given: the list of changed entries is supplied; finding it is not counted"
+    },
+    {
+      "computation": "sum",
+      "entries": 200000,
+      "changed": 100,
+      "kind": "speedup_with_scan",
+      "measure": "op count",
+      "value": 0.9995,
+      "diff_source": "full compare: both snapshots compared entry by entry (n compares), counted"
+    },
+    {
+      "computation": "sum",
+      "entries": 200000,
+      "changed": 100,
+      "kind": "speedup_with_scan",
+      "measure": "wall time, this machine, this run",
+      "value": 0.6551,
+      "diff_source": "full compare: both snapshots compared entry by entry (n compares), counted"
+    },
+    {
+      "computation": "sum",
+      "entries": 200000,
+      "changed": 10000,
+      "kind": "speedup_given_diff",
+      "measure": "op count",
+      "value": 20.0,
+      "diff_source": "given: the list of changed entries is supplied; finding it is not counted"
+    },
+    {
+      "computation": "sum",
+      "entries": 200000,
+      "changed": 10000,
+      "kind": "speedup_with_scan",
+      "measure": "op count",
+      "value": 0.9524,
+      "diff_source": "full compare: both snapshots compared entry by entry (n compares), counted"
+    },
+    {
+      "computation": "sum",
+      "entries": 200000,
+      "changed": 10000,
+      "kind": "speedup_with_scan",
+      "measure": "wall time, this machine, this run",
+      "value": 0.5184,
+      "diff_source": "full compare: both snapshots compared entry by entry (n compares), counted"
+    },
+    {
+      "computation": "sum",
+      "entries": 200000,
+      "changed": 100000,
+      "kind": "speedup_given_diff",
+      "measure": "op count",
+      "value": 2.0,
+      "diff_source": "given: the list of changed entries is supplied; finding it is not counted"
+    },
+    {
+      "computation": "sum",
+      "entries": 200000,
+      "changed": 100000,
+      "kind": "speedup_with_scan",
+      "measure": "op count",
+      "value": 0.6667,
+      "diff_source": "full compare: both snapshots compared entry by entry (n compares), counted"
+    },
+    {
+      "computation": "sum",
+      "entries": 200000,
+      "changed": 100000,
+      "kind": "speedup_with_scan",
+      "measure": "wall time, this machine, this run",
+      "value": 0.0986,
+      "diff_source": "full compare: both snapshots compared entry by entry (n compares), counted"
+    },
+    {
+      "computation": "sum",
+      "entries": 200000,
+      "changed": 200000,
+      "kind": "speedup_given_diff",
+      "measure": "op count",
+      "value": 1.0,
+      "diff_source": "given: the list of changed entries is supplied; finding it is not counted"
+    },
+    {
+      "computation": "sum",
+      "entries": 200000,
+      "changed": 200000,
+      "kind": "speedup_with_scan",
+      "measure": "op count",
+      "value": 0.5,
+      "diff_source": "full compare: both snapshots compared entry by entry (n compares), counted"
+    },
+    {
+      "computation": "sum",
+      "entries": 200000,
+      "changed": 200000,
+      "kind": "speedup_with_scan",
+      "measure": "wall time, this machine, this run",
+      "value": 0.1599,
+      "diff_source": "full compare: both snapshots compared entry by entry (n compares), counted"
+    },
+    {
+      "computation": "dot",
+      "entries": 200000,
+      "changed": 1,
+      "kind": "speedup_given_diff",
+      "measure": "op count",
+      "value": 200000.0,
+      "diff_source": "given: the list of changed entries is supplied; finding it is not counted"
+    },
+    {
+      "computation": "dot",
+      "entries": 200000,
+      "changed": 1,
+      "kind": "speedup_with_scan",
+      "measure": "op count",
+      "value": 1.0,
+      "diff_source": "full compare: both snapshots compared entry by entry (n compares), counted"
+    },
+    {
+      "computation": "dot",
+      "entries": 200000,
+      "changed": 1,
+      "kind": "speedup_with_scan",
+      "measure": "wall time, this machine, this run",
+      "value": 1.7057,
+      "diff_source": "full compare: both snapshots compared entry by entry (n compares), counted"
+    },
+    {
+      "computation": "dot",
+      "entries": 200000,
+      "changed": 100,
+      "kind": "speedup_given_diff",
+      "measure": "op count",
+      "value": 2000.0,
+      "diff_source": "given: the list of changed entries is supplied; finding it is not counted"
+    },
+    {
+      "computation": "dot",
+      "entries": 200000,
+      "changed": 100,
+      "kind": "speedup_with_scan",
+      "measure": "op count",
+      "value": 0.9995,
+      "diff_source": "full compare: both snapshots compared entry by entry (n compares), counted"
+    },
+    {
+      "computation": "dot",
+      "entries": 200000,
+      "changed": 100,
+      "kind": "speedup_with_scan",
+      "measure": "wall time, this machine, this run",
+      "value": 2.0693,
+      "diff_source": "full compare: both snapshots compared entry by entry (n compares), counted"
+    },
+    {
+      "computation": "dot",
+      "entries": 200000,
+      "changed": 10000,
+      "kind": "speedup_given_diff",
+      "measure": "op count",
+      "value": 20.0,
+      "diff_source": "given: the list of changed entries is supplied; finding it is not counted"
+    },
+    {
+      "computation": "dot",
+      "entries": 200000,
+      "changed": 10000,
+      "kind": "speedup_with_scan",
+      "measure": "op count",
+      "value": 0.9524,
+      "diff_source": "full compare: both snapshots compared entry by entry (n compares), counted"
+    },
+    {
+      "computation": "dot",
+      "entries": 200000,
+      "changed": 10000,
+      "kind": "speedup_with_scan",
+      "measure": "wall time, this machine, this run",
+      "value": 2.4065,
+      "diff_source": "full compare: both snapshots compared entry by entry (n compares), counted"
+    },
+    {
+      "computation": "dot",
+      "entries": 200000,
+      "changed": 100000,
+      "kind": "speedup_given_diff",
+      "measure": "op count",
+      "value": 2.0,
+      "diff_source": "given: the list of changed entries is supplied; finding it is not counted"
+    },
+    {
+      "computation": "dot",
+      "entries": 200000,
+      "changed": 100000,
+      "kind": "speedup_with_scan",
+      "measure": "op count",
+      "value": 0.6667,
+      "diff_source": "full compare: both snapshots compared entry by entry (n compares), counted"
+    },
+    {
+      "computation": "dot",
+      "entries": 200000,
+      "changed": 100000,
+      "kind": "speedup_with_scan",
+      "measure": "wall time, this machine, this run",
+      "value": 1.1788,
+      "diff_source": "full compare: both snapshots compared entry by entry (n compares), counted"
+    },
+    {
+      "computation": "dot",
+      "entries": 200000,
+      "changed": 200000,
+      "kind": "speedup_given_diff",
+      "measure": "op count",
+      "value": 1.0,
+      "diff_source": "given: the list of changed entries is supplied; finding it is not counted"
+    },
+    {
+      "computation": "dot",
+      "entries": 200000,
+      "changed": 200000,
+      "kind": "speedup_with_scan",
+      "measure": "op count",
+      "value": 0.5,
+      "diff_source": "full compare: both snapshots compared entry by entry (n compares), counted"
+    },
+    {
+      "computation": "dot",
+      "entries": 200000,
+      "changed": 200000,
+      "kind": "speedup_with_scan",
+      "measure": "wall time, this machine, this run",
+      "value": 0.3913,
+      "diff_source": "full compare: both snapshots compared entry by entry (n compares), counted"
+    },
+    {
+      "computation": "matvec",
+      "entries": 20000,
+      "changed": 1,
+      "kind": "speedup_given_diff",
+      "measure": "op count",
+      "value": 20000.0,
+      "diff_source": "given: the list of changed entries is supplied; finding it is not counted"
+    },
+    {
+      "computation": "matvec",
+      "entries": 20000,
+      "changed": 1,
+      "kind": "speedup_with_scan",
+      "measure": "op count",
+      "value": 7.9968,
+      "diff_source": "full compare: both snapshots compared entry by entry (n compares), counted"
+    },
+    {
+      "computation": "matvec",
+      "entries": 20000,
+      "changed": 1,
+      "kind": "speedup_with_scan",
+      "measure": "wall time, this machine, this run",
+      "value": 83.9583,
+      "diff_source": "full compare: both snapshots compared entry by entry (n compares), counted"
+    },
+    {
+      "computation": "matvec",
+      "entries": 20000,
+      "changed": 100,
+      "kind": "speedup_given_diff",
+      "measure": "op count",
+      "value": 200.0,
+      "diff_source": "given: the list of changed entries is supplied; finding it is not counted"
+    },
+    {
+      "computation": "matvec",
+      "entries": 20000,
+      "changed": 100,
+      "kind": "speedup_with_scan",
+      "measure": "op count",
+      "value": 7.6923,
+      "diff_source": "full compare: both snapshots compared entry by entry (n compares), counted"
+    },
+    {
+      "computation": "matvec",
+      "entries": 20000,
+      "changed": 100,
+      "kind": "speedup_with_scan",
+      "measure": "wall time, this machine, this run",
+      "value": 92.4813,
+      "diff_source": "full compare: both snapshots compared entry by entry (n compares), counted"
+    },
+    {
+      "computation": "matvec",
+      "entries": 20000,
+      "changed": 20000,
+      "kind": "speedup_given_diff",
+      "measure": "op count",
+      "value": 1.0,
+      "diff_source": "given: the list of changed entries is supplied; finding it is not counted"
+    },
+    {
+      "computation": "matvec",
+      "entries": 20000,
+      "changed": 20000,
+      "kind": "speedup_with_scan",
+      "measure": "op count",
+      "value": 0.8889,
+      "diff_source": "full compare: both snapshots compared entry by entry (n compares), counted"
+    },
+    {
+      "computation": "matvec",
+      "entries": 20000,
+      "changed": 20000,
+      "kind": "speedup_with_scan",
+      "measure": "wall time, this machine, this run",
+      "value": 1.4122,
+      "diff_source": "full compare: both snapshots compared entry by entry (n compares), counted"
+    }
+  ],
+  "labels": {
+    "carry_ripple_pair_rule": "old = uniform random 64-bit word; step = uniform integer in [1, 65536] with a random sign; new = old + step, or old - step if that leaves the 64-bit range; 10000 pairs; counted when the XOR level differs from the difference level",
+    "miscorrection": {
+      "miscorrection_count": "1000 of 1000 planted 3-corner chunks: parity pointed at the good 4th corner",
+      "test_reference_catch": "1000 of 1000: caught by comparing against the known-good chunk, which exists only in a test",
+      "miscorrection_detected_in_field": "0 of 1000 (DERIVED, not run: no reference outside a test; after the flip every row and column passes)"
+    },
+    "undetected_by_design": [
+      {
+        "row": "rectangle_miss_count",
+        "value": "1000 of 1000 planted 4-corner chunks",
+        "check": "2D parity",
+        "class": "aliasing: the error lands on a state the check accepts as valid, so the check cannot detect it"
+      },
+      {
+        "row": "gray corrupted_not_flagged",
+        "value": "4 of 1000 corrupted unit steps",
+        "check": "Gray unit-step check",
+        "note": "corruption landing on a valid unit step, undetectable by the unit-step check",
+        "class": "aliasing: the error lands on a state the check accepts as valid, so the check cannot detect it"
+      }
+    ]
+  },
+  "slots": {
+    "speedup": "split 2026-11-20 into speedup_given_diff and speedup_with_scan",
+    "speedup_given_diff": "op count; see speedup_rows (kind = speedup_given_diff); depends on changed / entries",
+    "speedup_with_scan": "op count and wall time; see speedup_rows (kind = speedup_with_scan)",
+    "mismatch count": 0,
+    "carry_ripple_count": 7434,
+    "gray_unit_agree_count": 10000,
+    "gray_unit_disagree_count": 0,
+    "parity_located_count": 1000,
+    "parity_detected_unlocated_count": 1000,
+    "rectangle_miss_count": 1000,
+    "miscorrection_count": 1000,
+    "test_reference_catch": 1000,
+    "miscorrection_detected_in_field": "0 of 1000 (DERIVED, not run)",
+    "edge-flip count": "VOID",
+    "tie_flip_count": "VOID",
+    "nonlinear bound width": "VOID",
+    "nondyadic_nonzero_residual_count": "VOID",
+    "line_op_speedup": "VOID"
+  },
+  "not_built": [
+    "tower codes (encode_tower) as snapshots",
+    "edge and tie flips",
+    "nonlinear bounds",
+    "non-dyadic values",
+    "line operations"
+  ]
+}

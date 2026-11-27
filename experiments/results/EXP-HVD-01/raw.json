@@ -1,0 +1,2896 @@
+{
+ "experiment": "EXP-HVD-01",
+ "environment": {
+  "python": "3.14.8",
+  "platform": "Linux-6.1.155-x86_64-with-glibc2.43",
+  "cpu": "Intel(R) Xeon(R) Processor @ 2.90GHz",
+  "commit": "e814887bed510ef0d4bd67c54820399f0ad088d6",
+  "numpy": "2.5.5",
+  "scipy": "1.18.1",
+  "torch": "2.15.0+cpu"
+ },
+ "z_rate": 0.3,
+ "runtime_seconds": 19.309068207017845,
+ "rows": [
+  {
+   "cell": 0,
+   "beta_z": 0.0,
+   "tests_per_claim": 3,
+   "n_claims": 10,
+   "base_logit": -1.0,
+   "reps": 500,
+   "fires_folded": 84,
+   "fires_signed": 86,
+   "rate_folded": 0.168,
+   "rate_signed": 0.172,
+   "ci_folded": [
+    0.13778823275863694,
+    0.20327432938709056
+   ],
+   "ci_signed": [
+    0.1414541196226405,
+    0.20754744779843962
+   ]
+  },
+  {
+   "cell": 1,
+   "beta_z": 0.0,
+   "tests_per_claim": 3,
+   "n_claims": 10,
+   "base_logit": 0.0,
+   "reps": 500,
+   "fires_folded": 47,
+   "fires_signed": 66,
+   "rate_folded": 0.094,
+   "rate_signed": 0.132,
+   "ci_folded": [
+    0.07142640843682986,
+    0.12276455611487301
+   ],
+   "ci_signed": [
+    0.10511672365777198,
+    0.16449479100978137
+   ]
+  },
+  {
+   "cell": 2,
+   "beta_z": 0.0,
+   "tests_per_claim": 3,
+   "n_claims": 10,
+   "base_logit": 1.0,
+   "reps": 500,
+   "fires_folded": 61,
+   "fires_signed": 61,
+   "rate_folded": 0.122,
+   "rate_signed": 0.122,
+   "ci_folded": [
+    0.0961592781331154,
+    0.15360472334605624
+   ],
+   "ci_signed": [
+    0.0961592781331154,
+    0.15360472334605624
+   ]
+  },
+  {
+   "cell": 3,
+   "beta_z": 0.0,
+   "tests_per_claim": 3,
+   "n_claims": 30,
+   "base_logit": -1.0,
+   "reps": 500,
+   "fires_folded": 3,
+   "fires_signed": 1,
+   "rate_folded": 0.006,
+   "rate_signed": 0.002,
+   "ci_folded": [
+    0.002042596256088514,
+    0.01749025223785535
+   ],
+   "ci_signed": [
+    0.0003531363906594037,
+    0.011240706827931778
+   ]
+  },
+  {
+   "cell": 4,
+   "beta_z": 0.0,
+   "tests_per_claim": 3,
+   "n_claims": 30,
+   "base_logit": 0.0,
+   "reps": 500,
+   "fires_folded": 2,
+   "fires_signed": 2,
+   "rate_folded": 0.004,
+   "rate_signed": 0.004,
+   "ci_folded": [
+    0.001097630512817676,
+    0.014465715343449847
+   ],
+   "ci_signed": [
+    0.001097630512817676,
+    0.014465715343449847
+   ]
+  },
+  {
+   "cell": 5,
+   "beta_z": 0.0,
+   "tests_per_claim": 3,
+   "n_claims": 30,
+   "base_logit": 1.0,
+   "reps": 500,
+   "fires_folded": 3,
+   "fires_signed": 2,
+   "rate_folded": 0.006,
+   "rate_signed": 0.004,
+   "ci_folded": [
+    0.002042596256088514,
+    0.01749025223785535
+   ],
+   "ci_signed": [
+    0.001097630512817676,
+    0.014465715343449847
+   ]
+  },
+  {
+   "cell": 6,
+   "beta_z": 0.0,
+   "tests_per_claim": 3,
+   "n_claims": 100,
+   "base_logit": -1.0,
+   "reps": 500,
+   "fires_folded": 0,
+   "fires_signed": 0,
+   "rate_folded": 0.0,
+   "rate_signed": 0.0,
+   "ci_folded": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ],
+   "ci_signed": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ]
+  },
+  {
+   "cell": 7,
+   "beta_z": 0.0,
+   "tests_per_claim": 3,
+   "n_claims": 100,
+   "base_logit": 0.0,
+   "reps": 500,
+   "fires_folded": 0,
+   "fires_signed": 0,
+   "rate_folded": 0.0,
+   "rate_signed": 0.0,
+   "ci_folded": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ],
+   "ci_signed": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ]
+  },
+  {
+   "cell": 8,
+   "beta_z": 0.0,
+   "tests_per_claim": 3,
+   "n_claims": 100,
+   "base_logit": 1.0,
+   "reps": 500,
+   "fires_folded": 0,
+   "fires_signed": 0,
+   "rate_folded": 0.0,
+   "rate_signed": 0.0,
+   "ci_folded": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ],
+   "ci_signed": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ]
+  },
+  {
+   "cell": 9,
+   "beta_z": 0.0,
+   "tests_per_claim": 3,
+   "n_claims": 300,
+   "base_logit": -1.0,
+   "reps": 500,
+   "fires_folded": 0,
+   "fires_signed": 0,
+   "rate_folded": 0.0,
+   "rate_signed": 0.0,
+   "ci_folded": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ],
+   "ci_signed": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ]
+  },
+  {
+   "cell": 10,
+   "beta_z": 0.0,
+   "tests_per_claim": 3,
+   "n_claims": 300,
+   "base_logit": 0.0,
+   "reps": 500,
+   "fires_folded": 0,
+   "fires_signed": 0,
+   "rate_folded": 0.0,
+   "rate_signed": 0.0,
+   "ci_folded": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ],
+   "ci_signed": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ]
+  },
+  {
+   "cell": 11,
+   "beta_z": 0.0,
+   "tests_per_claim": 3,
+   "n_claims": 300,
+   "base_logit": 1.0,
+   "reps": 500,
+   "fires_folded": 0,
+   "fires_signed": 0,
+   "rate_folded": 0.0,
+   "rate_signed": 0.0,
+   "ci_folded": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ],
+   "ci_signed": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ]
+  },
+  {
+   "cell": 12,
+   "beta_z": 0.0,
+   "tests_per_claim": 5,
+   "n_claims": 10,
+   "base_logit": -1.0,
+   "reps": 500,
+   "fires_folded": 59,
+   "fires_signed": 56,
+   "rate_folded": 0.118,
+   "rate_signed": 0.112,
+   "ci_folded": [
+    0.09259300807308093,
+    0.149231988130738
+   ],
+   "ci_signed": [
+    0.08726280002114901,
+    0.14265368826964092
+   ]
+  },
+  {
+   "cell": 13,
+   "beta_z": 0.0,
+   "tests_per_claim": 5,
+   "n_claims": 10,
+   "base_logit": 0.0,
+   "reps": 500,
+   "fires_folded": 64,
+   "fires_signed": 63,
+   "rate_folded": 0.128,
+   "rate_signed": 0.126,
+   "ci_folded": [
+    0.1015268238080646,
+    0.16014568558413605
+   ],
+   "ci_signed": [
+    0.09973528875991874,
+    0.1579677179946056
+   ]
+  },
+  {
+   "cell": 14,
+   "beta_z": 0.0,
+   "tests_per_claim": 5,
+   "n_claims": 10,
+   "base_logit": 1.0,
+   "reps": 500,
+   "fires_folded": 83,
+   "fires_signed": 87,
+   "rate_folded": 0.166,
+   "rate_signed": 0.174,
+   "ci_folded": [
+    0.1359577430142233,
+    0.20113531649382788
+   ],
+   "ci_signed": [
+    0.14328947185866972,
+    0.20968159820008678
+   ]
+  },
+  {
+   "cell": 15,
+   "beta_z": 0.0,
+   "tests_per_claim": 5,
+   "n_claims": 30,
+   "base_logit": -1.0,
+   "reps": 500,
+   "fires_folded": 2,
+   "fires_signed": 3,
+   "rate_folded": 0.004,
+   "rate_signed": 0.006,
+   "ci_folded": [
+    0.001097630512817676,
+    0.014465715343449847
+   ],
+   "ci_signed": [
+    0.002042596256088514,
+    0.01749025223785535
+   ]
+  },
+  {
+   "cell": 16,
+   "beta_z": 0.0,
+   "tests_per_claim": 5,
+   "n_claims": 30,
+   "base_logit": 0.0,
+   "reps": 500,
+   "fires_folded": 4,
+   "fires_signed": 1,
+   "rate_folded": 0.008,
+   "rate_signed": 0.002,
+   "ci_folded": [
+    0.0031153151584348837,
+    0.020387035973185322
+   ],
+   "ci_signed": [
+    0.0003531363906594037,
+    0.011240706827931778
+   ]
+  },
+  {
+   "cell": 17,
+   "beta_z": 0.0,
+   "tests_per_claim": 5,
+   "n_claims": 30,
+   "base_logit": 1.0,
+   "reps": 500,
+   "fires_folded": 3,
+   "fires_signed": 2,
+   "rate_folded": 0.006,
+   "rate_signed": 0.004,
+   "ci_folded": [
+    0.002042596256088514,
+    0.01749025223785535
+   ],
+   "ci_signed": [
+    0.001097630512817676,
+    0.014465715343449847
+   ]
+  },
+  {
+   "cell": 18,
+   "beta_z": 0.0,
+   "tests_per_claim": 5,
+   "n_claims": 100,
+   "base_logit": -1.0,
+   "reps": 500,
+   "fires_folded": 0,
+   "fires_signed": 0,
+   "rate_folded": 0.0,
+   "rate_signed": 0.0,
+   "ci_folded": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ],
+   "ci_signed": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ]
+  },
+  {
+   "cell": 19,
+   "beta_z": 0.0,
+   "tests_per_claim": 5,
+   "n_claims": 100,
+   "base_logit": 0.0,
+   "reps": 500,
+   "fires_folded": 0,
+   "fires_signed": 0,
+   "rate_folded": 0.0,
+   "rate_signed": 0.0,
+   "ci_folded": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ],
+   "ci_signed": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ]
+  },
+  {
+   "cell": 20,
+   "beta_z": 0.0,
+   "tests_per_claim": 5,
+   "n_claims": 100,
+   "base_logit": 1.0,
+   "reps": 500,
+   "fires_folded": 0,
+   "fires_signed": 0,
+   "rate_folded": 0.0,
+   "rate_signed": 0.0,
+   "ci_folded": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ],
+   "ci_signed": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ]
+  },
+  {
+   "cell": 21,
+   "beta_z": 0.0,
+   "tests_per_claim": 5,
+   "n_claims": 300,
+   "base_logit": -1.0,
+   "reps": 500,
+   "fires_folded": 0,
+   "fires_signed": 0,
+   "rate_folded": 0.0,
+   "rate_signed": 0.0,
+   "ci_folded": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ],
+   "ci_signed": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ]
+  },
+  {
+   "cell": 22,
+   "beta_z": 0.0,
+   "tests_per_claim": 5,
+   "n_claims": 300,
+   "base_logit": 0.0,
+   "reps": 500,
+   "fires_folded": 0,
+   "fires_signed": 0,
+   "rate_folded": 0.0,
+   "rate_signed": 0.0,
+   "ci_folded": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ],
+   "ci_signed": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ]
+  },
+  {
+   "cell": 23,
+   "beta_z": 0.0,
+   "tests_per_claim": 5,
+   "n_claims": 300,
+   "base_logit": 1.0,
+   "reps": 500,
+   "fires_folded": 0,
+   "fires_signed": 0,
+   "rate_folded": 0.0,
+   "rate_signed": 0.0,
+   "ci_folded": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ],
+   "ci_signed": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ]
+  },
+  {
+   "cell": 24,
+   "beta_z": 0.0,
+   "tests_per_claim": 10,
+   "n_claims": 10,
+   "base_logit": -1.0,
+   "reps": 500,
+   "fires_folded": 61,
+   "fires_signed": 63,
+   "rate_folded": 0.122,
+   "rate_signed": 0.126,
+   "ci_folded": [
+    0.0961592781331154,
+    0.15360472334605624
+   ],
+   "ci_signed": [
+    0.09973528875991874,
+    0.1579677179946056
+   ]
+  },
+  {
+   "cell": 25,
+   "beta_z": 0.0,
+   "tests_per_claim": 10,
+   "n_claims": 10,
+   "base_logit": 0.0,
+   "reps": 500,
+   "fires_folded": 36,
+   "fires_signed": 38,
+   "rate_folded": 0.072,
+   "rate_signed": 0.076,
+   "ci_folded": [
+    0.05245803128704543,
+    0.09806840425021768
+   ],
+   "ci_signed": [
+    0.055869026901651506,
+    0.10259641391096429
+   ]
+  },
+  {
+   "cell": 26,
+   "beta_z": 0.0,
+   "tests_per_claim": 10,
+   "n_claims": 10,
+   "base_logit": 1.0,
+   "reps": 500,
+   "fires_folded": 70,
+   "fires_signed": 68,
+   "rate_folded": 0.14,
+   "rate_signed": 0.136,
+   "ci_folded": [
+    0.1123226599907596,
+    0.17316686522749916
+   ],
+   "ci_signed": [
+    0.10871544321337934,
+    0.1688350767295267
+   ]
+  },
+  {
+   "cell": 27,
+   "beta_z": 0.0,
+   "tests_per_claim": 10,
+   "n_claims": 30,
+   "base_logit": -1.0,
+   "reps": 500,
+   "fires_folded": 3,
+   "fires_signed": 3,
+   "rate_folded": 0.006,
+   "rate_signed": 0.006,
+   "ci_folded": [
+    0.002042596256088514,
+    0.01749025223785535
+   ],
+   "ci_signed": [
+    0.002042596256088514,
+    0.01749025223785535
+   ]
+  },
+  {
+   "cell": 28,
+   "beta_z": 0.0,
+   "tests_per_claim": 10,
+   "n_claims": 30,
+   "base_logit": 0.0,
+   "reps": 500,
+   "fires_folded": 0,
+   "fires_signed": 1,
+   "rate_folded": 0.0,
+   "rate_signed": 0.002,
+   "ci_folded": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ],
+   "ci_signed": [
+    0.0003531363906594037,
+    0.011240706827931778
+   ]
+  },
+  {
+   "cell": 29,
+   "beta_z": 0.0,
+   "tests_per_claim": 10,
+   "n_claims": 30,
+   "base_logit": 1.0,
+   "reps": 500,
+   "fires_folded": 0,
+   "fires_signed": 1,
+   "rate_folded": 0.0,
+   "rate_signed": 0.002,
+   "ci_folded": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ],
+   "ci_signed": [
+    0.0003531363906594037,
+    0.011240706827931778
+   ]
+  },
+  {
+   "cell": 30,
+   "beta_z": 0.0,
+   "tests_per_claim": 10,
+   "n_claims": 100,
+   "base_logit": -1.0,
+   "reps": 500,
+   "fires_folded": 0,
+   "fires_signed": 0,
+   "rate_folded": 0.0,
+   "rate_signed": 0.0,
+   "ci_folded": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ],
+   "ci_signed": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ]
+  },
+  {
+   "cell": 31,
+   "beta_z": 0.0,
+   "tests_per_claim": 10,
+   "n_claims": 100,
+   "base_logit": 0.0,
+   "reps": 500,
+   "fires_folded": 0,
+   "fires_signed": 0,
+   "rate_folded": 0.0,
+   "rate_signed": 0.0,
+   "ci_folded": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ],
+   "ci_signed": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ]
+  },
+  {
+   "cell": 32,
+   "beta_z": 0.0,
+   "tests_per_claim": 10,
+   "n_claims": 100,
+   "base_logit": 1.0,
+   "reps": 500,
+   "fires_folded": 0,
+   "fires_signed": 0,
+   "rate_folded": 0.0,
+   "rate_signed": 0.0,
+   "ci_folded": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ],
+   "ci_signed": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ]
+  },
+  {
+   "cell": 33,
+   "beta_z": 0.0,
+   "tests_per_claim": 10,
+   "n_claims": 300,
+   "base_logit": -1.0,
+   "reps": 500,
+   "fires_folded": 0,
+   "fires_signed": 0,
+   "rate_folded": 0.0,
+   "rate_signed": 0.0,
+   "ci_folded": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ],
+   "ci_signed": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ]
+  },
+  {
+   "cell": 34,
+   "beta_z": 0.0,
+   "tests_per_claim": 10,
+   "n_claims": 300,
+   "base_logit": 0.0,
+   "reps": 500,
+   "fires_folded": 0,
+   "fires_signed": 0,
+   "rate_folded": 0.0,
+   "rate_signed": 0.0,
+   "ci_folded": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ],
+   "ci_signed": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ]
+  },
+  {
+   "cell": 35,
+   "beta_z": 0.0,
+   "tests_per_claim": 10,
+   "n_claims": 300,
+   "base_logit": 1.0,
+   "reps": 500,
+   "fires_folded": 0,
+   "fires_signed": 0,
+   "rate_folded": 0.0,
+   "rate_signed": 0.0,
+   "ci_folded": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ],
+   "ci_signed": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ]
+  },
+  {
+   "cell": 36,
+   "beta_z": 0.5,
+   "tests_per_claim": 3,
+   "n_claims": 10,
+   "base_logit": -1.0,
+   "reps": 500,
+   "fires_folded": 67,
+   "fires_signed": 110,
+   "rate_folded": 0.134,
+   "rate_signed": 0.22,
+   "ci_folded": [
+    0.10691500167930978,
+    0.16666601562591993
+   ],
+   "ci_signed": [
+    0.18590093232043148,
+    0.25836869840488086
+   ]
+  },
+  {
+   "cell": 37,
+   "beta_z": 0.5,
+   "tests_per_claim": 3,
+   "n_claims": 10,
+   "base_logit": 0.0,
+   "reps": 500,
+   "fires_folded": 70,
+   "fires_signed": 91,
+   "rate_folded": 0.14,
+   "rate_signed": 0.182,
+   "ci_folded": [
+    0.1123226599907596,
+    0.17316686522749916
+   ],
+   "ci_signed": [
+    0.15064644497634477,
+    0.2182026356331171
+   ]
+  },
+  {
+   "cell": 38,
+   "beta_z": 0.5,
+   "tests_per_claim": 3,
+   "n_claims": 10,
+   "base_logit": 1.0,
+   "reps": 500,
+   "fires_folded": 86,
+   "fires_signed": 73,
+   "rate_folded": 0.172,
+   "rate_signed": 0.146,
+   "ci_folded": [
+    0.1414541196226405,
+    0.20754744779843962
+   ],
+   "ci_signed": [
+    0.11774876662461098,
+    0.17964926650667673
+   ]
+  },
+  {
+   "cell": 39,
+   "beta_z": 0.5,
+   "tests_per_claim": 3,
+   "n_claims": 30,
+   "base_logit": -1.0,
+   "reps": 500,
+   "fires_folded": 3,
+   "fires_signed": 26,
+   "rate_folded": 0.006,
+   "rate_signed": 0.052,
+   "ci_folded": [
+    0.002042596256088514,
+    0.01749025223785535
+   ],
+   "ci_signed": [
+    0.03573026501044807,
+    0.07510114415005163
+   ]
+  },
+  {
+   "cell": 40,
+   "beta_z": 0.5,
+   "tests_per_claim": 3,
+   "n_claims": 30,
+   "base_logit": 0.0,
+   "reps": 500,
+   "fires_folded": 2,
+   "fires_signed": 18,
+   "rate_folded": 0.004,
+   "rate_signed": 0.036,
+   "ci_folded": [
+    0.001097630512817676,
+    0.014465715343449847
+   ],
+   "ci_signed": [
+    0.022891060899486528,
+    0.05618432715960245
+   ]
+  },
+  {
+   "cell": 41,
+   "beta_z": 0.5,
+   "tests_per_claim": 3,
+   "n_claims": 30,
+   "base_logit": 1.0,
+   "reps": 500,
+   "fires_folded": 9,
+   "fires_signed": 6,
+   "rate_folded": 0.018,
+   "rate_signed": 0.012,
+   "ci_folded": [
+    0.009498193249731918,
+    0.03385167107026999
+   ],
+   "ci_signed": [
+    0.005510995141744251,
+    0.025930361265228637
+   ]
+  },
+  {
+   "cell": 42,
+   "beta_z": 0.5,
+   "tests_per_claim": 3,
+   "n_claims": 100,
+   "base_logit": -1.0,
+   "reps": 500,
+   "fires_folded": 0,
+   "fires_signed": 0,
+   "rate_folded": 0.0,
+   "rate_signed": 0.0,
+   "ci_folded": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ],
+   "ci_signed": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ]
+  },
+  {
+   "cell": 43,
+   "beta_z": 0.5,
+   "tests_per_claim": 3,
+   "n_claims": 100,
+   "base_logit": 0.0,
+   "reps": 500,
+   "fires_folded": 0,
+   "fires_signed": 0,
+   "rate_folded": 0.0,
+   "rate_signed": 0.0,
+   "ci_folded": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ],
+   "ci_signed": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ]
+  },
+  {
+   "cell": 44,
+   "beta_z": 0.5,
+   "tests_per_claim": 3,
+   "n_claims": 100,
+   "base_logit": 1.0,
+   "reps": 500,
+   "fires_folded": 0,
+   "fires_signed": 0,
+   "rate_folded": 0.0,
+   "rate_signed": 0.0,
+   "ci_folded": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ],
+   "ci_signed": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ]
+  },
+  {
+   "cell": 45,
+   "beta_z": 0.5,
+   "tests_per_claim": 3,
+   "n_claims": 300,
+   "base_logit": -1.0,
+   "reps": 500,
+   "fires_folded": 0,
+   "fires_signed": 0,
+   "rate_folded": 0.0,
+   "rate_signed": 0.0,
+   "ci_folded": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ],
+   "ci_signed": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ]
+  },
+  {
+   "cell": 46,
+   "beta_z": 0.5,
+   "tests_per_claim": 3,
+   "n_claims": 300,
+   "base_logit": 0.0,
+   "reps": 500,
+   "fires_folded": 0,
+   "fires_signed": 0,
+   "rate_folded": 0.0,
+   "rate_signed": 0.0,
+   "ci_folded": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ],
+   "ci_signed": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ]
+  },
+  {
+   "cell": 47,
+   "beta_z": 0.5,
+   "tests_per_claim": 3,
+   "n_claims": 300,
+   "base_logit": 1.0,
+   "reps": 500,
+   "fires_folded": 0,
+   "fires_signed": 0,
+   "rate_folded": 0.0,
+   "rate_signed": 0.0,
+   "ci_folded": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ],
+   "ci_signed": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ]
+  },
+  {
+   "cell": 48,
+   "beta_z": 0.5,
+   "tests_per_claim": 5,
+   "n_claims": 10,
+   "base_logit": -1.0,
+   "reps": 500,
+   "fires_folded": 68,
+   "fires_signed": 110,
+   "rate_folded": 0.136,
+   "rate_signed": 0.22,
+   "ci_folded": [
+    0.10871544321337934,
+    0.1688350767295267
+   ],
+   "ci_signed": [
+    0.18590093232043148,
+    0.25836869840488086
+   ]
+  },
+  {
+   "cell": 49,
+   "beta_z": 0.5,
+   "tests_per_claim": 5,
+   "n_claims": 10,
+   "base_logit": 0.0,
+   "reps": 500,
+   "fires_folded": 58,
+   "fires_signed": 111,
+   "rate_folded": 0.116,
+   "rate_signed": 0.222,
+   "ci_folded": [
+    0.090813656334417,
+    0.14704183723172565
+   ],
+   "ci_signed": [
+    0.18776935112930554,
+    0.26046978223368317
+   ]
+  },
+  {
+   "cell": 50,
+   "beta_z": 0.5,
+   "tests_per_claim": 5,
+   "n_claims": 10,
+   "base_logit": 1.0,
+   "reps": 500,
+   "fires_folded": 104,
+   "fires_signed": 91,
+   "rate_folded": 0.208,
+   "rate_signed": 0.182,
+   "ci_folded": [
+    0.17471631146542782,
+    0.24573630343382646
+   ],
+   "ci_signed": [
+    0.15064644497634477,
+    0.2182026356331171
+   ]
+  },
+  {
+   "cell": 51,
+   "beta_z": 0.5,
+   "tests_per_claim": 5,
+   "n_claims": 30,
+   "base_logit": -1.0,
+   "reps": 500,
+   "fires_folded": 10,
+   "fires_signed": 44,
+   "rate_folded": 0.02,
+   "rate_signed": 0.088,
+   "ci_folded": [
+    0.010899183545403176,
+    0.03642018341227508
+   ],
+   "ci_signed": [
+    0.06620598432582234,
+    0.11607647231285151
+   ]
+  },
+  {
+   "cell": 52,
+   "beta_z": 0.5,
+   "tests_per_claim": 5,
+   "n_claims": 30,
+   "base_logit": 0.0,
+   "reps": 500,
+   "fires_folded": 6,
+   "fires_signed": 31,
+   "rate_folded": 0.012,
+   "rate_signed": 0.062,
+   "ci_folded": [
+    0.005510995141744251,
+    0.025930361265228637
+   ],
+   "ci_signed": [
+    0.044019209023978684,
+    0.08665971332490272
+   ]
+  },
+  {
+   "cell": 53,
+   "beta_z": 0.5,
+   "tests_per_claim": 5,
+   "n_claims": 30,
+   "base_logit": 1.0,
+   "reps": 500,
+   "fires_folded": 23,
+   "fires_signed": 18,
+   "rate_folded": 0.046,
+   "rate_signed": 0.036,
+   "ci_folded": [
+    0.030845108274245074,
+    0.06807779297322561
+   ],
+   "ci_signed": [
+    0.022891060899486528,
+    0.05618432715960245
+   ]
+  },
+  {
+   "cell": 54,
+   "beta_z": 0.5,
+   "tests_per_claim": 5,
+   "n_claims": 100,
+   "base_logit": -1.0,
+   "reps": 500,
+   "fires_folded": 0,
+   "fires_signed": 1,
+   "rate_folded": 0.0,
+   "rate_signed": 0.002,
+   "ci_folded": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ],
+   "ci_signed": [
+    0.0003531363906594037,
+    0.011240706827931778
+   ]
+  },
+  {
+   "cell": 55,
+   "beta_z": 0.5,
+   "tests_per_claim": 5,
+   "n_claims": 100,
+   "base_logit": 0.0,
+   "reps": 500,
+   "fires_folded": 0,
+   "fires_signed": 2,
+   "rate_folded": 0.0,
+   "rate_signed": 0.004,
+   "ci_folded": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ],
+   "ci_signed": [
+    0.001097630512817676,
+    0.014465715343449847
+   ]
+  },
+  {
+   "cell": 56,
+   "beta_z": 0.5,
+   "tests_per_claim": 5,
+   "n_claims": 100,
+   "base_logit": 1.0,
+   "reps": 500,
+   "fires_folded": 0,
+   "fires_signed": 0,
+   "rate_folded": 0.0,
+   "rate_signed": 0.0,
+   "ci_folded": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ],
+   "ci_signed": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ]
+  },
+  {
+   "cell": 57,
+   "beta_z": 0.5,
+   "tests_per_claim": 5,
+   "n_claims": 300,
+   "base_logit": -1.0,
+   "reps": 500,
+   "fires_folded": 0,
+   "fires_signed": 0,
+   "rate_folded": 0.0,
+   "rate_signed": 0.0,
+   "ci_folded": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ],
+   "ci_signed": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ]
+  },
+  {
+   "cell": 58,
+   "beta_z": 0.5,
+   "tests_per_claim": 5,
+   "n_claims": 300,
+   "base_logit": 0.0,
+   "reps": 500,
+   "fires_folded": 0,
+   "fires_signed": 0,
+   "rate_folded": 0.0,
+   "rate_signed": 0.0,
+   "ci_folded": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ],
+   "ci_signed": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ]
+  },
+  {
+   "cell": 59,
+   "beta_z": 0.5,
+   "tests_per_claim": 5,
+   "n_claims": 300,
+   "base_logit": 1.0,
+   "reps": 500,
+   "fires_folded": 0,
+   "fires_signed": 0,
+   "rate_folded": 0.0,
+   "rate_signed": 0.0,
+   "ci_folded": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ],
+   "ci_signed": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ]
+  },
+  {
+   "cell": 60,
+   "beta_z": 0.5,
+   "tests_per_claim": 10,
+   "n_claims": 10,
+   "base_logit": -1.0,
+   "reps": 500,
+   "fires_folded": 130,
+   "fires_signed": 153,
+   "rate_folded": 0.26,
+   "rate_signed": 0.306,
+   "ci_folded": [
+    0.22348572291319882,
+    0.30017396056564033
+   ],
+   "ci_signed": [
+    0.26721346343867863,
+    0.3477447807067164
+   ]
+  },
+  {
+   "cell": 61,
+   "beta_z": 0.5,
+   "tests_per_claim": 10,
+   "n_claims": 10,
+   "base_logit": 0.0,
+   "reps": 500,
+   "fires_folded": 74,
+   "fires_signed": 120,
+   "rate_folded": 0.148,
+   "rate_signed": 0.24,
+   "ci_folded": [
+    0.11956140518579197,
+    0.1818061305831721
+   ],
+   "ci_signed": [
+    0.20463785977126908,
+    0.2793267973308067
+   ]
+  },
+  {
+   "cell": 62,
+   "beta_z": 0.5,
+   "tests_per_claim": 10,
+   "n_claims": 10,
+   "base_logit": 1.0,
+   "reps": 500,
+   "fires_folded": 116,
+   "fires_signed": 111,
+   "rate_folded": 0.232,
+   "rate_signed": 0.222,
+   "ci_folded": [
+    0.19712923819486494,
+    0.2709574083565055
+   ],
+   "ci_signed": [
+    0.18776935112930554,
+    0.26046978223368317
+   ]
+  },
+  {
+   "cell": 63,
+   "beta_z": 0.5,
+   "tests_per_claim": 10,
+   "n_claims": 30,
+   "base_logit": -1.0,
+   "reps": 500,
+   "fires_folded": 43,
+   "fires_signed": 78,
+   "rate_folded": 0.086,
+   "rate_signed": 0.156,
+   "ci_folded": [
+    0.06447314225664966,
+    0.11383981174434785
+   ],
+   "ci_signed": [
+    0.12683079119435292,
+    0.19041475512531653
+   ]
+  },
+  {
+   "cell": 64,
+   "beta_z": 0.5,
+   "tests_per_claim": 10,
+   "n_claims": 30,
+   "base_logit": 0.0,
+   "reps": 500,
+   "fires_folded": 10,
+   "fires_signed": 76,
+   "rate_folded": 0.02,
+   "rate_signed": 0.152,
+   "ci_folded": [
+    0.010899183545403176,
+    0.03642018341227508
+   ],
+   "ci_signed": [
+    0.12319239246732092,
+    0.18611414857699585
+   ]
+  },
+  {
+   "cell": 65,
+   "beta_z": 0.5,
+   "tests_per_claim": 10,
+   "n_claims": 30,
+   "base_logit": 1.0,
+   "reps": 500,
+   "fires_folded": 33,
+   "fires_signed": 27,
+   "rate_folded": 0.066,
+   "rate_signed": 0.054,
+   "ci_folded": [
+    0.04737852623600348,
+    0.09123940138823064
+   ],
+   "ci_signed": [
+    0.03737435007301449,
+    0.07742656172516155
+   ]
+  },
+  {
+   "cell": 66,
+   "beta_z": 0.5,
+   "tests_per_claim": 10,
+   "n_claims": 100,
+   "base_logit": -1.0,
+   "reps": 500,
+   "fires_folded": 2,
+   "fires_signed": 9,
+   "rate_folded": 0.004,
+   "rate_signed": 0.018,
+   "ci_folded": [
+    0.001097630512817676,
+    0.014465715343449847
+   ],
+   "ci_signed": [
+    0.009498193249731918,
+    0.03385167107026999
+   ]
+  },
+  {
+   "cell": 67,
+   "beta_z": 0.5,
+   "tests_per_claim": 10,
+   "n_claims": 100,
+   "base_logit": 0.0,
+   "reps": 500,
+   "fires_folded": 0,
+   "fires_signed": 13,
+   "rate_folded": 0.0,
+   "rate_signed": 0.026,
+   "ci_folded": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ],
+   "ci_signed": [
+    0.015256383860397425,
+    0.043971491010309845
+   ]
+  },
+  {
+   "cell": 68,
+   "beta_z": 0.5,
+   "tests_per_claim": 10,
+   "n_claims": 100,
+   "base_logit": 1.0,
+   "reps": 500,
+   "fires_folded": 4,
+   "fires_signed": 2,
+   "rate_folded": 0.008,
+   "rate_signed": 0.004,
+   "ci_folded": [
+    0.0031153151584348837,
+    0.020387035973185322
+   ],
+   "ci_signed": [
+    0.001097630512817676,
+    0.014465715343449847
+   ]
+  },
+  {
+   "cell": 69,
+   "beta_z": 0.5,
+   "tests_per_claim": 10,
+   "n_claims": 300,
+   "base_logit": -1.0,
+   "reps": 500,
+   "fires_folded": 0,
+   "fires_signed": 0,
+   "rate_folded": 0.0,
+   "rate_signed": 0.0,
+   "ci_folded": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ],
+   "ci_signed": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ]
+  },
+  {
+   "cell": 70,
+   "beta_z": 0.5,
+   "tests_per_claim": 10,
+   "n_claims": 300,
+   "base_logit": 0.0,
+   "reps": 500,
+   "fires_folded": 0,
+   "fires_signed": 0,
+   "rate_folded": 0.0,
+   "rate_signed": 0.0,
+   "ci_folded": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ],
+   "ci_signed": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ]
+  },
+  {
+   "cell": 71,
+   "beta_z": 0.5,
+   "tests_per_claim": 10,
+   "n_claims": 300,
+   "base_logit": 1.0,
+   "reps": 500,
+   "fires_folded": 0,
+   "fires_signed": 0,
+   "rate_folded": 0.0,
+   "rate_signed": 0.0,
+   "ci_folded": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ],
+   "ci_signed": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ]
+  },
+  {
+   "cell": 72,
+   "beta_z": 1.0,
+   "tests_per_claim": 3,
+   "n_claims": 10,
+   "base_logit": -1.0,
+   "reps": 500,
+   "fires_folded": 77,
+   "fires_signed": 181,
+   "rate_folded": 0.154,
+   "rate_signed": 0.362,
+   "ci_folded": [
+    0.12501068007034682,
+    0.18826536361164625
+   ],
+   "ci_signed": [
+    0.3210760438658736,
+    0.405028274134459
+   ]
+  },
+  {
+   "cell": 73,
+   "beta_z": 1.0,
+   "tests_per_claim": 3,
+   "n_claims": 10,
+   "base_logit": 0.0,
+   "reps": 500,
+   "fires_folded": 101,
+   "fires_signed": 159,
+   "rate_folded": 0.202,
+   "rate_signed": 0.318,
+   "ci_folded": [
+    0.16914122043500382,
+    0.23940288655122152
+   ],
+   "ci_signed": [
+    0.2787002608792855,
+    0.3600749990921676
+   ]
+  },
+  {
+   "cell": 74,
+   "beta_z": 1.0,
+   "tests_per_claim": 3,
+   "n_claims": 10,
+   "base_logit": 1.0,
+   "reps": 500,
+   "fires_folded": 126,
+   "fires_signed": 111,
+   "rate_folded": 0.252,
+   "rate_signed": 0.222,
+   "ci_folded": [
+    0.21593384811311933,
+    0.2918478248150145
+   ],
+   "ci_signed": [
+    0.18776935112930554,
+    0.26046978223368317
+   ]
+  },
+  {
+   "cell": 75,
+   "beta_z": 1.0,
+   "tests_per_claim": 3,
+   "n_claims": 30,
+   "base_logit": -1.0,
+   "reps": 500,
+   "fires_folded": 4,
+   "fires_signed": 115,
+   "rate_folded": 0.008,
+   "rate_signed": 0.23,
+   "ci_folded": [
+    0.0031153151584348837,
+    0.020387035973185322
+   ],
+   "ci_signed": [
+    0.1952549249177079,
+    0.26886221899598617
+   ]
+  },
+  {
+   "cell": 76,
+   "beta_z": 1.0,
+   "tests_per_claim": 3,
+   "n_claims": 30,
+   "base_logit": 0.0,
+   "reps": 500,
+   "fires_folded": 17,
+   "fires_signed": 76,
+   "rate_folded": 0.034,
+   "rate_signed": 0.152,
+   "ci_folded": [
+    0.021334519731109065,
+    0.05377136569030357
+   ],
+   "ci_signed": [
+    0.12319239246732092,
+    0.18611414857699585
+   ]
+  },
+  {
+   "cell": 77,
+   "beta_z": 1.0,
+   "tests_per_claim": 3,
+   "n_claims": 30,
+   "base_logit": 1.0,
+   "reps": 500,
+   "fires_folded": 46,
+   "fires_signed": 41,
+   "rate_folded": 0.092,
+   "rate_signed": 0.082,
+   "ci_folded": [
+    0.06968272352712952,
+    0.120538738386897
+   ],
+   "ci_signed": [
+    0.061019089325893075,
+    0.10935485939975174
+   ]
+  },
+  {
+   "cell": 78,
+   "beta_z": 1.0,
+   "tests_per_claim": 3,
+   "n_claims": 100,
+   "base_logit": -1.0,
+   "reps": 500,
+   "fires_folded": 0,
+   "fires_signed": 33,
+   "rate_folded": 0.0,
+   "rate_signed": 0.066,
+   "ci_folded": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ],
+   "ci_signed": [
+    0.04737852623600348,
+    0.09123940138823064
+   ]
+  },
+  {
+   "cell": 79,
+   "beta_z": 1.0,
+   "tests_per_claim": 3,
+   "n_claims": 100,
+   "base_logit": 0.0,
+   "reps": 500,
+   "fires_folded": 0,
+   "fires_signed": 21,
+   "rate_folded": 0.0,
+   "rate_signed": 0.042,
+   "ci_folded": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ],
+   "ci_signed": [
+    0.02763231001797491,
+    0.0633515859541431
+   ]
+  },
+  {
+   "cell": 80,
+   "beta_z": 1.0,
+   "tests_per_claim": 3,
+   "n_claims": 100,
+   "base_logit": 1.0,
+   "reps": 500,
+   "fires_folded": 0,
+   "fires_signed": 0,
+   "rate_folded": 0.0,
+   "rate_signed": 0.0,
+   "ci_folded": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ],
+   "ci_signed": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ]
+  },
+  {
+   "cell": 81,
+   "beta_z": 1.0,
+   "tests_per_claim": 3,
+   "n_claims": 300,
+   "base_logit": -1.0,
+   "reps": 500,
+   "fires_folded": 0,
+   "fires_signed": 2,
+   "rate_folded": 0.0,
+   "rate_signed": 0.004,
+   "ci_folded": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ],
+   "ci_signed": [
+    0.001097630512817676,
+    0.014465715343449847
+   ]
+  },
+  {
+   "cell": 82,
+   "beta_z": 1.0,
+   "tests_per_claim": 3,
+   "n_claims": 300,
+   "base_logit": 0.0,
+   "reps": 500,
+   "fires_folded": 0,
+   "fires_signed": 2,
+   "rate_folded": 0.0,
+   "rate_signed": 0.004,
+   "ci_folded": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ],
+   "ci_signed": [
+    0.001097630512817676,
+    0.014465715343449847
+   ]
+  },
+  {
+   "cell": 83,
+   "beta_z": 1.0,
+   "tests_per_claim": 3,
+   "n_claims": 300,
+   "base_logit": 1.0,
+   "reps": 500,
+   "fires_folded": 0,
+   "fires_signed": 0,
+   "rate_folded": 0.0,
+   "rate_signed": 0.0,
+   "ci_folded": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ],
+   "ci_signed": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ]
+  },
+  {
+   "cell": 84,
+   "beta_z": 1.0,
+   "tests_per_claim": 5,
+   "n_claims": 10,
+   "base_logit": -1.0,
+   "reps": 500,
+   "fires_folded": 94,
+   "fires_signed": 234,
+   "rate_folded": 0.188,
+   "rate_signed": 0.468,
+   "ci_folded": [
+    0.15617996390321318,
+    0.22457762461927774
+   ],
+   "ci_signed": [
+    0.4246740655847347,
+    0.511813892212444
+   ]
+  },
+  {
+   "cell": 85,
+   "beta_z": 1.0,
+   "tests_per_claim": 5,
+   "n_claims": 10,
+   "base_logit": 0.0,
+   "reps": 500,
+   "fires_folded": 134,
+   "fires_signed": 211,
+   "rate_folded": 0.268,
+   "rate_signed": 0.422,
+   "ci_folded": [
+    0.2310539731603579,
+    0.30848372086918663
+   ],
+   "ci_signed": [
+    0.37946637465262023,
+    0.46572302247800257
+   ]
+  },
+  {
+   "cell": 86,
+   "beta_z": 1.0,
+   "tests_per_claim": 5,
+   "n_claims": 10,
+   "base_logit": 1.0,
+   "reps": 500,
+   "fires_folded": 157,
+   "fires_signed": 147,
+   "rate_folded": 0.314,
+   "rate_signed": 0.294,
+   "ci_folded": [
+    0.2748678555404942,
+    0.3559683991556062
+   ],
+   "ci_signed": [
+    0.2557584871482218,
+    0.3353827411711151
+   ]
+  },
+  {
+   "cell": 87,
+   "beta_z": 1.0,
+   "tests_per_claim": 5,
+   "n_claims": 30,
+   "base_logit": -1.0,
+   "reps": 500,
+   "fires_folded": 22,
+   "fires_signed": 217,
+   "rate_folded": 0.044,
+   "rate_signed": 0.434,
+   "ci_folded": [
+    0.02923395553505064,
+    0.0657194430747437
+   ],
+   "ci_signed": [
+    0.3912235723022283,
+    0.4777828406544525
+   ]
+  },
+  {
+   "cell": 88,
+   "beta_z": 1.0,
+   "tests_per_claim": 5,
+   "n_claims": 30,
+   "base_logit": 0.0,
+   "reps": 500,
+   "fires_folded": 58,
+   "fires_signed": 199,
+   "rate_folded": 0.116,
+   "rate_signed": 0.398,
+   "ci_folded": [
+    0.090813656334417,
+    0.14704183723172565
+   ],
+   "ci_signed": [
+    0.3560299775813411,
+    0.4415253878971657
+   ]
+  },
+  {
+   "cell": 89,
+   "beta_z": 1.0,
+   "tests_per_claim": 5,
+   "n_claims": 30,
+   "base_logit": 1.0,
+   "reps": 500,
+   "fires_folded": 79,
+   "fires_signed": 62,
+   "rate_folded": 0.158,
+   "rate_signed": 0.124,
+   "ci_folded": [
+    0.1286526976534581,
+    0.19256235130388766
+   ],
+   "ci_signed": [
+    0.09794609095557621,
+    0.15578741316127176
+   ]
+  },
+  {
+   "cell": 90,
+   "beta_z": 1.0,
+   "tests_per_claim": 5,
+   "n_claims": 100,
+   "base_logit": -1.0,
+   "reps": 500,
+   "fires_folded": 1,
+   "fires_signed": 159,
+   "rate_folded": 0.002,
+   "rate_signed": 0.318,
+   "ci_folded": [
+    0.0003531363906594037,
+    0.011240706827931778
+   ],
+   "ci_signed": [
+    0.2787002608792855,
+    0.3600749990921676
+   ]
+  },
+  {
+   "cell": 91,
+   "beta_z": 1.0,
+   "tests_per_claim": 5,
+   "n_claims": 100,
+   "base_logit": 0.0,
+   "reps": 500,
+   "fires_folded": 2,
+   "fires_signed": 91,
+   "rate_folded": 0.004,
+   "rate_signed": 0.182,
+   "ci_folded": [
+    0.001097630512817676,
+    0.014465715343449847
+   ],
+   "ci_signed": [
+    0.15064644497634477,
+    0.2182026356331171
+   ]
+  },
+  {
+   "cell": 92,
+   "beta_z": 1.0,
+   "tests_per_claim": 5,
+   "n_claims": 100,
+   "base_logit": 1.0,
+   "reps": 500,
+   "fires_folded": 24,
+   "fires_signed": 14,
+   "rate_folded": 0.048,
+   "rate_signed": 0.028,
+   "ci_folded": [
+    0.032465206841829145,
+    0.07042719704331789
+   ],
+   "ci_signed": [
+    0.016750974654044105,
+    0.04644640285433951
+   ]
+  },
+  {
+   "cell": 93,
+   "beta_z": 1.0,
+   "tests_per_claim": 5,
+   "n_claims": 300,
+   "base_logit": -1.0,
+   "reps": 500,
+   "fires_folded": 0,
+   "fires_signed": 98,
+   "rate_folded": 0.0,
+   "rate_signed": 0.196,
+   "ci_folded": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ],
+   "ci_signed": [
+    0.1635781063774072,
+    0.2330574926957891
+   ]
+  },
+  {
+   "cell": 94,
+   "beta_z": 1.0,
+   "tests_per_claim": 5,
+   "n_claims": 300,
+   "base_logit": 0.0,
+   "reps": 500,
+   "fires_folded": 0,
+   "fires_signed": 48,
+   "rate_folded": 0.0,
+   "rate_signed": 0.096,
+   "ci_folded": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ],
+   "ci_signed": [
+    0.07317350450798382,
+    0.12498696268139539
+   ]
+  },
+  {
+   "cell": 95,
+   "beta_z": 1.0,
+   "tests_per_claim": 5,
+   "n_claims": 300,
+   "base_logit": 1.0,
+   "reps": 500,
+   "fires_folded": 0,
+   "fires_signed": 0,
+   "rate_folded": 0.0,
+   "rate_signed": 0.0,
+   "ci_folded": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ],
+   "ci_signed": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ]
+  },
+  {
+   "cell": 96,
+   "beta_z": 1.0,
+   "tests_per_claim": 10,
+   "n_claims": 10,
+   "base_logit": -1.0,
+   "reps": 500,
+   "fires_folded": 196,
+   "fires_signed": 342,
+   "rate_folded": 0.392,
+   "rate_signed": 0.684,
+   "ci_folded": [
+    0.35018737746870227,
+    0.43545948009677543
+   ],
+   "ci_signed": [
+    0.6419778704897584,
+    0.7232163721764652
+   ]
+  },
+  {
+   "cell": 97,
+   "beta_z": 1.0,
+   "tests_per_claim": 10,
+   "n_claims": 10,
+   "base_logit": 0.0,
+   "reps": 500,
+   "fires_folded": 194,
+   "fires_signed": 309,
+   "rate_folded": 0.388,
+   "rate_signed": 0.618,
+   "ci_folded": [
+    0.3462960290301564,
+    0.4314118232599687
+   ],
+   "ci_signed": [
+    0.5746652805388627,
+    0.6595353750840415
+   ]
+  },
+  {
+   "cell": 98,
+   "beta_z": 1.0,
+   "tests_per_claim": 10,
+   "n_claims": 10,
+   "base_logit": 1.0,
+   "reps": 500,
+   "fires_folded": 230,
+   "fires_signed": 222,
+   "rate_folded": 0.46,
+   "rate_signed": 0.444,
+   "ci_folded": [
+    0.41678510219408244,
+    0.5038248450523909
+   ],
+   "ci_signed": [
+    0.40104081884845594,
+    0.4878131072966066
+   ]
+  },
+  {
+   "cell": 99,
+   "beta_z": 1.0,
+   "tests_per_claim": 10,
+   "n_claims": 30,
+   "base_logit": -1.0,
+   "reps": 500,
+   "fires_folded": 123,
+   "fires_signed": 377,
+   "rate_folded": 0.246,
+   "rate_signed": 0.754,
+   "ci_folded": [
+    0.2102809914204513,
+    0.2855921735946535
+   ],
+   "ci_signed": [
+    0.7144078264053466,
+    0.7897190085795487
+   ]
+  },
+  {
+   "cell": 100,
+   "beta_z": 1.0,
+   "tests_per_claim": 10,
+   "n_claims": 30,
+   "base_logit": 0.0,
+   "reps": 500,
+   "fires_folded": 210,
+   "fires_signed": 368,
+   "rate_folded": 0.42,
+   "rate_signed": 0.736,
+   "ci_folded": [
+    0.3775093509495038,
+    0.46371054354344265
+   ],
+   "ci_signed": [
+    0.6956691423847576,
+    0.7727321688610507
+   ]
+  },
+  {
+   "cell": 101,
+   "beta_z": 1.0,
+   "tests_per_claim": 10,
+   "n_claims": 30,
+   "base_logit": 1.0,
+   "reps": 500,
+   "fires_folded": 226,
+   "fires_signed": 212,
+   "rate_folded": 0.452,
+   "rate_signed": 0.424,
+   "ci_folded": [
+    0.40890733747481184,
+    0.49582459922095606
+   ],
+   "ci_signed": [
+    0.3814241174650662,
+    0.46773478230323295
+   ]
+  },
+  {
+   "cell": 102,
+   "beta_z": 1.0,
+   "tests_per_claim": 10,
+   "n_claims": 100,
+   "base_logit": -1.0,
+   "reps": 500,
+   "fires_folded": 50,
+   "fires_signed": 447,
+   "rate_folded": 0.1,
+   "rate_signed": 0.894,
+   "ci_folded": [
+    0.07667756257585176,
+    0.12942190988888014
+   ],
+   "ci_signed": [
+    0.8639490697279105,
+    0.9180429498943287
+   ]
+  },
+  {
+   "cell": 103,
+   "beta_z": 1.0,
+   "tests_per_claim": 10,
+   "n_claims": 100,
+   "base_logit": 0.0,
+   "reps": 500,
+   "fires_folded": 113,
+   "fires_signed": 420,
+   "rate_folded": 0.226,
+   "rate_signed": 0.84,
+   "ci_folded": [
+    0.19150978061099255,
+    0.26466835802734884
+   ],
+   "ci_signed": [
+    0.8052918205426927,
+    0.8695236278622853
+   ]
+  },
+  {
+   "cell": 104,
+   "beta_z": 1.0,
+   "tests_per_claim": 10,
+   "n_claims": 100,
+   "base_logit": 1.0,
+   "reps": 500,
+   "fires_folded": 201,
+   "fires_signed": 178,
+   "rate_folded": 0.402,
+   "rate_signed": 0.356,
+   "ci_folded": [
+    0.35992874000256914,
+    0.4455656307512903
+   ],
+   "ci_signed": [
+    0.3152745597156207,
+    0.3989212503716828
+   ]
+  },
+  {
+   "cell": 105,
+   "beta_z": 1.0,
+   "tests_per_claim": 10,
+   "n_claims": 300,
+   "base_logit": -1.0,
+   "reps": 500,
+   "fires_folded": 9,
+   "fires_signed": 489,
+   "rate_folded": 0.018,
+   "rate_signed": 0.978,
+   "ci_folded": [
+    0.009498193249731918,
+    0.03385167107026999
+   ],
+   "ci_signed": [
+    0.9610391386195835,
+    0.9876719917850619
+   ]
+  },
+  {
+   "cell": 106,
+   "beta_z": 1.0,
+   "tests_per_claim": 10,
+   "n_claims": 300,
+   "base_logit": 0.0,
+   "reps": 500,
+   "fires_folded": 46,
+   "fires_signed": 488,
+   "rate_folded": 0.092,
+   "rate_signed": 0.976,
+   "ci_folded": [
+    0.06968272352712952,
+    0.120538738386897
+   ],
+   "ci_signed": [
+    0.9585229423634402,
+    0.986218685403529
+   ]
+  },
+  {
+   "cell": 107,
+   "beta_z": 1.0,
+   "tests_per_claim": 10,
+   "n_claims": 300,
+   "base_logit": 1.0,
+   "reps": 500,
+   "fires_folded": 141,
+   "fires_signed": 103,
+   "rate_folded": 0.282,
+   "rate_signed": 0.206,
+   "ci_folded": [
+    0.24433643294488364,
+    0.3229877795483953
+   ],
+   "ci_signed": [
+    0.17285664103036474,
+    0.24362647123121323
+   ]
+  },
+  {
+   "cell": 108,
+   "beta_z": 2.0,
+   "tests_per_claim": 3,
+   "n_claims": 10,
+   "base_logit": -1.0,
+   "reps": 500,
+   "fires_folded": 78,
+   "fires_signed": 373,
+   "rate_folded": 0.156,
+   "rate_signed": 0.746,
+   "ci_folded": [
+    0.12683079119435292,
+    0.19041475512531653
+   ],
+   "ci_signed": [
+    0.7060690790801292,
+    0.7821797453540609
+   ]
+  },
+  {
+   "cell": 109,
+   "beta_z": 2.0,
+   "tests_per_claim": 3,
+   "n_claims": 10,
+   "base_logit": 0.0,
+   "reps": 500,
+   "fires_folded": 220,
+   "fires_signed": 297,
+   "rate_folded": 0.44,
+   "rate_signed": 0.594,
+   "ci_folded": [
+    0.39711179410952463,
+    0.4838031267601853
+   ],
+   "ci_signed": [
+    0.5503970657802756,
+    0.6361695581905124
+   ]
+  },
+  {
+   "cell": 110,
+   "beta_z": 2.0,
+   "tests_per_claim": 3,
+   "n_claims": 10,
+   "base_logit": 1.0,
+   "reps": 500,
+   "fires_folded": 191,
+   "fires_signed": 173,
+   "rate_folded": 0.382,
+   "rate_signed": 0.346,
+   "ci_folded": [
+    0.3404646249159586,
+    0.4253347194611374
+   ],
+   "ci_signed": [
+    0.30562123148093623,
+    0.3887270654179855
+   ]
+  },
+  {
+   "cell": 111,
+   "beta_z": 2.0,
+   "tests_per_claim": 3,
+   "n_claims": 30,
+   "base_logit": -1.0,
+   "reps": 500,
+   "fires_folded": 4,
+   "fires_signed": 438,
+   "rate_folded": 0.008,
+   "rate_signed": 0.876,
+   "ci_folded": [
+    0.0031153151584348837,
+    0.020387035973185322
+   ],
+   "ci_signed": [
+    0.8442125868387284,
+    0.9020539090444238
+   ]
+  },
+  {
+   "cell": 112,
+   "beta_z": 2.0,
+   "tests_per_claim": 3,
+   "n_claims": 30,
+   "base_logit": 0.0,
+   "reps": 500,
+   "fires_folded": 147,
+   "fires_signed": 343,
+   "rate_folded": 0.294,
+   "rate_signed": 0.686,
+   "ci_folded": [
+    0.2557584871482218,
+    0.3353827411711151
+   ],
+   "ci_signed": [
+    0.6440316008443939,
+    0.7251321444595059
+   ]
+  },
+  {
+   "cell": 113,
+   "beta_z": 2.0,
+   "tests_per_claim": 3,
+   "n_claims": 30,
+   "base_logit": 1.0,
+   "reps": 500,
+   "fires_folded": 155,
+   "fires_signed": 125,
+   "rate_folded": 0.31,
+   "rate_signed": 0.25,
+   "ci_folded": [
+    0.2710389109795246,
+    0.35185833844122316
+   ],
+   "ci_signed": [
+    0.21404849648057134,
+    0.2897636738098861
+   ]
+  },
+  {
+   "cell": 114,
+   "beta_z": 2.0,
+   "tests_per_claim": 3,
+   "n_claims": 100,
+   "base_logit": -1.0,
+   "reps": 500,
+   "fires_folded": 0,
+   "fires_signed": 484,
+   "rate_folded": 0.0,
+   "rate_signed": 0.968,
+   "ci_folded": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ],
+   "ci_signed": [
+    0.9486551307688837,
+    0.9802084864473799
+   ]
+  },
+  {
+   "cell": 115,
+   "beta_z": 2.0,
+   "tests_per_claim": 3,
+   "n_claims": 100,
+   "base_logit": 0.0,
+   "reps": 500,
+   "fires_folded": 62,
+   "fires_signed": 396,
+   "rate_folded": 0.124,
+   "rate_signed": 0.792,
+   "ci_folded": [
+    0.09794609095557621,
+    0.15578741316127176
+   ],
+   "ci_signed": [
+    0.7542636965661735,
+    0.8252836885345722
+   ]
+  },
+  {
+   "cell": 116,
+   "beta_z": 2.0,
+   "tests_per_claim": 3,
+   "n_claims": 100,
+   "base_logit": 1.0,
+   "reps": 500,
+   "fires_folded": 98,
+   "fires_signed": 53,
+   "rate_folded": 0.196,
+   "rate_signed": 0.106,
+   "ci_folded": [
+    0.1635781063774072,
+    0.2330574926957891
+   ],
+   "ci_signed": [
+    0.08195705010567135,
+    0.1360509302720896
+   ]
+  },
+  {
+   "cell": 117,
+   "beta_z": 2.0,
+   "tests_per_claim": 3,
+   "n_claims": 300,
+   "base_logit": -1.0,
+   "reps": 500,
+   "fires_folded": 0,
+   "fires_signed": 500,
+   "rate_folded": 0.0,
+   "rate_signed": 1.0,
+   "ci_folded": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ],
+   "ci_signed": [
+    0.9923756594190853,
+    1.0000000000000002
+   ]
+  },
+  {
+   "cell": 118,
+   "beta_z": 2.0,
+   "tests_per_claim": 3,
+   "n_claims": 300,
+   "base_logit": 0.0,
+   "reps": 500,
+   "fires_folded": 29,
+   "fires_signed": 470,
+   "rate_folded": 0.058,
+   "rate_signed": 0.94,
+   "ci_folded": [
+    0.04068372899829183,
+    0.08205618807523692
+   ],
+   "ci_signed": [
+    0.9156389366536348,
+    0.9576516436351601
+   ]
+  },
+  {
+   "cell": 119,
+   "beta_z": 2.0,
+   "tests_per_claim": 3,
+   "n_claims": 300,
+   "base_logit": 1.0,
+   "reps": 500,
+   "fires_folded": 17,
+   "fires_signed": 4,
+   "rate_folded": 0.034,
+   "rate_signed": 0.008,
+   "ci_folded": [
+    0.021334519731109065,
+    0.05377136569030357
+   ],
+   "ci_signed": [
+    0.0031153151584348837,
+    0.020387035973185322
+   ]
+  },
+  {
+   "cell": 120,
+   "beta_z": 2.0,
+   "tests_per_claim": 5,
+   "n_claims": 10,
+   "base_logit": -1.0,
+   "reps": 500,
+   "fires_folded": 69,
+   "fires_signed": 445,
+   "rate_folded": 0.138,
+   "rate_signed": 0.89,
+   "ci_folded": [
+    0.11051800870339493,
+    0.17100201387718747
+   ],
+   "ci_signed": [
+    0.8595444293324002,
+    0.9145085850144863
+   ]
+  },
+  {
+   "cell": 121,
+   "beta_z": 2.0,
+   "tests_per_claim": 5,
+   "n_claims": 10,
+   "base_logit": 0.0,
+   "reps": 500,
+   "fires_folded": 324,
+   "fires_signed": 390,
+   "rate_folded": 0.648,
+   "rate_signed": 0.78,
+   "ci_folded": [
+    0.6051540367696648,
+    0.6885891584183845
+   ],
+   "ci_signed": [
+    0.7416313015951191,
+    0.8140990676795686
+   ]
+  },
+  {
+   "cell": 122,
+   "beta_z": 2.0,
+   "tests_per_claim": 5,
+   "n_claims": 10,
+   "base_logit": 1.0,
+   "reps": 500,
+   "fires_folded": 312,
+   "fires_signed": 288,
+   "rate_folded": 0.624,
+   "rate_signed": 0.576,
+   "ci_folded": [
+    0.5807491790386458,
+    0.6653599844972874
+   ],
+   "ci_signed": [
+    0.5322652176967672,
+    0.6185758825349338
+   ]
+  },
+  {
+   "cell": 123,
+   "beta_z": 2.0,
+   "tests_per_claim": 5,
+   "n_claims": 30,
+   "base_logit": -1.0,
+   "reps": 500,
+   "fires_folded": 6,
+   "fires_signed": 487,
+   "rate_folded": 0.012,
+   "rate_signed": 0.974,
+   "ci_folded": [
+    0.005510995141744251,
+    0.025930361265228637
+   ],
+   "ci_signed": [
+    0.9560285089896903,
+    0.9847436161396026
+   ]
+  },
+  {
+   "cell": 124,
+   "beta_z": 2.0,
+   "tests_per_claim": 5,
+   "n_claims": 30,
+   "base_logit": 0.0,
+   "reps": 500,
+   "fires_folded": 365,
+   "fires_signed": 456,
+   "rate_folded": 0.73,
+   "rate_signed": 0.912,
+   "ci_folded": [
+    0.6894413422589624,
+    0.7670514610738167
+   ],
+   "ci_signed": [
+    0.8839235276871487,
+    0.9337940156741777
+   ]
+  },
+  {
+   "cell": 125,
+   "beta_z": 2.0,
+   "tests_per_claim": 5,
+   "n_claims": 30,
+   "base_logit": 1.0,
+   "reps": 500,
+   "fires_folded": 291,
+   "fires_signed": 248,
+   "rate_folded": 0.582,
+   "rate_signed": 0.496,
+   "ci_folded": [
+    0.5383026558892227,
+    0.6244469522555073
+   ],
+   "ci_signed": [
+    0.4523731487727847,
+    0.5396878459518627
+   ]
+  },
+  {
+   "cell": 126,
+   "beta_z": 2.0,
+   "tests_per_claim": 5,
+   "n_claims": 100,
+   "base_logit": -1.0,
+   "reps": 500,
+   "fires_folded": 0,
+   "fires_signed": 500,
+   "rate_folded": 0.0,
+   "rate_signed": 1.0,
+   "ci_folded": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ],
+   "ci_signed": [
+    0.9923756594190853,
+    1.0000000000000002
+   ]
+  },
+  {
+   "cell": 127,
+   "beta_z": 2.0,
+   "tests_per_claim": 5,
+   "n_claims": 100,
+   "base_logit": 0.0,
+   "reps": 500,
+   "fires_folded": 413,
+   "fires_signed": 492,
+   "rate_folded": 0.826,
+   "rate_signed": 0.984,
+   "ci_folded": [
+    0.7903184017999132,
+    0.8567105281413303
+   ],
+   "ci_signed": [
+    0.9687488913091183,
+    0.9918707470085563
+   ]
+  },
+  {
+   "cell": 128,
+   "beta_z": 2.0,
+   "tests_per_claim": 5,
+   "n_claims": 100,
+   "base_logit": 1.0,
+   "reps": 500,
+   "fires_folded": 335,
+   "fires_signed": 257,
+   "rate_folded": 0.67,
+   "rate_signed": 0.514,
+   "ci_folded": [
+    0.6276256236300922,
+    0.7097821005723969
+   ],
+   "ci_signed": [
+    0.4702515112367831,
+    0.5575350072269514
+   ]
+  },
+  {
+   "cell": 129,
+   "beta_z": 2.0,
+   "tests_per_claim": 5,
+   "n_claims": 300,
+   "base_logit": -1.0,
+   "reps": 500,
+   "fires_folded": 0,
+   "fires_signed": 500,
+   "rate_folded": 0.0,
+   "rate_signed": 1.0,
+   "ci_folded": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ],
+   "ci_signed": [
+    0.9923756594190853,
+    1.0000000000000002
+   ]
+  },
+  {
+   "cell": 130,
+   "beta_z": 2.0,
+   "tests_per_claim": 5,
+   "n_claims": 300,
+   "base_logit": 0.0,
+   "reps": 500,
+   "fires_folded": 478,
+   "fires_signed": 500,
+   "rate_folded": 0.956,
+   "rate_signed": 1.0,
+   "ci_folded": [
+    0.9342805569252562,
+    0.9707660444649494
+   ],
+   "ci_signed": [
+    0.9923756594190853,
+    1.0000000000000002
+   ]
+  },
+  {
+   "cell": 131,
+   "beta_z": 2.0,
+   "tests_per_claim": 5,
+   "n_claims": 300,
+   "base_logit": 1.0,
+   "reps": 500,
+   "fires_folded": 411,
+   "fires_signed": 294,
+   "rate_folded": 0.822,
+   "rate_signed": 0.588,
+   "ci_folded": [
+    0.7860548111481,
+    0.8530351135177907
+   ],
+   "ci_signed": [
+    0.5443465916629446,
+    0.6303115243948143
+   ]
+  },
+  {
+   "cell": 132,
+   "beta_z": 2.0,
+   "tests_per_claim": 10,
+   "n_claims": 10,
+   "base_logit": -1.0,
+   "reps": 500,
+   "fires_folded": 73,
+   "fires_signed": 476,
+   "rate_folded": 0.146,
+   "rate_signed": 0.952,
+   "ci_folded": [
+    0.11774876662461098,
+    0.17964926650667673
+   ],
+   "ci_signed": [
+    0.9295728029566821,
+    0.9675347931581708
+   ]
+  },
+  {
+   "cell": 133,
+   "beta_z": 2.0,
+   "tests_per_claim": 10,
+   "n_claims": 10,
+   "base_logit": 0.0,
+   "reps": 500,
+   "fires_folded": 451,
+   "fires_signed": 465,
+   "rate_folded": 0.902,
+   "rate_signed": 0.93,
+   "ci_folded": [
+    0.8727939488780962,
+    0.9250760812948484
+   ],
+   "ci_signed": [
+    0.9042028099167505,
+    0.9492402571836629
+   ]
+  },
+  {
+   "cell": 134,
+   "beta_z": 2.0,
+   "tests_per_claim": 10,
+   "n_claims": 10,
+   "base_logit": 1.0,
+   "reps": 500,
+   "fires_folded": 406,
+   "fires_signed": 400,
+   "rate_folded": 0.812,
+   "rate_signed": 0.8,
+   "ci_folded": [
+    0.7754223753807223,
+    0.8438200360967869
+   ],
+   "ci_signed": [
+    0.7627108943838626,
+    0.8327145012675886
+   ]
+  },
+  {
+   "cell": 135,
+   "beta_z": 2.0,
+   "tests_per_claim": 10,
+   "n_claims": 30,
+   "base_logit": -1.0,
+   "reps": 500,
+   "fires_folded": 3,
+   "fires_signed": 500,
+   "rate_folded": 0.006,
+   "rate_signed": 1.0,
+   "ci_folded": [
+    0.002042596256088514,
+    0.01749025223785535
+   ],
+   "ci_signed": [
+    0.9923756594190853,
+    1.0000000000000002
+   ]
+  },
+  {
+   "cell": 136,
+   "beta_z": 2.0,
+   "tests_per_claim": 10,
+   "n_claims": 30,
+   "base_logit": 0.0,
+   "reps": 500,
+   "fires_folded": 494,
+   "fires_signed": 498,
+   "rate_folded": 0.988,
+   "rate_signed": 0.996,
+   "ci_folded": [
+    0.9740696387347714,
+    0.9944890048582558
+   ],
+   "ci_signed": [
+    0.9855342846565502,
+    0.9989023694871824
+   ]
+  },
+  {
+   "cell": 137,
+   "beta_z": 2.0,
+   "tests_per_claim": 10,
+   "n_claims": 30,
+   "base_logit": 1.0,
+   "reps": 500,
+   "fires_folded": 467,
+   "fires_signed": 462,
+   "rate_folded": 0.934,
+   "rate_signed": 0.924,
+   "ci_folded": [
+    0.9087605986117695,
+    0.9526214737639966
+   ],
+   "ci_signed": [
+    0.8974035860890358,
+    0.9441309730983486
+   ]
+  },
+  {
+   "cell": 138,
+   "beta_z": 2.0,
+   "tests_per_claim": 10,
+   "n_claims": 100,
+   "base_logit": -1.0,
+   "reps": 500,
+   "fires_folded": 0,
+   "fires_signed": 500,
+   "rate_folded": 0.0,
+   "rate_signed": 1.0,
+   "ci_folded": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ],
+   "ci_signed": [
+    0.9923756594190853,
+    1.0000000000000002
+   ]
+  },
+  {
+   "cell": 139,
+   "beta_z": 2.0,
+   "tests_per_claim": 10,
+   "n_claims": 100,
+   "base_logit": 0.0,
+   "reps": 500,
+   "fires_folded": 500,
+   "fires_signed": 500,
+   "rate_folded": 1.0,
+   "rate_signed": 1.0,
+   "ci_folded": [
+    0.9923756594190853,
+    1.0000000000000002
+   ],
+   "ci_signed": [
+    0.9923756594190853,
+    1.0000000000000002
+   ]
+  },
+  {
+   "cell": 140,
+   "beta_z": 2.0,
+   "tests_per_claim": 10,
+   "n_claims": 100,
+   "base_logit": 1.0,
+   "reps": 500,
+   "fires_folded": 499,
+   "fires_signed": 496,
+   "rate_folded": 0.998,
+   "rate_signed": 0.992,
+   "ci_folded": [
+    0.9887592931720683,
+    0.9996468636093407
+   ],
+   "ci_signed": [
+    0.9796129640268147,
+    0.9968846848415651
+   ]
+  },
+  {
+   "cell": 141,
+   "beta_z": 2.0,
+   "tests_per_claim": 10,
+   "n_claims": 300,
+   "base_logit": -1.0,
+   "reps": 500,
+   "fires_folded": 0,
+   "fires_signed": 500,
+   "rate_folded": 0.0,
+   "rate_signed": 1.0,
+   "ci_folded": [
+    4.336808689942018e-19,
+    0.007624340580914839
+   ],
+   "ci_signed": [
+    0.9923756594190853,
+    1.0000000000000002
+   ]
+  },
+  {
+   "cell": 142,
+   "beta_z": 2.0,
+   "tests_per_claim": 10,
+   "n_claims": 300,
+   "base_logit": 0.0,
+   "reps": 500,
+   "fires_folded": 500,
+   "fires_signed": 500,
+   "rate_folded": 1.0,
+   "rate_signed": 1.0,
+   "ci_folded": [
+    0.9923756594190853,
+    1.0000000000000002
+   ],
+   "ci_signed": [
+    0.9923756594190853,
+    1.0000000000000002
+   ]
+  },
+  {
+   "cell": 143,
+   "beta_z": 2.0,
+   "tests_per_claim": 10,
+   "n_claims": 300,
+   "base_logit": 1.0,
+   "reps": 500,
+   "fires_folded": 500,
+   "fires_signed": 500,
+   "rate_folded": 1.0,
+   "rate_signed": 1.0,
+   "ci_folded": [
+    0.9923756594190853,
+    1.0000000000000002
+   ],
+   "ci_signed": [
+    0.9923756594190853,
+    1.0000000000000002
+   ]
+  }
+ ]
+}
